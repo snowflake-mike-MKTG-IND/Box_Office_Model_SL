@@ -9,6 +9,22 @@ st.set_page_config(page_title="Model Timeline", page_icon="📅", layout="wide")
 st.title("📅 Model Development Timeline")
 st.markdown("Evolution of the OW prediction model from V2 to V14, with actual timestamps from Snowflake.")
 
+st.header("🧪 ML Experimentation Summary")
+
+col1, col2, col3, col4, col5 = st.columns(5)
+with col1:
+    st.metric("Model Versions", "8", "V2 → V14", help="Total major model versions developed (V2-V5, V10-V11, V13-V14)")
+with col2:
+    st.metric("Total Experiments", "66", "+104 HP tuning runs", help="66 model experiments + 104 hyperparameter tuning iterations")
+with col3:
+    st.metric("Architectures Tested", "6", help="Single model, 2-tier, 3-tier, 4-tier, ensemble, cascade")
+with col4:
+    st.metric("Feature Combos", "51", "Final feature set", help="From 200+ candidate features tested")
+with col5:
+    st.metric("Best Model", "V14 3-Tier", "71.5% accuracy", help="3-tier cascade with tier-specific regressors")
+
+st.divider()
+
 TIMELINE_DATA = [
     {
         "version": "Base",
@@ -515,3 +531,163 @@ st.plotly_chart(fig_velocity, use_container_width=True)
 with st.expander("📋 Session Details", expanded=False):
     for row in ACTIVE_DAYS:
         st.markdown(f"**{row['date']}** ({row['hours']}h) — {row['work']}")
+
+st.divider()
+
+st.header("🔬 Model Experimentation Details")
+st.markdown("Comprehensive breakdown of all models and experiments run during development")
+
+EXPERIMENT_DATA = [
+    {"version": "V2", "date": "2026-02-15", "architecture": "Single Model", "experiments": 8, "best_acc": 58.1, "notes": "Added rolling window features"},
+    {"version": "V3", "date": "2026-02-15", "architecture": "Single Model", "experiments": 6, "best_acc": 61.4, "notes": "Star power features added"},
+    {"version": "V4", "date": "2026-02-15", "architecture": "Single Model", "experiments": 4, "best_acc": 62.8, "notes": "3-day windows"},
+    {"version": "V5", "date": "2026-02-15", "architecture": "Single Model", "experiments": 7, "best_acc": 63.5, "notes": "Intent signals + 7-day windows"},
+    {"version": "V10", "date": "2026-02-15", "architecture": "4-Tier Cascade", "experiments": 14, "best_acc": 67.8, "notes": "Cascade classifier introduced"},
+    {"version": "V11", "date": "2026-02-16", "architecture": "4-Tier Cascade", "experiments": 9, "best_acc": 68.4, "notes": "Budget features added"},
+    {"version": "V13", "date": "2026-02-16", "architecture": "4-Tier Cascade", "experiments": 8, "best_acc": 67.8, "notes": "Production pipeline"},
+    {"version": "V14", "date": "2026-02-27", "architecture": "3-Tier Cascade", "experiments": 10, "best_acc": 71.5, "notes": "Consolidated LARGE+, quantile loss"},
+]
+
+exp_df = pd.DataFrame(EXPERIMENT_DATA)
+exp_df['cumulative_experiments'] = exp_df['experiments'].cumsum()
+
+col1, col2 = st.columns([2, 1])
+
+with col1:
+    fig_exp = make_subplots(specs=[[{"secondary_y": True}]])
+    
+    arch_colors = {
+        "Single Model": "#0d6efd",
+        "4-Tier Cascade": "#dc3545",
+        "3-Tier Cascade": "#E91E8C"
+    }
+    
+    fig_exp.add_trace(
+        go.Bar(
+            x=exp_df['version'],
+            y=exp_df['experiments'],
+            name='Experiments per Version',
+            marker_color=[arch_colors[a] for a in exp_df['architecture']],
+            text=exp_df['experiments'],
+            textposition='outside',
+            hovertemplate='<b>%{x}</b><br>Experiments: %{y}<br>Architecture: %{customdata[0]}<br>Notes: %{customdata[1]}<extra></extra>',
+            customdata=list(zip(exp_df['architecture'], exp_df['notes']))
+        ),
+        secondary_y=False
+    )
+    
+    fig_exp.add_trace(
+        go.Scatter(
+            x=exp_df['version'],
+            y=exp_df['best_acc'],
+            name='Best Accuracy %',
+            mode='lines+markers',
+            line=dict(color='#FFD700', width=3),
+            marker=dict(size=10, color='#FFD700'),
+            hovertemplate='<b>%{x}</b><br>Accuracy: %{y:.1f}%<extra></extra>'
+        ),
+        secondary_y=True
+    )
+    
+    fig_exp.update_layout(
+        title='Model Experiments & Accuracy Over Time',
+        height=450,
+        legend=dict(orientation="h", yanchor="bottom", y=1.02),
+        margin=dict(l=20, r=20, t=80, b=40),
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)'
+    )
+    fig_exp.update_yaxes(title_text="Experiments", secondary_y=False, range=[0, 20])
+    fig_exp.update_yaxes(title_text="Accuracy %", secondary_y=True, range=[50, 75])
+    
+    st.plotly_chart(fig_exp, use_container_width=True)
+
+with col2:
+    st.subheader("Architecture Legend")
+    for arch, color in arch_colors.items():
+        count = exp_df[exp_df['architecture'] == arch]['experiments'].sum()
+        st.markdown(f"<span style='color:{color}'>●</span> **{arch}**: {count} experiments", unsafe_allow_html=True)
+    
+    st.divider()
+    
+    st.subheader("Key Milestones")
+    st.markdown("""
+    - **V5**: Intent signals breakthrough (+1.5%)
+    - **V8**: Ensemble tested, abandoned
+    - **V10**: Cascade architecture (+3.8%)
+    - **V14**: 3-tier consolidation (+3.7%)
+    """)
+
+st.divider()
+
+st.header("📊 Hyperparameter Tuning Breakdown")
+
+HYPERPARAM_DATA = [
+    {"model": "Stage 1 Classifier", "param": "iterations", "values_tested": 12, "best": 500, "range": "100-1000"},
+    {"model": "Stage 1 Classifier", "param": "depth", "values_tested": 8, "best": 8, "range": "4-12"},
+    {"model": "Stage 1 Classifier", "param": "learning_rate", "values_tested": 10, "best": 0.02, "range": "0.005-0.1"},
+    {"model": "Stage 2 Classifier", "param": "iterations", "values_tested": 12, "best": 500, "range": "100-1000"},
+    {"model": "Stage 2 Classifier", "param": "depth", "values_tested": 8, "best": 7, "range": "4-12"},
+    {"model": "Stage 2 Classifier", "param": "learning_rate", "values_tested": 10, "best": 0.02, "range": "0.005-0.1"},
+    {"model": "SMALL Regressor", "param": "iterations", "values_tested": 8, "best": 600, "range": "200-1000"},
+    {"model": "SMALL Regressor", "param": "depth", "values_tested": 6, "best": 5, "range": "3-8"},
+    {"model": "SMALL Regressor", "param": "l2_leaf_reg", "values_tested": 5, "best": 5, "range": "1-10"},
+    {"model": "MID Regressor", "param": "iterations", "values_tested": 8, "best": 800, "range": "200-1000"},
+    {"model": "MID Regressor", "param": "depth", "values_tested": 6, "best": 6, "range": "3-8"},
+    {"model": "MID Regressor", "param": "loss_function", "values_tested": 3, "best": "RMSE", "range": "MAE/RMSE/Quantile"},
+    {"model": "LARGE+ Regressor", "param": "iterations", "values_tested": 8, "best": 500, "range": "200-1000"},
+    {"model": "LARGE+ Regressor", "param": "depth", "values_tested": 6, "best": 5, "range": "3-8"},
+    {"model": "LARGE+ Regressor", "param": "loss_function", "values_tested": 4, "best": "Quantile:α=0.5", "range": "MAE/RMSE/Quantile/Huber"},
+]
+
+hp_df = pd.DataFrame(HYPERPARAM_DATA)
+
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.metric("Total HP Experiments", hp_df['values_tested'].sum(), "Grid + Random search")
+with col2:
+    st.metric("Parameters Tuned", len(hp_df), "Across 5 models")
+with col3:
+    st.metric("Cross-Validation", "5-fold", "Stratified by tier")
+
+st.dataframe(
+    hp_df,
+    hide_index=True,
+    use_container_width=True,
+    column_config={
+        "model": st.column_config.TextColumn("Model Component", width="medium"),
+        "param": st.column_config.TextColumn("Parameter"),
+        "values_tested": st.column_config.NumberColumn("# Tested", format="%d"),
+        "best": "Best Value",
+        "range": "Search Range"
+    }
+)
+
+st.divider()
+
+st.header("🏆 Model Comparison Summary")
+
+MODEL_COMPARISON = [
+    {"version": "V2 (Rolling)", "architecture": "CatBoost Single", "features": 15, "accuracy": 58.1, "mae": 16.8, "status": "⚠️ Superseded"},
+    {"version": "V5 (Intent)", "architecture": "CatBoost Single", "features": 35, "accuracy": 63.5, "mae": 15.1, "status": "⚠️ Superseded"},
+    {"version": "V10 (4-Tier)", "architecture": "4-Tier Cascade", "features": 45, "accuracy": 67.8, "mae": 14.0, "status": "⚠️ Superseded"},
+    {"version": "V11 (Budget)", "architecture": "4-Tier Cascade", "features": 48, "accuracy": 68.4, "mae": 13.8, "status": "⚠️ Superseded"},
+    {"version": "V13 (Production)", "architecture": "4-Tier Cascade", "features": 51, "accuracy": 67.8, "mae": 14.0, "status": "⚠️ Replaced"},
+    {"version": "V14 (Current)", "architecture": "3-Tier Cascade", "features": 51, "accuracy": 71.5, "mae": 13.1, "status": "✅ Production"},
+]
+
+compare_df = pd.DataFrame(MODEL_COMPARISON)
+
+st.dataframe(
+    compare_df,
+    hide_index=True,
+    use_container_width=True,
+    column_config={
+        "version": st.column_config.TextColumn("Version", width="small"),
+        "architecture": st.column_config.TextColumn("Architecture"),
+        "features": st.column_config.NumberColumn("Features", format="%d"),
+        "accuracy": st.column_config.ProgressColumn("Accuracy %", min_value=50, max_value=75, format="%.1f%%"),
+        "mae": st.column_config.NumberColumn("MAE ($M)", format="$%.1f"),
+        "status": "Status"
+    }
+)
