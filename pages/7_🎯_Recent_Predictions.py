@@ -39,7 +39,10 @@ WEEKEND_DATA = [
         "weekend": "Weekend 9",
         "dates": "Feb 27-Mar 1, 2026",
         "movies": [
-            {"movie": "Scream 7", "studio": "Paramount", "predicted_tier": "LARGE", "predicted_ow": None, "conf_low": None, "conf_high": None, "actual_ow": 63.62, "week": 1, "note": "Prediction errored ($0); tier classified LARGE"},
+            {"movie": "Scream 7", "studio": "Paramount", "predicted_tier": "LARGE+", "predicted_ow": None, "conf_low": None, "conf_high": None, "actual_ow": 63.62, "week": 1,
+             "tier_confidence": 76.97, "tier_range_low": 50, "tier_range_high": 100,
+             "regression_error": True, "manually_adjusted": True,
+             "note": "Tier manually elevated to LARGE based on strong pre-release signals; regression errored (SQL syntax bug) — no $ prediction generated"},
         ]
     },
 ]
@@ -67,41 +70,44 @@ def get_actual_tier(actual_ow):
 
 
 all_movies = []
+all_tier_checks = []
 for w in WEEKEND_DATA:
     for m in w["movies"]:
-        if m["week"] == 1 and m["predicted_ow"] is not None:
+        if m["week"] == 1 and m["predicted_tier"] is not None:
             actual_tier = get_actual_tier(m["actual_ow"])
             pred_tier = m["predicted_tier"]
             tier_match = pred_tier == actual_tier if actual_tier else None
             if pred_tier and "LARGE" in pred_tier and actual_tier and "LARGE" in actual_tier:
                 tier_match = True
-            all_movies.append({
-                "Weekend": w["weekend"],
-                "Movie": m["movie"],
-                "Studio": m["studio"],
-                "Predicted Tier": pred_tier,
-                "Predicted OW ($M)": m["predicted_ow"],
-                "Conf Low ($M)": m["conf_low"],
-                "Conf High ($M)": m["conf_high"],
-                "Actual OW ($M)": m["actual_ow"],
-                "Actual Tier": actual_tier,
-                "Error ($M)": round(m["predicted_ow"] - m["actual_ow"], 2),
-                "Tier Correct": "✅" if tier_match else "❌",
-            })
+            all_tier_checks.append({"movie": m["movie"], "match": tier_match})
+            if m["predicted_ow"] is not None:
+                all_movies.append({
+                    "Weekend": w["weekend"],
+                    "Movie": m["movie"],
+                    "Studio": m["studio"],
+                    "Predicted Tier": pred_tier,
+                    "Predicted OW ($M)": m["predicted_ow"],
+                    "Conf Low ($M)": m["conf_low"],
+                    "Conf High ($M)": m["conf_high"],
+                    "Actual OW ($M)": m["actual_ow"],
+                    "Actual Tier": actual_tier,
+                    "Error ($M)": round(m["predicted_ow"] - m["actual_ow"], 2),
+                    "Tier Correct": "✅" if tier_match else "❌",
+                })
 
 df = pd.DataFrame(all_movies)
 
 col1, col2, col3, col4 = st.columns(4)
-tier_correct = sum(1 for m in all_movies if m["Tier Correct"] == "✅")
-tier_total = len(all_movies)
+tier_correct_all = sum(1 for t in all_tier_checks if t["match"])
+tier_total_all = len(all_tier_checks)
+regression_total = len(all_movies)
 mae = df["Error ($M)"].abs().mean()
-mape = (df["Error ($M)"].abs() / df["Actual OW ($M)"]).mean() * 100
 within_ci = sum(1 for m in all_movies if m["Conf Low ($M)"] <= m["Actual OW ($M)"] <= m["Conf High ($M)"])
 
-col1.metric("Movies Tracked", f"{tier_total}", f"{len(WEEKEND_DATA)} weekends")
-col2.metric("Tier Accuracy", f"{tier_correct}/{tier_total}", f"{tier_correct/tier_total*100:.0f}%")
-col3.metric("Mean Abs Error", f"${mae:.2f}M")
-col4.metric("Within Confidence Interval", f"{within_ci}/{tier_total}", f"{within_ci/tier_total*100:.0f}%")
+col1.metric("Tier Accuracy", f"{tier_correct_all}/{tier_total_all}", f"{tier_correct_all/tier_total_all*100:.0f}% (incl. Scream 7)")
+col2.metric("Regression MAE", f"${mae:.2f}M", f"{regression_total} movies with $ predictions")
+col3.metric("Within Confidence Interval", f"{within_ci}/{regression_total}", f"{within_ci/regression_total*100:.0f}%")
+col4.metric("Movies Tracked", f"{tier_total_all}", f"{len(WEEKEND_DATA)} weekends")
 
 st.divider()
 
@@ -166,6 +172,36 @@ fig_err.update_layout(
     )]
 )
 st.plotly_chart(fig_err, use_container_width=True)
+
+st.divider()
+
+st.header("Scream 7 — Tier Correct, Regression Error")
+st.markdown("""
+**Scream 7** is a special case: the V14 classifier correctly identified it as **LARGE** tier 
+(manually elevated based on strong pre-release signals, 76.97 confidence), but the regression 
+step hit a SQL syntax error and produced **$0** instead of a dollar prediction.
+""")
+scream_col1, scream_col2, scream_col3 = st.columns(3)
+with scream_col1:
+    st.metric("Predicted Tier", "LARGE+", "Manually adjusted ✅")
+with scream_col2:
+    st.metric("Tier Range", "$50–100M", "Actual: $63.62M ✅")
+with scream_col3:
+    st.metric("Regression Prediction", "$0 (ERROR)", "SQL syntax bug in pipeline")
+st.markdown("""
+| Detail | Value |
+|--------|-------|
+| **Classifier Tier** | LARGE (elevated from initial classification) |
+| **Tier Confidence** | 76.97 |
+| **Tier Range** | $50M – $100M |
+| **Actual OW** | **$63.62M** (within tier range ✅) |
+| **Regression Output** | $0 — errored |
+| **Error Source** | `SQL compilation error: syntax error line 3 at position 70 unexpected 'str'` |
+| **Override** | Manually adjusted — elevated to LARGE based on strong pre-release signals |
+
+The tier classification counts toward accuracy metrics (correct), but the regression error 
+means Scream 7 is excluded from MAE/CI calculations.
+""")
 
 st.divider()
 
@@ -247,10 +283,11 @@ st.divider()
 
 st.info("""
 **Data Sources**
-- **Predictions**: `SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTIONS` (V14 3-Tier Cascade model)
+- **Predictions**: `SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTIONS` / `ML_PREDICTIONS_V` (V14 3-Tier Cascade model)
 - **Actuals**: Box Office Mojo (The Numbers currently under maintenance)
-- Movies not in the prediction pipeline (e.g., Crime 101) are shown in weekend breakdowns but excluded from accuracy metrics
-- Scream 7 tier was classified as LARGE but the regression prediction errored ($0) — excluded from error metrics
+- **Tier System**: SMALL (<$15M) · MID ($15–50M) · LARGE+ (>$50M)
+- Movies not in the prediction pipeline (e.g., Crime 101) are shown in weekend breakdowns but excluded from all metrics
+- Scream 7: tier classification was correct (LARGE+ ✅) but regression errored — included in tier accuracy, excluded from MAE
 """)
 
 st.caption("💡 To add new weekends: update WEEKEND_DATA with real values from Snowflake and Box Office Mojo. Move entries from UPCOMING once actuals are available.")
