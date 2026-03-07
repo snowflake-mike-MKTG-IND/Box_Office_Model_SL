@@ -354,7 +354,3 @@ st.info("""
 """)
 
 st.caption("💡 To add new weekends: update WEEKEND_DATA with real values from Snowflake and Box Office Mojo. Move entries from UPCOMING once actuals are available.")
-- Scream 7: LARGE+ override tier correct ✅; V14 predicted $69.59M vs actual $63.62M (9.4% error, within CI)
-""")
-
-st.caption("💡 To add new weekends: update WEEKEND_DATA with real values from Snowflake and Box Office Mojo. Move entries from UPCOMING once actuals are available.")
