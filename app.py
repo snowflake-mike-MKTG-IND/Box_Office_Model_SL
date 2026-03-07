@@ -38,6 +38,8 @@ Use the sidebar to explore:
 3. **Performance** - Classification accuracy, MAE, confusion matrix
 4. **Predictions** - Interactive prediction tool
 5. **Errors** - Model limitations and biggest misses
+6. **Timeline** - Model development history
+7. **Recent Predictions** - Live tracking of predictions vs actual results
 """)
 
 st.divider()
