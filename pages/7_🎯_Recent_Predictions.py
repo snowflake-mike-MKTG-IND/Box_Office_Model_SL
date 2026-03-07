@@ -39,10 +39,10 @@ WEEKEND_DATA = [
         "weekend": "Weekend 9",
         "dates": "Feb 27-Mar 1, 2026",
         "movies": [
-            {"movie": "Scream 7", "studio": "Paramount", "predicted_tier": "LARGE+", "predicted_ow": 25.00, "conf_low": 20.00, "conf_high": 30.00, "actual_ow": 63.62, "week": 1,
+            {"movie": "Scream 7", "studio": "Paramount", "predicted_tier": "LARGE+", "predicted_ow": 69.59, "conf_low": 55.67, "conf_high": 83.51, "actual_ow": 63.62, "week": 1,
              "tier_confidence": 76.97, "tier_range_low": 50, "tier_range_high": 100,
              "manually_adjusted": True,
-             "note": "V14 auto-classified SMALL (61%); tier manually overridden to LARGE+. LARGE+ regressor predicted $25M — actual $63.62M. Tier range ($50-100M) captured the actual."},
+             "note": "V14 auto-classified SMALL (61%); manual override to LARGE+. LARGE+ regressor: $69.59M vs actual $63.62M (9.4% error, within CI)"},
         ]
     },
 ]
@@ -178,9 +178,9 @@ st.divider()
 st.header("Case Study: Scream 7 — Why V13 → V14")
 st.markdown("""
 Scream 7 was a key catalyst for the move from **V13 (4-tier)** to **V14 (3-tier)**. 
-The V13 model misclassified it as MID and predicted ~$30M. V14's LARGE+ regressor 
-(with manual tier override) predicted $25M — still a significant underestimate vs the 
-actual $63.62M, but the **tier range ($50–100M) correctly captured the result**.
+The V13 classifier put Scream 7 in SMALL (76.97%) — even with a manual override to LARGE, 
+a routing bug sent it to the MID regressor (~$30M). V14 (with manual LARGE+ override and 
+a fixed `np.exp()` bug) predicts **$69.59M** — only 9.4% off the actual $63.62M.
 """)
 
 v13v14_col1, v13v14_col2 = st.columns(2)
@@ -190,16 +190,15 @@ with v13v14_col1:
     st.markdown("""
     | | |
     |---|---|
-    | **Auto-Classified Tier** | SMALL (76.97%) |
-    | **Manual Override** | LARGE (elevated) |
+    | **Auto-Classified** | SMALL (76.97%) |
+    | **Manual Override** | LARGE |
     | **Regressor Used** | MID (~$30M) ❌ |
     | **Actual OW** | **$63.62M** |
     | **Error** | ~$33M under-prediction |
     
-    **Why it failed**: The 4-tier system split LARGE ($50–80M) and BLOCKBUSTER ($80M+) 
-    into separate tiers, but only had **27 films** in LARGE — not enough training data. 
-    The classifier put Scream 7 in SMALL at 76.97% confidence. Even with a manual 
-    override to LARGE, the MID regressor was used (SQL routing bug), predicting ~$30M.
+    **Why it failed**: Classifier put it in SMALL at 76.97%. Even with manual override 
+    to LARGE, a SQL routing bug sent it to the MID regressor. The 4-tier system had only 
+    **27 films** in LARGE — not enough training data for reliable classification.
     """)
 
 with v13v14_col2:
@@ -207,30 +206,30 @@ with v13v14_col2:
     st.markdown("""
     | | |
     |---|---|
-    | **Predicted Tier** | LARGE+ (>$50M) ✅ |
-    | **Tier Confidence** | 76.97 (manual override) |
-    | **Predicted OW** | $25.0M |
-    | **Tier Range** | $50M – $100M |
-    | **Actual OW** | **$63.62M** (within range ✅) |
+    | **Auto-Classified** | SMALL (61.2%) |
+    | **Manual Override** | LARGE+ ✅ |
+    | **LARGE+ Regressor** | **$69.59M** |
+    | **CI Range** | $55.67M – $83.51M |
+    | **Actual OW** | **$63.62M** (within CI ✅) |
+    | **Error** | +$5.97M (9.4%) |
     
-    **Why the tier was right**: Collapsing LARGE + BLOCKBUSTER into **LARGE+** ($50M+) 
-    gave the classifier **46 training films** instead of 27. LARGE+ accuracy 
-    jumped from 27% → **65%**. The tier was manually elevated based on 
-    strong pre-release signals. The LARGE+ regressor predicted $25M — 
-    under-estimated, but the tier range ($50–100M) captured the actual.
+    **What improved**: Fixed `np.exp()` bug (regressors output log-space). 
+    With manual LARGE+ override, the regressor predicted **$69.59M** — 
+    only 9.4% off actual. Collapsing LARGE + BLOCKBUSTER into LARGE+ 
+    gave **46 training films** instead of 27.
     """)
 
-st.caption("Chart below: V13's prediction (~$30M) vs V14's LARGE+ regressor ($25M) vs actual ($63.62M). V14's tier range ($50–100M) is shown as the shaded region — it captured the actual.")
+st.caption("Chart below: V13 MID regressor (~$30M) vs V14 LARGE+ regressor ($69.59M) vs actual ($63.62M). V14's CI range shown as shaded region.")
 
 fig_v13v14 = go.Figure()
 fig_v13v14.add_trace(go.Bar(
-    name='V13 Prediction (~$30M)', x=['Scream 7'], y=[30],
+    name='V13 MID Regressor (~$30M)', x=['Scream 7'], y=[30],
     marker_color='#EF553B', text=['V13: ~$30M'], textposition='outside',
     width=0.2,
 ))
 fig_v13v14.add_trace(go.Bar(
-    name='V14 LARGE+ Regressor ($25M)', x=['Scream 7'], y=[25],
-    marker_color='#636EFA', text=['V14: $25M'], textposition='outside',
+    name='V14 LARGE+ Regressor ($69.59M)', x=['Scream 7'], y=[69.59],
+    marker_color='#636EFA', text=['V14: $69.59M'], textposition='outside',
     width=0.2,
 ))
 fig_v13v14.add_trace(go.Bar(
@@ -239,11 +238,11 @@ fig_v13v14.add_trace(go.Bar(
     width=0.2,
 ))
 fig_v13v14.add_shape(
-    type="rect", x0=-0.4, x1=0.4, y0=50, y1=100,
+    type="rect", x0=-0.4, x1=0.4, y0=55.67, y1=83.51,
     fillcolor="rgba(99, 110, 250, 0.1)", line=dict(color="rgba(99, 110, 250, 0.5)", dash="dot"),
 )
 fig_v13v14.add_annotation(
-    x=0.42, y=75, text="V14 LARGE+ tier range ($50–100M)<br><i>Actual $63.62M falls within range ✅</i>",
+    x=0.42, y=69.59, text="V14 CI: $55.67M–$83.51M<br><i>Actual $63.62M within CI ✅</i>",
     showarrow=False, font=dict(size=10, color="#636EFA"), xanchor="left",
 )
 fig_v13v14.update_layout(
@@ -351,7 +350,11 @@ st.info("""
 - **Actuals**: Box Office Mojo (The Numbers currently under maintenance)
 - **Tier System**: SMALL (<$15M) · MID ($15–50M) · LARGE+ (>$50M)
 - Movies not in the prediction pipeline (e.g., Crime 101) are shown in weekend breakdowns but excluded from all metrics
-- Scream 7: tier classification correct (LARGE+ ✅); LARGE+ regressor predicted $25M (actual $63.62M) — tier range captured result
+- Scream 7: tier override to LARGE+ correct; V14 LARGE+ regressor predicted $69.59M vs actual $63.62M (9.4% error, within CI)
+""")
+
+st.caption("💡 To add new weekends: update WEEKEND_DATA with real values from Snowflake and Box Office Mojo. Move entries from UPCOMING once actuals are available.")
+- Scream 7: LARGE+ override tier correct ✅; V14 predicted $69.59M vs actual $63.62M (9.4% error, within CI)
 """)
 
 st.caption("💡 To add new weekends: update WEEKEND_DATA with real values from Snowflake and Box Office Mojo. Move entries from UPCOMING once actuals are available.")
