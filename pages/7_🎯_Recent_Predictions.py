@@ -7,46 +7,39 @@ import numpy as np
 st.set_page_config(page_title="Recent Predictions", page_icon="🎯", layout="wide")
 
 st.title("🎯 Recent Weekend Predictions vs Actuals")
-st.markdown("Tracking V14 model predictions against actual opening weekend results. *Data sourced from Box Office Mojo (The Numbers currently under maintenance).*")
+st.markdown("Tracking V14 model predictions against actual opening weekend results. Predictions sourced from `SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTIONS`. Actuals from Box Office Mojo (The Numbers currently under maintenance).")
 
 st.divider()
 
 WEEKEND_DATA = [
     {
-        "weekend": "Weekend 6",
-        "dates": "Feb 6-8, 2026",
+        "weekend": "Weekend 2",
+        "dates": "Jan 9-12, 2026",
         "movies": [
-            {"movie": "Send Help", "studio": "Disney", "predicted_tier": "MID", "predicted_ow": 11.5, "actual_ow": 19.1, "actual_tier": "MID", "week": 2, "note": "Holdover (OW was W5)"},
-            {"movie": "Solo Mio", "studio": "Angel", "predicted_tier": "SMALL", "predicted_ow": 5.8, "actual_ow": 7.0, "actual_tier": "SMALL", "week": 1, "note": "Faith-based"},
-            {"movie": "Iron Lung", "studio": "Markiplier", "predicted_tier": "MID", "predicted_ow": 12.0, "actual_ow": 17.8, "actual_tier": "MID", "week": 2, "note": "Holdover (OW was W5)"},
-            {"movie": "Stray Kids: dominATE", "studio": "Bleecker Street", "predicted_tier": "SMALL", "predicted_ow": 4.0, "actual_ow": 5.7, "actual_tier": "SMALL", "week": 1, "note": "Concert/event film"},
-            {"movie": "Dracula", "studio": "Vertical", "predicted_tier": "SMALL", "predicted_ow": 6.5, "actual_ow": 4.4, "actual_tier": "SMALL", "week": 1, "note": ""},
+            {"movie": "Greenland 2: Migration", "studio": "STX/Lionsgate", "predicted_tier": "SMALL", "predicted_ow": 9.37, "conf_low": 7.50, "conf_high": 11.24, "actual_ow": 8.40, "week": 1, "note": "Gerard Butler sequel"},
+        ]
+    },
+    {
+        "weekend": "Weekend 3",
+        "dates": "Jan 16-19, 2026",
+        "movies": [
+            {"movie": "28 Years Later: The Bone Temple", "studio": "Sony", "predicted_tier": "SMALL", "predicted_ow": 14.48, "conf_low": 11.58, "conf_high": 17.37, "actual_ow": 15.00, "week": 1, "note": "Horror sequel; borderline MID"},
         ]
     },
     {
         "weekend": "Weekend 7",
         "dates": "Feb 13-15, 2026",
         "movies": [
-            {"movie": "Wuthering Heights", "studio": "Warner Bros.", "predicted_tier": "MID", "predicted_ow": 22.0, "actual_ow": 32.8, "actual_tier": "MID", "week": 1, "note": "Emerald Fennell film; overperformed"},
-            {"movie": "GOAT", "studio": "Sony", "predicted_tier": "MID", "predicted_ow": 18.5, "actual_ow": 27.2, "actual_tier": "MID", "week": 1, "note": "Tom Brady doc; overperformed"},
-            {"movie": "Crime 101", "studio": "Amazon MGM", "predicted_tier": "SMALL", "predicted_ow": 10.0, "actual_ow": 14.3, "actual_tier": "SMALL", "week": 1, "note": "George Clooney/Brad Pitt"},
-        ]
-    },
-    {
-        "weekend": "Weekend 8",
-        "dates": "Feb 20-22, 2026",
-        "movies": [
-            {"movie": "I Can Only Imagine 2", "studio": "Lionsgate", "predicted_tier": "SMALL", "predicted_ow": 8.5, "actual_ow": 7.8, "actual_tier": "SMALL", "week": 1, "note": "Faith-based sequel"},
-            {"movie": "How to Make a Killing", "studio": "A24", "predicted_tier": "SMALL", "predicted_ow": 4.0, "actual_ow": 3.5, "actual_tier": "SMALL", "week": 1, "note": ""},
-            {"movie": "EPiC: Elvis Concert", "studio": "Neon", "predicted_tier": "SMALL", "predicted_ow": 2.0, "actual_ow": 3.2, "actual_tier": "SMALL", "week": 1, "note": "Concert film; limited release"},
+            {"movie": "Wuthering Heights", "studio": "Warner Bros.", "predicted_tier": "MID", "predicted_ow": 32.62, "conf_low": 26.10, "conf_high": 39.15, "actual_ow": 32.80, "week": 1, "note": "Emerald Fennell; nearly perfect prediction"},
+            {"movie": "GOAT", "studio": "Sony", "predicted_tier": "MID", "predicted_ow": 27.35, "conf_low": 21.88, "conf_high": 32.82, "actual_ow": 27.20, "week": 1, "note": "Tom Brady doc; nearly perfect prediction"},
+            {"movie": "Crime 101", "studio": "Amazon MGM", "predicted_tier": None, "predicted_ow": None, "conf_low": None, "conf_high": None, "actual_ow": 14.25, "week": 1, "note": "Not in prediction pipeline"},
         ]
     },
     {
         "weekend": "Weekend 9",
         "dates": "Feb 27-Mar 1, 2026",
         "movies": [
-            {"movie": "Scream 7", "studio": "Paramount", "predicted_tier": "LARGE+", "predicted_ow": 55.0, "actual_ow": 63.6, "actual_tier": "LARGE+", "week": 1, "note": "Horror franchise; strong opening"},
-            {"movie": "21 Pilots Concert", "studio": "Trafalgar", "predicted_tier": "SMALL", "predicted_ow": 3.0, "actual_ow": 4.3, "actual_tier": "SMALL", "week": 1, "note": "Concert/event film"},
+            {"movie": "Scream 7", "studio": "Paramount", "predicted_tier": "LARGE", "predicted_ow": None, "conf_low": None, "conf_high": None, "actual_ow": 63.62, "week": 1, "note": "Prediction errored ($0); tier classified LARGE"},
         ]
     },
 ]
@@ -56,27 +49,44 @@ UPCOMING = [
         "weekend": "Weekend 10",
         "dates": "Mar 6-8, 2026",
         "movies": [
-            {"movie": "The Bride", "studio": "Warner Bros.", "predicted_tier": "SMALL", "predicted_ow": 8.3, "note": "Maggie Gyllenhaal; horror"},
-            {"movie": "Novocaine", "studio": "Paramount", "predicted_tier": "SMALL", "predicted_ow": 9.0, "note": "Jack Quaid action-comedy"},
+            {"movie": "The Bride", "studio": "Warner Bros.", "predicted_tier": "SMALL", "predicted_ow": 8.31, "conf_low": 6.65, "conf_high": 9.97, "note": "Maggie Gyllenhaal; horror"},
         ]
     },
 ]
 
 
+def get_actual_tier(actual_ow):
+    if actual_ow is None:
+        return None
+    if actual_ow < 15:
+        return "SMALL"
+    elif actual_ow < 50:
+        return "MID"
+    else:
+        return "LARGE+"
+
+
 all_movies = []
 for w in WEEKEND_DATA:
     for m in w["movies"]:
-        if m["week"] == 1:
+        if m["week"] == 1 and m["predicted_ow"] is not None:
+            actual_tier = get_actual_tier(m["actual_ow"])
+            pred_tier = m["predicted_tier"]
+            tier_match = pred_tier == actual_tier if actual_tier else None
+            if pred_tier and "LARGE" in pred_tier and actual_tier and "LARGE" in actual_tier:
+                tier_match = True
             all_movies.append({
                 "Weekend": w["weekend"],
                 "Movie": m["movie"],
                 "Studio": m["studio"],
-                "Predicted Tier": m["predicted_tier"],
+                "Predicted Tier": pred_tier,
                 "Predicted OW ($M)": m["predicted_ow"],
+                "Conf Low ($M)": m["conf_low"],
+                "Conf High ($M)": m["conf_high"],
                 "Actual OW ($M)": m["actual_ow"],
-                "Actual Tier": m["actual_tier"],
-                "Error ($M)": round(m["predicted_ow"] - m["actual_ow"], 1),
-                "Tier Correct": "✅" if m["predicted_tier"] == m["actual_tier"] else "❌",
+                "Actual Tier": actual_tier,
+                "Error ($M)": round(m["predicted_ow"] - m["actual_ow"], 2),
+                "Tier Correct": "✅" if tier_match else "❌",
             })
 
 df = pd.DataFrame(all_movies)
@@ -86,11 +96,12 @@ tier_correct = sum(1 for m in all_movies if m["Tier Correct"] == "✅")
 tier_total = len(all_movies)
 mae = df["Error ($M)"].abs().mean()
 mape = (df["Error ($M)"].abs() / df["Actual OW ($M)"]).mean() * 100
+within_ci = sum(1 for m in all_movies if m["Conf Low ($M)"] <= m["Actual OW ($M)"] <= m["Conf High ($M)"])
 
-col1.metric("Movies Tracked", f"{tier_total}", f"Across {len(WEEKEND_DATA)} weekends")
+col1.metric("Movies Tracked", f"{tier_total}", f"{len(WEEKEND_DATA)} weekends")
 col2.metric("Tier Accuracy", f"{tier_correct}/{tier_total}", f"{tier_correct/tier_total*100:.0f}%")
-col3.metric("Mean Abs Error", f"${mae:.1f}M")
-col4.metric("MAPE", f"{mape:.1f}%")
+col3.metric("Mean Abs Error", f"${mae:.2f}M")
+col4.metric("Within Confidence Interval", f"{within_ci}/{tier_total}", f"{within_ci/tier_total*100:.0f}%")
 
 st.divider()
 
@@ -102,7 +113,7 @@ fig.add_trace(go.Bar(
     x=df['Movie'],
     y=df['Predicted OW ($M)'],
     marker_color='#636EFA',
-    text=[f"${v:.1f}M" for v in df['Predicted OW ($M)']],
+    text=[f"${v:.2f}M" for v in df['Predicted OW ($M)']],
     textposition='outside',
 ))
 fig.add_trace(go.Bar(
@@ -110,9 +121,18 @@ fig.add_trace(go.Bar(
     x=df['Movie'],
     y=df['Actual OW ($M)'],
     marker_color='#00CC96',
-    text=[f"${v:.1f}M" for v in df['Actual OW ($M)']],
+    text=[f"${v:.2f}M" for v in df['Actual OW ($M)']],
     textposition='outside',
 ))
+
+for i, row in df.iterrows():
+    fig.add_shape(
+        type="line",
+        x0=i - 0.2, x1=i - 0.2,
+        y0=row['Conf Low ($M)'], y1=row['Conf High ($M)'],
+        line=dict(color="rgba(99, 110, 250, 0.4)", width=3),
+    )
+
 fig.update_layout(
     barmode='group',
     height=450,
@@ -126,12 +146,12 @@ st.divider()
 
 st.header("Prediction Error by Movie")
 
-colors = ['#EF553B' if e < 0 else '#636EFA' for e in df['Error ($M)']]
+colors = ['#EF553B' if e > 0 else '#636EFA' for e in df['Error ($M)']]
 fig_err = go.Figure(go.Bar(
     x=df['Movie'],
     y=df['Error ($M)'],
     marker_color=colors,
-    text=[f"${v:+.1f}M" for v in df['Error ($M)']],
+    text=[f"${v:+.2f}M" for v in df['Error ($M)']],
     textposition='outside',
 ))
 fig_err.add_hline(y=0, line_dash="dash", line_color="gray")
@@ -156,17 +176,33 @@ for w in WEEKEND_DATA:
         rows = []
         for m in w["movies"]:
             if m["week"] == 1:
-                error = round(m["predicted_ow"] - m["actual_ow"], 1)
-                tier_match = "✅" if m["predicted_tier"] == m["actual_tier"] else "❌"
+                actual_tier = get_actual_tier(m["actual_ow"])
+                pred_tier = m.get("predicted_tier")
+                has_prediction = m["predicted_ow"] is not None
+                if has_prediction:
+                    error = round(m["predicted_ow"] - m["actual_ow"], 2)
+                    tier_match_bool = pred_tier == actual_tier
+                    if pred_tier and "LARGE" in pred_tier and actual_tier and "LARGE" in actual_tier:
+                        tier_match_bool = True
+                    tier_match = "✅" if tier_match_bool else "❌"
+                    ci_str = f"${m['conf_low']:.2f} – ${m['conf_high']:.2f}M"
+                    in_ci = "✅" if m["conf_low"] <= m["actual_ow"] <= m["conf_high"] else "❌"
+                else:
+                    error = None
+                    tier_match = "—"
+                    ci_str = "—"
+                    in_ci = "—"
                 rows.append({
                     "Movie": m["movie"],
                     "Studio": m["studio"],
-                    "Pred Tier": m["predicted_tier"],
-                    "Actual Tier": m["actual_tier"],
-                    "Tier Match": tier_match,
-                    "Predicted ($M)": m["predicted_ow"],
-                    "Actual ($M)": m["actual_ow"],
-                    "Error ($M)": error,
+                    "Pred Tier": pred_tier or "—",
+                    "Actual Tier": actual_tier or "—",
+                    "Tier ✓": tier_match,
+                    "Predicted ($M)": f"${m['predicted_ow']:.2f}" if has_prediction else "—",
+                    "Actual ($M)": f"${m['actual_ow']:.2f}" if m["actual_ow"] else "—",
+                    "Error ($M)": f"${error:+.2f}" if error is not None else "—",
+                    "CI Range": ci_str,
+                    "In CI": in_ci,
                     "Note": m.get("note", ""),
                 })
         wdf = pd.DataFrame(rows)
@@ -174,14 +210,15 @@ for w in WEEKEND_DATA:
 
 st.divider()
 
-st.header("🔮 Upcoming Predictions")
-st.caption("Predictions awaiting actual results")
+st.header("🔮 Upcoming / Awaiting Actuals")
+st.caption("Predictions from Snowflake awaiting actual results")
 
 for u in UPCOMING:
     st.subheader(f"{u['weekend']} — {u['dates']}")
     for m in u["movies"]:
-        tier_color = {"SMALL": "🟠", "MID": "🟡", "LARGE+": "🟢"}.get(m["predicted_tier"], "⚪")
-        st.markdown(f"- **{m['movie']}** ({m['studio']}) — {tier_color} {m['predicted_tier']} — **${m['predicted_ow']:.1f}M** predicted | {m.get('note', '')}")
+        tier_color = {"SMALL": "🟠", "MID": "🟡", "LARGE+": "🟢", "LARGE": "🟢"}.get(m["predicted_tier"], "⚪")
+        ci_str = f" (CI: ${m.get('conf_low', 0):.2f}–${m.get('conf_high', 0):.2f}M)" if m.get("conf_low") else ""
+        st.markdown(f"- **{m['movie']}** ({m['studio']}) — {tier_color} {m['predicted_tier']} — **${m['predicted_ow']:.2f}M** predicted{ci_str} | {m.get('note', '')}")
 
 st.divider()
 
@@ -193,7 +230,7 @@ tier_stats = df.groupby("Predicted Tier").agg(
     Tier_Correct=("Tier Correct", lambda x: (x == "✅").sum()),
 ).reset_index()
 tier_stats["Tier Accuracy"] = (tier_stats["Tier_Correct"] / tier_stats["Count"] * 100).round(0).astype(int).astype(str) + "%"
-tier_stats["MAE"] = tier_stats["MAE"].round(1)
+tier_stats["MAE"] = tier_stats["MAE"].round(2)
 
 col1, col2 = st.columns(2)
 with col1:
@@ -202,9 +239,18 @@ with col2:
     fig_tier = px.bar(tier_stats, x="Predicted Tier", y="MAE", color="Predicted Tier",
                       color_discrete_map={"SMALL": "#FF7F0E", "MID": "#FFD700", "LARGE+": "#00CC96"},
                       text="MAE")
-    fig_tier.update_traces(texttemplate='$%{text:.1f}M', textposition='outside')
+    fig_tier.update_traces(texttemplate='$%{text:.2f}M', textposition='outside')
     fig_tier.update_layout(height=300, showlegend=False, margin=dict(t=20))
     st.plotly_chart(fig_tier, use_container_width=True)
 
 st.divider()
-st.caption("💡 To add new weekends: update the WEEKEND_DATA list at the top of this file and move entries from UPCOMING to WEEKEND_DATA once actuals are available. Data source: Box Office Mojo (The Numbers under maintenance).")
+
+st.info("""
+**Data Sources**
+- **Predictions**: `SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTIONS` (V14 3-Tier Cascade model)
+- **Actuals**: Box Office Mojo (The Numbers currently under maintenance)
+- Movies not in the prediction pipeline (e.g., Crime 101) are shown in weekend breakdowns but excluded from accuracy metrics
+- Scream 7 tier was classified as LARGE but the regression prediction errored ($0) — excluded from error metrics
+""")
+
+st.caption("💡 To add new weekends: update WEEKEND_DATA with real values from Snowflake and Box Office Mojo. Move entries from UPCOMING once actuals are available.")
