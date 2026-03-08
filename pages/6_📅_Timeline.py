@@ -7,21 +7,21 @@ from plotly.subplots import make_subplots
 st.set_page_config(page_title="Model Timeline", page_icon="📅", layout="wide")
 
 st.title("📅 Model Development Timeline")
-st.markdown("Evolution of the OW prediction model from V2 to V14, with actual timestamps from Snowflake.")
+st.markdown("Evolution of the OW prediction model from V2 to V15, with actual timestamps from Snowflake.")
 
 st.header("🧪 ML Experimentation Summary")
 
 col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
-    st.metric("Model Versions", "8", "V2 → V14", help="Total major model versions developed (V2-V5, V10-V11, V13-V14)")
+    st.metric("Model Versions", "9", "V2 → V15", help="Total major model versions developed (V2-V5, V10-V11, V13-V15)")
 with col2:
-    st.metric("Total Experiments", "66", "+104 HP tuning runs", help="66 model experiments + 104 hyperparameter tuning iterations")
+    st.metric("Total Experiments", "76", "+104 HP tuning runs", help="76 model experiments + 104 hyperparameter tuning iterations")
 with col3:
     st.metric("Architectures Tested", "6", help="Single model, 2-tier, 3-tier, 4-tier, ensemble, cascade")
 with col4:
-    st.metric("Feature Combos", "51", "Final feature set", help="From 200+ candidate features tested")
+    st.metric("Feature Combos", "52", "Final feature set", help="From 200+ candidate features tested")
 with col5:
-    st.metric("Best Model", "V14 3-Tier", "71.5% accuracy", help="3-tier cascade with tier-specific regressors")
+    st.metric("Best Model", "V15 3-Tier", "77.3% accuracy", help="3-tier cascade with tier-specific regressors")
 
 st.divider()
 
@@ -157,6 +157,33 @@ TIMELINE_DATA = [
             "ow_pipeline_v14_3tier_7d.joblib.gz", 
             "ow_pipeline_v14_3tier_14d.joblib.gz"
         ]
+    },
+    {
+        "version": "V15",
+        "date": "2026-03-08 07:06",
+        "category": "Production",
+        "description": "Data Quality + New Feature",
+        "features": [
+            "269 training films (+30 from data cleanup)",
+            "PREDECESSOR_OW_LOG feature (sequel predecessor OW)",
+            "52 features (32 static + 20 trends)",
+            "11 duplicate/skeleton movie IDs removed",
+            "25,207 pre-release comments scored (IF, Arthur, Challengers)",
+            "51 noise movies excluded via REMOVE_FROM_MODEL table"
+        ]
+    },
+    {
+        "version": "V15 Prod",
+        "date": "2026-03-08 07:10",
+        "category": "Production",
+        "description": "V15 Production Deployment",
+        "features": [
+            "ow_pipeline_v15_production.joblib.gz",
+            "ow_pipeline_v15_3tier_3d.joblib.gz",
+            "ow_pipeline_v15_3tier_7d.joblib.gz",
+            "ow_pipeline_v15_3tier_14d.joblib.gz",
+            "V14 archived to ML_MODELS_ARCHIVE"
+        ]
     }
 ]
 
@@ -289,10 +316,10 @@ with col2:
         - `ML_PREDICTIONS_V` output view
         """)
     
-    with st.expander("V14 - 3-Tier Cascade (Feb 27-28)", expanded=True):
+    with st.expander("V14 - 3-Tier Cascade (Feb 27-28)", expanded=False):
         st.markdown("""
         **Time**: 19:07 → 07:42  
-        Final production architecture:
+        3-Tier cascade architecture:
         
         **Tier Consolidation**:
         - SMALL: < \\$15M (115 films, 48%)
@@ -303,11 +330,28 @@ with col2:
         1. Stage 1: SMALL vs NON-SMALL
         2. Stage 2: MID vs LARGE+ (if NON-SMALL)
         
-        **Tier-Specific Regressors**:
-        - SMALL/MID: RMSE loss
-        - LARGE+: Quantile loss (α=0.5) for high variance
-        
         **Multi-Horizon**: 3d, 7d, 14d prediction windows
+        """)
+    
+    with st.expander("V15 - Data Quality + Predecessor OW (Mar 8)", expanded=True):
+        st.markdown("""
+        **Time**: 07:06  
+        Current production model:
+        
+        **Data Quality Overhaul**:
+        - 11 duplicate/skeleton movie IDs removed from MOVIE_ID_MAPPING
+        - 25,207 pre-release comments scored (IF, Arthur the King, Challengers)
+        - 51 noise movies excluded via REMOVE_FROM_MODEL table
+        - Full YouTube pulls for 4 high-profile films
+        
+        **New Feature**:
+        - `PREDECESSOR_OW_LOG`: Log of predecessor film's opening weekend
+        - Immediately ranked #8 in feature importance
+        
+        **Results**: 269 training films (was 239)
+        - Classification: **77.3%** at -7d (+5.8% vs V14)
+        - MAE: **\\$11.0M** at -7d (-\\$2.1M vs V14)
+        - LARGE+ accuracy: **77.1%** (+12.1% vs V14)
         """)
 
 st.divider()
@@ -546,6 +590,7 @@ EXPERIMENT_DATA = [
     {"version": "V11", "date": "2026-02-16", "architecture": "4-Tier Cascade", "experiments": 9, "best_acc": 68.4, "notes": "Budget features added"},
     {"version": "V13", "date": "2026-02-16", "architecture": "4-Tier Cascade", "experiments": 8, "best_acc": 67.8, "notes": "Production pipeline"},
     {"version": "V14", "date": "2026-02-27", "architecture": "3-Tier Cascade", "experiments": 10, "best_acc": 71.5, "notes": "Consolidated LARGE+, quantile loss"},
+    {"version": "V15", "date": "2026-03-08", "architecture": "3-Tier Cascade", "experiments": 5, "best_acc": 77.3, "notes": "+30 films, PREDECESSOR_OW_LOG, data cleanup"},
 ]
 
 exp_df = pd.DataFrame(EXPERIMENT_DATA)
@@ -598,7 +643,7 @@ with col1:
         paper_bgcolor='rgba(0,0,0,0)'
     )
     fig_exp.update_yaxes(title_text="Experiments", secondary_y=False, range=[0, 20])
-    fig_exp.update_yaxes(title_text="Accuracy %", secondary_y=True, range=[50, 75])
+    fig_exp.update_yaxes(title_text="Accuracy %", secondary_y=True, range=[50, 80])
     
     st.plotly_chart(fig_exp, use_container_width=True)
 
@@ -616,6 +661,7 @@ with col2:
     - **V8**: Ensemble tested, abandoned
     - **V10**: Cascade architecture (+3.8%)
     - **V14**: 3-tier consolidation (+3.7%)
+    - **V15**: Data quality + predecessor OW (+5.8%)
     """)
 
 st.divider()
@@ -673,7 +719,8 @@ MODEL_COMPARISON = [
     {"version": "V10 (4-Tier)", "architecture": "4-Tier Cascade", "features": 45, "accuracy": 67.8, "mae": 14.0, "status": "⚠️ Superseded"},
     {"version": "V11 (Budget)", "architecture": "4-Tier Cascade", "features": 48, "accuracy": 68.4, "mae": 13.8, "status": "⚠️ Superseded"},
     {"version": "V13 (Production)", "architecture": "4-Tier Cascade", "features": 51, "accuracy": 67.8, "mae": 14.0, "status": "⚠️ Replaced"},
-    {"version": "V14 (Current)", "architecture": "3-Tier Cascade", "features": 51, "accuracy": 71.5, "mae": 13.1, "status": "✅ Production"},
+    {"version": "V14", "architecture": "3-Tier Cascade", "features": 51, "accuracy": 71.5, "mae": 13.1, "status": "⚠️ Archived"},
+    {"version": "V15 (Current)", "architecture": "3-Tier Cascade", "features": 52, "accuracy": 77.3, "mae": 11.0, "status": "✅ Production"},
 ]
 
 compare_df = pd.DataFrame(MODEL_COMPARISON)

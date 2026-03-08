@@ -16,7 +16,7 @@ st.subheader("Explore Model Predictions in Real-Time")
 
 @st.cache_resource
 def load_model():
-    model_path = os.path.join(os.path.dirname(__file__), '..', 'models', 'ow_pipeline_v14_production.joblib.gz')
+    model_path = os.path.join(os.path.dirname(__file__), '..', 'models', 'ow_pipeline_v15_production.joblib.gz')
     with gzip.open(model_path, 'rb') as f:
         return joblib.load(f)
 
@@ -98,6 +98,9 @@ with col1:
     yt_comments = st.number_input("YouTube Comments", 0, 500000, 50000)
     sentiment = st.slider("Sentiment Score", -1.0, 1.0, 0.3)
     
+    st.subheader("Sequel/Predecessor")
+    predecessor_ow = st.number_input("Predecessor OW ($M)", 0.0, 500.0, 0.0, help="Opening weekend of prior film in franchise (0 if original)")
+    
     horizon = st.selectbox("Prediction Horizon", ["-14 days", "-7 days", "-3 days"], index=1)
 
 with col2:
@@ -141,7 +144,8 @@ with col2:
             ip_flags['KNOWN_IP_TIER'], ip_flags['IP_HIGH_PROFILE'], 
             ip_flags['IP_MODERATE'], ip_flags['IP_NICHE'], ip_flags['IP_ORIGINAL'],
             max_star, (max_star + avg_star) / 2, avg_star, 3,
-            budget * 1e6, runtime, tmdb_pop, np.log1p(budget * 1e6)
+            budget * 1e6, runtime, tmdb_pop, np.log1p(budget * 1e6),
+            np.log1p(predecessor_ow * 1e6),
         ]
         
         trends_features = [
@@ -261,7 +265,7 @@ with col2:
         
         st.subheader("Confidence Range")
         
-        mae_by_tier = {'SMALL': 3.2, 'MID': 8.7, 'LARGE+': 24.5}
+        mae_by_tier = {'SMALL': 3.9, 'MID': 10.7, 'LARGE+': 32.0}
         mae = mae_by_tier[tier_name]
         
         low_pred = max(0, ow_pred - mae)

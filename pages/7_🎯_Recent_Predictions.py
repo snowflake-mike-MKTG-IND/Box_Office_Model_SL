@@ -7,7 +7,7 @@ import numpy as np
 st.set_page_config(page_title="Recent Predictions", page_icon="🎯", layout="wide")
 
 st.title("🎯 Recent Weekend Predictions vs Actuals")
-st.markdown("Tracking V14 model predictions against actual opening weekend results. Predictions sourced from `SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTIONS`. Actuals from Box Office Mojo (The Numbers currently under maintenance).")
+st.markdown("Tracking model predictions against actual opening weekend results. **V15 model now in production** (March 8, 2026). Prior predictions used V14. Predictions sourced from `SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTIONS`. Actuals from Box Office Mojo.")
 
 st.divider()
 
@@ -175,12 +175,15 @@ st.plotly_chart(fig_err, use_container_width=True)
 
 st.divider()
 
-st.header("Case Study: Scream 7 — Why V13 → V14")
+st.header("Case Study: Scream 7 — Why V13 → V14 → V15")
 st.markdown("""
 Scream 7 was a key catalyst for the move from **V13 (4-tier)** to **V14 (3-tier)**. 
 The V13 classifier put Scream 7 in SMALL (76.97%) — even with a manual override to LARGE, 
 a routing bug sent it to the MID regressor (~$30M). V14 (with manual LARGE+ override and 
 a fixed `np.exp()` bug) predicts **$69.59M** — only 9.4% off the actual $63.62M.
+
+**V15 Update**: With 30 more training films and PREDECESSOR_OW_LOG, V15 would likely 
+auto-classify Scream 7 more accurately — LARGE+ accuracy improved from 65% to 77.1%.
 """)
 
 v13v14_col1, v13v14_col2 = st.columns(2)
@@ -346,7 +349,8 @@ st.divider()
 
 st.info("""
 **Data Sources**
-- **Predictions**: `SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTIONS` / `ML_PREDICTIONS_V` (V14 3-Tier Cascade model)
+- **Predictions**: `SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTIONS` / `ML_PREDICTIONS_V` (V15 3-Tier Cascade model — in production since March 8, 2026)
+- **Prior Predictions**: Weekends 2-10 used V14 model; future predictions use V15
 - **Actuals**: Box Office Mojo (The Numbers currently under maintenance)
 - **Tier System**: SMALL (<$15M) · MID ($15–50M) · LARGE+ (>$50M)
 - Movies not in the prediction pipeline (e.g., Crime 101) are shown in weekend breakdowns but excluded from all metrics

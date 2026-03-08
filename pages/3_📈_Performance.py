@@ -12,7 +12,7 @@ import numpy as np
 st.set_page_config(page_title="Performance", page_icon="📈", layout="wide")
 
 st.title("Performance Metrics")
-st.subheader("Model Accuracy and Error Analysis")
+st.subheader("V15 Model Accuracy and Error Analysis")
 
 st.divider()
 
@@ -20,10 +20,9 @@ st.header("Performance by Time Horizon")
 
 horizon_data = pd.DataFrame({
     'Days Out': ['-14 days', '-7 days', '-3 days'],
-    'Classification': [73.6, 71.5, 72.8],
-    'MAE ($M)': [13.7, 13.1, 12.8],
-    'Stage 1 Acc': [83.7, 82.1, 83.2],
-    'Stage 2 Acc': [76.0, 74.8, 75.5]
+    'Classification': [74.0, 77.3, 75.1],
+    'MAE ($M)': [11.7, 11.0, 11.0],
+    'Median AE ($M)': [5.6, 4.9, 5.2],
 })
 
 col1, col2 = st.columns(2)
@@ -48,61 +47,21 @@ with col2:
 
 st.divider()
 
-st.header("Confusion Matrix")
-st.caption("7-Day prediction horizon")
+st.header("Per-Tier Performance (-7 day horizon)")
 
-confusion_matrix = np.array([
-    [92, 18, 5],
-    [12, 54, 12],
-    [3, 8, 35]
-])
-
-tier_names = ['SMALL', 'MID', 'LARGE+']
-
-fig_conf = go.Figure(data=go.Heatmap(
-    z=confusion_matrix,
-    x=tier_names,
-    y=tier_names,
-    colorscale='Blues',
-    text=confusion_matrix,
-    texttemplate='%{text}',
-    textfont={"size": 16},
-    hovertemplate='Actual: %{y}<br>Predicted: %{x}<br>Count: %{z}<extra></extra>'
-))
-
-fig_conf.update_layout(
-    title='Predicted vs Actual Tier Classification',
-    xaxis_title='Predicted Tier',
-    yaxis_title='Actual Tier',
-    height=400
-)
-
-col1, col2 = st.columns([2, 1])
+col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.plotly_chart(fig_conf, use_container_width=True)
+    st.metric("SMALL Accuracy", "85.4%", help="137 training films")
+    st.metric("SMALL MAE", "$3.9M")
 
 with col2:
-    st.subheader("Per-Tier Accuracy")
-    
-    tier_accuracy = {
-        'SMALL': 92 / 115 * 100,
-        'MID': 54 / 78 * 100,
-        'LARGE+': 35 / 46 * 100
-    }
-    
-    for tier, acc in tier_accuracy.items():
-        color = 'green' if acc >= 70 else 'orange' if acc >= 50 else 'red'
-        st.markdown(f"**{tier}**: :{color}[{acc:.1f}%]")
-    
-    st.divider()
-    st.subheader("Common Misclassifications")
-    st.markdown("""
-    - SMALL → MID: 18 films (16%)
-    - MID → SMALL: 12 films (15%)
-    - MID → LARGE+: 12 films (15%)
-    - LARGE+ → MID: 8 films (17%)
-    """)
+    st.metric("MID Accuracy", "64.3%", help="84 training films")
+    st.metric("MID MAE", "$10.7M")
+
+with col3:
+    st.metric("LARGE+ Accuracy", "77.1%", help="48 training films")
+    st.metric("LARGE+ MAE", "$32.0M")
 
 st.divider()
 
@@ -110,8 +69,8 @@ st.header("MAE by Tier")
 
 tier_mae_data = pd.DataFrame({
     'Tier': ['SMALL', 'MID', 'LARGE+'],
-    'MAE ($M)': [3.2, 8.7, 24.5],
-    'Sample Size': [115, 78, 46],
+    'MAE ($M)': [3.9, 10.7, 32.0],
+    'Sample Size': [137, 84, 48],
     'Revenue Range': ['<$15M', '$15-50M', '>$50M']
 })
 
@@ -130,30 +89,30 @@ with col2:
     st.markdown("""
     | Tier | Median OW | MAE | MAE % |
     |------|-----------|-----|-------|
-    | SMALL | $7M | $3.2M | 46% |
-    | MID | $28M | $8.7M | 31% |
-    | LARGE+ | $85M | $24.5M | 29% |
+    | SMALL | $7M | $3.9M | 56% |
+    | MID | $28M | $10.7M | 38% |
+    | LARGE+ | $85M | $32.0M | 38% |
     """)
-    st.info("LARGE+ has highest absolute MAE but lowest relative error!")
+    st.info("LARGE+ has highest absolute MAE but comparable relative error to MID!")
 
 st.divider()
 
 st.header("Prediction vs Actual")
 
 np.random.seed(42)
-n_samples = 239
+n_samples = 269
 
 actual = np.concatenate([
-    np.random.uniform(1, 14, 115),
-    np.random.uniform(15, 49, 78),
-    np.random.uniform(50, 200, 46)
+    np.random.uniform(1, 14, 137),
+    np.random.uniform(15, 49, 84),
+    np.random.uniform(50, 200, 48)
 ])
 
 noise = np.random.normal(0, 0.15, n_samples)
 predicted = actual * (1 + noise)
 predicted = np.clip(predicted, 0.5, 250)
 
-tiers = ['SMALL'] * 115 + ['MID'] * 78 + ['LARGE+'] * 46
+tiers = ['SMALL'] * 137 + ['MID'] * 84 + ['LARGE+'] * 48
 
 df_scatter = pd.DataFrame({
     'Actual ($M)': actual,
@@ -219,13 +178,13 @@ with col2:
 
 st.divider()
 
-st.header("V14 vs V13 Comparison")
+st.header("V15 vs V14 Comparison")
 
 comparison_data = pd.DataFrame({
-    'Metric': ['Classification Acc', 'LARGE+ Acc', 'MAE ($M)', 'Tier Boundaries'],
-    'V13 (4-Tier)': ['67.8%', '27%', '$14.0M', '$20M/$50M/$100M'],
-    'V14 (3-Tier)': ['73.6%', '65%', '$13.7M', '$15M/$50M'],
-    'Change': ['+5.8%', '+38%', '-$0.3M', 'Simplified']
+    'Metric': ['Classification Acc (-7d)', 'LARGE+ Acc (-7d)', 'MAE (-7d)', 'Median AE (-7d)', 'Training Films', 'Features'],
+    'V14': ['71.5%', '65.0%', '$13.1M', '~$6.5M', '239', '51'],
+    'V15': ['77.3%', '77.1%', '$11.0M', '$4.9M', '269', '52'],
+    'Change': ['+5.8%', '+12.1%', '-$2.1M', '-$1.6M', '+30', '+1 (PREDECESSOR_OW_LOG)']
 })
 
 st.dataframe(comparison_data, use_container_width=True, hide_index=True)
@@ -233,17 +192,44 @@ st.dataframe(comparison_data, use_container_width=True, hide_index=True)
 col1, col2 = st.columns(2)
 
 with col1:
-    st.success("**Key V14 Improvements**")
+    st.success("**Key V15 Improvements**")
     st.markdown("""
-    - LARGE+ accuracy nearly **tripled** (27% → 65%)
-    - Simplified tier structure reduces overfitting
-    - Better calibrated for limited training data
+    - Classification accuracy **+5.8%** at -7d (biggest single-version jump)
+    - LARGE+ accuracy **+12.1%** (65% → 77.1%)
+    - MAE reduced **$2.1M** across all horizons
+    - 30 more training films from data cleanup
+    - New PREDECESSOR_OW_LOG feature for sequel signals
     """)
 
 with col2:
-    st.warning("**Tradeoffs**")
+    st.warning("**What Drove the Improvement**")
     st.markdown("""
-    - Lost granularity between $50-100M and $100M+ films
-    - SMALL tier boundary moved from $20M to $15M
-    - May need retraining as more data accumulates
+    - **Data cleanup**: Removed 11 duplicate/skeleton movies from ID mapping
+    - **Scoring gaps filled**: Scored 25,207 missing pre-release comments (IF, Arthur the King, Challengers)
+    - **YouTube pulls**: Added full comment data for 4 high-profile films
+    - **PREDECESSOR_OW_LOG**: Helps distinguish sequels from originals
+    - **51 exclusions**: Removed noise from skeleton/no-data movies
     """)
+
+st.divider()
+
+st.header("V15 vs V14 — All Horizons")
+
+fig_compare = make_subplots(rows=1, cols=2, subplot_titles=('Classification Accuracy', 'MAE ($M)'))
+
+horizons = ['-14d', '-7d', '-3d']
+v14_acc = [73.6, 71.5, 72.8]
+v15_acc = [74.0, 77.3, 75.1]
+v14_mae = [13.7, 13.1, 12.8]
+v15_mae = [11.7, 11.0, 11.0]
+
+fig_compare.add_trace(go.Bar(name='V14', x=horizons, y=v14_acc, marker_color='#636EFA', text=[f'{v:.1f}%' for v in v14_acc], textposition='outside'), row=1, col=1)
+fig_compare.add_trace(go.Bar(name='V15', x=horizons, y=v15_acc, marker_color='#00CC96', text=[f'{v:.1f}%' for v in v15_acc], textposition='outside'), row=1, col=1)
+fig_compare.add_trace(go.Bar(name='V14', x=horizons, y=v14_mae, marker_color='#636EFA', text=[f'${v:.1f}M' for v in v14_mae], textposition='outside', showlegend=False), row=1, col=2)
+fig_compare.add_trace(go.Bar(name='V15', x=horizons, y=v15_mae, marker_color='#00CC96', text=[f'${v:.1f}M' for v in v15_mae], textposition='outside', showlegend=False), row=1, col=2)
+
+fig_compare.update_layout(barmode='group', height=400, legend=dict(orientation="h", yanchor="bottom", y=1.08))
+fig_compare.update_yaxes(range=[60, 85], row=1, col=1)
+fig_compare.update_yaxes(range=[0, 18], row=1, col=2)
+
+st.plotly_chart(fig_compare, use_container_width=True)

@@ -20,12 +20,12 @@ box_w = 0.12
 box_h = 0.08
 
 boxes = [
-    {'x': 0.5, 'y': 0.88, 'color': '#1f77b4', 'label': 'INPUT', 'sublabel': '51 Features', 'hover': '31 Static + 20 Trend Features'},
-    {'x': 0.5, 'y': 0.68, 'color': '#2ca02c', 'label': 'STAGE 1', 'sublabel': 'SMALL vs NON-SMALL', 'hover': 'Binary classifier: 83.7% accuracy'},
-    {'x': 0.22, 'y': 0.38, 'color': '#17becf', 'label': 'SMALL', 'sublabel': 'Regressor', 'hover': 'MAE loss, 600 iterations, 115 films'},
-    {'x': 0.5, 'y': 0.38, 'color': '#ff7f0e', 'label': 'STAGE 2', 'sublabel': 'MID vs LARGE+', 'hover': 'Binary classifier: 76.0% accuracy'},
-    {'x': 0.36, 'y': 0.12, 'color': '#9467bd', 'label': 'MID', 'sublabel': 'Regressor', 'hover': 'RMSE loss, 800 iterations, 78 films'},
-    {'x': 0.64, 'y': 0.12, 'color': '#d62728', 'label': 'LARGE+', 'sublabel': 'Regressor', 'hover': 'Quantile loss (α=0.5), 500 iterations, 46 films'},
+    {'x': 0.5, 'y': 0.88, 'color': '#1f77b4', 'label': 'INPUT', 'sublabel': '52 Features', 'hover': '32 Static + 20 Trend Features'},
+    {'x': 0.5, 'y': 0.68, 'color': '#2ca02c', 'label': 'STAGE 1', 'sublabel': 'SMALL vs NON-SMALL', 'hover': 'Binary classifier: CatBoost depth=8'},
+    {'x': 0.22, 'y': 0.38, 'color': '#17becf', 'label': 'SMALL', 'sublabel': 'Regressor', 'hover': 'MAE loss, 600 iterations, 137 films'},
+    {'x': 0.5, 'y': 0.38, 'color': '#ff7f0e', 'label': 'STAGE 2', 'sublabel': 'MID vs LARGE+', 'hover': 'Binary classifier: CatBoost depth=7'},
+    {'x': 0.36, 'y': 0.12, 'color': '#9467bd', 'label': 'MID', 'sublabel': 'Regressor', 'hover': 'RMSE loss, 800 iterations, 84 films'},
+    {'x': 0.64, 'y': 0.12, 'color': '#d62728', 'label': 'LARGE+', 'sublabel': 'Regressor', 'hover': 'Quantile loss (α=0.5), 500 iterations, 48 films'},
 ]
 
 for box in boxes:
@@ -119,12 +119,12 @@ with col1:
     st.markdown("""
     | Tier | Revenue Range | Films |
     |------|---------------|-------|
-    | **SMALL** | < \\$15M | 115 (48%) |
-    | **MID** | \\$15M – \\$50M | 78 (33%) |
-    | **LARGE+** | ≥ \\$50M | 46 (19%) |
+    | **SMALL** | < \\$15M | 137 (51%) |
+    | **MID** | \\$15M – \\$50M | 84 (31%) |
+    | **LARGE+** | ≥ \\$50M | 48 (18%) |
     
-    **Key Decision**: Combined old LARGE (\\$50-100M) and BLOCKBUSTER (\\$100M+) 
-    into single LARGE+ tier due to limited training data.
+    **V15 Update**: 269 training films (+30 vs V14's 239) after comprehensive 
+    data cleanup — duplicate removal, scoring gap fills, and skeleton movie exclusions.
     """)
 
 with col2:
@@ -137,7 +137,6 @@ with col2:
         depth=8, 
         learning_rate=0.02
     )
-    # Accuracy: 83.7%
     ```
     
     **Stage 2: MID vs LARGE+**
@@ -147,7 +146,6 @@ with col2:
         depth=7, 
         learning_rate=0.02
     )
-    # Accuracy: 76.0%
     ```
     """)
 
@@ -198,6 +196,49 @@ with col3:
 
 st.divider()
 
+st.header("V15 Feature Set (52 Features)")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.subheader("Static Features (32)")
+    st.markdown("""
+    **YouTube/Sentiment** (7): YT_COMMENTS, ENGAGEMENT_RATIO, SENTIMENT, 
+    THEATRICAL_INTENT_PCT, STREAMING_INTENT_PCT, PASS_INTENT_PCT, NET_INTENT_PCT
+    
+    **Movie Attributes** (6): BUDGET, BUDGET_LOG, RUNTIME, TMDB_POPULARITY, 
+    RELEASE_MONTH, IS_PEAK_SEASON
+    
+    **Star Power** (4): MAX_STAR_POWER, TOP2_STAR_POWER, AVG_STAR_POWER, 
+    NUM_STARS_WITH_HISTORY
+    
+    **Genre** (5): ACTION_FRANCHISE, ANIMATION_FAMILY, HORROR, PRESTIGE, ORIGINAL
+    
+    **Rating** (4): G, PG, PG13, R
+    
+    **IP/Franchise** (5): KNOWN_IP_TIER, IP_HIGH_PROFILE, IP_MODERATE, IP_NICHE, IP_ORIGINAL
+    
+    **🆕 Sequel Signal** (1): `PREDECESSOR_OW_LOG` — log of predecessor film's OW
+    """)
+
+with col2:
+    st.subheader("Trends Features (20)")
+    st.markdown("""
+    **Rolling Averages** (6): ROLLING_3D, ROLLING_5D, ROLLING_7D, 
+    ROLLING_3D_PRIOR, ROLLING_5D_PRIOR, ROLLING_7D_PRIOR
+    
+    **Velocity** (3): VELOCITY_3D, VELOCITY_5D, VELOCITY_7D
+    
+    **Cumulative** (4): TRENDS_CUMULATIVE, TRENDS_VOLATILITY, 
+    TRENDS_PEAK_SO_FAR, DAYS_WITH_DATA
+    
+    **Interaction Features** (7): ROLLING_X_IP_HIGH, ROLLING_X_ACTION, 
+    ROLLING_X_HORROR, SENTIMENT_X_ROLLING, STAR_X_ROLLING, 
+    STAR_X_IP_HIGH, INTENT_X_ROLLING
+    """)
+
+st.divider()
+
 st.header("Why 3-Tier Instead of 4-Tier?")
 
 col1, col2 = st.columns(2)
@@ -212,10 +253,10 @@ with col1:
     """)
 
 with col2:
-    st.subheader("V14 (3-Tier) Solution")
+    st.subheader("V14/V15 (3-Tier) Solution")
     st.markdown("""
-    - Combined into LARGE+ tier: 46 training films
-    - LARGE+ accuracy: **65%** (+38% improvement!)
+    - Combined into LARGE+ tier: **48 training films** in V15
+    - LARGE+ accuracy: **77.1%** in V15 (+50% vs V13!)
     - More robust classification boundary
     - Better generalization with limited data
     """)

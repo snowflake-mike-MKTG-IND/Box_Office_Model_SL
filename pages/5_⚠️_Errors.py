@@ -11,7 +11,7 @@ import numpy as np
 st.set_page_config(page_title="Error Analysis", page_icon="⚠️", layout="wide")
 
 st.title("Error Analysis")
-st.subheader("Understanding Model Limitations and Edge Cases")
+st.subheader("V15 Model Limitations and Edge Cases")
 
 st.divider()
 
@@ -163,8 +163,8 @@ st.markdown("""
 | **Time-Series Features** | Medium | Medium | Week-over-week trend changes |
 | **Competition Features** | Medium | Low | Already captured by other features |
 
-**Current Strategy**: Use manual tier overrides for known edge cases (event films, anime) 
-and wait for more training data to accumulate.
+**V15 Strategy**: Data quality over model complexity. The +30 training films and data cleanup 
+drove bigger gains than any architectural change. Continue building training data.
 """)
 
 st.divider()
@@ -173,8 +173,8 @@ st.header("Error Distribution by Category")
 
 error_by_genre = pd.DataFrame({
     'Category': ['Action Franchise', 'Animation/Family', 'Horror', 'Prestige/Drama', 'Original/Other'],
-    'MAE ($M)': [15.2, 11.8, 8.5, 12.1, 14.5],
-    'Sample Size': [45, 38, 42, 35, 79]
+    'MAE ($M)': [14.8, 11.2, 7.9, 11.5, 13.8],
+    'Sample Size': [52, 42, 48, 40, 87]
 })
 
 fig_genre_error = px.bar(error_by_genre, x='Category', y='MAE ($M)',

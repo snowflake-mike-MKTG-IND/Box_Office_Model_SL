@@ -1,32 +1,32 @@
 """
-V14 Opening Weekend Prediction Model Visualization
+V15 Opening Weekend Prediction Model Visualization
 Interactive dashboard for data scientists
 """
 
 import streamlit as st
 
 st.set_page_config(
-    page_title="V14 OW Prediction Model",
+    page_title="V15 OW Prediction Model",
     page_icon="🎬",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-st.title("V14 Opening Weekend Prediction Model")
+st.title("V15 Opening Weekend Prediction Model")
 st.subheader("3-Tier Cascade Architecture Visualization")
 
 st.divider()
 
 st.markdown("""
-Welcome to the **V14 Box Office Prediction Model** visualization dashboard.
+Welcome to the **V15 Box Office Prediction Model** visualization dashboard.
 
 This model predicts movie opening weekend (OW) revenue using a **3-tier cascade architecture**:
 
 | Tier | Revenue Range | Training Films |
 |------|---------------|----------------|
-| **SMALL** | < $15M | 115 |
-| **MID** | $15M - $50M | 78 |
-| **LARGE+** | > $50M | 46 |
+| **SMALL** | < $15M | 137 |
+| **MID** | $15M - $50M | 84 |
+| **LARGE+** | > $50M | 48 |
 """)
 
 st.header("Navigation")
@@ -45,20 +45,47 @@ Use the sidebar to explore:
 st.divider()
 
 st.header("Quick Stats")
-st.caption("V14 at -7 days prediction horizon")
+st.caption("V15 at -7 days prediction horizon")
 
 col1, col2, col3, col4 = st.columns(4)
-col1.metric("Classification Accuracy", "71.5%", "+3.7% vs V13 4-tier")
-col2.metric("Mean Absolute Error", "$13.1M", "-$0.9M vs V13")
-col3.metric("LARGE+ Accuracy", "65%", "+38% vs old LARGE")
-col4.metric("Training Films", "239", "")
+col1.metric("Classification Accuracy", "77.3%", "+5.8% vs V14")
+col2.metric("Mean Absolute Error", "$11.0M", "-$2.1M vs V14")
+col3.metric("LARGE+ Accuracy", "77.1%", "+12.1% vs V14")
+col4.metric("Training Films", "269", "+30 vs V14")
+
+st.divider()
+
+st.header("V15 Improvements over V14")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.success("**What Changed**")
+    st.markdown("""
+    - **+30 training films** (239 → 269) from data cleanup & new scoring
+    - **+1 new feature**: `PREDECESSOR_OW_LOG` (sequel predecessor performance)
+    - **52 total features** (32 static + 20 Google Trends)
+    - Comprehensive data quality fixes (duplicate cleanup, scoring gaps filled)
+    """)
+
+with col2:
+    st.markdown("""
+    | Metric | V14 | V15 | Change |
+    |--------|-----|-----|--------|
+    | Classification (-7d) | 71.5% | **77.3%** | +5.8% |
+    | MAE (-7d) | $13.1M | **$11.0M** | -$2.1M |
+    | LARGE+ Accuracy | 65.0% | **77.1%** | +12.1% |
+    | Training Films | 239 | **269** | +30 |
+    | Features | 51 | **52** | +1 |
+    """)
 
 st.divider()
 
 st.header("Model Version")
 st.markdown("""
-- **Version**: V14 (February 2026)
+- **Version**: V15 (March 2026)
 - **Type**: 3-Tier Cascade with Tier-Specific Regressors
 - **Algorithm**: CatBoost
-- **Features**: 51 (31 static + 20 Google Trends)
+- **Features**: 52 (32 static + 20 Google Trends)
+- **Training Source**: `SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTION_FEATURES_V`
 """)
