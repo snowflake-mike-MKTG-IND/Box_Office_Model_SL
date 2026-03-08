@@ -7,7 +7,7 @@ import numpy as np
 st.set_page_config(page_title="Recent Predictions", page_icon="🎯", layout="wide")
 
 st.title("🎯 Recent Weekend Predictions vs Actuals")
-st.markdown("Tracking model predictions against actual opening weekend results. **V15 model now in production** (March 8, 2026). Prior predictions used V14. Predictions sourced from `SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTIONS`. Actuals from Box Office Mojo.")
+st.markdown("Tracking model predictions against actual opening weekend results. **V15 model in production** since March 8, 2026. Prior predictions (Weekends 2–10) used V14.")
 
 st.divider()
 
@@ -51,8 +51,33 @@ UPCOMING = [
     {
         "weekend": "Weekend 10",
         "dates": "Mar 6-8, 2026",
+        "model": "V14",
         "movies": [
-            {"movie": "The Bride", "studio": "Warner Bros.", "predicted_tier": "SMALL", "predicted_ow": 8.31, "conf_low": 6.65, "conf_high": 9.97, "note": "Maggie Gyllenhaal; horror"},
+            {"movie": "The Bride", "studio": "Warner Bros.", "predicted_tier": "SMALL", "predicted_ow": 8.31, "conf_low": 6.65, "conf_high": 9.97, "note": "Maggie Gyllenhaal; horror — awaiting actuals"},
+        ]
+    },
+    {
+        "weekend": "Weekend 11",
+        "dates": "Mar 13-15, 2026",
+        "model": "V15",
+        "movies": [
+            {"movie": "Reminders of Him", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 2.6, "conf_low": 1.6, "conf_high": 3.7,
+             "note": "PG-13 drama/romance (Colleen Hoover adaptation); 1,323 trailer comments; Maika Monroe lead"},
+            {"movie": "Undertone", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 2.5, "conf_low": 1.5, "conf_high": 3.5,
+             "note": "R-rated horror; 1,261 trailer comments; very low Google Trends signal"},
+        ]
+    },
+    {
+        "weekend": "Weekend 12",
+        "dates": "Mar 20-22, 2026",
+        "model": "V15",
+        "movies": [
+            {"movie": "Project Hail Mary", "studio": "Amazon MGM", "predicted_tier": "MID", "predicted_ow": 24.1, "conf_low": 13.3, "conf_high": 37.4,
+             "note": "$200M budget; Ryan Gosling (star power 10); Andy Weir novel adaptation; 11,115 comments; strong trends (R7D=35.5)"},
+            {"movie": "Ready or Not 2", "studio": "Disney/Searchlight", "predicted_tier": "SMALL", "predicted_ow": 5.7, "conf_low": 3.4, "conf_high": 7.9,
+             "note": "R-rated horror sequel; predecessor OW $28.4M; 3,647 comments; Samara Weaving lead; decent trends (R7D=27.5)"},
+            {"movie": "Do Not Enter", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 3.6, "conf_low": 2.2, "conf_high": 5.1,
+             "note": "R-rated horror; only 204 comments; zero Google Trends signal — low confidence prediction"},
         ]
     },
 ]
@@ -115,32 +140,32 @@ st.header("Predicted vs Actual Comparison")
 
 fig = go.Figure()
 fig.add_trace(go.Bar(
-    name='Predicted OW',
-    x=df['Movie'],
-    y=df['Predicted OW ($M)'],
-    marker_color='#636EFA',
-    text=[f"${v:.2f}M" for v in df['Predicted OW ($M)']],
-    textposition='outside',
+    name="Predicted OW",
+    x=df["Movie"],
+    y=df["Predicted OW ($M)"],
+    marker_color="#636EFA",
+    text=[f"${v:.2f}M" for v in df["Predicted OW ($M)"]],
+    textposition="outside",
 ))
 fig.add_trace(go.Bar(
-    name='Actual OW',
-    x=df['Movie'],
-    y=df['Actual OW ($M)'],
-    marker_color='#00CC96',
-    text=[f"${v:.2f}M" for v in df['Actual OW ($M)']],
-    textposition='outside',
+    name="Actual OW",
+    x=df["Movie"],
+    y=df["Actual OW ($M)"],
+    marker_color="#00CC96",
+    text=[f"${v:.2f}M" for v in df["Actual OW ($M)"]],
+    textposition="outside",
 ))
 
 for i, row in df.iterrows():
     fig.add_shape(
         type="line",
         x0=i - 0.2, x1=i - 0.2,
-        y0=row['Conf Low ($M)'], y1=row['Conf High ($M)'],
+        y0=row["Conf Low ($M)"], y1=row["Conf High ($M)"],
         line=dict(color="rgba(99, 110, 250, 0.4)", width=3),
     )
 
 fig.update_layout(
-    barmode='group',
+    barmode="group",
     height=450,
     yaxis_title="Opening Weekend ($M)",
     legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
@@ -152,13 +177,13 @@ st.divider()
 
 st.header("Prediction Error by Movie")
 
-colors = ['#EF553B' if e > 0 else '#636EFA' for e in df['Error ($M)']]
+colors = ["#EF553B" if e > 0 else "#636EFA" for e in df["Error ($M)"]]
 fig_err = go.Figure(go.Bar(
-    x=df['Movie'],
-    y=df['Error ($M)'],
+    x=df["Movie"],
+    y=df["Error ($M)"],
     marker_color=colors,
-    text=[f"${v:+.2f}M" for v in df['Error ($M)']],
-    textposition='outside',
+    text=[f"${v:+.2f}M" for v in df["Error ($M)"]],
+    textposition="outside",
 ))
 fig_err.add_hline(y=0, line_dash="dash", line_color="gray")
 fig_err.update_layout(
@@ -176,68 +201,69 @@ st.plotly_chart(fig_err, use_container_width=True)
 st.divider()
 
 st.header("Case Study: Scream 7 — Why V13 → V14 → V15")
-st.markdown("""
-Scream 7 was a key catalyst for the move from **V13 (4-tier)** to **V14 (3-tier)**. 
-The V13 classifier put Scream 7 in SMALL (76.97%) — even with a manual override to LARGE, 
-a routing bug sent it to the MID regressor (~$30M). V14 (with manual LARGE+ override and 
-a fixed `np.exp()` bug) predicts **$69.59M** — only 9.4% off the actual $63.62M.
-
-**V15 Update**: With 30 more training films and PREDECESSOR_OW_LOG, V15 would likely 
-auto-classify Scream 7 more accurately — LARGE+ accuracy improved from 65% to 77.1%.
-""")
+st.markdown(
+    "Scream 7 was a key catalyst for the move from **V13 (4-tier)** to **V14 (3-tier)**. "
+    "The V13 classifier put Scream 7 in SMALL (76.97%) — even with a manual override to LARGE, "
+    "a routing bug sent it to the MID regressor (~$30M). V14 (with manual LARGE+ override and "
+    "a fixed `np.exp()` bug) predicts **$69.59M** — only 9.4% off the actual $63.62M."
+)
+st.markdown(
+    "**V15 Update**: With 30 more training films and PREDECESSOR_OW_LOG, V15 would likely "
+    "auto-classify Scream 7 more accurately — LARGE+ accuracy improved from 65% to 77.1%."
+)
 
 v13v14_col1, v13v14_col2 = st.columns(2)
 
 with v13v14_col1:
     st.error("**V13: 4-Tier System** (SMALL / MID / LARGE / BLOCKBUSTER)")
-    st.markdown("""
-    | | |
-    |---|---|
-    | **Auto-Classified** | SMALL (76.97%) |
-    | **Manual Override** | LARGE |
-    | **Regressor Used** | MID (~$30M) ❌ |
-    | **Actual OW** | **$63.62M** |
-    | **Error** | ~$33M under-prediction |
-    
-    **Why it failed**: Classifier put it in SMALL at 76.97%. Even with manual override 
-    to LARGE, a SQL routing bug sent it to the MID regressor. The 4-tier system had only 
-    **27 films** in LARGE — not enough training data for reliable classification.
-    """)
+    st.markdown(
+        "| | |\n"
+        "|---|---|\n"
+        "| **Auto-Classified** | SMALL (76.97%) |\n"
+        "| **Manual Override** | LARGE |\n"
+        "| **Regressor Used** | MID (~$30M) |\n"
+        "| **Actual OW** | **$63.62M** |\n"
+        "| **Error** | ~$33M under-prediction |\n"
+        "\n"
+        "**Why it failed**: Classifier put it in SMALL at 76.97%. Even with manual override "
+        "to LARGE, a SQL routing bug sent it to the MID regressor. The 4-tier system had only "
+        "**27 films** in LARGE — not enough training data for reliable classification."
+    )
 
 with v13v14_col2:
     st.success("**V14: 3-Tier System** (SMALL / MID / LARGE+)")
-    st.markdown("""
-    | | |
-    |---|---|
-    | **Auto-Classified** | SMALL (61.2%) |
-    | **Manual Override** | LARGE+ ✅ |
-    | **LARGE+ Regressor** | **$69.59M** |
-    | **CI Range** | $55.67M – $83.51M |
-    | **Actual OW** | **$63.62M** (within CI ✅) |
-    | **Error** | +$5.97M (9.4%) |
-    
-    **What improved**: Fixed `np.exp()` bug (regressors output log-space). 
-    With manual LARGE+ override, the regressor predicted **$69.59M** — 
-    only 9.4% off actual. Collapsing LARGE + BLOCKBUSTER into LARGE+ 
-    gave **46 training films** instead of 27.
-    """)
+    st.markdown(
+        "| | |\n"
+        "|---|---|\n"
+        "| **Auto-Classified** | SMALL (61.2%) |\n"
+        "| **Manual Override** | LARGE+ |\n"
+        "| **LARGE+ Regressor** | **$69.59M** |\n"
+        "| **CI Range** | $55.67M - $83.51M |\n"
+        "| **Actual OW** | **$63.62M** (within CI) |\n"
+        "| **Error** | +$5.97M (9.4%) |\n"
+        "\n"
+        "**What improved**: Fixed `np.exp()` bug (regressors output log-space). "
+        "With manual LARGE+ override, the regressor predicted **$69.59M** — "
+        "only 9.4% off actual. Collapsing LARGE + BLOCKBUSTER into LARGE+ "
+        "gave **46 training films** instead of 27."
+    )
 
 st.caption("Chart below: V13 MID regressor (~$30M) vs V14 LARGE+ regressor ($69.59M) vs actual ($63.62M). V14's CI range shown as shaded region.")
 
 fig_v13v14 = go.Figure()
 fig_v13v14.add_trace(go.Bar(
-    name='V13 MID Regressor (~$30M)', x=['Scream 7'], y=[30],
-    marker_color='#EF553B', text=['V13: ~$30M'], textposition='outside',
+    name="V13 MID Regressor (~$30M)", x=["Scream 7"], y=[30],
+    marker_color="#EF553B", text=["V13: ~$30M"], textposition="outside",
     width=0.2,
 ))
 fig_v13v14.add_trace(go.Bar(
-    name='V14 LARGE+ Regressor ($69.59M)', x=['Scream 7'], y=[69.59],
-    marker_color='#636EFA', text=['V14: $69.59M'], textposition='outside',
+    name="V14 LARGE+ Regressor ($69.59M)", x=["Scream 7"], y=[69.59],
+    marker_color="#636EFA", text=["V14: $69.59M"], textposition="outside",
     width=0.2,
 ))
 fig_v13v14.add_trace(go.Bar(
-    name='Actual OW ($63.62M)', x=['Scream 7'], y=[63.62],
-    marker_color='#00CC96', text=['Actual: $63.62M'], textposition='outside',
+    name="Actual OW ($63.62M)", x=["Scream 7"], y=[63.62],
+    marker_color="#00CC96", text=["Actual: $63.62M"], textposition="outside",
     width=0.2,
 ))
 fig_v13v14.add_shape(
@@ -245,29 +271,26 @@ fig_v13v14.add_shape(
     fillcolor="rgba(99, 110, 250, 0.1)", line=dict(color="rgba(99, 110, 250, 0.5)", dash="dot"),
 )
 fig_v13v14.add_annotation(
-    x=0.42, y=69.59, text="V14 CI: $55.67M–$83.51M<br><i>Actual $63.62M within CI ✅</i>",
+    x=0.42, y=69.59, text="V14 CI: $55.67M-$83.51M<br><i>Actual $63.62M within CI</i>",
     showarrow=False, font=dict(size=10, color="#636EFA"), xanchor="left",
 )
 fig_v13v14.update_layout(
-    barmode='group', height=350, yaxis_title="Opening Weekend ($M)",
+    barmode="group", height=350, yaxis_title="Opening Weekend ($M)",
     legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
     margin=dict(t=40),
 )
 st.plotly_chart(fig_v13v14, use_container_width=True)
 
-st.markdown("""
-| Metric | V13 (4-Tier) | V14 (3-Tier) | Change |
-|--------|-------------|-------------|--------|
-| **Tier System** | SMALL / MID / LARGE / BLOCKBUSTER | SMALL / MID / LARGE+ | Collapsed top 2 |
-| **LARGE(+) Training Films** | 27 | 46 | +70% |
-| **LARGE(+) Accuracy** | 27% | 65% | **+38pp** |
-| **Overall Classification** | 67.8% | 71.5% | +3.7pp |
-| **Overall MAE** | $14.0M | $13.1M | -$0.9M |
-| **Scream 7 Tier** | ❌ MID | ✅ LARGE+ | Fixed |
-
-> *"The Scream 7 misclassification was the final signal that the 4-tier system was overfitting 
-> to a too-thin LARGE tier. Collapsing to 3 tiers was the single biggest accuracy win in V14."*
-""")
+st.markdown(
+    "| Metric | V13 (4-Tier) | V14 (3-Tier) | Change |\n"
+    "|--------|-------------|-------------|--------|\n"
+    "| **Tier System** | SMALL / MID / LARGE / BLOCKBUSTER | SMALL / MID / LARGE+ | Collapsed top 2 |\n"
+    "| **LARGE(+) Training Films** | 27 | 46 | +70% |\n"
+    "| **LARGE(+) Accuracy** | 27% | 65% | **+38pp** |\n"
+    "| **Overall Classification** | 67.8% | 71.5% | +3.7pp |\n"
+    "| **Overall MAE** | $14.0M | $13.1M | -$0.9M |\n"
+    "| **Scream 7 Tier** | MID | LARGE+ | Fixed |"
+)
 
 st.divider()
 
@@ -287,7 +310,7 @@ for w in WEEKEND_DATA:
                     if pred_tier and "LARGE" in pred_tier and actual_tier and "LARGE" in actual_tier:
                         tier_match_bool = True
                     tier_match = "✅" if tier_match_bool else "❌"
-                    ci_str = f"${m['conf_low']:.2f} – ${m['conf_high']:.2f}M"
+                    ci_str = f"${m['conf_low']:.2f} - ${m['conf_high']:.2f}M"
                     in_ci = "✅" if m["conf_low"] <= m["actual_ow"] <= m["conf_high"] else "❌"
                 else:
                     error = None
@@ -299,7 +322,7 @@ for w in WEEKEND_DATA:
                     "Studio": m["studio"],
                     "Pred Tier": pred_tier or "—",
                     "Actual Tier": actual_tier or "—",
-                    "Tier ✓": tier_match,
+                    "Tier": tier_match,
                     "Predicted ($M)": f"${m['predicted_ow']:.2f}" if has_prediction else "—",
                     "Actual ($M)": f"${m['actual_ow']:.2f}" if m["actual_ow"] else "—",
                     "Error ($M)": f"${error:+.2f}" if error is not None else "—",
@@ -312,15 +335,33 @@ for w in WEEKEND_DATA:
 
 st.divider()
 
-st.header("🔮 Upcoming / Awaiting Actuals")
-st.caption("Predictions from Snowflake awaiting actual results")
+st.header("Upcoming Predictions")
+st.markdown("V15 predictions for upcoming weekends. Move to actuals section once Box Office Mojo data is available.")
 
 for u in UPCOMING:
-    st.subheader(f"{u['weekend']} — {u['dates']}")
-    for m in u["movies"]:
-        tier_color = {"SMALL": "🟠", "MID": "🟡", "LARGE+": "🟢", "LARGE": "🟢"}.get(m["predicted_tier"], "⚪")
-        ci_str = f" (CI: ${m.get('conf_low', 0):.2f}–${m.get('conf_high', 0):.2f}M)" if m.get("conf_low") else ""
-        st.markdown(f"- **{m['movie']}** ({m['studio']}) — {tier_color} {m['predicted_tier']} — **${m['predicted_ow']:.2f}M** predicted{ci_str} | {m.get('note', '')}")
+    model_tag = u.get("model", "V14")
+    with st.expander(f"**{u['weekend']}** — {u['dates']}  ({model_tag})", expanded=(model_tag == "V15")):
+        upcoming_rows = []
+        for m in u["movies"]:
+            tier_color = {"SMALL": "🟠", "MID": "🟡", "LARGE+": "🟢"}.get(m["predicted_tier"], "⚪")
+            upcoming_rows.append({
+                "Movie": m["movie"],
+                "Studio": m["studio"],
+                "Tier": f"{tier_color} {m['predicted_tier']}",
+                "Predicted OW": f"${m['predicted_ow']:.1f}M",
+                "CI Low": f"${m['conf_low']:.1f}M",
+                "CI High": f"${m['conf_high']:.1f}M",
+                "Note": m.get("note", ""),
+            })
+        udf = pd.DataFrame(upcoming_rows)
+        st.dataframe(udf, use_container_width=True, hide_index=True)
+
+        for m in u["movies"]:
+            if m["predicted_tier"] == "MID" or m["predicted_tier"] == "LARGE+":
+                st.markdown(
+                    f"**{m['movie']}** — Predicted **${m['predicted_ow']:.1f}M** "
+                    f"(range ${m['conf_low']:.1f}M - ${m['conf_high']:.1f}M)"
+                )
 
 st.divider()
 
@@ -341,20 +382,20 @@ with col2:
     fig_tier = px.bar(tier_stats, x="Predicted Tier", y="MAE", color="Predicted Tier",
                       color_discrete_map={"SMALL": "#FF7F0E", "MID": "#FFD700", "LARGE+": "#00CC96"},
                       text="MAE")
-    fig_tier.update_traces(texttemplate='$%{text:.2f}M', textposition='outside')
+    fig_tier.update_traces(texttemplate="$%{text:.2f}M", textposition="outside")
     fig_tier.update_layout(height=300, showlegend=False, margin=dict(t=20))
     st.plotly_chart(fig_tier, use_container_width=True)
 
 st.divider()
 
-st.info("""
-**Data Sources**
-- **Predictions**: `SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTIONS` / `ML_PREDICTIONS_V` (V15 3-Tier Cascade model — in production since March 8, 2026)
-- **Prior Predictions**: Weekends 2-10 used V14 model; future predictions use V15
-- **Actuals**: Box Office Mojo (The Numbers currently under maintenance)
-- **Tier System**: SMALL (<$15M) · MID ($15–50M) · LARGE+ (>$50M)
-- Movies not in the prediction pipeline (e.g., Crime 101) are shown in weekend breakdowns but excluded from all metrics
-- Scream 7: tier override to LARGE+ correct; V14 LARGE+ regressor predicted $69.59M vs actual $63.62M (9.4% error, within CI)
-""")
+st.info(
+    "**Data Sources**\n"
+    "- **Predictions**: V15 3-Tier Cascade model (in production since March 8, 2026)\n"
+    "- **Prior Predictions**: Weekends 2-10 used V14 model; Weekend 11+ uses V15\n"
+    "- **Actuals**: Box Office Mojo\n"
+    "- **Tier System**: SMALL (<$15M) / MID ($15-50M) / LARGE+ (>$50M)\n"
+    "- Movies not in the prediction pipeline (e.g., Crime 101) shown in breakdowns but excluded from metrics\n"
+    "- Scream 7: tier override to LARGE+ correct; V14 LARGE+ regressor predicted $69.59M vs actual $63.62M (9.4% error, within CI)"
+)
 
-st.caption("💡 To add new weekends: update WEEKEND_DATA with real values from Snowflake and Box Office Mojo. Move entries from UPCOMING once actuals are available.")
+st.caption("To add new weekends: update WEEKEND_DATA with real values from Box Office Mojo. Move entries from UPCOMING once actuals are available.")
