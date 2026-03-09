@@ -23,7 +23,7 @@ WEEKEND_DATA = [
         "weekend": "Weekend 3",
         "dates": "Jan 16-19, 2026",
         "movies": [
-            {"movie": "28 Years Later: The Bone Temple", "studio": "Sony", "predicted_tier": "SMALL", "predicted_ow": 14.48, "conf_low": 11.58, "conf_high": 17.37, "actual_ow": 15.00, "week": 1, "note": "Horror sequel; borderline MID"},
+            {"movie": "28 Years Later: The Bone Temple", "studio": "Sony", "predicted_tier": "SMALL", "predicted_ow": 14.48, "conf_low": 11.58, "conf_high": 17.37, "actual_ow": 12.52, "week": 1, "note": "Horror sequel; $12.5M 3-day, ~$15M 4-day MLK weekend"},
         ]
     },
     {
