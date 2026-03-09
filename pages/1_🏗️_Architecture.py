@@ -4,6 +4,7 @@ Page 1: Model Architecture Visualization
 
 import streamlit as st
 import plotly.graph_objects as go
+from cortex_badge import show_cortex_badge
 
 st.set_page_config(page_title="Architecture", page_icon="🏗️", layout="wide")
 
@@ -110,6 +111,14 @@ fig.update_yaxes(visible=False)
 
 st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
 
+st.info(
+    "**Cortex Code Contribution**: This cascade architecture was iterated through "
+    "6 different approaches (Random Forest, XGBoost, LightGBM, CatBoost, Neural Net, "
+    "Ensemble) across 76 experiments before arriving at the 3-tier CatBoost design. "
+    "Cortex Code managed the full experiment loop — training, evaluation, comparison, "
+    "and architecture refinement — all within Snowflake."
+)
+
 st.divider()
 
 col1, col2 = st.columns(2)
@@ -206,7 +215,7 @@ with col1:
     **YouTube/Sentiment** (7): YT_COMMENTS, ENGAGEMENT_RATIO, SENTIMENT, 
     THEATRICAL_INTENT_PCT, STREAMING_INTENT_PCT, PASS_INTENT_PCT, NET_INTENT_PCT
     
-    **Movie Attributes** (6): BUDGET, BUDGET_LOG, RUNTIME, TMDB_POPULARITY, 
+    **Movie Attributes** (6): BUDGET, BUDGET_LOG, RUNTIME, MDB_POPULARITY, 
     RELEASE_MONTH, IS_PEAK_SEASON
     
     **Star Power** (4): MAX_STAR_POWER, TOP2_STAR_POWER, AVG_STAR_POWER, 
@@ -260,3 +269,5 @@ with col2:
     - More robust classification boundary
     - Better generalization with limited data
     """)
+
+show_cortex_badge()

@@ -8,6 +8,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
 import numpy as np
+from cortex_badge import show_cortex_badge
 
 st.set_page_config(page_title="Performance", page_icon="📈", layout="wide")
 
@@ -233,3 +234,14 @@ fig_compare.update_yaxes(range=[60, 85], row=1, col=1)
 fig_compare.update_yaxes(range=[0, 18], row=1, col=2)
 
 st.plotly_chart(fig_compare, use_container_width=True)
+
+st.divider()
+
+st.info(
+    "**AI-Assisted Optimization**: Cortex Code ran 104 hyperparameter tuning configurations "
+    "across all three tier-specific regressors and both stage classifiers, systematically "
+    "improving classification accuracy from V2's 58% to V15's 77.3% — a 19 percentage point "
+    "gain driven by architecture iteration and data quality improvements."
+)
+
+show_cortex_badge()

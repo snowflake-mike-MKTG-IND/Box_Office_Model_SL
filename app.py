@@ -4,6 +4,7 @@ Interactive dashboard for data scientists
 """
 
 import streamlit as st
+from cortex_badge import show_cortex_badge
 
 st.set_page_config(
     page_title="V15 OW Prediction Model",
@@ -33,6 +34,7 @@ st.header("Navigation")
 st.markdown("""
 Use the sidebar to explore:
 
+0. **Cortex Code** - AI-assisted development story
 1. **Architecture** - Model cascade flow and tier configurations
 2. **Features** - Feature importance by category
 3. **Performance** - Classification accuracy, MAE, confusion matrix
@@ -87,5 +89,7 @@ st.markdown("""
 - **Type**: 3-Tier Cascade with Tier-Specific Regressors
 - **Algorithm**: CatBoost
 - **Features**: 52 (32 static + 20 Google Trends)
-- **Training Source**: `SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTION_FEATURES_V`
+- **Training Source**: Snowflake feature view (production schema)
 """)
+
+show_cortex_badge()

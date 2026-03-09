@@ -8,6 +8,7 @@ import numpy as np
 import os
 import joblib
 import gzip
+from cortex_badge import show_cortex_badge
 
 st.set_page_config(page_title="Predictions", page_icon="🔮", layout="wide")
 
@@ -63,8 +64,8 @@ with col1:
     st.subheader("Movie Attributes")
     budget = st.slider("Budget ($M)", 1, 300, 80, help="Production budget in millions")
     popularity_choice = st.selectbox("Buzz Level", list(popularity_examples.keys()), index=3)
-    tmdb_pop = popularity_examples[popularity_choice]
-    st.caption(f"→ Popularity Score: {tmdb_pop}")
+    mdb_pop = popularity_examples[popularity_choice]
+    st.caption(f"→ Popularity Score: {mdb_pop}")
     runtime = st.slider("Runtime (min)", 80, 200, 120)
     
     st.subheader("Timing")
@@ -144,7 +145,7 @@ with col2:
             ip_flags['KNOWN_IP_TIER'], ip_flags['IP_HIGH_PROFILE'], 
             ip_flags['IP_MODERATE'], ip_flags['IP_NICHE'], ip_flags['IP_ORIGINAL'],
             max_star, (max_star + avg_star) / 2, avg_star, 3,
-            budget * 1e6, runtime, tmdb_pop, np.log1p(budget * 1e6),
+            budget * 1e6, runtime, mdb_pop, np.log1p(budget * 1e6),
             np.log1p(predecessor_ow * 1e6),
         ]
         
@@ -306,3 +307,5 @@ with col2:
         
         st.metric("Predicted Tier (Demo)", tier_name)
         st.metric("Predicted OW (Demo)", f"${ow_pred:.1f}M")
+
+show_cortex_badge()

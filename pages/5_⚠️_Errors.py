@@ -7,6 +7,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
+from cortex_badge import show_cortex_badge
 
 st.set_page_config(page_title="Error Analysis", page_icon="⚠️", layout="wide")
 
@@ -185,3 +186,5 @@ fig_genre_error.update_layout(height=350)
 st.plotly_chart(fig_genre_error, use_container_width=True)
 
 st.caption("Horror has lowest MAE due to consistent audience behavior and predictable ceiling.")
+
+show_cortex_badge()

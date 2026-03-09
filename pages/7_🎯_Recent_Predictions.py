@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
 import numpy as np
+from cortex_badge import show_cortex_badge
 
 st.set_page_config(page_title="Recent Predictions", page_icon="🎯", layout="wide")
 
@@ -336,7 +337,7 @@ for w in WEEKEND_DATA:
 st.divider()
 
 st.header("Upcoming Predictions")
-st.markdown("V15 predictions for upcoming weekends. Move to actuals section once Box Office Mojo data is available.")
+st.markdown("V15 predictions for upcoming weekends. Move to actuals section once official box office data is available.")
 
 for u in UPCOMING:
     model_tag = u.get("model", "V14")
@@ -392,10 +393,12 @@ st.info(
     "**Data Sources**\n"
     "- **Predictions**: V15 3-Tier Cascade model (in production since March 8, 2026)\n"
     "- **Prior Predictions**: Weekends 2-10 used V14 model; Weekend 11+ uses V15\n"
-    "- **Actuals**: Box Office Mojo\n"
+    "- **Actuals**: Official box office reporting\n"
     "- **Tier System**: SMALL (<$15M) / MID ($15-50M) / LARGE+ (>$50M)\n"
     "- Movies not in the prediction pipeline (e.g., Crime 101) shown in breakdowns but excluded from metrics\n"
     "- Scream 7: tier override to LARGE+ correct; V14 LARGE+ regressor predicted $69.59M vs actual $63.62M (9.4% error, within CI)"
 )
 
-st.caption("To add new weekends: update WEEKEND_DATA with real values from Box Office Mojo. Move entries from UPCOMING once actuals are available.")
+st.caption("To add new weekends: update WEEKEND_DATA with real values from official box office data. Move entries from UPCOMING once actuals are available.")
+
+show_cortex_badge()

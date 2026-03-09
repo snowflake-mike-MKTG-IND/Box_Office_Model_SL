@@ -7,6 +7,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
+from cortex_badge import show_cortex_badge
 
 st.set_page_config(page_title="Features", page_icon="📊", layout="wide")
 
@@ -18,7 +19,7 @@ FEATURE_CATEGORIES = {
                       'ROLLING_7D_PRIOR', 'VELOCITY_3D', 'VELOCITY_5D', 'VELOCITY_7D',
                       'TRENDS_CUMULATIVE', 'TRENDS_VOLATILITY', 'TRENDS_PEAK_SO_FAR', 'DAYS_WITH_DATA'],
     'Star Power': ['MAX_STAR_POWER', 'TOP2_STAR_POWER', 'AVG_STAR_POWER', 'NUM_STARS_WITH_HISTORY'],
-    'Movie Attributes': ['BUDGET', 'BUDGET_LOG', 'RUNTIME', 'TMDB_POPULARITY', 'RELEASE_MONTH', 'IS_PEAK_SEASON', 'PREDECESSOR_OW_LOG'],
+    'Movie Attributes': ['BUDGET', 'BUDGET_LOG', 'RUNTIME', 'MDB_POPULARITY', 'RELEASE_MONTH', 'IS_PEAK_SEASON', 'PREDECESSOR_OW_LOG'],
     'YouTube/Sentiment': ['YT_COMMENTS', 'ENGAGEMENT_RATIO', 'SENTIMENT',
                           'THEATRICAL_INTENT_PCT', 'STREAMING_INTENT_PCT', 'PASS_INTENT_PCT', 'NET_INTENT_PCT'],
     'Genre': ['GENRE_ACTION_FRANCHISE', 'GENRE_ANIMATION_FAMILY', 'GENRE_HORROR', 'GENRE_PRESTIGE', 'GENRE_ORIGINAL'],
@@ -29,7 +30,7 @@ FEATURE_CATEGORIES = {
 }
 
 FEATURE_IMPORTANCE = {
-    'YT_COMMENTS': 47.8, 'BUDGET': 40.2, 'BUDGET_LOG': 36.5, 'TMDB_POPULARITY': 33.8,
+    'YT_COMMENTS': 47.8, 'BUDGET': 40.2, 'BUDGET_LOG': 36.5, 'MDB_POPULARITY': 33.8,
     'ROLLING_7D': 30.1, 'AVG_STAR_POWER': 27.9, 'TOP2_STAR_POWER': 26.3, 'PREDECESSOR_OW_LOG': 24.1,
     'MAX_STAR_POWER': 23.5, 'ROLLING_5D': 22.7, 'ROLLING_3D': 21.2, 'TRENDS_CUMULATIVE': 19.5,
     'SENTIMENT': 17.8, 'THEATRICAL_INTENT_PCT': 16.4, 'ENGAGEMENT_RATIO': 15.1,
@@ -162,3 +163,14 @@ st.markdown("""
 **Note**: All 52 features are available at all prediction horizons, but 
 Google Trends rolling averages become more predictive closer to release.
 """)
+
+st.divider()
+
+st.info(
+    "**AI-Assisted Feature Discovery**: Cortex Code helped identify and engineer all 52 features — "
+    "from building the Google Trends normalization pipeline (scaled against Movie Showtimes baseline) "
+    "to creating star power metrics from actor box office history to scoring YouTube trailer sentiment. "
+    "Each feature was iteratively tested for predictive value across all three tiers."
+)
+
+show_cortex_badge()

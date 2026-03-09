@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 import pandas as pd
 from datetime import datetime
 from plotly.subplots import make_subplots
+from cortex_badge import show_cortex_badge
 
 st.set_page_config(page_title="Model Timeline", page_icon="📅", layout="wide")
 
@@ -405,11 +406,11 @@ st.plotly_chart(fig2, use_container_width=True)
 
 st.divider()
 
-st.header("🎬 API Integration Sprint")
-st.markdown("**Feb 3-27, 2026** — Rapid feature engineering from external API data")
+st.header("🎬 Data Integration Sprint")
+st.markdown("**Feb 3-27, 2026** — Rapid feature engineering from external data sources")
 
-TMDB_SPRINT = [
-    {"date": "2026-02-03", "time": "09:15", "item": "MOVIE_LEAD_ACTORS table", "type": "Data", "loc": 85, "hours": 0.5, "detail": "2,383 actor-movie mappings from external API"},
+API_SPRINT = [
+    {"date": "2026-02-03", "time": "09:15", "item": "MOVIE_LEAD_ACTORS table", "type": "Data", "loc": 85, "hours": 0.5, "detail": "2,383 actor-movie mappings from external data"},
     {"date": "2026-02-03", "time": "10:30", "item": "MAX_STAR_POWER feature", "type": "Feature", "loc": 45, "hours": 0.75, "detail": "Highest lifetime box office per lead actor"},
     {"date": "2026-02-03", "time": "10:45", "item": "TOP2_STAR_POWER feature", "type": "Feature", "loc": 30, "hours": 0.5, "detail": "Combined top 2 lead actors"},
     {"date": "2026-02-03", "time": "11:00", "item": "AVG_STAR_POWER feature", "type": "Feature", "loc": 25, "hours": 0.75, "detail": "Cast average box office"},
@@ -417,49 +418,49 @@ TMDB_SPRINT = [
     {"date": "2026-02-15", "time": "14:30", "item": "STAR_X_ROLLING interaction", "type": "Feature", "loc": 15, "hours": 0.25, "detail": "Star power × Google Trends"},
     {"date": "2026-02-15", "time": "14:35", "item": "STAR_X_IP_HIGH interaction", "type": "Feature", "loc": 15, "hours": 0.25, "detail": "Star power × High-profile IP"},
     {"date": "2026-02-27", "time": "15:00", "item": "ACTOR_LIFETIME_BOX_OFFICE", "type": "Data", "loc": 95, "hours": 1.5, "detail": "2,205 actor career aggregations"},
-    {"date": "2026-02-27", "time": "16:30", "item": "Hybrid star power", "type": "Feature", "loc": 60, "hours": 1.5, "detail": "Combined API + historical lookups"},
+    {"date": "2026-02-27", "time": "16:30", "item": "Hybrid star power", "type": "Feature", "loc": 60, "hours": 1.5, "detail": "Combined external + historical lookups"},
     {"date": "2026-02-27", "time": "19:07", "item": "V14 production model", "type": "Model", "loc": 180, "hours": 2.0, "detail": "Full star power integration"},
 ]
 
-tmdb_df = pd.DataFrame(TMDB_SPRINT)
-tmdb_df['datetime'] = pd.to_datetime(tmdb_df['date'] + ' ' + tmdb_df['time'])
-tmdb_df = tmdb_df.sort_values('datetime')
-tmdb_df['cumulative_loc'] = tmdb_df['loc'].cumsum()
-tmdb_df['cumulative_hours'] = tmdb_df['hours'].cumsum()
+sprint_df = pd.DataFrame(API_SPRINT)
+sprint_df['datetime'] = pd.to_datetime(sprint_df['date'] + ' ' + sprint_df['time'])
+sprint_df = sprint_df.sort_values('datetime')
+sprint_df['cumulative_loc'] = sprint_df['loc'].cumsum()
+sprint_df['cumulative_hours'] = sprint_df['hours'].cumsum()
 
 type_colors = {"Data": "#01B4E4", "Feature": "#E91E63", "Model": "#4CAF50"}
 
-tmdb_active_days = tmdb_df['date'].nunique()
-tmdb_total_hours = tmdb_df['hours'].sum()
-tmdb_total_loc = tmdb_df['loc'].sum()
+sprint_active_days = sprint_df['date'].nunique()
+sprint_total_hours = sprint_df['hours'].sum()
+sprint_total_loc = sprint_df['loc'].sum()
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    st.metric("Active Work", f"~{tmdb_total_hours:.0f}h", f"{tmdb_active_days} sessions over 24 days")
+    st.metric("Active Work", f"~{sprint_total_hours:.0f}h", f"{sprint_active_days} sessions over 24 days")
 with col2:
-    st.metric("Lines of Code", f"~{tmdb_total_loc}", "SQL + Python")
+    st.metric("Lines of Code", f"~{sprint_total_loc}", "SQL + Python")
 with col3:
     st.metric("Actors Indexed", "4,588", "Unique actor records")
 
-fig_tmdb = go.Figure()
+fig_sprint = go.Figure()
 
-fig_tmdb.add_trace(go.Scatter(
-    x=tmdb_df['cumulative_hours'],
-    y=tmdb_df['cumulative_loc'],
+fig_sprint.add_trace(go.Scatter(
+    x=sprint_df['cumulative_hours'],
+    y=sprint_df['cumulative_loc'],
     mode='lines+markers',
     name='Cumulative LOC',
     line=dict(color='#FFD700', width=3),
     marker=dict(
         size=14,
-        color=[type_colors[t] for t in tmdb_df['type']],
+        color=[type_colors[t] for t in sprint_df['type']],
         line=dict(color='white', width=2)
     ),
     hovertemplate='<b>%{customdata[0]}</b><br>Hour %{x:.1f}<br>+%{customdata[1]} lines → %{y} total<br><i>%{customdata[2]}</i><extra></extra>',
-    customdata=list(zip(tmdb_df['item'], tmdb_df['loc'], tmdb_df['detail']))
+    customdata=list(zip(sprint_df['item'], sprint_df['loc'], sprint_df['detail']))
 ))
 
-for i, row in tmdb_df.iterrows():
-    fig_tmdb.add_annotation(
+for i, row in sprint_df.iterrows():
+    fig_sprint.add_annotation(
         x=row['cumulative_hours'],
         y=row['cumulative_loc'],
         text=row['item'].replace(' ', '<br>') if len(row['item']) > 15 else row['item'],
@@ -473,7 +474,7 @@ for i, row in tmdb_df.iterrows():
     )
 
 for t, color in type_colors.items():
-    fig_tmdb.add_trace(go.Scatter(
+    fig_sprint.add_trace(go.Scatter(
         x=[None], y=[None],
         mode='markers',
         name=t,
@@ -481,7 +482,7 @@ for t, color in type_colors.items():
         showlegend=True
     ))
 
-fig_tmdb.update_layout(
+fig_sprint.update_layout(
     height=350,
     title="Cumulative Lines of Code",
     xaxis_title="Hours Worked",
@@ -492,10 +493,10 @@ fig_tmdb.update_layout(
     paper_bgcolor='rgba(0,0,0,0)'
 )
 
-st.plotly_chart(fig_tmdb, use_container_width=True)
+st.plotly_chart(fig_sprint, use_container_width=True)
 
 with st.expander("📋 API Sprint Details", expanded=False):
-    for _, row in tmdb_df.iterrows():
+    for _, row in sprint_df.iterrows():
         icon = "💾" if row['type'] == "Data" else "⚙️" if row['type'] == "Feature" else "🤖"
         st.markdown(f"{icon} **Hour {row['cumulative_hours']:.1f}** — {row['item']} (+{row['loc']} LOC): {row['detail']}")
 
@@ -507,7 +508,7 @@ st.markdown("**Jan 28 → Feb 28, 2026** — Part-time/spare-time development")
 ACTIVE_DAYS = [
     {"date": "2026-01-28", "hours": 3.0, "work": "Project kickoff, data exploration"},
     {"date": "2026-01-30", "hours": 4.0, "work": "ML infrastructure setup, base views"},
-    {"date": "2026-02-03", "hours": 2.5, "work": "External API integration, actor tables"},
+    {"date": "2026-02-03", "hours": 2.5, "work": "External data integration, actor tables"},
     {"date": "2026-02-15", "hours": 8.0, "work": "Feature engineering marathon (V2-V10)"},
     {"date": "2026-02-16", "hours": 5.0, "work": "Budget features, V11-V13 pipeline"},
     {"date": "2026-02-27", "hours": 6.0, "work": "V14 3-tier cascade, hybrid star power"},
@@ -738,3 +739,5 @@ st.dataframe(
         "status": "Status"
     }
 )
+
+show_cortex_badge()
