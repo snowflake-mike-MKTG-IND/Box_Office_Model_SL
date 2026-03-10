@@ -168,13 +168,26 @@ fig.add_trace(go.Bar(
     textposition="outside",
 ))
 
-for i, row in df.iterrows():
-    fig.add_shape(
-        type="line",
-        x0=i - 0.2, x1=i - 0.2,
-        y0=row["Conf Low ($M)"], y1=row["Conf High ($M)"],
-        line=dict(color="rgba(99, 110, 250, 0.4)", width=3),
-    )
+ci_mid = [(row["Conf Low ($M)"] + row["Conf High ($M)"]) / 2 for _, row in df.iterrows()]
+ci_err_plus = [row["Conf High ($M)"] - (row["Conf Low ($M)"] + row["Conf High ($M)"]) / 2 for _, row in df.iterrows()]
+ci_err_minus = [(row["Conf Low ($M)"] + row["Conf High ($M)"]) / 2 - row["Conf Low ($M)"] for _, row in df.iterrows()]
+
+fig.add_trace(go.Scatter(
+    name="V14 Confidence Interval",
+    x=df["Movie"],
+    y=ci_mid,
+    mode="markers",
+    marker=dict(symbol="line-ew-open", size=12, color="#FFA500", line=dict(width=2, color="#FFA500")),
+    error_y=dict(
+        type="data",
+        symmetric=False,
+        array=ci_err_plus,
+        arrayminus=ci_err_minus,
+        color="#FFA500",
+        thickness=2.5,
+        width=10,
+    ),
+))
 
 fig.update_layout(
     barmode="group",
