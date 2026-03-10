@@ -8,7 +8,11 @@ from cortex_badge import show_cortex_badge
 st.set_page_config(page_title="Recent Predictions", page_icon="🎯", layout="wide")
 
 st.title("🎯 Recent Weekend Predictions vs Actuals")
-st.markdown("Tracking model predictions against actual opening weekend results. **V15 model in production** since March 8, 2026. Prior predictions (Weekends 2–10) used V14.")
+st.markdown(
+    "Tracking model predictions against actual opening weekend results. "
+    "Each prediction shows which model version was used — **all predictions shown here were made "
+    "before actuals were known**, using whichever model was in production at the time."
+)
 
 st.divider()
 
@@ -16,6 +20,7 @@ WEEKEND_DATA = [
     {
         "weekend": "Weekend 2",
         "dates": "Jan 9-12, 2026",
+        "model": "V14",
         "movies": [
             {"movie": "Greenland 2: Migration", "studio": "STX/Lionsgate", "predicted_tier": "SMALL", "predicted_ow": 9.37, "conf_low": 7.50, "conf_high": 11.24, "actual_ow": 8.40, "week": 1, "note": "Gerard Butler sequel"},
         ]
@@ -23,6 +28,7 @@ WEEKEND_DATA = [
     {
         "weekend": "Weekend 3",
         "dates": "Jan 16-19, 2026",
+        "model": "V14",
         "movies": [
             {"movie": "28 Years Later: The Bone Temple", "studio": "Sony", "predicted_tier": "SMALL", "predicted_ow": 14.48, "conf_low": 11.58, "conf_high": 17.37, "actual_ow": 12.52, "week": 1, "note": "Horror sequel; $12.5M 3-day, ~$15M 4-day MLK weekend"},
         ]
@@ -30,6 +36,7 @@ WEEKEND_DATA = [
     {
         "weekend": "Weekend 7",
         "dates": "Feb 13-15, 2026",
+        "model": "V14",
         "movies": [
             {"movie": "Wuthering Heights", "studio": "Warner Bros.", "predicted_tier": "MID", "predicted_ow": 32.62, "conf_low": 26.10, "conf_high": 39.15, "actual_ow": 32.80, "week": 1, "note": "Emerald Fennell; nearly perfect prediction"},
             {"movie": "GOAT", "studio": "Sony", "predicted_tier": "MID", "predicted_ow": 27.35, "conf_low": 21.88, "conf_high": 32.82, "actual_ow": 27.20, "week": 1, "note": "Animated sports comedy (Sony Animation); nearly perfect prediction"},
@@ -39,6 +46,7 @@ WEEKEND_DATA = [
     {
         "weekend": "Weekend 9",
         "dates": "Feb 27-Mar 1, 2026",
+        "model": "V14",
         "movies": [
             {"movie": "Scream 7", "studio": "Paramount", "predicted_tier": "LARGE+", "predicted_ow": 69.59, "conf_low": 55.67, "conf_high": 83.51, "actual_ow": 63.62, "week": 1,
              "tier_confidence": 76.97, "tier_range_low": 50, "tier_range_high": 100,
@@ -109,6 +117,7 @@ for w in WEEKEND_DATA:
             if m["predicted_ow"] is not None:
                 all_movies.append({
                     "Weekend": w["weekend"],
+                    "Model": w.get("model", "V14"),
                     "Movie": m["movie"],
                     "Studio": m["studio"],
                     "Predicted Tier": pred_tier,
@@ -139,9 +148,11 @@ st.divider()
 
 st.header("Predicted vs Actual Comparison")
 
+st.caption("All predictions below were made by the V14 model before each film's opening weekend.")
+
 fig = go.Figure()
 fig.add_trace(go.Bar(
-    name="Predicted OW",
+    name="Predicted OW (V14)",
     x=df["Movie"],
     y=df["Predicted OW ($M)"],
     marker_color="#636EFA",
@@ -298,7 +309,8 @@ st.divider()
 st.header("Weekend-by-Weekend Breakdown")
 
 for w in WEEKEND_DATA:
-    with st.expander(f"**{w['weekend']}** — {w['dates']}", expanded=False):
+    model_ver = w.get('model', 'V14')
+    with st.expander(f"**{w['weekend']}** — {w['dates']}  ({model_ver})", expanded=False):
         rows = []
         for m in w["movies"]:
             if m["week"] == 1:
@@ -337,7 +349,7 @@ for w in WEEKEND_DATA:
 st.divider()
 
 st.header("Upcoming Predictions")
-st.markdown("V15 predictions for upcoming weekends. Move to actuals section once official box office data is available.")
+st.markdown("Predictions for upcoming weekends (model version shown per weekend). Move to actuals section once official box office data is available.")
 
 for u in UPCOMING:
     model_tag = u.get("model", "V14")
@@ -390,13 +402,13 @@ with col2:
 st.divider()
 
 st.info(
-    "**Data Sources**\n"
-    "- **Predictions**: V15 3-Tier Cascade model (in production since March 8, 2026)\n"
-    "- **Prior Predictions**: Weekends 2-10 used V14 model; Weekend 11+ uses V15\n"
+    "**Data Sources & Methodology**\n"
+    "- **No data leakage**: Every prediction was generated *before* the film's opening weekend, using the model version in production at that time\n"
+    "- **V14 model**: Used for Weekends 2–10 (trained Feb 27, 2026 on 239 films through early 2026)\n"
+    "- **V15 model**: In production since March 8, 2026 — used for Weekend 11+ only\n"
     "- **Actuals**: Official box office reporting\n"
     "- **Tier System**: SMALL (<$15M) / MID ($15-50M) / LARGE+ (>$50M)\n"
-    "- Movies not in the prediction pipeline (e.g., Crime 101) shown in breakdowns but excluded from metrics\n"
-    "- Scream 7: tier override to LARGE+ correct; V14 LARGE+ regressor predicted $69.59M vs actual $63.62M (9.4% error, within CI)"
+    "- Scream 7: V14 tier override to LARGE+ correct; predicted $69.59M vs actual $63.62M (9.4% error, within CI)"
 )
 
 st.caption("To add new weekends: update WEEKEND_DATA with real values from official box office data. Move entries from UPCOMING once actuals are available.")
