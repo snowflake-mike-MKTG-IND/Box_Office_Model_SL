@@ -22,7 +22,7 @@ WEEKEND_DATA = [
         "dates": "Jan 9-12, 2026",
         "model": "V14",
         "movies": [
-            {"movie": "Greenland 2: Migration", "studio": "STX/Lionsgate", "predicted_tier": "SMALL", "predicted_ow": 9.37, "conf_low": 7.50, "conf_high": 11.24, "actual_ow": 8.40, "week": 1, "industry_projection": None, "note": "Gerard Butler sequel"},
+            {"movie": "Greenland 2: Migration", "studio": "STX/Lionsgate", "predicted_tier": "SMALL", "predicted_ow": 9.37, "conf_low": 7.50, "conf_high": 11.24, "actual_ow": 8.40, "week": 1, "industry_projection": 9.0, "note": "Gerard Butler sequel; Deadline projected $8-10M OW"},
         ]
     },
     {
@@ -163,19 +163,19 @@ fig.add_trace(go.Bar(
     textposition="outside",
 ))
 fig.add_trace(go.Bar(
-    name="Industry Projection",
-    x=df["Movie"],
-    y=df["Industry Projection ($M)"].fillna(0),
-    marker_color="#AB63FA",
-    text=[f"${v:.0f}M" if pd.notna(v) and v > 0 else "" for v in df["Industry Projection ($M)"]],
-    textposition="outside",
-))
-fig.add_trace(go.Bar(
     name="Actual OW",
     x=df["Movie"],
     y=df["Actual OW ($M)"],
     marker_color="#00CC96",
     text=[f"${v:.2f}M" for v in df["Actual OW ($M)"]],
+    textposition="outside",
+))
+fig.add_trace(go.Bar(
+    name="Industry Projection",
+    x=df["Movie"],
+    y=df["Industry Projection ($M)"].fillna(0),
+    marker_color="#AB63FA",
+    text=[f"${v:.0f}M" if pd.notna(v) and v > 0 else "" for v in df["Industry Projection ($M)"]],
     textposition="outside",
 ))
 
