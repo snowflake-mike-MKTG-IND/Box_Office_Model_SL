@@ -38,8 +38,8 @@ WEEKEND_DATA = [
         "dates": "Feb 13-15, 2026",
         "model": "V14",
         "movies": [
-            {"movie": "Wuthering Heights", "studio": "Warner Bros.", "predicted_tier": "MID", "predicted_ow": 32.62, "conf_low": 26.10, "conf_high": 39.15, "actual_ow": 32.80, "week": 1, "note": "Emerald Fennell; nearly perfect prediction"},
-            {"movie": "GOAT", "studio": "Sony", "predicted_tier": "MID", "predicted_ow": 27.35, "conf_low": 21.88, "conf_high": 32.82, "actual_ow": 27.20, "week": 1, "note": "Animated sports comedy (Sony Animation); nearly perfect prediction"},
+            {"movie": "Wuthering Heights", "studio": "Warner Bros.", "predicted_tier": "MID", "predicted_ow": 26.80, "conf_low": 21.44, "conf_high": 32.16, "actual_ow": 32.80, "week": 1, "note": "Emerald Fennell; V14 7-day-out prediction, MID tier (manual override)"},
+            {"movie": "GOAT", "studio": "Sony", "predicted_tier": "MID", "predicted_ow": 22.45, "conf_low": 17.96, "conf_high": 26.93, "actual_ow": 27.20, "week": 1, "note": "Animated sports comedy (Sony Animation); V14 7-day-out prediction, MID tier (manual override)"},
             {"movie": "Crime 101", "studio": "Amazon MGM", "predicted_tier": None, "predicted_ow": None, "conf_low": None, "conf_high": None, "actual_ow": 14.25, "week": 1, "note": "Not in prediction pipeline"},
         ]
     },
