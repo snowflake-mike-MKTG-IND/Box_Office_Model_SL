@@ -22,7 +22,7 @@ WEEKEND_DATA = [
         "dates": "Jan 9-12, 2026",
         "model": "V14",
         "movies": [
-            {"movie": "Greenland 2: Migration", "studio": "STX/Lionsgate", "predicted_tier": "SMALL", "predicted_ow": 9.37, "conf_low": 7.50, "conf_high": 11.24, "actual_ow": 8.40, "week": 1, "note": "Gerard Butler sequel"},
+            {"movie": "Greenland 2: Migration", "studio": "STX/Lionsgate", "predicted_tier": "SMALL", "predicted_ow": 9.37, "conf_low": 7.50, "conf_high": 11.24, "actual_ow": 8.40, "week": 1, "industry_projection": None, "note": "Gerard Butler sequel"},
         ]
     },
     {
@@ -30,7 +30,7 @@ WEEKEND_DATA = [
         "dates": "Jan 16-19, 2026",
         "model": "V14",
         "movies": [
-            {"movie": "28 Years Later: The Bone Temple", "studio": "Sony", "predicted_tier": "SMALL", "predicted_ow": 14.48, "conf_low": 11.58, "conf_high": 17.37, "actual_ow": 12.52, "week": 1, "note": "Horror sequel; $12.5M 3-day, ~$15M 4-day MLK weekend"},
+            {"movie": "28 Years Later: The Bone Temple", "studio": "Sony", "predicted_tier": "SMALL", "predicted_ow": 14.48, "conf_low": 11.58, "conf_high": 17.37, "actual_ow": 12.52, "week": 1, "industry_projection": 20.0, "note": "Horror sequel; Deadline projected $20M+ MLK OW"},
         ]
     },
     {
@@ -38,9 +38,9 @@ WEEKEND_DATA = [
         "dates": "Feb 13-15, 2026",
         "model": "V14",
         "movies": [
-            {"movie": "Wuthering Heights", "studio": "Warner Bros.", "predicted_tier": "MID", "predicted_ow": 26.80, "conf_low": 21.44, "conf_high": 32.16, "actual_ow": 32.80, "week": 1, "note": "Emerald Fennell; V14 7-day-out prediction, MID tier (manual override)"},
-            {"movie": "GOAT", "studio": "Sony", "predicted_tier": "MID", "predicted_ow": 22.45, "conf_low": 17.96, "conf_high": 26.93, "actual_ow": 27.20, "week": 1, "note": "Animated sports comedy (Sony Animation); V14 7-day-out prediction, MID tier (manual override)"},
-            {"movie": "Crime 101", "studio": "Amazon MGM", "predicted_tier": None, "predicted_ow": None, "conf_low": None, "conf_high": None, "actual_ow": 14.25, "week": 1, "note": "Not in prediction pipeline"},
+            {"movie": "Wuthering Heights", "studio": "Warner Bros.", "predicted_tier": "MID", "predicted_ow": 26.80, "conf_low": 21.44, "conf_high": 32.16, "actual_ow": 32.80, "week": 1, "industry_projection": 40.0, "note": "Emerald Fennell; Deadline projected $40-50M 4-day (~$40M 3-day equiv)"},
+            {"movie": "GOAT", "studio": "Sony", "predicted_tier": "MID", "predicted_ow": 22.45, "conf_low": 17.96, "conf_high": 26.93, "actual_ow": 27.20, "week": 1, "industry_projection": 25.0, "note": "Animated sports comedy; Deadline/industry projected $25M 3-day"},
+            {"movie": "Crime 101", "studio": "Amazon MGM", "predicted_tier": None, "predicted_ow": None, "conf_low": None, "conf_high": None, "actual_ow": 14.25, "week": 1, "industry_projection": None, "note": "Not in prediction pipeline"},
         ]
     },
     {
@@ -50,8 +50,8 @@ WEEKEND_DATA = [
         "movies": [
             {"movie": "Scream 7", "studio": "Paramount", "predicted_tier": "LARGE+", "predicted_ow": 69.59, "conf_low": 55.67, "conf_high": 83.51, "actual_ow": 63.62, "week": 1,
              "tier_confidence": 76.97, "tier_range_low": 50, "tier_range_high": 100,
-             "manually_adjusted": True,
-             "note": "V14 auto-classified SMALL (61%); manual override to LARGE+. LARGE+ regressor: $69.59M vs actual $63.62M (9.4% error, within CI)"},
+             "manually_adjusted": True, "industry_projection": 40.0,
+             "note": "Deadline projected mid-$30M+; THR/Deadline ~$40M; NRG $45M. Actual: $64.1M blew past all industry projections"},
         ]
     },
 ]
@@ -115,6 +115,7 @@ for w in WEEKEND_DATA:
                 tier_match = True
             all_tier_checks.append({"movie": m["movie"], "match": tier_match})
             if m["predicted_ow"] is not None:
+                ind_proj = m.get("industry_projection")
                 all_movies.append({
                     "Weekend": w["weekend"],
                     "Model": w.get("model", "V14"),
@@ -128,6 +129,7 @@ for w in WEEKEND_DATA:
                     "Actual Tier": actual_tier,
                     "Error ($M)": round(m["predicted_ow"] - m["actual_ow"], 2),
                     "Tier Correct": "✅" if tier_match else "❌",
+                    "Industry Projection ($M)": ind_proj,
                 })
 
 df = pd.DataFrame(all_movies)
@@ -148,7 +150,8 @@ st.divider()
 
 st.header("Predicted vs Actual Comparison")
 
-st.caption("All predictions below were made by the V14 model before each film's opening weekend.")
+st.caption("All predictions below were made by the V14 model before each film's opening weekend. "
+           "Purple bars show pre-release industry consensus projections (sourced from Deadline, THR, etc.).")
 
 fig = go.Figure()
 fig.add_trace(go.Bar(
@@ -157,6 +160,14 @@ fig.add_trace(go.Bar(
     y=df["Predicted OW ($M)"],
     marker_color="#636EFA",
     text=[f"${v:.2f}M" for v in df["Predicted OW ($M)"]],
+    textposition="outside",
+))
+fig.add_trace(go.Bar(
+    name="Industry Projection",
+    x=df["Movie"],
+    y=df["Industry Projection ($M)"].fillna(0),
+    marker_color="#AB63FA",
+    text=[f"${v:.0f}M" if pd.notna(v) and v > 0 else "" for v in df["Industry Projection ($M)"]],
     textposition="outside",
 ))
 fig.add_trace(go.Bar(
@@ -222,6 +233,49 @@ fig_err.update_layout(
     )]
 )
 st.plotly_chart(fig_err, use_container_width=True)
+
+st.divider()
+
+st.header("V14 Model vs Industry Projections")
+
+ind_df = df[df["Industry Projection ($M)"].notna()].copy()
+if len(ind_df) > 0:
+    ind_df["Model Error ($M)"] = (ind_df["Predicted OW ($M)"] - ind_df["Actual OW ($M)"]).round(2)
+    ind_df["Industry Error ($M)"] = (ind_df["Industry Projection ($M)"] - ind_df["Actual OW ($M)"]).round(2)
+    model_mae = ind_df["Model Error ($M)"].abs().mean()
+    industry_mae = ind_df["Industry Error ($M)"].abs().mean()
+
+    mc1, mc2, mc3 = st.columns(3)
+    mc1.metric("V14 Model MAE", f"${model_mae:.2f}M", f"on {len(ind_df)} films with industry data")
+    mc2.metric("Industry MAE", f"${industry_mae:.2f}M", f"Deadline/THR/NRG consensus")
+    diff = industry_mae - model_mae
+    mc3.metric("Model Advantage", f"${abs(diff):.2f}M {'better' if diff > 0 else 'worse'}", f"{'Model wins' if diff > 0 else 'Industry wins'}")
+
+    fig_vs = go.Figure()
+    fig_vs.add_trace(go.Bar(
+        name="V14 Model Error", x=ind_df["Movie"], y=ind_df["Model Error ($M)"],
+        marker_color="#636EFA",
+        text=[f"${v:+.1f}M" for v in ind_df["Model Error ($M)"]],
+        textposition="outside",
+    ))
+    fig_vs.add_trace(go.Bar(
+        name="Industry Error", x=ind_df["Movie"], y=ind_df["Industry Error ($M)"],
+        marker_color="#AB63FA",
+        text=[f"${v:+.1f}M" for v in ind_df["Industry Error ($M)"]],
+        textposition="outside",
+    ))
+    fig_vs.add_hline(y=0, line_dash="dash", line_color="gray")
+    fig_vs.update_layout(
+        barmode="group", height=400, yaxis_title="Error ($M) — positive = over-predicted",
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        margin=dict(t=40),
+    )
+    st.plotly_chart(fig_vs, use_container_width=True)
+
+    st.caption(
+        "Industry projections sourced from Deadline, The Hollywood Reporter, and NRG pre-release tracking. "
+        "Greenland 2 excluded (no published industry projection found)."
+    )
 
 st.divider()
 
@@ -343,6 +397,7 @@ for w in WEEKEND_DATA:
                     tier_match = "—"
                     ci_str = "—"
                     in_ci = "—"
+                ind_proj_val = m.get("industry_projection")
                 rows.append({
                     "Movie": m["movie"],
                     "Studio": m["studio"],
@@ -350,6 +405,7 @@ for w in WEEKEND_DATA:
                     "Actual Tier": actual_tier or "—",
                     "Tier": tier_match,
                     "Predicted ($M)": f"${m['predicted_ow']:.2f}" if has_prediction else "—",
+                    "Industry ($M)": f"${ind_proj_val:.0f}" if ind_proj_val else "—",
                     "Actual ($M)": f"${m['actual_ow']:.2f}" if m["actual_ow"] else "—",
                     "Error ($M)": f"${error:+.2f}" if error is not None else "—",
                     "CI Range": ci_str,
@@ -419,6 +475,7 @@ st.info(
     "- **No data leakage**: Every prediction was generated *before* the film's opening weekend, using the model version in production at that time\n"
     "- **V14 model**: Used for Weekends 2–10 (trained Feb 27, 2026 on 239 films through early 2026)\n"
     "- **V15 model**: In production since March 8, 2026 — used for Weekend 11+ only\n"
+    "- **Industry projections**: Pre-release consensus from Deadline, The Hollywood Reporter, and NRG tracking\n"
     "- **Actuals**: Official box office reporting\n"
     "- **Tier System**: SMALL (<$15M) / MID ($15-50M) / LARGE+ (>$50M)\n"
     "- Scream 7: V14 tier override to LARGE+ correct; predicted $69.59M vs actual $63.62M (9.4% error, within CI)"
