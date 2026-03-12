@@ -54,26 +54,28 @@ WEEKEND_DATA = [
              "note": "Deadline projected mid-$30M+; THR/Deadline ~$40M; NRG $45M. Actual: $64.1M blew past all industry projections"},
         ]
     },
-]
-
-UPCOMING = [
     {
         "weekend": "Weekend 10",
         "dates": "Mar 6-8, 2026",
         "model": "V14",
         "movies": [
-            {"movie": "The Bride", "studio": "Warner Bros.", "predicted_tier": "SMALL", "predicted_ow": 8.31, "conf_low": 6.65, "conf_high": 9.97, "note": "Maggie Gyllenhaal; horror — awaiting actuals"},
+            {"movie": "The Bride", "studio": "Warner Bros.", "predicted_tier": "SMALL", "predicted_ow": 8.31, "conf_low": 6.65, "conf_high": 9.97, "actual_ow": 7.20, "week": 1, "industry_projection": None, "note": "Maggie Gyllenhaal; horror — actual $7.2M within CI"},
         ]
     },
+]
+
+UPCOMING = [
     {
         "weekend": "Weekend 11",
         "dates": "Mar 13-15, 2026",
         "model": "V15",
         "movies": [
-            {"movie": "Reminders of Him", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 2.6, "conf_low": 1.6, "conf_high": 3.7,
-             "note": "PG-13 drama/romance (Colleen Hoover adaptation); 1,323 trailer comments; Maika Monroe lead"},
-            {"movie": "Undertone", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 2.5, "conf_low": 1.5, "conf_high": 3.5,
-             "note": "R-rated horror; 1,261 trailer comments; very low Google Trends signal"},
+            {"movie": "Reminders of Him", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 6.87, "conf_low": 5.50, "conf_high": 8.24,
+             "note": "PG-13 drama/romance (Colleen Hoover adaptation); 1,323 trailer comments; Maika Monroe lead; strong trends surge (R7D=145.7)"},
+            {"movie": "Undertone", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 6.77, "conf_low": 5.42, "conf_high": 8.13,
+             "note": "R-rated horror; 1,261 trailer comments; trends accelerating (R7D=108.5, V7D=+54.6)"},
+            {"movie": "Slanted", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 4.31, "conf_low": 3.45, "conf_high": 5.18,
+             "note": "R-rated thriller; moderate trends (R7D=47.0); limited marketing footprint"},
         ]
     },
     {
@@ -81,12 +83,14 @@ UPCOMING = [
         "dates": "Mar 20-22, 2026",
         "model": "V15",
         "movies": [
-            {"movie": "Project Hail Mary", "studio": "Amazon MGM", "predicted_tier": "MID", "predicted_ow": 24.1, "conf_low": 13.3, "conf_high": 37.4,
-             "note": "$200M budget; Ryan Gosling (star power 10); Andy Weir novel adaptation; 11,115 comments; strong trends (R7D=35.5)"},
-            {"movie": "Ready or Not 2", "studio": "Disney/Searchlight", "predicted_tier": "SMALL", "predicted_ow": 5.7, "conf_low": 3.4, "conf_high": 7.9,
-             "note": "R-rated horror sequel; predecessor OW $28.4M; 3,647 comments; Samara Weaving lead; decent trends (R7D=27.5)"},
-            {"movie": "Do Not Enter", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 3.6, "conf_low": 2.2, "conf_high": 5.1,
-             "note": "R-rated horror; only 204 comments; zero Google Trends signal — low confidence prediction"},
+            {"movie": "Project Hail Mary", "studio": "Amazon MGM", "predicted_tier": "MID", "predicted_ow": 28.19, "conf_low": 22.55, "conf_high": 33.82,
+             "note": "$200M budget; Ryan Gosling (star power 10); Andy Weir novel adaptation; 11,115 comments; strong trends (R7D=173.2)"},
+            {"movie": "Ready or Not 2", "studio": "Disney/Searchlight", "predicted_tier": "SMALL", "predicted_ow": 6.46, "conf_low": 5.17, "conf_high": 7.75,
+             "note": "R-rated horror sequel; predecessor OW $28.4M; 3,647 comments; Samara Weaving lead; trends (R7D=53.3)"},
+            {"movie": "Do Not Enter", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 5.16, "conf_low": 4.13, "conf_high": 6.19,
+             "note": "R-rated horror; only 204 comments; minimal Google Trends signal (R7D=25.0)"},
+            {"movie": "Marc by Sofia", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 3.06, "conf_low": 2.45, "conf_high": 3.67,
+             "note": "Drama; near-zero Google Trends; limited awareness — lowest confidence prediction"},
         ]
     },
 ]
