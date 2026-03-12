@@ -70,11 +70,11 @@ UPCOMING = [
         "dates": "Mar 13-15, 2026",
         "model": "V15",
         "movies": [
-            {"movie": "Reminders of Him", "studio": "Universal", "predicted_tier": "SMALL", "predicted_ow": 7.99, "conf_low": 6.39, "conf_high": 9.59,
+            {"movie": "Reminders of Him", "studio": "Universal", "predicted_tier": "SMALL", "predicted_ow": 7.99, "conf_low": 6.39, "conf_high": 9.59, "tier_confidence": 98.3,
              "note": "PG-13 drama/romance (Colleen Hoover adaptation); $25M budget; 1,323 trailer comments; Maika Monroe lead; strong trends surge (R7D=145.7)"},
-            {"movie": "Undertone", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 6.77, "conf_low": 5.42, "conf_high": 8.13,
+            {"movie": "Undertone", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 6.77, "conf_low": 5.42, "conf_high": 8.13, "tier_confidence": 96.0,
              "note": "R-rated horror; 1,261 trailer comments; trends accelerating (R7D=108.5, V7D=+54.6)"},
-            {"movie": "Slanted", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 4.31, "conf_low": 3.45, "conf_high": 5.18,
+            {"movie": "Slanted", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 4.31, "conf_low": 3.45, "conf_high": 5.18, "tier_confidence": 98.5,
              "note": "R-rated thriller; moderate trends (R7D=47.0); limited marketing footprint"},
         ]
     },
@@ -83,13 +83,13 @@ UPCOMING = [
         "dates": "Mar 20-22, 2026",
         "model": "V15",
         "movies": [
-            {"movie": "Project Hail Mary", "studio": "Amazon MGM", "predicted_tier": "MID", "predicted_ow": 28.19, "conf_low": 22.55, "conf_high": 33.82,
+            {"movie": "Project Hail Mary", "studio": "Amazon MGM", "predicted_tier": "MID", "predicted_ow": 28.19, "conf_low": 22.55, "conf_high": 33.82, "tier_confidence": 67.3,
              "note": "$200M budget; Ryan Gosling (star power 10); Andy Weir novel adaptation; 11,115 comments; strong trends (R7D=173.2)"},
-            {"movie": "Ready or Not 2", "studio": "Disney/Searchlight", "predicted_tier": "MID", "predicted_ow": 22.45, "conf_low": 17.96, "conf_high": 26.94,
+            {"movie": "Ready or Not 2", "studio": "Disney/Searchlight", "predicted_tier": "MID", "predicted_ow": 22.45, "conf_low": 17.96, "conf_high": 26.94, "tier_confidence": 95.4,
              "note": "R-rated horror sequel; predecessor OW $28.4M; 3,647 comments; upgraded cast (Elijah Wood, SMG); star power adjusted to 4.0"},
-            {"movie": "Do Not Enter", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 5.16, "conf_low": 4.13, "conf_high": 6.19,
+            {"movie": "Do Not Enter", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 5.16, "conf_low": 4.13, "conf_high": 6.19, "tier_confidence": 98.5,
              "note": "R-rated horror; only 204 comments; minimal Google Trends signal (R7D=25.0)"},
-            {"movie": "Marc by Sofia", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 3.06, "conf_low": 2.45, "conf_high": 3.67,
+            {"movie": "Marc by Sofia", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 3.06, "conf_low": 2.45, "conf_high": 3.67, "tier_confidence": 98.5,
              "note": "Drama; near-zero Google Trends; limited awareness — lowest confidence prediction"},
         ]
     },
@@ -405,7 +405,7 @@ for w in WEEKEND_DATA:
                 rows.append({
                     "Movie": m["movie"],
                     "Studio": m["studio"],
-                    "Pred Tier": pred_tier or "—",
+                    "Pred Tier": (pred_tier or "—") + (f" ({m['tier_confidence']:.0f}%)" if m.get("tier_confidence") else ""),
                     "Actual Tier": actual_tier or "—",
                     "Tier": tier_match,
                     "Predicted ($M)": f"${m['predicted_ow']:.2f}" if has_prediction else "—",
@@ -430,10 +430,12 @@ for u in UPCOMING:
         upcoming_rows = []
         for m in u["movies"]:
             tier_color = {"SMALL": "🟠", "MID": "🟡", "LARGE+": "🟢"}.get(m["predicted_tier"], "⚪")
+            tc = m.get("tier_confidence")
+            tier_str = f"{tier_color} {m['predicted_tier']}" + (f" ({tc:.0f}%)" if tc else "")
             upcoming_rows.append({
                 "Movie": m["movie"],
                 "Studio": m["studio"],
-                "Tier": f"{tier_color} {m['predicted_tier']}",
+                "Tier": tier_str,
                 "Predicted OW": f"${m['predicted_ow']:.1f}M",
                 "CI Low": f"${m['conf_low']:.1f}M",
                 "CI High": f"${m['conf_high']:.1f}M",
