@@ -70,8 +70,8 @@ UPCOMING = [
         "dates": "Mar 13-15, 2026",
         "model": "V15",
         "movies": [
-            {"movie": "Reminders of Him", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 6.87, "conf_low": 5.50, "conf_high": 8.24,
-             "note": "PG-13 drama/romance (Colleen Hoover adaptation); 1,323 trailer comments; Maika Monroe lead; strong trends surge (R7D=145.7)"},
+            {"movie": "Reminders of Him", "studio": "Universal", "predicted_tier": "SMALL", "predicted_ow": 7.99, "conf_low": 6.39, "conf_high": 9.59,
+             "note": "PG-13 drama/romance (Colleen Hoover adaptation); $25M budget; 1,323 trailer comments; Maika Monroe lead; strong trends surge (R7D=145.7)"},
             {"movie": "Undertone", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 6.77, "conf_low": 5.42, "conf_high": 8.13,
              "note": "R-rated horror; 1,261 trailer comments; trends accelerating (R7D=108.5, V7D=+54.6)"},
             {"movie": "Slanted", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 4.31, "conf_low": 3.45, "conf_high": 5.18,
