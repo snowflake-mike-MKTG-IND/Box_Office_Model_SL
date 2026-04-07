@@ -62,6 +62,23 @@ WEEKEND_DATA = [
             {"movie": "The Bride", "studio": "Warner Bros.", "predicted_tier": "SMALL", "predicted_ow": 8.31, "conf_low": 6.65, "conf_high": 9.97, "actual_ow": 7.20, "week": 1, "industry_projection": None, "note": "Maggie Gyllenhaal; horror — actual $7.2M within CI"},
         ]
     },
+    {
+        "weekend": "Weekend 11",
+        "dates": "Mar 13-15, 2026",
+        "model": "V15",
+        "movies": [
+            {"movie": "Reminders of Him", "studio": "Universal", "predicted_tier": "SMALL", "predicted_ow": 7.48, "conf_low": 5.98, "conf_high": 8.98, "actual_ow": 17.98, "week": 1, "industry_projection": None, "note": "Colleen Hoover adaptation; predicted SMALL $7.48M, actual MID $17.98M — massive under-prediction, tier miss"},
+        ]
+    },
+    {
+        "weekend": "Weekend 12",
+        "dates": "Mar 20-22, 2026",
+        "model": "V15",
+        "movies": [
+            {"movie": "Project Hail Mary", "studio": "Amazon MGM", "predicted_tier": "MID", "predicted_ow": 26.42, "conf_low": 21.14, "conf_high": 31.70, "actual_ow": 80.51, "week": 1, "industry_projection": None, "note": "$200M budget; Ryan Gosling; predicted MID $26.42M, actual LARGE+ $80.51M — biggest model miss, tier miss"},
+            {"movie": "Ready or Not 2", "studio": "Disney/Searchlight", "predicted_tier": "SMALL", "predicted_ow": 7.78, "conf_low": 6.22, "conf_high": 9.34, "actual_ow": 9.08, "week": 1, "industry_projection": None, "note": "Horror sequel; predicted SMALL $7.78M, actual SMALL $9.08M — within CI, tier correct"},
+        ]
+    },
 ]
 
 UPCOMING = [
@@ -70,8 +87,6 @@ UPCOMING = [
         "dates": "Mar 13-15, 2026",
         "model": "V15",
         "movies": [
-            {"movie": "Reminders of Him", "studio": "Universal", "predicted_tier": "SMALL", "predicted_ow": 7.48, "conf_low": 5.98, "conf_high": 8.98, "tier_confidence": 98.3,
-             "note": "PG-13 drama/romance (Colleen Hoover adaptation); $25M budget; 1,323 trailer comments; R7D=53.4; V15 day-7 final prediction"},
             {"movie": "Undertone", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 6.77, "conf_low": 5.42, "conf_high": 8.13, "tier_confidence": 96.0,
              "note": "R-rated horror; 1,261 trailer comments; trends accelerating (R7D=108.5, V7D=+54.6)"},
             {"movie": "Slanted", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 4.31, "conf_low": 3.45, "conf_high": 5.18, "tier_confidence": 98.5,
@@ -83,10 +98,6 @@ UPCOMING = [
         "dates": "Mar 20-22, 2026",
         "model": "V15",
         "movies": [
-            {"movie": "Project Hail Mary", "studio": "Amazon MGM", "predicted_tier": "MID", "predicted_ow": 26.42, "conf_low": 21.14, "conf_high": 31.70, "tier_confidence": 67.3,
-             "note": "$200M budget; Ryan Gosling (star power 10); Andy Weir novel adaptation; 11,115 comments; R7D=96.4; V15 day-7 final prediction"},
-            {"movie": "Ready or Not 2", "studio": "Disney/Searchlight", "predicted_tier": "SMALL", "predicted_ow": 7.78, "conf_low": 6.22, "conf_high": 9.34, "tier_confidence": 95.4,
-             "note": "R-rated horror sequel; predecessor OW $28.4M; 3,647 comments; R7D=28.0; V15 day-7 final prediction"},
             {"movie": "Do Not Enter", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 5.16, "conf_low": 4.13, "conf_high": 6.19, "tier_confidence": 98.5,
              "note": "R-rated horror; only 204 comments; minimal Google Trends signal (R7D=25.0)"},
             {"movie": "Marc by Sofia", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 3.06, "conf_low": 2.45, "conf_high": 3.67, "tier_confidence": 98.5,
@@ -154,7 +165,7 @@ st.divider()
 
 st.header("Predicted vs Actual Comparison")
 
-st.caption("All predictions below were made by the V14 model before each film's opening weekend. "
+st.caption("All predictions were made before each film's opening weekend using the model version in production at the time (V14 for W2-W10, V15 for W11+). "
            "Purple bars show pre-release industry consensus projections (sourced from Deadline, THR, etc.).")
 
 fig = go.Figure()
@@ -480,7 +491,7 @@ st.info(
     "**Data Sources & Methodology**\n"
     "- **No data leakage**: Every prediction was generated *before* the film's opening weekend, using the model version in production at that time\n"
     "- **V14 model**: Used for Weekends 2–10 (trained Feb 27, 2026 on 239 films through early 2026)\n"
-    "- **V15 model**: In production since March 8, 2026 — used for Weekend 11+ only\n"
+    "- **V15 model**: In production since March 8, 2026 — used for Weekend 11+ (269 training films, PREDECESSOR_OW_LOG added)\n"
     "- **Industry projections**: Pre-release consensus from Deadline, The Hollywood Reporter, and NRG tracking\n"
     "- **Actuals**: Official box office reporting\n"
     "- **Tier System**: SMALL (<$15M) / MID ($15-50M) / LARGE+ (>$50M)\n"
