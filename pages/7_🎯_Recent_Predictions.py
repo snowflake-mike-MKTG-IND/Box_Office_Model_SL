@@ -104,6 +104,15 @@ UPCOMING = [
              "note": "Drama; near-zero Google Trends; limited awareness — lowest confidence prediction"},
         ]
     },
+    {
+        "weekend": "Weekend 14",
+        "dates": "Apr 10-12, 2026",
+        "model": "V15",
+        "movies": [
+            {"movie": "You, Me & Tuscany", "studio": "Sony", "predicted_tier": "SMALL", "predicted_ow": 4.15, "conf_low": 1.56, "conf_high": 11.07, "tier_confidence": 96.2,
+             "note": "PG-13 rom-com; $30M budget; Halle Bailey star power (2.5); 1,587 YT comments; day -3 prediction"},
+        ]
+    },
 ]
 
 
