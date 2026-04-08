@@ -18,7 +18,7 @@ iteration to this dashboard — Cortex Code accelerated every phase of the ML li
 col1, col2, col3, col4 = st.columns(4)
 col1.metric("Development Time", "~32.5 hrs", "7 active sessions")
 col2.metric("Snowflake Artifacts", "663", "Tables + Views + Procs")
-col3.metric("Model Iterations", "15 versions", "76 experiments")
+col3.metric("Model Iterations", "9 versions", "76 experiments")
 col4.metric("HP Configurations", "104", "Grid + random search")
 
 st.info(
