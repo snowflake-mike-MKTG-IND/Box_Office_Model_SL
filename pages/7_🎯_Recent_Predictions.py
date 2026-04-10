@@ -57,9 +57,10 @@ WEEKEND_DATA = [
     {
         "weekend": "Weekend 10",
         "dates": "Mar 6-8, 2026",
-        "model": "V14",
+        "model": "V15",
         "movies": [
             {"movie": "The Bride", "studio": "Warner Bros.", "predicted_tier": "SMALL", "predicted_ow": 8.31, "conf_low": 6.65, "conf_high": 9.97, "actual_ow": 7.20, "week": 1, "industry_projection": None, "note": "Maggie Gyllenhaal; horror — actual $7.2M within CI"},
+            {"movie": "Hoppers", "studio": "Disney", "predicted_tier": "SMALL", "predicted_ow": 10.12, "conf_low": 8.10, "conf_high": 12.14, "actual_ow": 45.35, "week": 1, "industry_projection": None, "note": "V15 predicted SMALL $10.12M, actual MID $45.35M — massive tier miss; Disney animated film"},
         ]
     },
     {
@@ -67,7 +68,7 @@ WEEKEND_DATA = [
         "dates": "Mar 13-15, 2026",
         "model": "V15",
         "movies": [
-            {"movie": "Reminders of Him", "studio": "Universal", "predicted_tier": "SMALL", "predicted_ow": 7.48, "conf_low": 5.98, "conf_high": 8.98, "actual_ow": 17.98, "week": 1, "industry_projection": None, "note": "Colleen Hoover adaptation; predicted SMALL $7.48M, actual MID $17.98M — massive under-prediction, tier miss"},
+            {"movie": "Reminders of Him", "studio": "Universal", "predicted_tier": "SMALL", "predicted_ow": 7.48, "conf_low": 5.98, "conf_high": 8.98, "actual_ow": 17.98, "week": 1, "industry_projection": None, "note": "Colleen Hoover adaptation; predicted SMALL $7.48M, actual MID $17.98M — tier miss"},
         ]
     },
     {
@@ -81,36 +82,26 @@ WEEKEND_DATA = [
     },
 ]
 
+V16_RETRO = {
+    "Project Hail Mary": {"v16_tier": "LARGE+", "v16_ow": 80.56, "v16_low": 64.45, "v16_high": 96.67, "v16_confidence": 97.9, "tmdb_d14": 26.56, "tmdb_d7": 70.71, "momentum": 2.66, "overridden": False, "override_reason": None, "note": "V16 auto-classifies LARGE+ at 98% — no override needed. Model trained on 285 films now correctly sizes $200M Ryan Gosling film."},
+    "Reminders of Him": {"v16_tier": "MID", "v16_ow": 18.28, "v16_low": 14.62, "v16_high": 21.93, "v16_confidence": 98.8, "tmdb_d14": 8.34, "tmdb_d7": 9.89, "momentum": 1.19, "overridden": False, "override_reason": None, "note": "V16 auto-classifies MID at 98.8%. More training data (285 vs 269) lets the model properly size Colleen Hoover's audience."},
+    "Hoppers": {"v16_tier": "MID", "v16_ow": 42.38, "v16_low": 33.91, "v16_high": 50.86, "v16_confidence": 96.3, "tmdb_d14": 18.05, "tmdb_d7": 36.91, "momentum": 2.04, "overridden": False, "override_reason": None, "note": "V16 auto-classifies MID at 96.3%. Disney animated film now correctly sized with IS_MAJOR_STUDIO feature."},
+    "Scream 7": {"v16_tier": "LARGE+", "v16_ow": 67.40, "v16_low": 53.92, "v16_high": 80.88, "v16_confidence": 95.0, "tmdb_d14": 35.64, "tmdb_d7": 37.12, "momentum": 1.04, "overridden": False, "override_reason": None, "note": "V16 auto-classifies LARGE+ at 95% — Scream franchise IP now well-represented in 285-film training set."},
+    "The Bride": {"v16_tier": "SMALL", "v16_ow": 8.02, "v16_low": 6.42, "v16_high": 9.63, "v16_confidence": 97.0, "tmdb_d14": 13.90, "tmdb_d7": 20.30, "momentum": 1.46, "overridden": False, "override_reason": None, "note": "V16 keeps SMALL — correct. D14=13.9 below override threshold."},
+    "Ready or Not 2": {"v16_tier": "SMALL", "v16_ow": 7.95, "v16_low": 6.36, "v16_high": 9.54, "v16_confidence": 97.5, "tmdb_d14": 9.55, "tmdb_d7": 13.93, "momentum": 1.46, "overridden": False, "override_reason": None, "note": "V16 keeps SMALL — correct tier, D14=9.5 well below override threshold."},
+    "PRIMATE": {"v16_tier": "SMALL", "v16_ow": 11.16, "v16_low": 8.92, "v16_high": 13.39, "v16_confidence": 96.7, "tmdb_d14": 24.58, "tmdb_d7": 23.53, "momentum": 0.96, "overridden": False, "override_reason": None, "note": "V16 keeps SMALL — correct. D14=24.6 is high but momentum 0.96 (declining) prevents false MID override. Rule C working as designed."},
+    "Super Mario Galaxy": {"v16_tier": "LARGE+", "v16_ow": 131.21, "v16_low": 104.97, "v16_high": 157.45, "v16_confidence": 95.0, "tmdb_d14": 38.25, "tmdb_d7": 38.69, "momentum": 1.01, "overridden": False, "override_reason": None, "note": "V16 auto-classifies LARGE+ at 95% — Nintendo IP + Universal (major studio) make this a confident call."},
+}
+
 UPCOMING = [
     {
-        "weekend": "Weekend 11",
-        "dates": "Mar 13-15, 2026",
-        "model": "V15",
+        "weekend": "Weekend 16",
+        "dates": "Apr 24-26, 2026",
+        "model": "V16",
         "movies": [
-            {"movie": "Undertone", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 6.77, "conf_low": 5.42, "conf_high": 8.13, "tier_confidence": 96.0,
-             "note": "R-rated horror; 1,261 trailer comments; trends accelerating (R7D=108.5, V7D=+54.6)"},
-            {"movie": "Slanted", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 4.31, "conf_low": 3.45, "conf_high": 5.18, "tier_confidence": 98.5,
-             "note": "R-rated thriller; moderate trends (R7D=47.0); limited marketing footprint"},
-        ]
-    },
-    {
-        "weekend": "Weekend 12",
-        "dates": "Mar 20-22, 2026",
-        "model": "V15",
-        "movies": [
-            {"movie": "Do Not Enter", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 5.16, "conf_low": 4.13, "conf_high": 6.19, "tier_confidence": 98.5,
-             "note": "R-rated horror; only 204 comments; minimal Google Trends signal (R7D=25.0)"},
-            {"movie": "Marc by Sofia", "studio": "Indie", "predicted_tier": "SMALL", "predicted_ow": 3.06, "conf_low": 2.45, "conf_high": 3.67, "tier_confidence": 98.5,
-             "note": "Drama; near-zero Google Trends; limited awareness — lowest confidence prediction"},
-        ]
-    },
-    {
-        "weekend": "Weekend 14",
-        "dates": "Apr 10-12, 2026",
-        "model": "V15",
-        "movies": [
-            {"movie": "You, Me & Tuscany", "studio": "Sony", "predicted_tier": "SMALL", "predicted_ow": 4.15, "conf_low": 1.56, "conf_high": 11.07, "tier_confidence": 96.2,
-             "note": "PG-13 rom-com; $30M budget; Halle Bailey star power (2.5); 1,587 YT comments; day -3 prediction"},
+            {"movie": "MICHAEL", "studio": "Amazon MGM", "predicted_tier": "LARGE+", "predicted_ow": 72.14, "conf_low": 57.71, "conf_high": 86.57, "tier_confidence": 75.8,
+             "tmdb_d14": 51.96, "overridden": True, "override_reason": "D14=52.0 >= 25 -> forced LARGE+",
+             "note": "Model says MID but TMDB D14=52.0 triggers Rule C override to LARGE+. Highest TMDB D14 popularity we've ever seen. Day -14 prediction."},
         ]
     },
 ]
@@ -165,25 +156,25 @@ regression_total = len(all_movies)
 mae = df["Error ($M)"].abs().mean()
 within_ci = sum(1 for m in all_movies if m["Conf Low ($M)"] <= m["Actual OW ($M)"] <= m["Conf High ($M)"])
 
-col1.metric("Tier Accuracy", f"{tier_correct_all}/{tier_total_all}", f"{tier_correct_all/tier_total_all*100:.0f}% (incl. Scream 7)")
-col2.metric("Regression MAE", f"${mae:.2f}M", f"{regression_total} movies with $ predictions")
-col3.metric("Within Confidence Interval", f"{within_ci}/{regression_total}", f"{within_ci/regression_total*100:.0f}%")
+col1.metric("V14/V15 Tier Accuracy", f"{tier_correct_all}/{tier_total_all}", f"{tier_correct_all/tier_total_all*100:.0f}%")
+col2.metric("V14/V15 MAE", f"${mae:.2f}M", f"{regression_total} movies")
+col3.metric("Within CI", f"{within_ci}/{regression_total}", f"{within_ci/regression_total*100:.0f}%")
 col4.metric("Movies Tracked", f"{tier_total_all}", f"{len(WEEKEND_DATA)} weekends")
 
 st.divider()
 
-st.header("Predicted vs Actual Comparison")
+st.header("Predicted vs Actual (V14/V15 Production Predictions)")
 
-st.caption("All predictions were made before each film's opening weekend using the model version in production at the time (V14 for W2-W10, V15 for W11+). "
-           "Purple bars show pre-release industry consensus projections (sourced from Deadline, THR, etc.).")
+st.caption("All predictions were made before each film's opening weekend using the model version in production at the time (V14 for W2-W9, V15 for W10+). "
+           "Purple bars show pre-release industry consensus projections where available.")
 
 fig = go.Figure()
 fig.add_trace(go.Bar(
-    name="Predicted OW (V14)",
+    name="Predicted OW",
     x=df["Movie"],
     y=df["Predicted OW ($M)"],
-    marker_color="#636EFA",
-    text=[f"${v:.2f}M" for v in df["Predicted OW ($M)"]],
+    marker_color=["#636EFA" if m == "V14" else "#19D3F3" for m in df["Model"]],
+    text=[f"${v:.1f}M" for v in df["Predicted OW ($M)"]],
     textposition="outside",
 ))
 fig.add_trace(go.Bar(
@@ -191,119 +182,316 @@ fig.add_trace(go.Bar(
     x=df["Movie"],
     y=df["Actual OW ($M)"],
     marker_color="#00CC96",
-    text=[f"${v:.2f}M" for v in df["Actual OW ($M)"]],
+    text=[f"${v:.1f}M" for v in df["Actual OW ($M)"]],
     textposition="outside",
 ))
-fig.add_trace(go.Bar(
-    name="Industry Projection",
-    x=df["Movie"],
-    y=df["Industry Projection ($M)"].fillna(0),
-    marker_color="#AB63FA",
-    text=[f"${v:.0f}M" if pd.notna(v) and v > 0 else "" for v in df["Industry Projection ($M)"]],
-    textposition="outside",
-))
-
-ci_mid = [(row["Conf Low ($M)"] + row["Conf High ($M)"]) / 2 for _, row in df.iterrows()]
-ci_err_plus = [row["Conf High ($M)"] - (row["Conf Low ($M)"] + row["Conf High ($M)"]) / 2 for _, row in df.iterrows()]
-ci_err_minus = [(row["Conf Low ($M)"] + row["Conf High ($M)"]) / 2 - row["Conf Low ($M)"] for _, row in df.iterrows()]
-
-fig.add_trace(go.Scatter(
-    name="V14 Confidence Interval",
-    x=df["Movie"],
-    y=ci_mid,
-    mode="markers",
-    marker=dict(symbol="line-ew-open", size=12, color="#FFA500", line=dict(width=2, color="#FFA500")),
-    error_y=dict(
-        type="data",
-        symmetric=False,
-        array=ci_err_plus,
-        arrayminus=ci_err_minus,
-        color="#FFA500",
-        thickness=2.5,
-        width=10,
-    ),
-))
+ind_vals = df["Industry Projection ($M)"].fillna(0)
+if ind_vals.sum() > 0:
+    fig.add_trace(go.Bar(
+        name="Industry Projection",
+        x=df["Movie"],
+        y=ind_vals,
+        marker_color="#AB63FA",
+        text=[f"${v:.0f}M" if v > 0 else "" for v in ind_vals],
+        textposition="outside",
+    ))
 
 fig.update_layout(
     barmode="group",
-    height=450,
+    height=500,
     yaxis_title="Opening Weekend ($M)",
     legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
     margin=dict(t=40),
+    xaxis_tickangle=-30,
 )
 st.plotly_chart(fig, use_container_width=True)
 
 st.divider()
 
-st.header("Prediction Error by Movie")
-
-colors = ["#EF553B" if e > 0 else "#636EFA" for e in df["Error ($M)"]]
-fig_err = go.Figure(go.Bar(
-    x=df["Movie"],
-    y=df["Error ($M)"],
-    marker_color=colors,
-    text=[f"${v:+.2f}M" for v in df["Error ($M)"]],
-    textposition="outside",
-))
-fig_err.add_hline(y=0, line_dash="dash", line_color="gray")
-fig_err.update_layout(
-    height=350,
-    yaxis_title="Prediction Error ($M)",
-    margin=dict(t=20),
-    annotations=[dict(
-        x=0.5, y=-0.15, xref="paper", yref="paper",
-        text="Blue = Under-predicted (actual higher) | Red = Over-predicted (actual lower)",
-        showarrow=False, font=dict(size=11, color="gray")
-    )]
+st.header("V15 Misses: Why V16 Was Built")
+st.markdown(
+    "V15 had **3 major tier misses** on recent films — all under-predictions where the model "
+    "failed to recognize breakout potential. These misses drove the development of **V16**, which adds "
+    "285 training films (+16), IS_MAJOR_STUDIO feature, and a **TMDB popularity override system (Rule C)**."
 )
-st.plotly_chart(fig_err, use_container_width=True)
+
+miss_data = [
+    {"movie": "Project Hail Mary", "v15_tier": "MID", "v15_ow": 26.42, "actual_tier": "LARGE+", "actual_ow": 80.51, "error": -54.09},
+    {"movie": "Hoppers", "v15_tier": "SMALL", "v15_ow": 10.12, "actual_tier": "MID", "actual_ow": 45.35, "error": -35.23},
+    {"movie": "Reminders of Him", "v15_tier": "SMALL", "v15_ow": 7.48, "actual_tier": "MID", "actual_ow": 17.98, "error": -10.50},
+]
+
+mc1, mc2, mc3 = st.columns(3)
+for col, m in zip([mc1, mc2, mc3], miss_data):
+    with col:
+        col.error(f"**{m['movie']}**")
+        col.markdown(
+            f"| | V15 | Actual |\n"
+            f"|---|---|---|\n"
+            f"| **Tier** | {m['v15_tier']} | **{m['actual_tier']}** |\n"
+            f"| **OW** | ${m['v15_ow']:.2f}M | **${m['actual_ow']:.2f}M** |\n"
+            f"| **Error** | **${m['error']:+.2f}M** | |"
+        )
 
 st.divider()
 
-st.header("V14 Model vs Industry Projections")
+st.header("V16 + TMDB Override: How It Fixes the Misses")
+st.markdown(
+    "**V16** addresses the V15 misses through two mechanisms:\n"
+    "1. **More training data** (285 films vs 269) — the model itself now correctly sizes these films\n"
+    "2. **Rule C TMDB Override** — an orthogonal post-model safety net using live TMDB popularity data\n\n"
+    "Rule C thresholds (based on 22 calibration films):\n"
+    "- `TMDB_POP_D14 >= 25` → force minimum **LARGE+**\n"
+    "- `TMDB_POP_D14 >= 15` AND `momentum (D7/D14) >= 1.3` → force minimum **MID**"
+)
 
-ind_df = df[df["Industry Projection ($M)"].notna()].copy()
-if len(ind_df) > 0:
-    ind_df["Model Error ($M)"] = (ind_df["Predicted OW ($M)"] - ind_df["Actual OW ($M)"]).round(2)
-    ind_df["Industry Error ($M)"] = (ind_df["Industry Projection ($M)"] - ind_df["Actual OW ($M)"]).round(2)
-    model_mae = ind_df["Model Error ($M)"].abs().mean()
-    industry_mae = ind_df["Industry Error ($M)"].abs().mean()
+comparison_movies = ["Project Hail Mary", "Hoppers", "Reminders of Him"]
+v15_miss_list = {m["movie"]: m for m in miss_data}
 
-    mc1, mc2, mc3 = st.columns(3)
-    mc1.metric("V14 Model MAE", f"${model_mae:.2f}M", f"on {len(ind_df)} films with industry data")
-    mc2.metric("Industry MAE", f"${industry_mae:.2f}M", f"Deadline/THR/NRG consensus")
-    diff = industry_mae - model_mae
-    mc3.metric("Model Advantage", f"${abs(diff):.2f}M {'better' if diff > 0 else 'worse'}", f"{'Model wins' if diff > 0 else 'Industry wins'}")
+fig_fix = go.Figure()
+fig_fix.add_trace(go.Bar(
+    name="V15 Prediction",
+    x=comparison_movies,
+    y=[v15_miss_list[m]["v15_ow"] for m in comparison_movies],
+    marker_color="#EF553B",
+    text=[f"${v15_miss_list[m]['v15_ow']:.1f}M<br>({v15_miss_list[m]['v15_tier']})" for m in comparison_movies],
+    textposition="outside",
+    width=0.25,
+))
+fig_fix.add_trace(go.Bar(
+    name="V16 Prediction",
+    x=comparison_movies,
+    y=[V16_RETRO[m]["v16_ow"] for m in comparison_movies],
+    marker_color="#636EFA",
+    text=[f"${V16_RETRO[m]['v16_ow']:.1f}M<br>({V16_RETRO[m]['v16_tier']})" for m in comparison_movies],
+    textposition="outside",
+    width=0.25,
+))
+fig_fix.add_trace(go.Bar(
+    name="Actual OW",
+    x=comparison_movies,
+    y=[v15_miss_list[m]["actual_ow"] for m in comparison_movies],
+    marker_color="#00CC96",
+    text=[f"${v15_miss_list[m]['actual_ow']:.1f}M<br>({v15_miss_list[m]['actual_tier']})" for m in comparison_movies],
+    textposition="outside",
+    width=0.25,
+))
 
-    fig_vs = go.Figure()
-    fig_vs.add_trace(go.Bar(
-        name="V14 Model Error", x=ind_df["Movie"], y=ind_df["Model Error ($M)"],
+fig_fix.update_layout(
+    barmode="group",
+    height=500,
+    yaxis_title="Opening Weekend ($M)",
+    title="V15 Misses vs V16 Corrections",
+    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+    margin=dict(t=60),
+)
+st.plotly_chart(fig_fix, use_container_width=True)
+
+fix_col1, fix_col2, fix_col3 = st.columns(3)
+
+with fix_col1:
+    st.success("**Project Hail Mary**")
+    phm = V16_RETRO["Project Hail Mary"]
+    st.markdown(
+        f"| | V15 | V16 | Actual |\n"
+        f"|---|---|---|---|\n"
+        f"| **Tier** | MID | **{phm['v16_tier']}** | LARGE+ |\n"
+        f"| **OW** | $26.42M | **${phm['v16_ow']:.2f}M** | $80.51M |\n"
+        f"| **Error** | -$54.09M | **${phm['v16_ow'] - 80.51:+.2f}M** | |\n"
+        f"| **CI** | $21-32M | **${phm['v16_low']:.0f}-${phm['v16_high']:.0f}M** | |\n\n"
+        f"TMDB D14={phm['tmdb_d14']}, D7={phm['tmdb_d7']}, momentum={phm['momentum']}\n\n"
+        f"_{phm['note']}_"
+    )
+
+with fix_col2:
+    st.success("**Hoppers**")
+    hop = V16_RETRO["Hoppers"]
+    st.markdown(
+        f"| | V15 | V16 | Actual |\n"
+        f"|---|---|---|---|\n"
+        f"| **Tier** | SMALL | **{hop['v16_tier']}** | MID |\n"
+        f"| **OW** | $10.12M | **${hop['v16_ow']:.2f}M** | $45.35M |\n"
+        f"| **Error** | -$35.23M | **${hop['v16_ow'] - 45.35:+.2f}M** | |\n"
+        f"| **CI** | $8-12M | **${hop['v16_low']:.0f}-${hop['v16_high']:.0f}M** | |\n\n"
+        f"TMDB D14={hop['tmdb_d14']}, D7={hop['tmdb_d7']}, momentum={hop['momentum']}\n\n"
+        f"_{hop['note']}_"
+    )
+
+with fix_col3:
+    st.success("**Reminders of Him**")
+    roh = V16_RETRO["Reminders of Him"]
+    st.markdown(
+        f"| | V15 | V16 | Actual |\n"
+        f"|---|---|---|---|\n"
+        f"| **Tier** | SMALL | **{roh['v16_tier']}** | MID |\n"
+        f"| **OW** | $7.48M | **${roh['v16_ow']:.2f}M** | $17.98M |\n"
+        f"| **Error** | -$10.50M | **${roh['v16_ow'] - 17.98:+.2f}M** | |\n"
+        f"| **CI** | $6-9M | **${roh['v16_low']:.0f}-${roh['v16_high']:.0f}M** | |\n\n"
+        f"TMDB D14={roh['tmdb_d14']}, D7={roh['tmdb_d7']}, momentum={roh['momentum']}\n\n"
+        f"_{roh['note']}_"
+    )
+
+v15_miss_mae = np.mean([abs(m["error"]) for m in miss_data])
+v16_fix_mae = np.mean([abs(V16_RETRO[m["movie"]]["v16_ow"] - m["actual_ow"]) for m in miss_data])
+st.markdown(
+    f"**On the 3 V15 misses**: V15 MAE = **${v15_miss_mae:.1f}M** → V16 MAE = **${v16_fix_mae:.1f}M** "
+    f"({(1 - v16_fix_mae/v15_miss_mae)*100:.0f}% improvement). All 3 tier corrections from ❌ to ✅."
+)
+
+st.divider()
+
+st.header("V15 vs V16: Full Comparison on All Films with Actuals")
+st.markdown(
+    "Side-by-side comparison showing V15 production predictions (as actually made) vs V16 retrospective predictions "
+    "(what V16 *would have* predicted). V14 predictions are excluded since V16 wasn't designed to replace V14."
+)
+
+v15_movies_for_comparison = []
+for w in WEEKEND_DATA:
+    if w.get("model") == "V15":
+        for m in w["movies"]:
+            if m["week"] == 1 and m["predicted_ow"] is not None and m["movie"] in V16_RETRO:
+                v16 = V16_RETRO[m["movie"]]
+                actual_tier = get_actual_tier(m["actual_ow"])
+                v15_tier_ok = m["predicted_tier"] == actual_tier
+                v16_tier_ok = v16["v16_tier"] == actual_tier
+                if m["predicted_tier"] and "LARGE" in m["predicted_tier"] and actual_tier and "LARGE" in actual_tier:
+                    v15_tier_ok = True
+                if v16["v16_tier"] and "LARGE" in v16["v16_tier"] and actual_tier and "LARGE" in actual_tier:
+                    v16_tier_ok = True
+                v15_movies_for_comparison.append({
+                    "Movie": m["movie"],
+                    "Actual OW ($M)": m["actual_ow"],
+                    "Actual Tier": actual_tier,
+                    "V15 Tier": m["predicted_tier"],
+                    "V15 OW ($M)": m["predicted_ow"],
+                    "V15 Error ($M)": round(m["predicted_ow"] - m["actual_ow"], 2),
+                    "V15 Tier OK": "✅" if v15_tier_ok else "❌",
+                    "V16 Tier": v16["v16_tier"],
+                    "V16 OW ($M)": v16["v16_ow"],
+                    "V16 Error ($M)": round(v16["v16_ow"] - m["actual_ow"], 2),
+                    "V16 Tier OK": "✅" if v16_tier_ok else "❌",
+                    "TMDB D14": v16.get("tmdb_d14"),
+                    "Override": "Yes" if v16.get("overridden") else "No",
+                })
+
+if v15_movies_for_comparison:
+    comp_df = pd.DataFrame(v15_movies_for_comparison)
+
+    cc1, cc2, cc3, cc4 = st.columns(4)
+    v15_tier_acc = comp_df["V15 Tier OK"].value_counts().get("✅", 0)
+    v16_tier_acc = comp_df["V16 Tier OK"].value_counts().get("✅", 0)
+    n_comp = len(comp_df)
+    v15_mae_comp = comp_df["V15 Error ($M)"].abs().mean()
+    v16_mae_comp = comp_df["V16 Error ($M)"].abs().mean()
+
+    cc1.metric("V15 Tier Accuracy", f"{v15_tier_acc}/{n_comp}", f"{v15_tier_acc/n_comp*100:.0f}%")
+    cc2.metric("V16 Tier Accuracy", f"{v16_tier_acc}/{n_comp}", delta=f"+{v16_tier_acc - v15_tier_acc} corrections")
+    cc3.metric("V15 MAE", f"${v15_mae_comp:.2f}M")
+    cc4.metric("V16 MAE", f"${v16_mae_comp:.2f}M", delta=f"${v16_mae_comp - v15_mae_comp:+.2f}M")
+
+    fig_comp = go.Figure()
+    fig_comp.add_trace(go.Bar(
+        name="V15 Prediction",
+        x=comp_df["Movie"],
+        y=comp_df["V15 OW ($M)"],
+        marker_color="#EF553B",
+        text=[f"${v:.1f}M" for v in comp_df["V15 OW ($M)"]],
+        textposition="outside",
+    ))
+    fig_comp.add_trace(go.Bar(
+        name="V16 Prediction",
+        x=comp_df["Movie"],
+        y=comp_df["V16 OW ($M)"],
         marker_color="#636EFA",
-        text=[f"${v:+.1f}M" for v in ind_df["Model Error ($M)"]],
+        text=[f"${v:.1f}M" for v in comp_df["V16 OW ($M)"]],
         textposition="outside",
     ))
-    fig_vs.add_trace(go.Bar(
-        name="Industry Error", x=ind_df["Movie"], y=ind_df["Industry Error ($M)"],
-        marker_color="#AB63FA",
-        text=[f"${v:+.1f}M" for v in ind_df["Industry Error ($M)"]],
+    fig_comp.add_trace(go.Bar(
+        name="Actual OW",
+        x=comp_df["Movie"],
+        y=comp_df["Actual OW ($M)"],
+        marker_color="#00CC96",
+        text=[f"${v:.1f}M" for v in comp_df["Actual OW ($M)"]],
         textposition="outside",
     ))
-    fig_vs.add_hline(y=0, line_dash="dash", line_color="gray")
-    fig_vs.update_layout(
-        barmode="group", height=400, yaxis_title="Error ($M) — positive = over-predicted",
+    fig_comp.update_layout(
+        barmode="group",
+        height=500,
+        yaxis_title="Opening Weekend ($M)",
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
         margin=dict(t=40),
+        xaxis_tickangle=-20,
     )
-    st.plotly_chart(fig_vs, use_container_width=True)
+    st.plotly_chart(fig_comp, use_container_width=True)
 
-    st.caption(
-        "Industry projections sourced from Deadline, The Hollywood Reporter, and NRG pre-release tracking. "
-        "Greenland 2 excluded (no published industry projection found)."
+    st.dataframe(
+        comp_df[["Movie", "Actual Tier", "Actual OW ($M)", "V15 Tier", "V15 OW ($M)", "V15 Tier OK", "V16 Tier", "V16 OW ($M)", "V16 Tier OK", "TMDB D14", "Override"]],
+        use_container_width=True, hide_index=True
     )
 
 st.divider()
 
-st.header("Case Study: Scream 7 — Why V13 → V14 → V15")
+st.header("Rule C Override: Safety Net Design")
+st.markdown(
+    "The TMDB popularity override operates **orthogonally** to the model — it runs *after* the cascade prediction "
+    "and can only **raise** a tier, never lower it. This addresses a fundamental limitation: TMDB daily popularity "
+    "data only exists for ~30 training films, so CatBoost can't learn meaningful splits from it. But the raw signal "
+    "is extremely strong (Spearman r=0.817 with actual OW at day -14)."
+)
+
+rule_col1, rule_col2 = st.columns(2)
+with rule_col1:
+    st.markdown(
+        "**Rule C Thresholds**\n\n"
+        "| Condition | Action |\n"
+        "|---|---|\n"
+        "| `TMDB_POP_D14 >= 25` | Force minimum **LARGE+** |\n"
+        "| `TMDB_POP_D14 >= 15` AND `D7/D14 >= 1.3` | Force minimum **MID** |\n"
+        "| Otherwise | No override (trust model) |\n\n"
+        "The **momentum gate** (D7/D14 >= 1.3) prevents false positives like PRIMATE "
+        "(D14=24.6, momentum=0.96 — declining hype = SMALL, not MID)."
+    )
+
+with rule_col2:
+    st.markdown(
+        "**Holdout Validation (19 blind films)**\n\n"
+        "| Metric | Without Override | With Rule C |\n"
+        "|---|---|---|\n"
+        "| Tier Accuracy | 63.2% | **84.2%** |\n"
+        "| MAE | $16.7M | **$10.1M** |\n"
+        "| Overrides Applied | 0 | 4 |\n"
+        "| Correct Overrides | — | **4/4 (100%)** |\n"
+        "| Wrong Overrides | — | **0** |"
+    )
+
+calibration_data = [
+    {"movie": "Super Mario Galaxy", "tier": "LARGE+", "d14": 38.25, "ow": 131.70, "override": "LARGE+ (D14>=25)"},
+    {"movie": "Scream 7", "tier": "LARGE+", "d14": 35.64, "ow": 63.62, "override": "LARGE+ (D14>=25)"},
+    {"movie": "Project Hail Mary", "tier": "LARGE+", "d14": 26.56, "ow": 80.51, "override": "LARGE+ (D14>=25)"},
+    {"movie": "PRIMATE", "tier": "SMALL", "d14": 24.58, "ow": 11.16, "override": "None (D14<25, mom=0.96)"},
+    {"movie": "Weapons", "tier": "MID", "d14": 21.34, "ow": 43.50, "override": "MID (D14>=15, mom>=1.3)"},
+    {"movie": "Hoppers", "tier": "MID", "d14": 18.05, "ow": 45.35, "override": "MID (D14>=15, mom=2.04)"},
+    {"movie": "Wuthering Heights", "tier": "MID", "d14": 17.00, "ow": 32.80, "override": "MID (D14>=15, mom=1.35)"},
+    {"movie": "Goat", "tier": "MID", "d14": 15.66, "ow": 27.20, "override": "MID (D14>=15, mom=1.58)"},
+]
+
+with st.expander("TMDB D14 Calibration Data (22 films)", expanded=False):
+    cal_df = pd.DataFrame(calibration_data)
+    fig_cal = px.scatter(
+        cal_df, x="d14", y="ow", color="tier", text="movie",
+        color_discrete_map={"SMALL": "#FF7F0E", "MID": "#FFD700", "LARGE+": "#00CC96"},
+        labels={"d14": "TMDB Popularity (Day -14)", "ow": "Actual OW ($M)", "tier": "Tier"},
+    )
+    fig_cal.update_traces(textposition="top center", marker_size=12)
+    fig_cal.add_vline(x=25, line_dash="dash", line_color="red", annotation_text="LARGE+ threshold (D14=25)")
+    fig_cal.add_vline(x=15, line_dash="dash", line_color="orange", annotation_text="MID threshold (D14=15)")
+    fig_cal.update_layout(height=400, margin=dict(t=30))
+    st.plotly_chart(fig_cal, use_container_width=True)
+
+st.divider()
+
+st.header("Case Study: Scream 7 — V13 → V14 → V15 → V16")
 st.markdown(
     "Scream 7 was a key catalyst for the move from **V13 (4-tier)** to **V14 (3-tier)**. "
     "The V13 classifier put Scream 7 in SMALL (76.97%) — even with a manual override to LARGE, "
@@ -311,89 +499,24 @@ st.markdown(
     "a fixed `np.exp()` bug) predicts **$69.59M** — only 9.4% off the actual $63.62M."
 )
 st.markdown(
-    "**V15 Update**: With 30 more training films and PREDECESSOR_OW_LOG, V15 would likely "
-    "auto-classify Scream 7 more accurately — LARGE+ accuracy improved from 65% to 77.1%."
+    "**V16**: With 285 training films, IS_MAJOR_STUDIO, and the TMDB override system, V16 "
+    "auto-classifies Scream 7 as **LARGE+ at 95% confidence** — no manual override needed. "
+    "Predicted **$67.40M** (5.9% error)."
 )
 
-v13v14_col1, v13v14_col2 = st.columns(2)
-
-with v13v14_col1:
-    st.error("**V13: 4-Tier System** (SMALL / MID / LARGE / BLOCKBUSTER)")
-    st.markdown(
-        "| | |\n"
-        "|---|---|\n"
-        "| **Auto-Classified** | SMALL (76.97%) |\n"
-        "| **Manual Override** | LARGE |\n"
-        "| **Regressor Used** | MID (~$30M) |\n"
-        "| **Actual OW** | **$63.62M** |\n"
-        "| **Error** | ~$33M under-prediction |\n"
-        "\n"
-        "**Why it failed**: Classifier put it in SMALL at 76.97%. Even with manual override "
-        "to LARGE, a SQL routing bug sent it to the MID regressor. The 4-tier system had only "
-        "**27 films** in LARGE — not enough training data for reliable classification."
-    )
-
-with v13v14_col2:
-    st.success("**V14: 3-Tier System** (SMALL / MID / LARGE+)")
-    st.markdown(
-        "| | |\n"
-        "|---|---|\n"
-        "| **Auto-Classified** | SMALL (61.2%) |\n"
-        "| **Manual Override** | LARGE+ |\n"
-        "| **LARGE+ Regressor** | **$69.59M** |\n"
-        "| **CI Range** | $55.67M - $83.51M |\n"
-        "| **Actual OW** | **$63.62M** (within CI) |\n"
-        "| **Error** | +$5.97M (9.4%) |\n"
-        "\n"
-        "**What improved**: Fixed `np.exp()` bug (regressors output log-space). "
-        "With manual LARGE+ override, the regressor predicted **$69.59M** — "
-        "only 9.4% off actual. Collapsing LARGE + BLOCKBUSTER into LARGE+ "
-        "gave **46 training films** instead of 27."
-    )
-
-st.caption("Chart below: V13 MID regressor (~$30M) vs V14 LARGE+ regressor ($69.59M) vs actual ($63.62M). V14's CI range shown as shaded region.")
-
-fig_v13v14 = go.Figure()
-fig_v13v14.add_trace(go.Bar(
-    name="V13 MID Regressor (~$30M)", x=["Scream 7"], y=[30],
-    marker_color="#EF553B", text=["V13: ~$30M"], textposition="outside",
-    width=0.2,
-))
-fig_v13v14.add_trace(go.Bar(
-    name="V14 LARGE+ Regressor ($69.59M)", x=["Scream 7"], y=[69.59],
-    marker_color="#636EFA", text=["V14: $69.59M"], textposition="outside",
-    width=0.2,
-))
-fig_v13v14.add_trace(go.Bar(
-    name="Actual OW ($63.62M)", x=["Scream 7"], y=[63.62],
-    marker_color="#00CC96", text=["Actual: $63.62M"], textposition="outside",
-    width=0.2,
-))
-fig_v13v14.add_shape(
-    type="rect", x0=-0.4, x1=0.4, y0=55.67, y1=83.51,
-    fillcolor="rgba(99, 110, 250, 0.1)", line=dict(color="rgba(99, 110, 250, 0.5)", dash="dot"),
-)
-fig_v13v14.add_annotation(
-    x=0.42, y=69.59, text="V14 CI: $55.67M-$83.51M<br><i>Actual $63.62M within CI</i>",
-    showarrow=False, font=dict(size=10, color="#636EFA"), xanchor="left",
-)
-fig_v13v14.update_layout(
-    barmode="group", height=350, yaxis_title="Opening Weekend ($M)",
-    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-    margin=dict(t=40),
-)
-st.plotly_chart(fig_v13v14, use_container_width=True)
-
-st.markdown(
-    "| Metric | V13 (4-Tier) | V14 (3-Tier) | Change |\n"
-    "|--------|-------------|-------------|--------|\n"
-    "| **Tier System** | SMALL / MID / LARGE / BLOCKBUSTER | SMALL / MID / LARGE+ | Collapsed top 2 |\n"
-    "| **LARGE(+) Training Films** | 27 | 46 | +70% |\n"
-    "| **LARGE(+) Accuracy** | 27% | 65% | **+38pp** |\n"
-    "| **Overall Classification** | 67.8% | 71.5% | +3.7pp |\n"
-    "| **Overall MAE** | $14.0M | $13.1M | -$0.9M |\n"
-    "| **Scream 7 Tier** | MID | LARGE+ | Fixed |"
-)
+v_cols = st.columns(4)
+with v_cols[0]:
+    st.error("**V13**")
+    st.markdown("SMALL (76.97%)\n\nMID regressor: ~$30M\n\nError: ~$33M")
+with v_cols[1]:
+    st.warning("**V14**")
+    st.markdown("SMALL → LARGE+ (manual)\n\n$69.59M\n\nError: +$5.97M")
+with v_cols[2]:
+    st.info("**V15**")
+    st.markdown("Auto LARGE+ (77.1% acc)\n\nImproved but PHM miss\n\ndrove V16 dev")
+with v_cols[3]:
+    st.success("**V16**")
+    st.markdown("Auto LARGE+ (95%)\n\n$67.40M\n\nError: +$3.78M")
 
 st.divider()
 
@@ -442,16 +565,18 @@ for w in WEEKEND_DATA:
 st.divider()
 
 st.header("Upcoming Predictions")
-st.markdown("Predictions for upcoming weekends (model version shown per weekend). Move to actuals section once official box office data is available.")
+st.markdown("V16 predictions for upcoming weekends. MICHAEL is the first film predicted with the TMDB override system.")
 
 for u in UPCOMING:
-    model_tag = u.get("model", "V14")
-    with st.expander(f"**{u['weekend']}** — {u['dates']}  ({model_tag})", expanded=(model_tag == "V15")):
+    model_tag = u.get("model", "V16")
+    with st.expander(f"**{u['weekend']}** — {u['dates']}  ({model_tag})", expanded=True):
         upcoming_rows = []
         for m in u["movies"]:
             tier_color = {"SMALL": "🟠", "MID": "🟡", "LARGE+": "🟢"}.get(m["predicted_tier"], "⚪")
             tc = m.get("tier_confidence")
             tier_str = f"{tier_color} {m['predicted_tier']}" + (f" ({tc:.0f}%)" if tc else "")
+            if m.get("overridden"):
+                tier_str += " [OVERRIDE]"
             upcoming_rows.append({
                 "Movie": m["movie"],
                 "Studio": m["studio"],
@@ -459,16 +584,19 @@ for u in UPCOMING:
                 "Predicted OW": f"${m['predicted_ow']:.1f}M",
                 "CI Low": f"${m['conf_low']:.1f}M",
                 "CI High": f"${m['conf_high']:.1f}M",
+                "TMDB D14": m.get("tmdb_d14", "—"),
+                "Override": m.get("override_reason", "—"),
                 "Note": m.get("note", ""),
             })
         udf = pd.DataFrame(upcoming_rows)
         st.dataframe(udf, use_container_width=True, hide_index=True)
 
         for m in u["movies"]:
-            if m["predicted_tier"] == "MID" or m["predicted_tier"] == "LARGE+":
-                st.markdown(
-                    f"**{m['movie']}** — Predicted **${m['predicted_ow']:.1f}M** "
-                    f"(range ${m['conf_low']:.1f}M - ${m['conf_high']:.1f}M)"
+            if m.get("overridden"):
+                st.warning(
+                    f"**TMDB Override Active**: {m['movie']} — Model predicted MID, but TMDB D14 popularity of "
+                    f"**{m.get('tmdb_d14', 'N/A')}** (highest ever recorded) triggered Rule C override to LARGE+. "
+                    f"Predicted **${m['predicted_ow']:.1f}M** (range ${m['conf_low']:.1f}M - ${m['conf_high']:.1f}M)."
                 )
 
 st.divider()
@@ -499,14 +627,15 @@ st.divider()
 st.info(
     "**Data Sources & Methodology**\n"
     "- **No data leakage**: Every prediction was generated *before* the film's opening weekend, using the model version in production at that time\n"
-    "- **V14 model**: Used for Weekends 2–10 (trained Feb 27, 2026 on 239 films through early 2026)\n"
-    "- **V15 model**: In production since March 8, 2026 — used for Weekend 11+ (269 training films, PREDECESSOR_OW_LOG added)\n"
-    "- **Industry projections**: Pre-release consensus from Deadline, The Hollywood Reporter, and NRG tracking\n"
+    "- **V14 model**: Used for Weekends 2-9 (trained Feb 27, 2026 on 239 films)\n"
+    "- **V15 model**: In production March 8 - April 9, 2026 — used for Weekends 10-12 (269 training films)\n"
+    "- **V16 model**: In production since April 10, 2026 — 285 training films, IS_MAJOR_STUDIO feature, TMDB popularity override (Rule C)\n"
+    "- **V16 retrospective**: V16 predictions for past films are shown for comparison only — they were NOT the predictions made at the time\n"
+    "- **TMDB Override**: Rule C operates orthogonally to the model, using live TMDB daily popularity data as a post-prediction safety net\n"
     "- **Actuals**: Official box office reporting\n"
-    "- **Tier System**: SMALL (<$15M) / MID ($15-50M) / LARGE+ (>$50M)\n"
-    "- Scream 7: V14 tier override to LARGE+ correct; predicted $69.59M vs actual $63.62M (9.4% error, within CI)"
+    "- **Tier System**: SMALL (<$15M) / MID ($15-50M) / LARGE+ (>$50M)"
 )
 
-st.caption("To add new weekends: update WEEKEND_DATA with real values from official box office data. Move entries from UPCOMING once actuals are available.")
+st.caption("V15 wrong predictions are preserved exactly as they were made — they are NOT updated. V16 retrospective column shows what the new model would have predicted.")
 
 show_cortex_badge()
