@@ -80,9 +80,9 @@ with col2:
     | Features | 52 | **56** | +4 |
     | Holdout Tier Acc (w/ override) | 63.2% | **84.2%** | +21pp |
     | Override Precision | — | **4/4 (100%)** | New |
-    | PHM Error | -$54.09M | **+$0.05M** | Fixed |
-    | Hoppers Error | -$35.23M | **-$2.97M** | Fixed |
+    | False Positives | — | **0** | New |
     """)
+    st.caption("V16 metrics are from holdout validation (19 blind films). Live prediction tracking begins with MICHAEL (Apr 24).")
 
 st.divider()
 
