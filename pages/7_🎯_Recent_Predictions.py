@@ -84,13 +84,33 @@ WEEKEND_DATA = [
 
 UPCOMING = [
     {
+        "weekend": "Weekend 15",
+        "dates": "Apr 17-19, 2026",
+        "model": "V16",
+        "movies": [
+            {"movie": "Lee Cronin's The Mummy", "studio": "Universal", "predicted_tier": "SMALL", "predicted_ow": 8.63, "conf_low": 6.91, "conf_high": 10.36,
+             "tmdb_d14": 17.47, "overridden": False,
+             "note": "R-rated horror reboot. $125M budget but zero star power (unknown cast). Strong trends acceleration (V3D=1.17). Day -3 prediction."},
+        ]
+    },
+    {
         "weekend": "Weekend 16",
         "dates": "Apr 24-26, 2026",
         "model": "V16",
         "movies": [
-            {"movie": "MICHAEL", "studio": "Lionsgate", "predicted_tier": "LARGE+", "predicted_ow": 72.14, "conf_low": 57.71, "conf_high": 86.57, "tier_confidence": 75.8,
-             "tmdb_d14": 51.96, "overridden": True, "override_reason": "D14=52.0 >= 25 -> forced LARGE+",
-             "note": "Model says MID but TMDB D14=52.0 triggers Rule C override to LARGE+. Highest TMDB D14 popularity we've ever seen. Day -14 prediction."},
+            {"movie": "MICHAEL", "studio": "Lionsgate", "predicted_tier": "LARGE+", "predicted_ow": 75.20, "conf_low": 60.16, "conf_high": 90.24,
+             "tmdb_d14": 51.96, "overridden": False,
+             "note": "Michael Jackson biopic. $155M budget, PG-13. Model classifies LARGE+ directly at -7d. TMDB D14=52.0 (highest ever). Gaps: TMDB D7/momentum pending."},
+        ]
+    },
+    {
+        "weekend": "Weekend 17",
+        "dates": "May 1-3, 2026",
+        "model": "V16",
+        "movies": [
+            {"movie": "The Devil Wears Prada 2", "studio": "Disney", "predicted_tier": "LARGE+", "predicted_ow": 72.42, "conf_low": 57.94, "conf_high": 86.90,
+             "tmdb_d14": None, "overridden": True, "override_reason": "Manual override to LARGE+ — strong cast (Streep/Hathaway/Blunt), $125M budget, sequel to cultural touchstone. Adjust down if TMDB/Trends don't support by D-7.",
+             "note": "Manual LARGE+ override. Model base=MID ($27.67M). Day -14 early prediction. Star power 10 (Emily Blunt). Missing: TMDB D14/D7/momentum."},
         ]
     },
 ]
@@ -267,9 +287,9 @@ st.divider()
 st.header("V16 Preview: TMDB Popularity Override System")
 
 st.warning(
-    "**Validation Status: Awaiting Live Predictions** — V16 was deployed April 10, 2026. "
-    "The results below are from holdout validation only (19 blind films the model never saw during training). "
-    "Live V16 predictions will be tracked here as opening weekends occur, starting with MICHAEL (Apr 24)."
+    "**Validation Status: Awaiting Live Results** — V16 was deployed April 10, 2026. "
+    "Three upcoming predictions below: The Mummy (Apr 17), MICHAEL (Apr 24), Devil Wears Prada 2 (May 1). "
+    "Live V16 results will be tracked here as opening weekends occur."
 )
 
 st.subheader("Holdout Validation (19 Blind Films)")
@@ -294,7 +314,7 @@ st.markdown(
 st.divider()
 
 st.subheader("Upcoming V16 Predictions")
-st.markdown("MICHAEL is the first film predicted with V16 + TMDB override in production.")
+st.markdown("Three upcoming films predicted with V16 in production — including the first manual LARGE+ override (Devil Wears Prada 2).")
 
 for u in UPCOMING:
     model_tag = u.get("model", "V16")
@@ -323,9 +343,10 @@ for u in UPCOMING:
         for m in u["movies"]:
             if m.get("overridden"):
                 st.info(
-                    f"**TMDB Override Active**: {m['movie']} — Model predicted MID, but TMDB D14 popularity of "
-                    f"**{m.get('tmdb_d14', 'N/A')}** (highest ever recorded) triggered Rule C override to LARGE+. "
-                    f"Predicted **${m['predicted_ow']:.1f}M** (range ${m['conf_low']:.1f}M - ${m['conf_high']:.1f}M)."
+                    f"**Manual Override Active**: {m['movie']} — Model predicted MID (${27.67:.1f}M), but manually overridden to LARGE+ "
+                    f"based on cast strength, budget, and franchise potential. "
+                    f"Predicted **${m['predicted_ow']:.1f}M** (range ${m['conf_low']:.1f}M - ${m['conf_high']:.1f}M). "
+                    f"Will revisit at D-7 when TMDB momentum data is available."
                 )
 
 st.divider()
