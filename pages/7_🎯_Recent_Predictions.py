@@ -88,9 +88,9 @@ UPCOMING = [
         "dates": "Apr 17-19, 2026",
         "model": "V16",
         "movies": [
-            {"movie": "Lee Cronin's The Mummy", "studio": "Universal", "predicted_tier": "SMALL", "predicted_ow": 8.63, "conf_low": 6.91, "conf_high": 10.36,
+            {"movie": "Lee Cronin's The Mummy", "studio": "Universal", "predicted_tier": "SMALL", "predicted_ow": 9.40, "conf_low": 7.52, "conf_high": 11.28,
              "tmdb_d14": 17.47, "overridden": False,
-             "note": "R-rated horror reboot. $125M budget but zero star power (unknown cast). Strong trends acceleration (V3D=1.17). Day -3 prediction."},
+             "note": "R-rated horror reboot. $125M budget but zero star power (unknown cast). Day -3 prediction with fresh trends (R7D=35.2, R3D=42.9). TMDB D7=22.4, momentum=1.28."},
         ]
     },
     {
@@ -98,9 +98,9 @@ UPCOMING = [
         "dates": "Apr 24-26, 2026",
         "model": "V16",
         "movies": [
-            {"movie": "MICHAEL", "studio": "Lionsgate", "predicted_tier": "LARGE+", "predicted_ow": 75.01, "conf_low": 60.01, "conf_high": 90.01,
+            {"movie": "MICHAEL", "studio": "Lionsgate", "predicted_tier": "LARGE+", "predicted_ow": 74.00, "conf_low": 59.20, "conf_high": 88.80,
              "tmdb_d14": 51.96, "overridden": False,
-             "note": "Michael Jackson biopic. $155M budget, PG-13. Model classifies LARGE+ directly at -7d. TMDB D14=52.0, D7=46.3, momentum=0.89 (declining but still dominant)."},
+             "note": "Michael Jackson biopic. $155M budget, PG-13. Model classifies LARGE+ directly at -7d. TMDB D14=52.0, D7=46.3, momentum=0.89. R7D=50.1 (strong pre-release trends)."},
         ]
     },
     {
@@ -108,9 +108,19 @@ UPCOMING = [
         "dates": "May 1-3, 2026",
         "model": "V16",
         "movies": [
-            {"movie": "The Devil Wears Prada 2", "studio": "Disney", "predicted_tier": "LARGE+", "predicted_ow": 73.01, "conf_low": 58.41, "conf_high": 87.62,
-             "tmdb_d14": 25.13, "overridden": True, "override_reason": "Rule C auto-override: TMDB D14=25.13 (>=25 threshold) → LARGE+. Model base=MID ($30.6M). Confirms earlier manual override was directionally correct.",
-             "note": "Rule C auto-override to LARGE+. Model base=MID. Day -14 prediction. TMDB D14=25.13 crosses Rule C threshold. Gaps: TMDB D7/momentum pending (Apr 24 export)."},
+            {"movie": "The Devil Wears Prada 2", "studio": "Disney", "predicted_tier": "LARGE+", "predicted_ow": 74.40, "conf_low": 59.52, "conf_high": 89.28,
+             "tmdb_d14": 25.13, "overridden": True, "override_reason": "Rule C auto-override: TMDB D14=25.13 (>=25 threshold) → LARGE+. Model base=MID. R7D=61.3, MAX_STAR=10 (Streep/Hathaway).",
+             "note": "Rule C auto-override to LARGE+. Model base=MID. Day -14 prediction. TMDB D14=25.13 crosses Rule C threshold. R7D=61.3 (very strong early trends). D7/D3 pending."},
+        ]
+    },
+    {
+        "weekend": "Weekend 18",
+        "dates": "May 8-10, 2026",
+        "model": "V16",
+        "movies": [
+            {"movie": "Mortal Kombat II", "studio": "Warner Bros.", "predicted_tier": "MID", "predicted_ow": 26.67, "conf_low": 21.33, "conf_high": 32.00,
+             "tmdb_d14": None, "overridden": False,
+             "note": "Video game sequel. $68M budget, R-rated. Day -14 prediction (early — only 1 day of trends data). 32K YouTube comments. TMDB D14 not yet available (due Apr 24). Will refine at D-7."},
         ]
     },
 ]
@@ -314,7 +324,7 @@ st.markdown(
 st.divider()
 
 st.subheader("Upcoming V16 Predictions")
-st.markdown("Three upcoming films predicted with V16 in production — including the first Rule C auto-override (Devil Wears Prada 2, TMDB D14=25.13 >= 25 threshold).")
+st.markdown("Four upcoming films predicted with V16 in production — including Rule C auto-override (Devil Wears Prada 2, TMDB D14=25.13 >= 25 threshold). Updated April 17, 2026 with fresh Google Trends data.")
 
 for u in UPCOMING:
     model_tag = u.get("model", "V16")
@@ -343,10 +353,8 @@ for u in UPCOMING:
         for m in u["movies"]:
             if m.get("overridden"):
                 st.info(
-                    f"**Rule C Auto-Override Active**: {m['movie']} — Model base tier MID (${30.6:.1f}M), auto-overridden to LARGE+ "
-                    f"by Rule C (TMDB D14=25.13 >= 25 threshold). Earlier manual override confirmed by data. "
-                    f"Predicted **${m['predicted_ow']:.1f}M** (range ${m['conf_low']:.1f}M - ${m['conf_high']:.1f}M). "
-                    f"Will refine at D-7 when TMDB D7/momentum data is available."
+                    f"**Rule C Auto-Override Active**: {m['movie']} — {m.get('override_reason', '')}. "
+                    f"Predicted **${m['predicted_ow']:.1f}M** (range ${m['conf_low']:.1f}M - ${m['conf_high']:.1f}M)."
                 )
 
 st.divider()
@@ -356,7 +364,7 @@ st.info(
     "- **No data leakage**: Every prediction in the chart above was generated *before* the film's opening weekend, using the model version in production at that time\n"
     "- **V14 model**: Used for Weekends 2-9 (trained Feb 27, 2026 on 239 films)\n"
     "- **V15 model**: In production March 8 - April 9, 2026 — used for Weekends 10-12 (269 training films)\n"
-    "- **V16 model**: In production since April 10, 2026 — 285 training films, 56 features, TMDB popularity override (Rule C)\n"
+    "- **V16 model**: In production since April 10, 2026 — 285 training films, 56 features, TMDB popularity override (Rule C). Predictions refreshed April 17, 2026\n"
     "- **V16 holdout**: 19 films held out from training, tested blind — the only legitimate V16 validation until live predictions accumulate\n"
     "- **Actuals**: Official box office reporting\n"
     "- **Tier System**: SMALL (<$15M) / MID ($15-50M) / LARGE+ (>$50M)"
