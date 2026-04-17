@@ -98,9 +98,9 @@ UPCOMING = [
         "dates": "Apr 24-26, 2026",
         "model": "V16",
         "movies": [
-            {"movie": "MICHAEL", "studio": "Lionsgate", "predicted_tier": "LARGE+", "predicted_ow": 75.20, "conf_low": 60.16, "conf_high": 90.24,
+            {"movie": "MICHAEL", "studio": "Lionsgate", "predicted_tier": "LARGE+", "predicted_ow": 75.01, "conf_low": 60.01, "conf_high": 90.01,
              "tmdb_d14": 51.96, "overridden": False,
-             "note": "Michael Jackson biopic. $155M budget, PG-13. Model classifies LARGE+ directly at -7d. TMDB D14=52.0 (highest ever). Gaps: TMDB D7/momentum pending."},
+             "note": "Michael Jackson biopic. $155M budget, PG-13. Model classifies LARGE+ directly at -7d. TMDB D14=52.0, D7=46.3, momentum=0.89 (declining but still dominant)."},
         ]
     },
     {
@@ -108,9 +108,9 @@ UPCOMING = [
         "dates": "May 1-3, 2026",
         "model": "V16",
         "movies": [
-            {"movie": "The Devil Wears Prada 2", "studio": "Disney", "predicted_tier": "LARGE+", "predicted_ow": 72.42, "conf_low": 57.94, "conf_high": 86.90,
-             "tmdb_d14": None, "overridden": True, "override_reason": "Manual override to LARGE+ — strong cast (Streep/Hathaway/Blunt), $125M budget, sequel to cultural touchstone. Adjust down if TMDB/Trends don't support by D-7.",
-             "note": "Manual LARGE+ override. Model base=MID ($27.67M). Day -14 early prediction. Star power 10 (Emily Blunt). Missing: TMDB D14/D7/momentum."},
+            {"movie": "The Devil Wears Prada 2", "studio": "Disney", "predicted_tier": "LARGE+", "predicted_ow": 73.01, "conf_low": 58.41, "conf_high": 87.62,
+             "tmdb_d14": 25.13, "overridden": True, "override_reason": "Rule C auto-override: TMDB D14=25.13 (>=25 threshold) → LARGE+. Model base=MID ($30.6M). Confirms earlier manual override was directionally correct.",
+             "note": "Rule C auto-override to LARGE+. Model base=MID. Day -14 prediction. TMDB D14=25.13 crosses Rule C threshold. Gaps: TMDB D7/momentum pending (Apr 24 export)."},
         ]
     },
 ]
@@ -314,7 +314,7 @@ st.markdown(
 st.divider()
 
 st.subheader("Upcoming V16 Predictions")
-st.markdown("Three upcoming films predicted with V16 in production — including the first manual LARGE+ override (Devil Wears Prada 2).")
+st.markdown("Three upcoming films predicted with V16 in production — including the first Rule C auto-override (Devil Wears Prada 2, TMDB D14=25.13 >= 25 threshold).")
 
 for u in UPCOMING:
     model_tag = u.get("model", "V16")
@@ -343,10 +343,10 @@ for u in UPCOMING:
         for m in u["movies"]:
             if m.get("overridden"):
                 st.info(
-                    f"**Manual Override Active**: {m['movie']} — Model predicted MID (${27.67:.1f}M), but manually overridden to LARGE+ "
-                    f"based on cast strength, budget, and franchise potential. "
+                    f"**Rule C Auto-Override Active**: {m['movie']} — Model base tier MID (${30.6:.1f}M), auto-overridden to LARGE+ "
+                    f"by Rule C (TMDB D14=25.13 >= 25 threshold). Earlier manual override confirmed by data. "
                     f"Predicted **${m['predicted_ow']:.1f}M** (range ${m['conf_low']:.1f}M - ${m['conf_high']:.1f}M). "
-                    f"Will revisit at D-7 when TMDB momentum data is available."
+                    f"Will refine at D-7 when TMDB D7/momentum data is available."
                 )
 
 st.divider()
