@@ -82,6 +82,32 @@ WEEKEND_DATA = [
     },
 ]
 
+CONFIDENCE_THRESHOLDS = {
+    "HIGH": {"min_prob": 0.70, "min_trends_days": 7},
+    "MEDIUM": {"min_prob": 0.60, "min_trends_days": 5},
+    "LOW": {"min_prob": 0.50, "min_trends_days": 0},
+}
+
+CONFIDENCE_STYLES = {
+    "HIGH": {"color": "#636EFA", "opacity": 1.0, "pattern": "", "badge": "", "border": ""},
+    "MEDIUM": {"color": "#636EFA", "opacity": 0.75, "pattern": "", "badge": "", "border": ""},
+    "LOW": {"color": "#636EFA", "opacity": 0.45, "pattern": "/", "badge": "⚠️ LOW CONFIDENCE", "border": ""},
+    "PRELIMINARY": {"color": "#636EFA", "opacity": 0.30, "pattern": "x", "badge": "🔬 PRELIMINARY", "border": "dash"},
+}
+
+
+def get_confidence_level(tier_prob, trends_days, days_until_release, overridden=False):
+    if overridden:
+        return "HIGH"
+    if tier_prob >= 0.70 and trends_days >= 7:
+        return "HIGH"
+    if tier_prob >= 0.60 or trends_days >= 7:
+        return "MEDIUM"
+    if tier_prob < 0.55 and (trends_days < 5 or days_until_release > 14):
+        return "PRELIMINARY"
+    return "LOW"
+
+
 UPCOMING = [
     {
         "weekend": "Weekend 15",
@@ -89,7 +115,8 @@ UPCOMING = [
         "model": "V16",
         "movies": [
             {"movie": "Lee Cronin's The Mummy", "studio": "Universal", "predicted_tier": "SMALL", "predicted_ow": 9.40, "conf_low": 7.52, "conf_high": 11.28,
-             "tmdb_d14": 17.47, "overridden": False,
+             "tmdb_d14": 17.47, "overridden": False, "horizon": "-3d",
+             "tier_prob": 0.72, "trends_days": 22, "days_until_release": 0,
              "note": "R-rated horror reboot. $125M budget but zero star power (unknown cast). Day -3 prediction with fresh trends (R7D=35.2, R3D=42.9). TMDB D7=22.4, momentum=1.28."},
         ]
     },
@@ -98,9 +125,10 @@ UPCOMING = [
         "dates": "Apr 24-26, 2026",
         "model": "V16",
         "movies": [
-            {"movie": "MICHAEL", "studio": "Lionsgate", "predicted_tier": "LARGE+", "predicted_ow": 74.00, "conf_low": 59.20, "conf_high": 88.80,
-             "tmdb_d14": 51.96, "overridden": False,
-             "note": "Michael Jackson biopic. $155M budget, PG-13. Model classifies LARGE+ directly at -7d. TMDB D14=52.0, D7=46.3, momentum=0.89. R7D=50.1 (strong pre-release trends)."},
+            {"movie": "MICHAEL", "studio": "Lionsgate", "predicted_tier": "LARGE+", "predicted_ow": 84.85, "conf_low": 67.88, "conf_high": 101.82,
+             "tmdb_d14": 51.96, "overridden": False, "horizon": "-3d",
+             "tier_prob": 0.61, "trends_days": 18, "days_until_release": 4,
+             "note": "Michael Jackson biopic. $155M budget, PG-13. LARGE+ at -3d (61% S2 confidence). TMDB D14=52.0, D7=46.3, momentum=0.89. R3D=60.2, R7D=52.6 (trends accelerating)."},
         ]
     },
     {
@@ -109,8 +137,9 @@ UPCOMING = [
         "model": "V16",
         "movies": [
             {"movie": "The Devil Wears Prada 2", "studio": "Disney", "predicted_tier": "LARGE+", "predicted_ow": 74.40, "conf_low": 59.52, "conf_high": 89.28,
-             "tmdb_d14": 25.13, "overridden": True, "override_reason": "Rule C auto-override: TMDB D14=25.13 (>=25 threshold) → LARGE+. Model base=MID. R7D=61.3, MAX_STAR=10 (Streep/Hathaway).",
-             "note": "Rule C auto-override to LARGE+. Model base=MID. Day -14 prediction. TMDB D14=25.13 crosses Rule C threshold. R7D=61.3 (very strong early trends). D7/D3 pending."},
+             "tmdb_d14": 25.13, "overridden": True, "override_reason": "Rule C auto-override: TMDB D14=25.13 (>=25 threshold) → LARGE+. Model base=MID.",
+             "horizon": "-14d", "tier_prob": 0.95, "trends_days": 11, "days_until_release": 11,
+             "note": "Rule C auto-override to LARGE+. Model base=MID. Day -14 prediction. TMDB D14=25.13 crosses Rule C threshold. R7D=61.3. D7/D3 pending."},
         ]
     },
     {
@@ -118,9 +147,10 @@ UPCOMING = [
         "dates": "May 8-10, 2026",
         "model": "V16",
         "movies": [
-            {"movie": "Mortal Kombat II", "studio": "Warner Bros.", "predicted_tier": "MID", "predicted_ow": 26.67, "conf_low": 21.33, "conf_high": 32.00,
-             "tmdb_d14": None, "overridden": False,
-             "note": "Video game sequel. $68M budget, R-rated. Day -14 prediction (early — only 1 day of trends data). 32K YouTube comments. TMDB D14 not yet available (due Apr 24). Will refine at D-7."},
+            {"movie": "Mortal Kombat II", "studio": "Warner Bros.", "predicted_tier": "SMALL", "predicted_ow": 8.67, "conf_low": 6.94, "conf_high": 10.40,
+             "tmdb_d14": 18.61, "overridden": False, "horizon": "-14d",
+             "tier_prob": 0.536, "trends_days": 3, "days_until_release": 18,
+             "note": "Video game sequel. $68M budget, R-rated. Day -14 prediction (early — only 3 days trends). TMDB D14=18.6 (Apr 20 proxy). 32K YT comments but low star power (Karl Urban MAX=1.41). Predecessor OW=$23.2M (MK 2021). Will refine at -7d."},
         ]
     },
 ]
@@ -298,8 +328,8 @@ st.header("V16 Preview: TMDB Popularity Override System")
 
 st.warning(
     "**Validation Status: Awaiting Live Results** — V16 was deployed April 10, 2026. "
-    "Three upcoming predictions below: The Mummy (Apr 17), MICHAEL (Apr 24), Devil Wears Prada 2 (May 1). "
-    "Live V16 results will be tracked here as opening weekends occur."
+    "Four upcoming predictions below with **confidence gates**: HIGH/MEDIUM predictions are actionable, "
+    "LOW/PRELIMINARY predictions are directional only and will be revised as more data becomes available."
 )
 
 st.subheader("Holdout Validation (19 Blind Films)")
@@ -324,7 +354,17 @@ st.markdown(
 st.divider()
 
 st.subheader("Upcoming V16 Predictions")
-st.markdown("Four upcoming films predicted with V16 in production — including Rule C auto-override (Devil Wears Prada 2, TMDB D14=25.13 >= 25 threshold). Updated April 17, 2026 with fresh Google Trends data.")
+st.markdown("Four upcoming films predicted with V16 in production — including Rule C auto-override and **confidence gates**. Updated April 20, 2026 with fresh Google Trends + TMDB data.")
+
+st.markdown(
+    '<div style="display:flex;gap:24px;margin-bottom:16px;flex-wrap:wrap;">'
+    '<div><span style="display:inline-block;width:14px;height:14px;background:#636EFA;border-radius:2px;"></span> <b>HIGH</b> — ≥70% tier probability, ≥7 days trends</div>'
+    '<div><span style="display:inline-block;width:14px;height:14px;background:rgba(99,110,250,0.75);border-radius:2px;"></span> <b>MEDIUM</b> — ≥60% probability or ≥7 days trends</div>'
+    '<div><span style="display:inline-block;width:14px;height:14px;background:rgba(99,110,250,0.45);border-radius:2px;"></span> ⚠️ <b>LOW</b> — borderline probability, limited data</div>'
+    '<div><span style="display:inline-block;width:14px;height:14px;background:rgba(99,110,250,0.30);border:2px dashed #636EFA;border-radius:2px;"></span> 🔬 <b>PRELIMINARY</b> — very early, sparse data, expect significant revision</div>'
+    '</div>',
+    unsafe_allow_html=True,
+)
 
 for u in UPCOMING:
     model_tag = u.get("model", "V16")
@@ -332,25 +372,51 @@ for u in UPCOMING:
         upcoming_rows = []
         for m in u["movies"]:
             tier_color = {"SMALL": "🟠", "MID": "🟡", "LARGE+": "🟢"}.get(m["predicted_tier"], "⚪")
-            tc = m.get("tier_confidence")
-            tier_str = f"{tier_color} {m['predicted_tier']}" + (f" ({tc:.0f}%)" if tc else "")
+            conf_level = get_confidence_level(
+                m.get("tier_prob", 0.5),
+                m.get("trends_days", 0),
+                m.get("days_until_release", 99),
+                m.get("overridden", False),
+            )
+            style = CONFIDENCE_STYLES[conf_level]
+            badge = style["badge"]
+            prob_pct = m.get("tier_prob", 0)
+            tier_str = f"{tier_color} {m['predicted_tier']} ({prob_pct:.0%})"
             if m.get("overridden"):
                 tier_str += " [OVERRIDE]"
+            if badge:
+                tier_str += f" {badge}"
             upcoming_rows.append({
                 "Movie": m["movie"],
                 "Studio": m["studio"],
+                "Horizon": m.get("horizon", "—"),
                 "Tier": tier_str,
+                "Confidence": conf_level,
                 "Predicted OW": f"${m['predicted_ow']:.1f}M",
-                "CI Low": f"${m['conf_low']:.1f}M",
-                "CI High": f"${m['conf_high']:.1f}M",
+                "CI Range": f"${m['conf_low']:.1f} - ${m['conf_high']:.1f}M",
                 "TMDB D14": m.get("tmdb_d14", "—"),
-                "Override": m.get("override_reason", "—"),
-                "Note": m.get("note", ""),
+                "Trends Days": m.get("trends_days", "—"),
             })
         udf = pd.DataFrame(upcoming_rows)
         st.dataframe(udf, use_container_width=True, hide_index=True)
 
         for m in u["movies"]:
+            conf_level = get_confidence_level(
+                m.get("tier_prob", 0.5),
+                m.get("trends_days", 0),
+                m.get("days_until_release", 99),
+                m.get("overridden", False),
+            )
+            if conf_level == "PRELIMINARY":
+                st.warning(
+                    f"🔬 **PRELIMINARY**: {m['movie']} — only {m.get('trends_days', 0)} days of trends data, "
+                    f"tier probability {m.get('tier_prob', 0):.0%}. This prediction will change significantly as more data becomes available."
+                )
+            elif conf_level == "LOW":
+                st.warning(
+                    f"⚠️ **LOW CONFIDENCE**: {m['movie']} — borderline tier classification ({m.get('tier_prob', 0):.0%}). "
+                    f"Treat as directional estimate."
+                )
             if m.get("overridden"):
                 st.info(
                     f"**Rule C Auto-Override Active**: {m['movie']} — {m.get('override_reason', '')}. "
@@ -364,7 +430,8 @@ st.info(
     "- **No data leakage**: Every prediction in the chart above was generated *before* the film's opening weekend, using the model version in production at that time\n"
     "- **V14 model**: Used for Weekends 2-9 (trained Feb 27, 2026 on 239 films)\n"
     "- **V15 model**: In production March 8 - April 9, 2026 — used for Weekends 10-12 (269 training films)\n"
-    "- **V16 model**: In production since April 10, 2026 — 285 training films, 56 features, TMDB popularity override (Rule C). Predictions refreshed April 17, 2026\n"
+    "- **V16 model**: In production since April 10, 2026 — 285 training films, 56 features, TMDB popularity override (Rule C). Predictions refreshed April 20, 2026\n"
+    "- **Confidence gates**: HIGH (≥70% tier prob + ≥7 days trends), MEDIUM (≥60% or ≥7 days), LOW (borderline), PRELIMINARY (very early/sparse data)\n"
     "- **V16 holdout**: 19 films held out from training, tested blind — the only legitimate V16 validation until live predictions accumulate\n"
     "- **Actuals**: Official box office reporting\n"
     "- **Tier System**: SMALL (<$15M) / MID ($15-50M) / LARGE+ (>$50M)"
