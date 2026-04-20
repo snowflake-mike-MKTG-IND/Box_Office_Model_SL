@@ -60,7 +60,6 @@ WEEKEND_DATA = [
         "model": "V15",
         "movies": [
             {"movie": "The Bride", "studio": "Warner Bros.", "predicted_tier": "SMALL", "predicted_ow": 8.31, "conf_low": 6.65, "conf_high": 9.97, "actual_ow": 7.20, "week": 1, "industry_projection": None, "note": "Maggie Gyllenhaal; horror — actual $7.2M within CI"},
-            {"movie": "Hoppers", "studio": "Disney", "predicted_tier": "SMALL", "predicted_ow": 10.12, "conf_low": 8.10, "conf_high": 12.14, "actual_ow": 45.35, "week": 1, "industry_projection": None, "note": "V15 predicted SMALL $10.12M, actual MID $45.35M — massive tier miss; Disney animated film"},
         ]
     },
     {
