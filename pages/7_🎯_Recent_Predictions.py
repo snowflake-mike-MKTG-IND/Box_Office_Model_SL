@@ -80,6 +80,14 @@ WEEKEND_DATA = [
             {"movie": "Ready or Not 2", "studio": "Disney/Searchlight", "predicted_tier": "SMALL", "predicted_ow": 7.78, "conf_low": 6.22, "conf_high": 9.34, "actual_ow": 9.08, "week": 1, "industry_projection": None, "note": "Horror sequel; predicted SMALL $7.78M, actual SMALL $9.08M — within CI, tier correct"},
         ]
     },
+    {
+        "weekend": "Weekend 15",
+        "dates": "Apr 17-19, 2026",
+        "model": "V16",
+        "movies": [
+            {"movie": "Lee Cronin's The Mummy", "studio": "Universal", "predicted_tier": "SMALL", "predicted_ow": 9.40, "conf_low": 7.52, "conf_high": 11.28, "actual_ow": 13.515, "week": 1, "industry_projection": None, "note": "V16 first live prediction. R-rated horror reboot, $125M budget. Predicted SMALL $9.40M, actual SMALL $13.52M — tier correct, within range but outside CI"},
+        ]
+    },
 ]
 
 CONFIDENCE_THRESHOLDS = {
@@ -109,17 +117,6 @@ def get_confidence_level(tier_prob, trends_days, days_until_release, overridden=
 
 
 UPCOMING = [
-    {
-        "weekend": "Weekend 15",
-        "dates": "Apr 17-19, 2026",
-        "model": "V16",
-        "movies": [
-            {"movie": "Lee Cronin's The Mummy", "studio": "Universal", "predicted_tier": "SMALL", "predicted_ow": 9.40, "conf_low": 7.52, "conf_high": 11.28,
-             "tmdb_d14": 17.47, "overridden": False, "horizon": "-3d",
-             "tier_prob": 0.72, "trends_days": 22, "days_until_release": 0,
-             "note": "R-rated horror reboot. $125M budget but zero star power (unknown cast). Day -3 prediction with fresh trends (R7D=35.2, R3D=42.9). TMDB D7=22.4, momentum=1.28."},
-        ]
-    },
     {
         "weekend": "Weekend 16",
         "dates": "Apr 24-26, 2026",
@@ -205,16 +202,16 @@ regression_total = len(all_movies)
 mae = df["Error ($M)"].abs().mean()
 within_ci = sum(1 for m in all_movies if m["Conf Low ($M)"] <= m["Actual OW ($M)"] <= m["Conf High ($M)"])
 
-col1.metric("V14/V15 Tier Accuracy", f"{tier_correct_all}/{tier_total_all}", f"{tier_correct_all/tier_total_all*100:.0f}%")
-col2.metric("V14/V15 MAE", f"${mae:.2f}M", f"{regression_total} movies")
+col1.metric("V14–V16 Tier Accuracy", f"{tier_correct_all}/{tier_total_all}", f"{tier_correct_all/tier_total_all*100:.0f}%")
+col2.metric("V14–V16 MAE", f"${mae:.2f}M", f"{regression_total} movies")
 col3.metric("Within CI", f"{within_ci}/{regression_total}", f"{within_ci/regression_total*100:.0f}%")
 col4.metric("Movies Tracked", f"{tier_total_all}", f"{len(WEEKEND_DATA)} weekends")
 
 st.divider()
 
-st.header("Predicted vs Actual (V14/V15 Production Predictions)")
+st.header("Predicted vs Actual (V14/V15/V16 Production Predictions)")
 
-st.caption("All predictions were made before each film's opening weekend using the model version in production at the time (V14 for W2-W9, V15 for W10+). "
+st.caption("All predictions were made before each film's opening weekend using the model version in production at the time (V14 for W2-W9, V15 for W10-W12, V16 for W15+). "
            "Purple bars show pre-release industry consensus projections where available.")
 
 fig = go.Figure()
@@ -222,7 +219,7 @@ fig.add_trace(go.Bar(
     name="Predicted OW",
     x=df["Movie"],
     y=df["Predicted OW ($M)"],
-    marker_color=["#636EFA" if m == "V14" else "#19D3F3" for m in df["Model"]],
+    marker_color=["#636EFA" if m == "V14" else "#19D3F3" if m == "V15" else "#EF553B" for m in df["Model"]],
     text=[f"${v:.1f}M" for v in df["Predicted OW ($M)"]],
     textposition="outside",
 ))
@@ -328,7 +325,7 @@ st.header("V16 Preview: TMDB Popularity Override System")
 
 st.warning(
     "**Validation Status: Awaiting Live Results** — V16 was deployed April 10, 2026. "
-    "Four upcoming predictions below with **confidence gates**: HIGH/MEDIUM predictions are actionable, "
+    "Three upcoming predictions below with **confidence gates**: HIGH/MEDIUM predictions are actionable, "
     "LOW/PRELIMINARY predictions are directional only and will be revised as more data becomes available."
 )
 
@@ -354,7 +351,7 @@ st.markdown(
 st.divider()
 
 st.subheader("Upcoming V16 Predictions")
-st.markdown("Four upcoming films predicted with V16 in production — including Rule C auto-override and **confidence gates**. Updated April 20, 2026 with fresh Google Trends + TMDB data.")
+st.markdown("Three upcoming films predicted with V16 in production — including Rule C auto-override and **confidence gates**. Updated April 20, 2026 with fresh Google Trends + TMDB data.")
 
 st.markdown(
     '<div style="display:flex;gap:24px;margin-bottom:16px;flex-wrap:wrap;">'
