@@ -16,15 +16,15 @@ iteration to this dashboard — Cortex Code accelerated every phase of the ML li
 """)
 
 col1, col2, col3, col4 = st.columns(4)
-col1.metric("Development Time", "~35.5 hrs", "8 active sessions")
-col2.metric("Snowflake Artifacts", "664", "Tables + Views + Procs")
-col3.metric("Model Iterations", "10 versions", "76 experiments + 5 override rules")
+col1.metric("Development Time", "~38.5 hrs", "9 active sessions")
+col2.metric("Snowflake Artifacts", "664+", "Tables + Views + Procs")
+col3.metric("Model Iterations", "11 versions", "76 experiments + 5 override rules")
 col4.metric("HP Configurations", "104", "Grid + random search")
 
 st.info(
     "**One person, one AI, one week of active work.** What would traditionally require a data engineer, "
-    "ML engineer, and dashboard developer over 4-6 weeks was completed in ~35.5 hours of "
-    "active development across 8 sessions — including the V16 TMDB override system, which went from "
+    "ML engineer, and dashboard developer over 4-6 weeks was completed in ~38.5 hours of "
+    "active development across 9 sessions — including the V17 extended trends features, which went from "
     "hypothesis to validated production deployment in a single session."
 )
 
@@ -46,17 +46,18 @@ with col1:
 
     st.subheader("Feature Engineering")
     st.markdown("""
-    - Discovered and implemented 56 features across 9 categories
-    - Created rolling window calculations (3D, 5D, 7D) for Google Trends data
+    - Discovered and implemented 59 features across 9 categories
+    - Created rolling window calculations (3D, 5D, 7D, 14D, 21D) for Google Trends data
     - Built star power metrics from actor box office history (4,588 actors indexed)
     - Engineered interaction features (Trends x IP, Star x Rolling, Sentiment x Trends)
     - V16: Added IS_MAJOR_STUDIO, TMDB daily popularity features
+    - V17: Added ROLLING_14D, ROLLING_21D, TRENDS_EARLIEST
     """)
 
 with col2:
     st.subheader("Model Development")
     st.markdown("""
-    - Iterated through 10 model versions and 76 experiments
+    - Iterated through 11 model versions and 76 experiments
     - Managed CatBoost hyperparameter tuning (104 HP configurations)
     - Implemented 3-tier cascade architecture with tier-specific loss functions
     - Handled cross-validation, train/test splits, and model evaluation
@@ -70,6 +71,7 @@ with col2:
     - Deployed models to Snowflake stages with stored procedures
     - Built this entire 8-page Streamlit dashboard
     - V16: Full production deployment including SP, model file, dashboard update
+    - V17: Feature view extension, training, CV validation, deployment in one session
     """)
 
 st.divider()
@@ -151,13 +153,13 @@ with col1:
             "V16 Override (hypothesis to prod)",
         ],
         "With Cortex Code": [
-            "8 active days over 73 calendar days",
-            "~35.5 hours",
+            "8 active days over 83 calendar days",
+            "~38.5 hours",
             "1 person",
             "664 (441T + 152V + 71P)",
             "76 + 104 HP + 5 override rules",
             "8 pages",
-            "5 production models",
+            "6 production models",
             "~3 hours (one session)",
         ],
         "Traditional Estimate": [
@@ -181,8 +183,8 @@ with col2:
     st.success(
         "**One person. One AI. One week of active work.**\n\n"
         "What would traditionally require a data engineer, ML engineer, and "
-        "dashboard developer over 4-6 weeks was completed in ~35.5 hours of "
-        "active development across 8 sessions.\n\n"
+        "dashboard developer over 4-6 weeks was completed in ~38.5 hours of "
+        "active development across 9 sessions.\n\n"
         "Cortex Code didn't just write code — it managed the full ML lifecycle: "
         "data exploration, hypothesis generation, experiment management, "
         "debugging, pipeline orchestration, and visualization."

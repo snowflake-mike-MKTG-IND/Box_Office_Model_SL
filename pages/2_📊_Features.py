@@ -12,11 +12,12 @@ from cortex_badge import show_cortex_badge
 st.set_page_config(page_title="Features", page_icon="📊", layout="wide")
 
 st.title("Feature Importance Analysis")
-st.subheader("Understanding What Drives V16 Predictions")
+st.subheader("Understanding What Drives V17 Predictions")
 
 FEATURE_CATEGORIES = {
     'Google Trends': ['ROLLING_3D', 'ROLLING_5D', 'ROLLING_7D', 'ROLLING_3D_PRIOR', 'ROLLING_5D_PRIOR',
-                      'ROLLING_7D_PRIOR', 'VELOCITY_3D', 'VELOCITY_5D', 'VELOCITY_7D',
+                      'ROLLING_7D_PRIOR', 'ROLLING_14D', 'ROLLING_21D', 'TRENDS_EARLIEST',
+                      'VELOCITY_3D', 'VELOCITY_5D', 'VELOCITY_7D',
                       'TRENDS_CUMULATIVE', 'TRENDS_VOLATILITY', 'TRENDS_PEAK_SO_FAR', 'DAYS_WITH_DATA'],
     'Star Power': ['MAX_STAR_POWER', 'TOP2_STAR_POWER', 'AVG_STAR_POWER', 'NUM_STARS_WITH_HISTORY'],
     'Movie Attributes': ['BUDGET', 'BUDGET_LOG', 'RUNTIME', 'TMDB_POPULARITY', 'RELEASE_MONTH', 'IS_PEAK_SEASON',
@@ -32,25 +33,26 @@ FEATURE_CATEGORIES = {
 }
 
 FEATURE_IMPORTANCE = {
-    'YT_COMMENTS': 8.36, 'TOP2_STAR_POWER': 6.05, 'TMDB_POPULARITY': 5.89,
-    'BUDGET_LOG': 4.96, 'STREAMING_INTENT_PCT': 4.83, 'BUDGET': 4.34,
-    'THEATRICAL_INTENT_PCT': 4.14, 'AVG_STAR_POWER': 4.13, 'PASS_INTENT_PCT': 3.65,
-    'NET_INTENT_PCT': 3.32, 'IS_MAJOR_STUDIO': 3.23, 'ENGAGEMENT_RATIO': 3.07,
-    'RUNTIME': 3.06, 'MAX_STAR_POWER': 2.95, 'RELEASE_MONTH': 2.76,
-    'KNOWN_IP_TIER': 2.67, 'SENTIMENT': 2.57, 'GENRE_ORIGINAL': 1.65,
-    'PREDECESSOR_OW_LOG': 1.65, 'RATING_R': 1.41, 'IP_HIGH_PROFILE': 1.40,
-    'VELOCITY_7D': 1.38, 'GENRE_ACTION_FRANCHISE': 1.37, 'VELOCITY_3D': 1.31,
-    'ROLLING_X_ACTION': 1.17, 'STAR_X_ROLLING': 1.13, 'ROLLING_7D_PRIOR': 1.11,
-    'TRENDS_VOLATILITY': 0.96, 'VELOCITY_5D': 0.93, 'NUM_STARS_WITH_HISTORY': 0.92,
-    'STAR_X_IP_HIGH': 0.90, 'SENTIMENT_X_ROLLING': 0.87, 'ROLLING_3D_PRIOR': 0.86,
-    'INTENT_X_ROLLING': 0.82, 'ROLLING_7D': 0.79, 'TMDB_POPULARITY_D14': 0.78,
-    'TRENDS_PEAK_SO_FAR': 0.69, 'ROLLING_5D_PRIOR': 0.68, 'RATING_PG13': 0.68,
-    'ROLLING_5D': 0.68, 'TMDB_POPULARITY_D7': 0.65, 'TMDB_POP_MOMENTUM': 0.64,
-    'GENRE_HORROR': 0.64, 'IS_PEAK_SEASON': 0.62, 'ROLLING_3D': 0.59,
-    'IP_ORIGINAL': 0.54, 'ROLLING_X_IP_HIGH': 0.45, 'TRENDS_CUMULATIVE': 0.43,
-    'IP_MODERATE': 0.40, 'ROLLING_X_HORROR': 0.38, 'GENRE_PRESTIGE': 0.26,
-    'IP_NICHE': 0.19, 'GENRE_ANIMATION_FAMILY': 0.04, 'RATING_PG': 0.04,
-    'DAYS_WITH_DATA': 0.02, 'RATING_G': 0.00,
+    'YT_COMMENTS': 8.03, 'TOP2_STAR_POWER': 5.67, 'BUDGET_LOG': 5.23,
+    'TMDB_POPULARITY': 5.19, 'STREAMING_INTENT_PCT': 4.95, 'BUDGET': 4.77,
+    'AVG_STAR_POWER': 4.35, 'ENGAGEMENT_RATIO': 3.50, 'THEATRICAL_INTENT_PCT': 3.44,
+    'RELEASE_MONTH': 3.41, 'MAX_STAR_POWER': 3.35, 'PASS_INTENT_PCT': 3.18,
+    'KNOWN_IP_TIER': 3.08, 'RUNTIME': 3.07, 'IS_MAJOR_STUDIO': 2.97,
+    'NET_INTENT_PCT': 2.97, 'SENTIMENT': 2.91, 'GENRE_ORIGINAL': 1.95,
+    'PREDECESSOR_OW_LOG': 1.80, 'VELOCITY_7D': 1.60, 'GENRE_ACTION_FRANCHISE': 1.51,
+    'IP_HIGH_PROFILE': 1.26, 'VELOCITY_3D': 1.04, 'TRENDS_VOLATILITY': 0.99,
+    'INTENT_X_ROLLING': 0.98, 'RATING_R': 0.96, 'TRENDS_EARLIEST': 0.95,
+    'ROLLING_5D': 0.95, 'ROLLING_5D_PRIOR': 0.92, 'VELOCITY_5D': 0.91,
+    'IS_PEAK_SEASON': 0.83, 'STAR_X_ROLLING': 0.80, 'ROLLING_3D': 0.78,
+    'ROLLING_X_ACTION': 0.76, 'SENTIMENT_X_ROLLING': 0.74, 'ROLLING_3D_PRIOR': 0.74,
+    'ROLLING_7D_PRIOR': 0.73, 'ROLLING_14D': 0.72, 'TRENDS_PEAK_SO_FAR': 0.69,
+    'RATING_PG13': 0.69, 'NUM_STARS_WITH_HISTORY': 0.64, 'STAR_X_IP_HIGH': 0.62,
+    'ROLLING_21D': 0.58, 'TRENDS_CUMULATIVE': 0.56, 'IP_ORIGINAL': 0.51,
+    'ROLLING_X_IP_HIGH': 0.48, 'ROLLING_X_HORROR': 0.45, 'GENRE_HORROR': 0.43,
+    'IP_MODERATE': 0.42, 'GENRE_PRESTIGE': 0.39, 'ROLLING_7D': 0.37,
+    'TMDB_POPULARITY_D7': 0.36, 'TMDB_POP_MOMENTUM': 0.33, 'TMDB_POPULARITY_D14': 0.23,
+    'IP_NICHE': 0.17, 'RATING_PG': 0.06, 'DAYS_WITH_DATA': 0.03,
+    'GENRE_ANIMATION_FAMILY': 0.00, 'RATING_G': 0.00,
 }
 
 st.divider()
@@ -68,10 +70,10 @@ fig.update_traces(texttemplate='%{x:.1f}', textposition='outside')
 st.plotly_chart(fig, use_container_width=True)
 
 st.info(
-    "**V16 New Features**: `IS_MAJOR_STUDIO` ranks #11 overall (3.23), strong in the MID regressor (7.28). "
-    "TMDB daily popularity features (`D14`=0.78, `D7`=0.65, `MOMENTUM`=0.64) show low CatBoost importance "
-    "because only ~30 training films have this data — too sparse for tree-based learning. But the raw "
-    "signal is extremely strong (r=0.817), which is why it powers the Rule C override instead."
+    "**V17 New Features**: `TRENDS_EARLIEST` (avg trends days -21 to -15) ranks #27 overall (0.95) and "
+    "#3 in the LARGE+ regressor (4.86). `ROLLING_14D` (0.72) and `ROLLING_21D` (0.58) provide longer "
+    "lookback windows that improve early-horizon predictions. ROLLING_21D ranks #4 in the SMALL regressor "
+    "at -14d (importance=3.93), confirming the model uses these new features meaningfully."
 )
 
 st.divider()
@@ -122,14 +124,14 @@ with col2:
     st.markdown("**Feature Descriptions:**")
 
     descriptions = {
-        'Google Trends': "Search interest over time, rolling averages and velocities",
+        'Google Trends': "Search interest over time, rolling averages (3D-21D), velocities, and cumulative signals. V17 added ROLLING_14D, ROLLING_21D, TRENDS_EARLIEST",
         'Star Power': "Historical box office performance of cast members",
-        'Movie Attributes': "Budget, runtime, popularity score, release timing, predecessor OW, and studio tier (V16)",
+        'Movie Attributes': "Budget, runtime, popularity score, release timing, predecessor OW, and studio tier",
         'YouTube/Sentiment': "Trailer engagement, sentiment analysis, and audience intent signals (all derived from YouTube comments)",
         'Genre': "Primary genre classification flags",
         'Rating': "MPAA rating one-hot encoding",
         'IP/Franchise': "Intellectual property tier (original vs sequel vs high-profile)",
-        'TMDB Daily Signals': "TMDB popularity at day -14 and -7 before release, plus momentum (D7/D14 ratio). New in V16 — primarily powers the Rule C override",
+        'TMDB Daily Signals': "TMDB popularity at day -14 and -7 before release, plus momentum (D7/D14 ratio). Primarily powers the Rule C override",
         'Interactions': "Cross-feature interactions (e.g., Trends x IP tier)"
     }
     st.info(descriptions.get(selected_cat, ""))
@@ -143,19 +145,19 @@ col1, col2 = st.columns(2)
 with col1:
     st.subheader("Most Predictive Categories")
     st.markdown("""
-    1. **YouTube/Sentiment** (26.3) - YT_COMMENTS dominates at 8.36; intent signals strong
-    2. **Movie Attributes** (24.6) - Budget, TMDB popularity, runtime, studio tier
-    3. **Star Power** (14.1) - TOP2_STAR_POWER #2 overall at 6.05
-    4. **Google Trends** (9.4) - Velocity and rolling averages across all horizons
+    1. **YouTube/Sentiment** (25.9) - YT_COMMENTS dominates at 8.03; intent signals strong
+    2. **Movie Attributes** (24.8) - Budget, TMDB popularity, runtime, studio tier
+    3. **Star Power** (14.0) - TOP2_STAR_POWER #2 overall at 5.67
+    4. **Google Trends** (12.8) - Velocity, rolling averages (now including 14D/21D windows)
     """)
 
 with col2:
-    st.subheader("V16 Additions")
+    st.subheader("V17 Additions")
     st.markdown("""
-    - **IS_MAJOR_STUDIO** (#11, 3.23) — Disney, Universal, Warner Bros, Paramount, Sony, 20th Century
-    - **TMDB_POPULARITY_D14** — Day -14 popularity; powers Rule C override (D14>=25 -> LARGE+)
-    - **TMDB_POPULARITY_D7** — Day -7 popularity; used in momentum calculation
-    - **TMDB_POP_MOMENTUM** — D7/D14 ratio; momentum gate prevents false positives
+    - **ROLLING_14D** (#38, 0.72) — 14-day lookback average; improves early-horizon predictions
+    - **ROLLING_21D** (#43, 0.58) — 21-day lookback average; ranks #4 in SMALL regressor at -14d
+    - **TRENDS_EARLIEST** (#27, 0.95) — Average trends from days -21 to -15; strong in LARGE+ regressor (4.86)
+    - V16 features retained: IS_MAJOR_STUDIO (#15, 2.97), TMDB D14/D7/Momentum
     """)
 
 st.divider()
@@ -180,10 +182,10 @@ D7 becomes available at -7d, enabling the full momentum calculation.
 st.divider()
 
 st.info(
-    "**AI-Assisted Feature Discovery**: Cortex Code helped identify and engineer all 56 features — "
+    "**AI-Assisted Feature Discovery**: Cortex Code helped identify and engineer all 59 features — "
     "from building the Google Trends normalization pipeline (scaled against Movie Showtimes baseline) "
     "to creating star power metrics from actor box office history to scoring YouTube trailer sentiment. "
-    "The V16 TMDB features and IS_MAJOR_STUDIO were added and validated in a single Cortex Code session."
+    "The V17 rolling window features (14D, 21D, EARLIEST) were designed to improve early-horizon predictions."
 )
 
 show_cortex_badge()

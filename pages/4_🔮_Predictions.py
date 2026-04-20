@@ -1,5 +1,5 @@
 """
-Page 4: Interactive Prediction Tool (V16)
+Page 4: Interactive Prediction Tool (V17)
 """
 
 import streamlit as st
@@ -13,13 +13,13 @@ from cortex_badge import show_cortex_badge
 st.set_page_config(page_title="Predictions", page_icon="🔮", layout="wide")
 
 st.title("Interactive Prediction Tool")
-st.subheader("V16 Cascade + TMDB Override")
+st.subheader("V17 Cascade + TMDB Override")
 
 MAJOR_STUDIOS = ["DISNEY", "WARNER BROS", "UNIVERSAL PICTURES", "PARAMOUNT", "SONY PICTURES ENTERTAINMENT", "20TH CENTURY STUDIOS"]
 
 @st.cache_resource
 def load_model():
-    model_path = os.path.join(os.path.dirname(__file__), '..', 'models', 'ow_pipeline_v16_production.joblib.gz')
+    model_path = os.path.join(os.path.dirname(__file__), '..', 'models', 'ow_pipeline_v17_production.joblib.gz')
     with gzip.open(model_path, 'rb') as f:
         return joblib.load(f)
 
@@ -182,7 +182,8 @@ with col2:
             rolling_7d * genre_flags['GENRE_ACTION_FRANCHISE'],
             rolling_7d * genre_flags['GENRE_HORROR'],
             sentiment * rolling_7d, max_star * rolling_7d / 100,
-            max_star * ip_flags['IP_HIGH_PROFILE'], 0.1 * rolling_7d
+            max_star * ip_flags['IP_HIGH_PROFILE'], 0.1 * rolling_7d,
+            rolling_7d * 0.95, rolling_7d * 0.92, rolling_7d * 0.6
         ]
 
         full_features = static_features + trends_features
@@ -307,7 +308,7 @@ with col2:
 
         st.subheader("Confidence Range")
 
-        mae_by_tier = {'SMALL': 3.9, 'MID': 10.7, 'LARGE+': 32.0}
+        mae_by_tier = {'SMALL': 4.11, 'MID': 12.76, 'LARGE+': 31.75}
         mae = mae_by_tier[tier_name]
 
         low_pred = max(0, ow_pred - mae)

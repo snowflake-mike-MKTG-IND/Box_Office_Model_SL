@@ -8,21 +8,21 @@ from cortex_badge import show_cortex_badge
 st.set_page_config(page_title="Model Timeline", page_icon="📅", layout="wide")
 
 st.title("📅 Model Development Timeline")
-st.markdown("Evolution of the OW prediction model from V2 to V16, with actual timestamps from Snowflake.")
+st.markdown("Evolution of the OW prediction model from V2 to V17, with actual timestamps from Snowflake.")
 
 st.header("🧪 ML Experimentation Summary")
 
 col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
-    st.metric("Model Versions", "10", "V2 -> V16", help="Total major model versions developed (V2-V5, V10-V11, V13-V16)")
+    st.metric("Model Versions", "11", "V2 -> V17", help="Total major model versions developed (V2-V5, V10-V11, V13-V17)")
 with col2:
     st.metric("Total Experiments", "76", "+104 HP tuning runs", help="76 model experiments + 104 hyperparameter tuning iterations")
 with col3:
     st.metric("Architectures Tested", "6", help="Single model, 2-tier, 3-tier, 4-tier, ensemble, cascade")
 with col4:
-    st.metric("Feature Combos", "56", "Final feature set", help="From 200+ candidate features tested")
+    st.metric("Feature Combos", "59", "Final feature set", help="From 200+ candidate features tested")
 with col5:
-    st.metric("Best Model", "V16 3-Tier", "84.2% w/ override", help="3-tier cascade + TMDB override (Rule C)")
+    st.metric("Best Model", "V17 3-Tier", "73.2% CV acc", help="3-tier cascade + TMDB override (Rule C) + extended trends")
 
 st.divider()
 
@@ -212,6 +212,32 @@ TIMELINE_DATA = [
             "Dashboard updated for V16",
             "V15 archived"
         ]
+    },
+    {
+        "version": "V17",
+        "date": "2026-04-20 09:00",
+        "category": "Production",
+        "description": "Extended Trends Features",
+        "features": [
+            "+3 new trends features: ROLLING_14D, ROLLING_21D, TRENDS_EARLIEST",
+            "59 features (36 static + 23 trends)",
+            "277 training films (cleaned dataset)",
+            "5-fold GroupKFold CV grouped by MOVIE_ID",
+            "Feature view extended to 74 columns",
+            "ROLLING_21D ranks #4 in SMALL regressor at -14d"
+        ]
+    },
+    {
+        "version": "V17 Prod",
+        "date": "2026-04-20 12:00",
+        "category": "Production",
+        "description": "V17 Production Deployment",
+        "features": [
+            "ow_pipeline_v17_production.joblib.gz",
+            "Deployed to Snowflake stage",
+            "Dashboard updated for V17",
+            "V16 archived to ML_MODELS_ARCHIVE"
+        ]
     }
 ]
 
@@ -374,7 +400,7 @@ with col2:
         - Classification: **77.3%** at -7d (+5.8% vs V14)
         """)
 
-    with st.expander("V16 - TMDB Override System (Apr 10)", expanded=True):
+    with st.expander("V16 - TMDB Override System (Apr 10)", expanded=False):
         st.markdown("""
         **Time**: ~10:00 -> 12:00 (single Cortex Code session)
         
@@ -387,6 +413,23 @@ with col2:
         - 4/4 correct overrides, 0 wrong
         
         **Deployment**: Model file updated, SP created, dashboard updated — all in one session
+        """)
+
+    with st.expander("V17 - Extended Trends Features (Apr 20)", expanded=True):
+        st.markdown("""
+        **Time**: ~09:00 -> 12:00 (single Cortex Code session)
+        
+        **New Features**: ROLLING_14D, ROLLING_21D, TRENDS_EARLIEST
+        
+        **Key Results**:
+        - 59 features (36 static + 23 trends)
+        - 277 training films, 5-fold GroupKFold CV
+        - CV Accuracy: 73.2% (-14d), 73.2% (-7d), 73.6% (-3d)
+        - CV MAE: $11.56M (-14d), $11.74M (-7d), $11.65M (-3d)
+        - ROLLING_21D ranks #4 in SMALL regressor at -14d (importance=3.93)
+        - TRENDS_EARLIEST ranks #3 in LARGE+ regressor at -7d (importance=4.86)
+        
+        **Deployment**: Model deployed to Snowflake stage, V16 archived
         """)
 
 st.divider()
@@ -537,7 +580,7 @@ with st.expander("API Sprint Details", expanded=False):
 st.divider()
 
 st.header("Development Velocity")
-st.markdown("**Jan 28 -> Apr 10, 2026** — Part-time/spare-time development")
+st.markdown("**Jan 28 -> Apr 20, 2026** — Part-time/spare-time development")
 
 ACTIVE_DAYS = [
     {"date": "2026-01-28", "hours": 3.0, "work": "Project kickoff, data exploration"},
@@ -548,15 +591,16 @@ ACTIVE_DAYS = [
     {"date": "2026-02-27", "hours": 6.0, "work": "V14 3-tier cascade, hybrid star power"},
     {"date": "2026-02-28", "hours": 4.0, "work": "Production deployment, visualization app"},
     {"date": "2026-04-10", "hours": 3.0, "work": "V16 TMDB override: design, test, deploy (one session)"},
+    {"date": "2026-04-20", "hours": 3.0, "work": "V17 extended trends: feature view, training, CV, deploy"},
 ]
 
 total_hours = sum(d['hours'] for d in ACTIVE_DAYS)
 active_days = len(ACTIVE_DAYS)
-calendar_span = 73
+calendar_span = 83
 
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-    st.metric("Calendar Span", "73 days", "Jan 28 -> Apr 10")
+    st.metric("Calendar Span", "83 days", "Jan 28 -> Apr 20")
 with col2:
     st.metric("Active Coding Days", f"{active_days} days", f"{(active_days/calendar_span*100):.0f}% of calendar")
 with col3:
@@ -628,6 +672,7 @@ EXPERIMENT_DATA = [
     {"version": "V14", "date": "2026-02-27", "architecture": "3-Tier Cascade", "experiments": 10, "best_acc": 71.5, "notes": "Consolidated LARGE+, quantile loss"},
     {"version": "V15", "date": "2026-03-08", "architecture": "3-Tier Cascade", "experiments": 5, "best_acc": 77.3, "notes": "+30 films, PREDECESSOR_OW_LOG, data cleanup"},
     {"version": "V16", "date": "2026-04-10", "architecture": "3-Tier + Override", "experiments": 5, "best_acc": 84.2, "notes": "+16 films, IS_MAJOR_STUDIO, Rule C override (holdout)"},
+    {"version": "V17", "date": "2026-04-20", "architecture": "3-Tier + Override", "experiments": 3, "best_acc": 73.2, "notes": "+3 trends features, 5-fold GroupKFold CV"},
 ]
 
 exp_df = pd.DataFrame(EXPERIMENT_DATA)
@@ -701,6 +746,7 @@ with col2:
     - **V14**: 3-tier consolidation (+3.7%)
     - **V15**: Data quality + predecessor OW (+5.8%)
     - **V16**: TMDB override (+6.9% on holdout)
+    - **V17**: Extended trends features, rigorous CV
     """)
 
 st.divider()
@@ -760,7 +806,8 @@ MODEL_COMPARISON = [
     {"version": "V13 (Production)", "architecture": "4-Tier Cascade", "features": 51, "accuracy": 67.8, "mae": 14.0, "status": "Replaced"},
     {"version": "V14", "architecture": "3-Tier Cascade", "features": 51, "accuracy": 71.5, "mae": 13.1, "status": "Archived"},
     {"version": "V15", "architecture": "3-Tier Cascade", "features": 52, "accuracy": 77.3, "mae": 11.0, "status": "Archived"},
-    {"version": "V16 (Current)", "architecture": "3-Tier + Override", "features": 56, "accuracy": 84.2, "mae": None, "status": "Production"},
+    {"version": "V16 (Override)", "architecture": "3-Tier + Override", "features": 56, "accuracy": 84.2, "mae": None, "status": "Archived"},
+    {"version": "V17 (Current)", "architecture": "3-Tier + Override", "features": 59, "accuracy": 73.2, "mae": 11.74, "status": "Production"},
 ]
 
 compare_df = pd.DataFrame(MODEL_COMPARISON)
@@ -779,6 +826,6 @@ st.dataframe(
     }
 )
 
-st.caption("V16 accuracy (84.2%) is from holdout validation with override, not directly comparable to CV metrics. MAE pending live results.")
+st.caption("V16 accuracy (84.2%) is from holdout validation with override. V17 accuracy (73.2%) is from 5-fold GroupKFold CV — a more rigorous metric.")
 
 show_cortex_badge()

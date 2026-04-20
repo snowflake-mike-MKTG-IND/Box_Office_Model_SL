@@ -14,7 +14,7 @@ from cortex_badge import show_cortex_badge
 st.set_page_config(page_title="Error Analysis", page_icon="⚠️", layout="wide")
 
 st.title("Error Analysis")
-st.subheader("V16 Model Limitations and Edge Cases")
+st.subheader("V17 Model Limitations and Edge Cases")
 
 st.divider()
 
@@ -45,7 +45,7 @@ st.plotly_chart(fig_misses, use_container_width=True)
 
 st.divider()
 
-st.header("What V16's TMDB Override Addresses")
+st.header("What V17's TMDB Override Addresses")
 
 col1, col2 = st.columns(2)
 
@@ -113,7 +113,7 @@ st.header("Error by Feature Value")
 
 st.subheader("Budget vs Prediction Error (Training Set)")
 
-_data_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'training_predictions_v16.json')
+_data_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'training_predictions_v17.json')
 with open(_data_path) as _f:
     _training_preds = json.load(_f)
 
@@ -194,15 +194,16 @@ st.header("Improvement Roadmap")
 st.markdown("""
 | Approach | Status | Expected Impact | Notes |
 |----------|--------|-----------------|-------|
-| **More Training Data** | Ongoing | High | 285 films and growing with each weekend |
-| **TMDB Override (Rule C)** | **V16 Deployed** | High | Addresses under-prediction of breakouts |
-| **IS_MAJOR_STUDIO Feature** | **V16 Deployed** | Medium | Helps size Disney/Universal/WB releases |
+| **More Training Data** | Ongoing | High | 277 films and growing with each weekend |
+| **TMDB Override (Rule C)** | **V16+ Deployed** | High | Addresses under-prediction of breakouts |
+| **IS_MAJOR_STUDIO Feature** | **V16+ Deployed** | Medium | Helps size Disney/Universal/WB releases |
+| **Longer Trends Windows** | **V17 Deployed** | Medium | ROLLING_14D, ROLLING_21D, TRENDS_EARLIEST |
 | **Add Social Media Features** | Future | Medium | TikTok, Twitter engagement |
 | **Franchise Fatigue Detection** | Future | Medium | Declining audience sentiment signals |
-| **Competition Features** | Future | Low | Already partially captured by other features |
+| **D-3 TMDB Override** | Future (V18) | Medium | Within-tier regressor correction at D-3 |
 
-**V16 Strategy**: Orthogonal override system addresses the biggest weakness (under-prediction) 
-without changing the base model architecture. Live validation pending.
+**V17 Strategy**: Extended rolling window features improve early-horizon predictions.
+ROLLING_21D ranks #4 in SMALL regressor at -14d. Live validation ongoing.
 """)
 
 st.divider()

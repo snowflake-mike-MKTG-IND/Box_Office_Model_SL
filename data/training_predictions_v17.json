@@ -1,0 +1,2772 @@
+[
+  {
+    "movie_title": "MARRY ME",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.65,
+    "error_m": 7.65,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 23.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "BAD BOYS: RIDE OR DIE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 56.83,
+    "error_m": 56.83,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 100.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Five Nights at Freddys",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 79.73,
+    "error_m": 79.73,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 20.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "JACKASS FOREVER",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 22.22,
+    "error_m": 22.22,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 10.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Mission Impossible Dead Reckoning Part One",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 55.35,
+    "error_m": 55.35,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 220.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "The Last Voyage of the Demeter",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.42,
+    "error_m": 6.42,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 45.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "THE KILLER'S GAME",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 3.04,
+    "error_m": 3.04,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 30.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "The Marvels",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 34.99,
+    "error_m": 34.99,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 274.8,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Song Sung Blue",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.59,
+    "error_m": 6.59,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 30.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "Anaconda",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 12.53,
+    "error_m": 12.53,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 45.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "THE AMATEUR",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.35,
+    "error_m": 9.35,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 60.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "THE BLACK PHONE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 23.8,
+    "error_m": 23.8,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 16.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "THE NUN II",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 30.72,
+    "error_m": 30.72,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 38.5,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Gran Turismo",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 18.02,
+    "error_m": 18.02,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 60.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "M3GAN",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 29.67,
+    "error_m": 29.67,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 12.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Venom The Last Dance",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 83.55,
+    "error_m": 83.55,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 120.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "MILLER'S GIRL",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 1.03,
+    "error_m": 1.03,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 4.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "AIR",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.75,
+    "error_m": 8.75,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 80.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "BARBIE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 152.42,
+    "error_m": 152.42,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 145.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Longlegs",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 22.7,
+    "error_m": 22.7,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 10.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "The Hunger Games The Ballad of Songbirds Snakes",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 36.04,
+    "error_m": 36.04,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 100.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Strays",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.05,
+    "error_m": 8.05,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 46.0,
+    "genre": "Animation/Family"
+  },
+  {
+    "movie_title": "KILLERS OF THE FLOWER MOON",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 22.36,
+    "error_m": 22.36,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 200.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "Snow White",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 36.08,
+    "error_m": 36.08,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 270.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "OPPENHEIMER",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 82.06,
+    "error_m": 82.06,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 100.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "HOUSE PARTY",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 4.26,
+    "error_m": 4.26,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 2.5,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "BOB MARLEY: ONE LOVE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 24.38,
+    "error_m": 24.38,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 70.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "THUNDERBOLTS",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 72.65,
+    "error_m": 72.65,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 180.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "WEAPONS",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 39.29,
+    "error_m": 39.29,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 38.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Godzilla x Kong The New Empire",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 78.5,
+    "error_m": 78.5,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 150.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "The Watchers",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.73,
+    "error_m": 6.73,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 30.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Kraven the Hunter",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.83,
+    "error_m": 9.83,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 130.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "SMILE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 23.1,
+    "error_m": 23.1,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 17.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "NOPE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 38.02,
+    "error_m": 38.02,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 68.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "A Man Called Otto",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 3.99,
+    "error_m": 3.99,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 50.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "INDIANA JONES AND THE DIAL OF DESTINY",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 62.13,
+    "error_m": 62.13,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 294.7,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "SMILE 2",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 23.31,
+    "error_m": 23.31,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 28.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "A Complete Unknown",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.83,
+    "error_m": 9.83,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 65.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "Where the Crawdads Sing",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 18.35,
+    "error_m": 18.35,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 24.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "CREED III",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 59.48,
+    "error_m": 59.48,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 75.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "FATHER STU",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.34,
+    "error_m": 5.34,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 4.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "Goat",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 22.96,
+    "error_m": 22.96,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 90.0,
+    "genre": "Animation/Family"
+  },
+  {
+    "movie_title": "Morbius",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 34.39,
+    "error_m": 34.39,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 75.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "The Last Rodeo",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.24,
+    "error_m": 5.24,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 8.5,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "BABYLON",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 4.37,
+    "error_m": 4.37,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 78.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "The Boys in the Boat",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.76,
+    "error_m": 7.76,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 40.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "The Long Walk",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 10.17,
+    "error_m": 10.17,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "65",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 10.79,
+    "error_m": 10.79,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 45.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Downton Abbey A New Era",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 16.74,
+    "error_m": 16.74,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 40.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Argylle",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 19.73,
+    "error_m": 19.73,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 200.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Dungeons Dragons Honor Among Thieves",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 31.12,
+    "error_m": 31.12,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 151.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "TRANSFORMERS: RISE OF THE BEASTS",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 60.76,
+    "error_m": 60.76,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 195.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Novocaine",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.04,
+    "error_m": 8.04,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 18.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "David",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 19.88,
+    "error_m": 19.88,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 60.9,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "THE EXORCIST: BELIEVER",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 25.98,
+    "error_m": 25.98,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 30.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Alien Romulus",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 36.0,
+    "error_m": 36.0,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 80.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "THE NORTHMAN",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 10.74,
+    "error_m": 10.74,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 70.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "THE ADAM PROJECT",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.6,
+    "error_m": 5.6,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 116.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "DEVOTION",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.94,
+    "error_m": 5.94,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 90.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "KINGDOM OF THE PLANET OF THE APES",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 57.94,
+    "error_m": 57.94,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 160.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "The 355",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 4.92,
+    "error_m": 4.92,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 75.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "From the World of John Wick Ballerina",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 23.84,
+    "error_m": 23.84,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 90.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "The Substance",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 3.44,
+    "error_m": 3.44,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 17.5,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Trap",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 16.62,
+    "error_m": 16.62,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 30.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "WUTHERING HEIGHTS",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 27.61,
+    "error_m": 27.61,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 80.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "THE OUTFIT",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 1.5,
+    "error_m": 1.5,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 5.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Ready or Not 2: Here I Come",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.88,
+    "error_m": 7.88,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Caught Stealing",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.0,
+    "error_m": 7.0,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 40.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "MISSION: IMPOSSIBLE \u2013 THE FINAL RECKONING",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 65.42,
+    "error_m": 65.42,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 400.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Uncharted",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 36.21,
+    "error_m": 36.21,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 120.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Dont Worry Darling",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 20.31,
+    "error_m": 20.31,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 35.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Sinners",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 39.2,
+    "error_m": 39.2,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 90.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "JOHN WICK: CHAPTER 4",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 75.09,
+    "error_m": 75.09,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 100.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Freakier Friday",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 26.9,
+    "error_m": 26.9,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 42.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "28 Years Later",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 29.95,
+    "error_m": 29.95,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 60.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "The Ministry of Ungentlemanly Warfare",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.28,
+    "error_m": 8.28,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 60.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "The Strangers Chapter 1",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 10.74,
+    "error_m": 10.74,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 8.5,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "WOLF MAN",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 10.52,
+    "error_m": 10.52,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 25.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Plane",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.07,
+    "error_m": 8.07,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 25.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "CAPTAIN AMERICA: BRAVE NEW WORLD",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 84.04,
+    "error_m": 84.04,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 180.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Mickey 17",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 24.13,
+    "error_m": 24.13,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 118.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Beast",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.16,
+    "error_m": 9.16,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 36.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "AVATAR: FIRE AND ASH",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 88.73,
+    "error_m": 88.73,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 350.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Red One",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 33.03,
+    "error_m": 33.03,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 250.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "THE HOUSEMAID",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 20.67,
+    "error_m": 20.67,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 35.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "THE RUNNING MAN",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 17.85,
+    "error_m": 17.85,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 110.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "FLIGHT RISK",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 10.88,
+    "error_m": 10.88,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 25.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Renfield",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.72,
+    "error_m": 7.72,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 65.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Expend4bles",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.47,
+    "error_m": 7.47,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 100.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "The Best Christmas Pageant Ever",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.22,
+    "error_m": 9.22,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 10.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "KNOCK AT THE CABIN",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 12.18,
+    "error_m": 12.18,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "A Haunting in Venice",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 12.71,
+    "error_m": 12.71,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 60.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Conclave",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.49,
+    "error_m": 6.49,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Karate Kid Legends",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 21.47,
+    "error_m": 21.47,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 45.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "The Beekeeper",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 17.62,
+    "error_m": 17.62,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 35.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Unsung Hero",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.92,
+    "error_m": 6.92,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 6.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "The Bikeriders",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.2,
+    "error_m": 8.2,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 40.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Wicked: For Good",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 140.14,
+    "error_m": 140.14,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 150.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "GREENLAND 2: MIGRATION",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.95,
+    "error_m": 7.95,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 90.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "NE ZHA 2",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.93,
+    "error_m": 5.93,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 80.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "BRING HER BACK",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.83,
+    "error_m": 6.83,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 15.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "The Creator",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 10.71,
+    "error_m": 10.71,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 80.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Violent Night",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 11.02,
+    "error_m": 11.02,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "F1 Movie",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 58.22,
+    "error_m": 58.22,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 215.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "Warfare",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.9,
+    "error_m": 7.9,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "BABYGIRL",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.77,
+    "error_m": 6.77,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "Demon Slayer The Movie Infinity Castle",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 70.72,
+    "error_m": 70.72,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 20.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "THE BATMAN",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 128.53,
+    "error_m": 128.53,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 185.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "WONKA",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 34.42,
+    "error_m": 34.42,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 125.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "The Conjuring: Last Rites",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 83.26,
+    "error_m": 83.26,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 55.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Furiosa A Mad Max Saga",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 26.19,
+    "error_m": 26.19,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 168.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "SISU",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 4.7,
+    "error_m": 4.7,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 6.6,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Five Nights at Freddys 2",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 64.12,
+    "error_m": 64.12,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 36.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Here",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.37,
+    "error_m": 5.37,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 40.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "ROOFMAN",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.45,
+    "error_m": 7.45,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 18.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Never Let Go",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 3.91,
+    "error_m": 3.91,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Arthur the King",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.69,
+    "error_m": 6.69,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 19.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "ETERNITY",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 3.94,
+    "error_m": 3.94,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 12.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "HERETIC",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.76,
+    "error_m": 9.76,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 10.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "BULLET TRAIN",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 25.51,
+    "error_m": 25.51,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 90.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "GOOD FORTUNE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.72,
+    "error_m": 5.72,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 30.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "THE SMASHING MACHINE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.55,
+    "error_m": 5.55,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 50.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "The Lost City",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 26.09,
+    "error_m": 26.09,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 74.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "UNTIL DAWN",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.9,
+    "error_m": 7.9,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 15.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Nobody 2",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.73,
+    "error_m": 7.73,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 25.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "PRIMATE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.37,
+    "error_m": 9.37,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 21.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "TALK TO ME",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.52,
+    "error_m": 7.52,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 4.5,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "The Boogeyman",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.24,
+    "error_m": 9.24,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 35.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Monkey Man",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.45,
+    "error_m": 9.45,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 10.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Whitney Houston I Wanna Dance With Somebody",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 4.58,
+    "error_m": 4.58,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 50.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "BLACKLIGHT",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 3.24,
+    "error_m": 3.24,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 43.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Chainsaw Man The Movie Reze Arc",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 18.47,
+    "error_m": 18.47,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 4.1,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "MISSING",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.0,
+    "error_m": 8.0,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 7.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "The Bride",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.46,
+    "error_m": 6.46,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 100.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "The Popes Exorcist",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.48,
+    "error_m": 8.48,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 18.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Black Bag",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 4.89,
+    "error_m": 4.89,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 50.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "BARBARIAN",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.74,
+    "error_m": 7.74,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 4.5,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "WICKED",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 108.82,
+    "error_m": 108.82,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 150.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Are You There God Its Me Margaret",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.7,
+    "error_m": 6.7,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 30.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "A REAL PAIN",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 0.52,
+    "error_m": 0.52,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 3.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Taylor Swift The Eras Tour",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 92.77,
+    "error_m": 92.77,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 15.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "JURASSIC WORLD DOMINION",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 132.42,
+    "error_m": 132.42,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 465.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "GUY RITCHIE'S THE COVENANT",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.27,
+    "error_m": 6.27,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 55.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "THANKSGIVING",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.7,
+    "error_m": 9.7,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 15.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "THE WOMAN IN THE YARD",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.36,
+    "error_m": 8.36,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 12.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "HIM",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 11.8,
+    "error_m": 11.8,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 27.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "A QUIET PLACE: DAY ONE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 52.89,
+    "error_m": 52.89,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 67.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Now You See Me Now You Dont",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 20.33,
+    "error_m": 20.33,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 90.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "JURASSIC WORLD REBIRTH",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 89.72,
+    "error_m": 89.72,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 180.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "GLADIATOR II",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 58.81,
+    "error_m": 58.81,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 310.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "THE ROSES",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.8,
+    "error_m": 5.8,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 30.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "FALL",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 2.6,
+    "error_m": 2.6,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 3.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "AVATAR: THE WAY OF WATER",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 127.17,
+    "error_m": 127.17,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 350.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Blink Twice",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.09,
+    "error_m": 7.09,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "28 Years Later The Bone Temple",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 11.56,
+    "error_m": 11.56,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 63.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Nuremberg",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 3.54,
+    "error_m": 3.54,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 11.8,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "DOWNTON ABBEY: THE GRAND FINALE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 18.12,
+    "error_m": 18.12,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 50.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "Magic Mike s Last Dance",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.44,
+    "error_m": 7.44,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 45.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "PREDATOR: BADLANDS",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 32.07,
+    "error_m": 32.07,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 105.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "THE CONTRACTOR",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 1.16,
+    "error_m": 1.16,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 15.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "SPIDER-MAN: ACROSS THE SPIDER-VERSE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 116.43,
+    "error_m": 116.43,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 100.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "No Hard Feelings",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 17.04,
+    "error_m": 17.04,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 45.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Homestead",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.69,
+    "error_m": 5.69,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 5.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "TOP GUN: MAVERICK",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 121.63,
+    "error_m": 121.63,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 170.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "THE EQUALIZER 3",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 29.84,
+    "error_m": 29.84,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 70.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "The Machine",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 4.9,
+    "error_m": 4.9,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Am I Racist",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 4.89,
+    "error_m": 4.89,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 3.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Tarot",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.37,
+    "error_m": 6.37,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 8.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "BLACK PANTHER: WAKANDA FOREVER",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 155.35,
+    "error_m": 155.35,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 250.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "GHOSTBUSTERS: FROZEN EMPIRE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 33.95,
+    "error_m": 33.95,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 100.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "SCREAM 7",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 63.74,
+    "error_m": 63.74,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 35.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "80 FOR BRADY",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 10.82,
+    "error_m": 10.82,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 28.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Project Hail Mary",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 80.24,
+    "error_m": 80.24,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 200.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Reminders of Him",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 18.54,
+    "error_m": 18.54,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 25.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "AMBULANCE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.24,
+    "error_m": 8.24,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 40.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "NOSFERATU",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 22.72,
+    "error_m": 22.72,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 50.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "The Fantastic Four First Steps",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 106.81,
+    "error_m": 106.81,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 200.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Godzilla Minus One",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 10.45,
+    "error_m": 10.45,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 15.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "The Accountant 2",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 22.54,
+    "error_m": 22.54,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 80.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Imaginary",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.04,
+    "error_m": 8.04,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 13.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "THE KING'S DAUGHTER",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 0.75,
+    "error_m": 0.75,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 40.5,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Madame Web",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 18.25,
+    "error_m": 18.25,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 80.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Beetlejuice Beetlejuice",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 109.23,
+    "error_m": 109.23,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 99.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "A Minecraft Movie",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 154.25,
+    "error_m": 154.25,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 150.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "SCREAM VI",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 41.02,
+    "error_m": 41.02,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 33.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "The Woman King",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 19.75,
+    "error_m": 19.75,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 50.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "The Forge",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.11,
+    "error_m": 6.11,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 5.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "Love Hurts",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.1,
+    "error_m": 6.1,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 18.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Black Adam",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 66.96,
+    "error_m": 66.96,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 200.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "BLUE BEETLE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 24.53,
+    "error_m": 24.53,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 104.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "FANTASTIC BEASTS: THE SECRETS OF DUMBLEDORE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 35.35,
+    "error_m": 35.35,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 200.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "About My Father",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 3.78,
+    "error_m": 3.78,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 29.1,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Bonhoeffer",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 4.08,
+    "error_m": 4.08,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 25.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "Shazam Fury of the Gods",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 26.86,
+    "error_m": 26.86,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 110.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "COMPANION",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.98,
+    "error_m": 8.98,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 10.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "PREY FOR THE DEVIL",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.09,
+    "error_m": 7.09,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "CIVIL WAR",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 25.42,
+    "error_m": 25.42,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 50.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "OPERATION FORTUNE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 3.05,
+    "error_m": 3.05,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 50.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "The Color Purple",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.54,
+    "error_m": 9.54,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 90.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "Insidious The Red Door",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 30.99,
+    "error_m": 30.99,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 16.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "DEN OF THIEVES 2: PANTERA",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 16.17,
+    "error_m": 16.17,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 40.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "NIGHT SWIM",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 10.93,
+    "error_m": 10.93,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 15.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Speak No Evil",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 10.34,
+    "error_m": 10.34,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 15.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Fast X",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 68.33,
+    "error_m": 68.33,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 340.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "M3GAN 2.0",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.23,
+    "error_m": 9.23,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 15.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Immaculate",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.07,
+    "error_m": 5.07,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 9.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "THE UNBEARABLE WEIGHT OF MASSIVE TALENT",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.99,
+    "error_m": 6.99,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 30.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "The Iron Claw",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 4.59,
+    "error_m": 4.59,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 15.9,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "IT ENDS WITH US",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 50.91,
+    "error_m": 50.91,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 55.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "MUFASA: THE LION KING",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 31.66,
+    "error_m": 31.66,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 200.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "JOKER: FOLIE \u00c0 DEUX",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 29.45,
+    "error_m": 29.45,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 190.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "RETRIBUTION",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 3.56,
+    "error_m": 3.56,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 1.2,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "TWISTERS",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 78.97,
+    "error_m": 78.97,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 155.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Joy Ride",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.44,
+    "error_m": 5.44,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Ferrari",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 4.32,
+    "error_m": 4.32,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 95.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "COCAINE BEAR",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 23.88,
+    "error_m": 23.88,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 32.5,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "MAXXXINE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.75,
+    "error_m": 6.75,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 10.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Evil Dead Rise",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 23.55,
+    "error_m": 23.55,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 15.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Fly Me to the Moon",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.21,
+    "error_m": 8.21,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 100.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "REGRETTING YOU",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 10.5,
+    "error_m": 10.5,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 30.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "DOCTOR STRANGE IN THE MULTIVERSE OF MADNESS",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 172.05,
+    "error_m": 172.05,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 290.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "ANT-MAN AND THE WASP: QUANTUMANIA",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 99.92,
+    "error_m": 99.92,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 200.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "My Big Fat Greek Wedding 3",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.3,
+    "error_m": 8.3,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "MOONFALL",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.1,
+    "error_m": 9.1,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 146.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Halloween Ends",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 37.28,
+    "error_m": 37.28,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 33.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "I Know What You Did Last Summer 2025",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.38,
+    "error_m": 9.38,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 18.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "MEAN GIRLS",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 27.47,
+    "error_m": 27.47,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 17.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "MATERIALISTS",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.03,
+    "error_m": 9.03,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "UMMA",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 1.25,
+    "error_m": 1.25,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 3.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Transformers One",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 24.35,
+    "error_m": 24.35,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 75.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "THE FALL GUY",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 25.61,
+    "error_m": 25.61,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 125.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Undertone",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.71,
+    "error_m": 7.71,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 0.5,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "A Working Man",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 16.31,
+    "error_m": 16.31,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 40.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Ordinary Angels",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.48,
+    "error_m": 5.48,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 13.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "THE NAKED GUN",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 18.01,
+    "error_m": 18.01,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 42.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "SAW X",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 19.91,
+    "error_m": 19.91,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 13.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "CHAMPIONS",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.14,
+    "error_m": 5.14,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 15.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "THE MENU",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.02,
+    "error_m": 8.02,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 35.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "One of Them Days",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.8,
+    "error_m": 8.8,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 14.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "FINAL DESTINATION BLOODLINES",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 52.84,
+    "error_m": 52.84,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 50.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "AMSTERDAM",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.46,
+    "error_m": 6.46,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 80.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "DEATH ON THE NILE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 11.5,
+    "error_m": 11.5,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 90.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "BLACK PHONE 2",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 27.54,
+    "error_m": 27.54,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 30.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "The Monkey",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 10.18,
+    "error_m": 10.18,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 10.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Cabrini",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.36,
+    "error_m": 6.36,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 50.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "The Blind",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 4.16,
+    "error_m": 4.16,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 30.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "Tron Ares",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 28.25,
+    "error_m": 28.25,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 220.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "DOG",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 10.88,
+    "error_m": 10.88,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "TERRIFIER 3",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 19.48,
+    "error_m": 19.48,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 2.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "THE FLASH",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 57.98,
+    "error_m": 57.98,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 220.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "The Invitation",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.77,
+    "error_m": 6.77,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 10.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Springsteen Deliver Me From Nowhere",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 7.18,
+    "error_m": 7.18,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 55.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "Guardians of the Galaxy Vol 3",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 110.81,
+    "error_m": 110.81,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 250.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "The First Omen",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.14,
+    "error_m": 8.14,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 30.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "AQUAMAN AND THE LOST KINGDOM",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 25.4,
+    "error_m": 25.4,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 205.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "Death of a Unicorn",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.01,
+    "error_m": 6.01,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 15.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "One Battle After Another",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 21.81,
+    "error_m": 21.81,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 175.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "The Strangers Chapter 2",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.26,
+    "error_m": 5.26,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 8.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Meg 2 The Trench",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 27.66,
+    "error_m": 27.66,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 129.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "TICKET TO PARADISE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 17.43,
+    "error_m": 17.43,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 60.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Drop",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.8,
+    "error_m": 6.8,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 11.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "SUPERMAN",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 115.57,
+    "error_m": 115.57,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 225.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "DUNE: PART TWO",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 81.88,
+    "error_m": 81.88,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 190.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Borderlands",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.19,
+    "error_m": 8.19,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 115.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Elvis",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 27.75,
+    "error_m": 27.75,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 85.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "Book Club The Next Chapter",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 5.22,
+    "error_m": 5.22,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 20.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "IF",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 29.35,
+    "error_m": 29.35,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 110.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Napoleon Movie",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 21.16,
+    "error_m": 21.16,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 165.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "THOR: LOVE AND THUNDER",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 138.08,
+    "error_m": 138.08,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 250.0,
+    "genre": "Action Franchise"
+  },
+  {
+    "movie_title": "CHALLENGERS",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 16.28,
+    "error_m": 16.28,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 55.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "Jesus Revolution",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 16.45,
+    "error_m": 16.45,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "MID",
+    "budget_m": 15.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "The Blackening",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.07,
+    "error_m": 6.07,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 5.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "Last Breath",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 6.97,
+    "error_m": 6.97,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 23.8,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Redeeming Love",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 3.63,
+    "error_m": 3.63,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 30.0,
+    "genre": "Prestige"
+  },
+  {
+    "movie_title": "Heart Eyes",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 8.25,
+    "error_m": 8.25,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 18.0,
+    "genre": "Original"
+  },
+  {
+    "movie_title": "Abigail",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 9.0,
+    "error_m": 9.0,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "SMALL",
+    "budget_m": 28.0,
+    "genre": "Horror"
+  },
+  {
+    "movie_title": "DEADPOOL & WOLVERINE",
+    "actual_ow_m": 0.0,
+    "predicted_ow_m": 183.4,
+    "error_m": 183.4,
+    "actual_tier": "UNKNOWN",
+    "predicted_tier": "LARGE+",
+    "budget_m": 200.0,
+    "genre": "Action Franchise"
+  }
+]

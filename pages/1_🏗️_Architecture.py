@@ -21,12 +21,12 @@ box_w = 0.12
 box_h = 0.065
 
 boxes = [
-    {'x': 0.5, 'y': 0.92, 'color': '#1f77b4', 'label': 'INPUT', 'sublabel': '56 Features', 'hover': '36 Static + 20 Trend Features'},
+    {'x': 0.5, 'y': 0.92, 'color': '#1f77b4', 'label': 'INPUT', 'sublabel': '59 Features', 'hover': '36 Static + 23 Trend Features'},
     {'x': 0.5, 'y': 0.74, 'color': '#2ca02c', 'label': 'STAGE 1', 'sublabel': 'SMALL vs NON-SMALL', 'hover': 'Binary classifier: CatBoost depth=8'},
-    {'x': 0.22, 'y': 0.50, 'color': '#17becf', 'label': 'SMALL', 'sublabel': 'Regressor', 'hover': 'MAE loss, 600 iterations, 148 films'},
+    {'x': 0.22, 'y': 0.50, 'color': '#17becf', 'label': 'SMALL', 'sublabel': 'Regressor', 'hover': 'MAE loss, 600 iterations, 143 films'},
     {'x': 0.5, 'y': 0.50, 'color': '#ff7f0e', 'label': 'STAGE 2', 'sublabel': 'MID vs LARGE+', 'hover': 'Binary classifier: CatBoost depth=7'},
-    {'x': 0.36, 'y': 0.28, 'color': '#9467bd', 'label': 'MID', 'sublabel': 'Regressor', 'hover': 'RMSE loss, 800 iterations, 86 films'},
-    {'x': 0.64, 'y': 0.28, 'color': '#d62728', 'label': 'LARGE+', 'sublabel': 'Regressor', 'hover': 'Quantile loss (α=0.5), 500 iterations, 51 films'},
+    {'x': 0.36, 'y': 0.28, 'color': '#9467bd', 'label': 'MID', 'sublabel': 'Regressor', 'hover': 'RMSE loss, 800 iterations, 84 films'},
+    {'x': 0.64, 'y': 0.28, 'color': '#d62728', 'label': 'LARGE+', 'sublabel': 'Regressor', 'hover': 'Quantile loss (α=0.5), 500 iterations, 50 films'},
     {'x': 0.5, 'y': 0.08, 'color': '#e377c2', 'label': 'RULE C', 'sublabel': 'TMDB Override', 'hover': 'Post-prediction safety net: D14>=25→LARGE+, D14>=15+momentum>=1.3→MID. Can only RAISE tier.'},
 ]
 
@@ -126,8 +126,8 @@ st.info(
     "**Cortex Code Contribution**: This cascade architecture was iterated through "
     "6 different approaches (Random Forest, XGBoost, LightGBM, CatBoost, Neural Net, "
     "Ensemble) across 76 experiments before arriving at the 3-tier CatBoost design. "
-    "The V16 TMDB override was designed, tested (5 rule variants on holdout), and deployed "
-    "in a single Cortex Code session."
+    "V17 added 3 new Google Trends features (ROLLING_14D, ROLLING_21D, TRENDS_EARLIEST) "
+    "to improve early-horizon predictions."
 )
 
 st.divider()
@@ -139,12 +139,12 @@ with col1:
     st.markdown("""
     | Tier | Revenue Range | Films |
     |------|---------------|-------|
-    | **SMALL** | < \\$15M | 148 (52%) |
-    | **MID** | \\$15M – \\$50M | 86 (30%) |
-    | **LARGE+** | ≥ \\$50M | 51 (18%) |
+    | **SMALL** | < \\$15M | 143 (52%) |
+    | **MID** | \\$15M – \\$50M | 84 (30%) |
+    | **LARGE+** | ≥ \\$50M | 50 (18%) |
     
-    **V16**: 285 training films (+16 vs V15's 269). Added IS_MAJOR_STUDIO 
-    and TMDB daily popularity features (D14, D7, momentum).
+    **V17**: 277 training films with 59 features (36 static + 23 trends).
+    +3 new trends features: ROLLING_14D, ROLLING_21D, TRENDS_EARLIEST.
     """)
 
 with col2:
@@ -249,7 +249,7 @@ with col2:
 
 st.divider()
 
-st.header("V16 Feature Set (56 Features)")
+st.header("V17 Feature Set (59 Features)")
 
 col1, col2 = st.columns(2)
 
@@ -276,10 +276,11 @@ with col1:
     """)
 
 with col2:
-    st.subheader("Trends Features (20)")
+    st.subheader("Trends Features (23)")
     st.markdown("""
-    **Rolling Averages** (6): ROLLING_3D, ROLLING_5D, ROLLING_7D, 
-    ROLLING_3D_PRIOR, ROLLING_5D_PRIOR, ROLLING_7D_PRIOR
+    **Rolling Averages** (9): ROLLING_3D, ROLLING_5D, ROLLING_7D, 
+    ROLLING_3D_PRIOR, ROLLING_5D_PRIOR, ROLLING_7D_PRIOR,
+    `ROLLING_14D` *(V17)*, `ROLLING_21D` *(V17)*, `TRENDS_EARLIEST` *(V17)*
     
     **Velocity** (3): VELOCITY_3D, VELOCITY_5D, VELOCITY_7D
     
@@ -307,9 +308,9 @@ with col1:
     """)
 
 with col2:
-    st.subheader("V14-V16 (3-Tier) Solution")
+    st.subheader("V14-V17 (3-Tier) Solution")
     st.markdown("""
-    - Combined into LARGE+ tier: **51 training films** in V16
+    - Combined into LARGE+ tier: **50 training films** in V17
     - LARGE+ accuracy improved dramatically
     - More robust classification boundary
     - TMDB override adds additional safety net for LARGE+ detection

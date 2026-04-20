@@ -15,17 +15,17 @@ from cortex_badge import show_cortex_badge
 st.set_page_config(page_title="Performance", page_icon="📈", layout="wide")
 
 st.title("Performance Metrics")
-st.subheader("V16 Model Accuracy and Error Analysis")
+st.subheader("V17 Model Accuracy and Error Analysis")
 
 st.divider()
 
 st.header("Base Model Performance by Time Horizon")
-st.caption("Cross-validation metrics from the cascade classifier and tier-specific regressors (285 training films)")
+st.caption("5-fold GroupKFold cross-validation metrics from the cascade classifier and tier-specific regressors (277 training films)")
 
 horizon_data = pd.DataFrame({
     'Days Out': ['-14 days', '-7 days', '-3 days'],
-    'Classification': [74.0, 77.3, 75.1],
-    'MAE ($M)': [11.7, 11.0, 11.0],
+    'Classification': [73.2, 73.2, 73.6],
+    'MAE ($M)': [11.56, 11.74, 11.65],
     'Median AE ($M)': [5.6, 4.9, 5.2],
 })
 
@@ -55,8 +55,9 @@ st.header("TMDB Override Impact (Holdout Validation)")
 st.caption("Tested on 19 films held out from training — the model never saw these during development")
 
 st.warning(
-    "**Awaiting live validation** — The holdout results below are the only legitimate V16 validation so far. "
-    "Live prediction tracking begins with MICHAEL (Apr 24, 2026). Check the Recent Predictions page for updates."
+    "**First live result**: The Mummy (Apr 18, 2026) opened to $13.52M. V17 correctly classified it as SMALL. "
+    "Regressor predicted ~$8M at -7d — undershooting by ~$5.5M (within SMALL tier MAE of $4.11M). "
+    "Live prediction tracking continues on the Recent Predictions page."
 )
 
 oc1, oc2, oc3, oc4 = st.columns(4)
@@ -78,16 +79,16 @@ st.header("Per-Tier Performance (-7 day horizon)")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.metric("SMALL Accuracy", "85.4%", help="148 training films")
-    st.metric("SMALL MAE", "$3.9M")
+    st.metric("SMALL Accuracy", "84.5%", help="143 training films")
+    st.metric("SMALL MAE", "$4.11M")
 
 with col2:
-    st.metric("MID Accuracy", "64.3%", help="86 training films")
-    st.metric("MID MAE", "$10.7M")
+    st.metric("MID Accuracy", "56.0%", help="84 training films")
+    st.metric("MID MAE", "$12.76M")
 
 with col3:
-    st.metric("LARGE+ Accuracy", "77.1%", help="51 training films")
-    st.metric("LARGE+ MAE", "$32.0M")
+    st.metric("LARGE+ Accuracy", "70.0%", help="50 training films")
+    st.metric("LARGE+ MAE", "$31.75M")
 
 st.divider()
 
@@ -95,8 +96,8 @@ st.header("MAE by Tier")
 
 tier_mae_data = pd.DataFrame({
     'Tier': ['SMALL', 'MID', 'LARGE+'],
-    'MAE ($M)': [3.9, 10.7, 32.0],
-    'Sample Size': [148, 86, 51],
+    'MAE ($M)': [4.11, 12.76, 31.75],
+    'Sample Size': [143, 84, 50],
     'Revenue Range': ['<$15M', '$15-50M', '>$50M']
 })
 
@@ -115,18 +116,18 @@ with col2:
     st.markdown("""
     | Tier | Median OW | MAE | MAE % |
     |------|-----------|-----|-------|
-    | SMALL | $7M | $3.9M | 56% |
-    | MID | $28M | $10.7M | 38% |
-    | LARGE+ | $85M | $32.0M | 38% |
+    | SMALL | $7M | $4.11M | 59% |
+    | MID | $28M | $12.76M | 46% |
+    | LARGE+ | $85M | $31.75M | 37% |
     """)
     st.info("LARGE+ has highest absolute MAE but comparable relative error to MID!")
 
 st.divider()
 
 st.header("Prediction vs Actual (Training Set Fit)")
-st.caption("V16 model predictions on its own 288 training films at -7d horizon. This shows model fit, not out-of-sample accuracy — see CV metrics above for generalization performance.")
+st.caption("V17 model predictions on its own 277 training films at -7d horizon. This shows model fit, not out-of-sample accuracy — see CV metrics above for generalization performance.")
 
-_data_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'training_predictions_v16.json')
+_data_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'training_predictions_v17.json')
 with open(_data_path) as _f:
     _training_preds = json.load(_f)
 
@@ -196,17 +197,15 @@ with col2:
 
 st.divider()
 
-st.header("V16 vs V15 Comparison")
+st.header("V17 vs V16 Comparison")
 
 comparison_data = pd.DataFrame({
-    'Metric': ['Training Films', 'Features', 'Classification Acc (-7d)', 'MAE (-7d)',
-               'Holdout Tier Acc (w/ override)', 'Override Precision', 'New Feature: IS_MAJOR_STUDIO',
-               'New Feature: TMDB D14/D7/Momentum'],
-    'V15': ['269', '52', '77.3%', '$11.0M', '63.2% (no override)', 'N/A', 'No', 'No'],
-    'V16': ['285', '56', '~77% (same architecture)', '~$11M (same architecture)',
-            '**84.2%** (with Rule C)', '4/4 (100%)', 'Yes', 'Yes'],
-    'Change': ['+16 films', '+4', 'Base model similar', 'Base model similar',
-               '+21pp with override', 'New capability', 'New', 'New (powers Rule C)']
+    'Metric': ['Training Films', 'Features', 'CV Accuracy (-14d)', 'CV Accuracy (-7d)',
+               'CV Accuracy (-3d)', 'CV MAE (-14d)', 'CV MAE (-7d)', 'CV MAE (-3d)'],
+    'V16': ['285', '56', '73.2%', '73.2%', '73.6%', '$11.57M', '$11.78M', '$11.53M'],
+    'V17': ['277', '59', '73.2%', '73.2%', '73.6%', '$11.56M', '$11.74M', '$11.65M'],
+    'Change': ['Cleaned', '+3 trends', 'Same', 'Same', 'Same',
+               '-$0.01M', '-$0.04M', '+$0.12M']
 })
 
 st.dataframe(comparison_data, use_container_width=True, hide_index=True)
@@ -214,21 +213,21 @@ st.dataframe(comparison_data, use_container_width=True, hide_index=True)
 col1, col2 = st.columns(2)
 
 with col1:
-    st.success("**What Changed in V16**")
+    st.success("**What Changed in V17**")
     st.markdown("""
-    - **+16 training films** (269 -> 285) — full studio coverage
-    - **+4 new features**: IS_MAJOR_STUDIO, TMDB D14, TMDB D7, Momentum
-    - **TMDB Override (Rule C)**: Post-model tier safety net
-    - Same cascade architecture and hyperparameters as V15
+    - **+3 new trends features**: ROLLING_14D, ROLLING_21D, TRENDS_EARLIEST
+    - **59 total features** (36 static + 23 Google Trends)
+    - **5-fold GroupKFold CV** grouped by MOVIE_ID
+    - Marginal MAE improvement at -14d and -7d horizons
     """)
 
 with col2:
-    st.warning("**What We're Waiting For**")
+    st.info("**Key Finding**")
     st.markdown("""
-    - **Live prediction results**: MICHAEL (Apr 24) is the first V16 live test
-    - **V16 cross-validation**: Full CV metrics with 56 features pending
-    - **Override accuracy on new films**: Holdout was 4/4, need more data points
-    - **Base model improvement**: +16 films may improve MAE (not yet measured)
+    - Classification accuracy identical across all horizons
+    - ROLLING_21D ranks **#4** in SMALL regressor at -14d (importance=3.93)
+    - TRENDS_EARLIEST ranks **#3** in LARGE+ regressor at -7d (importance=4.86)
+    - New features most impactful at early horizons as intended
     """)
 
 st.divider()
@@ -260,8 +259,8 @@ st.info(
     "**AI-Assisted Optimization**: Cortex Code ran 104 hyperparameter tuning configurations "
     "across all three tier-specific regressors and both stage classifiers, systematically "
     "improving classification accuracy from V2's 58% to V15's 77.3% — a 19 percentage point "
-    "gain driven by architecture iteration and data quality improvements. V16's Rule C override "
-    "was designed, tested against 5 rule variants, and validated on a holdout set in a single session."
+    "gain driven by architecture iteration and data quality improvements. V17 added 3 new trends "
+    "features and validated them through rigorous 5-fold GroupKFold cross-validation."
 )
 
 show_cortex_badge()
