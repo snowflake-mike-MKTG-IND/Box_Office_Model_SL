@@ -119,34 +119,35 @@ UPCOMING = [
     {
         "weekend": "Weekend 16",
         "dates": "Apr 24-26, 2026",
-        "model": "V16",
+        "model": "V17",
         "movies": [
-            {"movie": "MICHAEL", "studio": "Lionsgate", "predicted_tier": "LARGE+", "predicted_ow": 84.85, "conf_low": 67.88, "conf_high": 101.82,
-             "tmdb_d14": 51.96, "overridden": False, "horizon": "-3d",
-             "tier_prob": 0.61, "trends_days": 18, "days_until_release": 4,
-             "note": "Michael Jackson biopic. $155M budget, PG-13. LARGE+ at -3d (61% S2 confidence). TMDB D14=52.0, D7=46.3, momentum=0.89. R3D=60.2, R7D=52.6 (trends accelerating)."},
+            {"movie": "MICHAEL", "studio": "Lionsgate", "predicted_tier": "LARGE+", "predicted_ow": 79.46, "conf_low": 63.57, "conf_high": 95.36,
+             "tmdb_d14": 51.96, "overridden": True, "override_reason": "Rule C auto-override: TMDB D14=52.0 (>=25 threshold) → LARGE+. V17 base=MID.",
+             "horizon": "-3d",
+             "tier_prob": 0.56, "trends_days": 18, "days_until_release": 4,
+             "note": "Michael Jackson biopic. $155M budget, PG-13. V17 base=MID, Rule C override to LARGE+. TMDB D14=52.0, D7=46.3. R14D=50.2, R21D=46.4."},
         ]
     },
     {
         "weekend": "Weekend 17",
         "dates": "May 1-3, 2026",
-        "model": "V16",
+        "model": "V17",
         "movies": [
-            {"movie": "The Devil Wears Prada 2", "studio": "Disney", "predicted_tier": "LARGE+", "predicted_ow": 74.40, "conf_low": 59.52, "conf_high": 89.28,
-             "tmdb_d14": 25.13, "overridden": True, "override_reason": "Rule C auto-override: TMDB D14=25.13 (>=25 threshold) → LARGE+. Model base=MID.",
-             "horizon": "-14d", "tier_prob": 0.95, "trends_days": 11, "days_until_release": 11,
-             "note": "Rule C auto-override to LARGE+. Model base=MID. Day -14 prediction. TMDB D14=25.13 crosses Rule C threshold. R7D=61.3. D7/D3 pending."},
+            {"movie": "The Devil Wears Prada 2", "studio": "Disney", "predicted_tier": "LARGE+", "predicted_ow": 68.52, "conf_low": 54.82, "conf_high": 82.22,
+             "tmdb_d14": 25.13, "overridden": True, "override_reason": "Rule C auto-override: TMDB D14=25.13 (>=25 threshold) → LARGE+. V17 base=MID.",
+             "horizon": "-14d", "tier_prob": 0.73, "trends_days": 11, "days_until_release": 11,
+             "note": "Rule C auto-override to LARGE+. V17 base=MID. Day -14 prediction. TMDB D14=25.13 crosses Rule C threshold. R14D=61.9, R21D=61.9. D7/D3 pending."},
         ]
     },
     {
         "weekend": "Weekend 18",
         "dates": "May 8-10, 2026",
-        "model": "V16",
+        "model": "V17",
         "movies": [
-            {"movie": "Mortal Kombat II", "studio": "Warner Bros.", "predicted_tier": "SMALL", "predicted_ow": 8.67, "conf_low": 6.94, "conf_high": 10.40,
+            {"movie": "Mortal Kombat II", "studio": "Warner Bros.", "predicted_tier": "SMALL", "predicted_ow": 7.97, "conf_low": 6.37, "conf_high": 9.56,
              "tmdb_d14": 18.61, "overridden": False, "horizon": "-14d",
-             "tier_prob": 0.536, "trends_days": 3, "days_until_release": 18,
-             "note": "Video game sequel. $68M budget, R-rated. Day -14 prediction (early — only 3 days trends). TMDB D14=18.6 (Apr 20 proxy). 32K YT comments but low star power (Karl Urban MAX=1.41). Predecessor OW=$23.2M (MK 2021). Will refine at -7d."},
+             "tier_prob": 0.56, "trends_days": 3, "days_until_release": 18,
+             "note": "Video game sequel. $68M budget, R-rated. V17 -14d prediction (early — 3 days trends). R14D=27.4, R21D=27.4, TRENDS_EARLIEST=27.4. TMDB D14=18.6. Low star power (Karl Urban MAX=1.41). Will refine at -7d."},
         ]
     },
 ]
@@ -320,17 +321,17 @@ with col2:
 
 st.divider()
 
-st.header("V16 Preview: TMDB Popularity Override System")
+st.header("V17: Longer-Horizon Trends + TMDB Override")
 
 st.warning(
-    "**Validation Status: Awaiting Live Results** — V16 was deployed April 10, 2026. "
+    "**V17 deployed April 20, 2026** — adds ROLLING_14D/21D and TRENDS_EARLIEST features for more stable early predictions. "
     "Three upcoming predictions below with **confidence gates**: HIGH/MEDIUM predictions are actionable, "
     "LOW/PRELIMINARY predictions are directional only and will be revised as more data becomes available."
 )
 
 st.subheader("Holdout Validation (19 Blind Films)")
 st.markdown(
-    "V16 adds a **TMDB popularity override (Rule C)** that runs after the cascade prediction "
+    "V16/V17 use a **TMDB popularity override (Rule C)** that runs after the cascade prediction "
     "and can only raise a tier, never lower it. Tested against 19 films held out from training:"
 )
 
@@ -349,8 +350,8 @@ st.markdown(
 
 st.divider()
 
-st.subheader("Upcoming V16 Predictions")
-st.markdown("Three upcoming films predicted with V16 in production — including Rule C auto-override and **confidence gates**. Updated April 20, 2026 with fresh Google Trends + TMDB data.")
+st.subheader("Upcoming V17 Predictions")
+st.markdown("Three upcoming films predicted with V17 in production — 59 features including ROLLING_14D/21D for better early predictions, plus Rule C auto-override and **confidence gates**. Updated April 20, 2026.")
 
 st.markdown(
     '<div style="display:flex;gap:24px;margin-bottom:16px;flex-wrap:wrap;">'
@@ -426,9 +427,10 @@ st.info(
     "- **No data leakage**: Every prediction in the chart above was generated *before* the film's opening weekend, using the model version in production at that time\n"
     "- **V14 model**: Used for Weekends 2-9 (trained Feb 27, 2026 on 239 films)\n"
     "- **V15 model**: In production March 8 - April 9, 2026 — used for Weekends 10-12 (269 training films)\n"
-    "- **V16 model**: In production since April 10, 2026 — 285 training films, 56 features, TMDB popularity override (Rule C). Predictions refreshed April 20, 2026\n"
+    "- **V16 model**: In production April 10-20, 2026 — 285 training films, 56 features, TMDB popularity override (Rule C)\n"
+    "- **V17 model**: In production since April 20, 2026 — 277 training films, 59 features (+ROLLING_14D, ROLLING_21D, TRENDS_EARLIEST). Rule C carried forward\n"
     "- **Confidence gates**: HIGH (≥70% tier prob + ≥7 days trends), MEDIUM (≥60% or ≥7 days), LOW (borderline), PRELIMINARY (very early/sparse data)\n"
-    "- **V16 holdout**: 19 films held out from training, tested blind — the only legitimate V16 validation until live predictions accumulate\n"
+    "- **V16/V17 holdout**: 19 films held out from training, tested blind. V17 matches V16 tier accuracy with improved dollar predictions at -14d/-7d\n"
     "- **Actuals**: Official box office reporting\n"
     "- **Tier System**: SMALL (<$15M) / MID ($15-50M) / LARGE+ (>$50M)"
 )
