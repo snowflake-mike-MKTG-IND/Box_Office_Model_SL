@@ -119,13 +119,13 @@ UPCOMING = [
     {
         "weekend": "Weekend 16",
         "dates": "Apr 24-26, 2026",
-        "model": "V17",
+        "model": "V18",
         "movies": [
-            {"movie": "MICHAEL", "studio": "Lionsgate", "predicted_tier": "LARGE+", "predicted_ow": 79.46, "conf_low": 63.57, "conf_high": 95.36,
-             "tmdb_d14": 51.96, "overridden": True, "override_reason": "Rule C auto-override: TMDB D14=52.0 (>=25 threshold) → LARGE+. V17 base=MID.",
+            {"movie": "MICHAEL", "studio": "Lionsgate", "predicted_tier": "LARGE+", "predicted_ow": 76.80, "conf_low": 61.44, "conf_high": 92.16,
+             "tmdb_d14": 51.96, "overridden": True, "override_reason": "Rule C auto-override: TMDB D14=52.0 (>=25 threshold) → LARGE+. V18 base=MID (52.9% prob).",
              "horizon": "-3d",
-             "tier_prob": 0.56, "trends_days": 18, "days_until_release": 4,
-             "note": "Michael Jackson biopic. $155M budget, PG-13. V17 base=MID, Rule C override to LARGE+. TMDB D14=52.0, D7=46.3. R14D=50.2, R21D=46.4."},
+             "tier_prob": 0.529, "trends_days": 18, "days_until_release": 1,
+             "note": "Michael Jackson biopic. $155M budget, PG-13. V18 D-3 with Wiki features: base=MID (P=53%), Rule C override → LARGE+. TMDB D14=52.0, D7=46.3, momentum=0.89. GT R7D=64.6. Wiki R7D=202K, Peak=43K. Final: $76.80M."},
         ]
     },
     {
