@@ -1,5 +1,5 @@
 """
-Page 4: Interactive Prediction Tool (V17)
+Page 4: Interactive Prediction Tool (V17.1)
 """
 
 import streamlit as st
@@ -13,13 +13,13 @@ from cortex_badge import show_cortex_badge
 st.set_page_config(page_title="Predictions", page_icon="🔮", layout="wide")
 
 st.title("Interactive Prediction Tool")
-st.subheader("V17 Cascade + TMDB Override")
+st.subheader("V17.1 Cascade + TMDB Override")
 
 MAJOR_STUDIOS = ["DISNEY", "WARNER BROS", "UNIVERSAL PICTURES", "PARAMOUNT", "SONY PICTURES ENTERTAINMENT", "20TH CENTURY STUDIOS"]
 
 @st.cache_resource
 def load_model():
-    model_path = os.path.join(os.path.dirname(__file__), '..', 'models', 'ow_pipeline_v17_production.joblib.gz')
+    model_path = os.path.join(os.path.dirname(__file__), '..', 'models', 'ow_pipeline_v17_1_production.joblib.gz')
     with gzip.open(model_path, 'rb') as f:
         return joblib.load(f)
 

@@ -14,7 +14,7 @@ from cortex_badge import show_cortex_badge
 st.set_page_config(page_title="Error Analysis", page_icon="⚠️", layout="wide")
 
 st.title("Error Analysis")
-st.subheader("V17 Model Limitations and Edge Cases")
+st.subheader("V17.1 Model Limitations and Edge Cases")
 
 st.divider()
 
@@ -45,7 +45,7 @@ st.plotly_chart(fig_misses, use_container_width=True)
 
 st.divider()
 
-st.header("What V17's TMDB Override Addresses")
+st.header("What V17.1's TMDB Override Addresses")
 
 col1, col2 = st.columns(2)
 
@@ -113,7 +113,7 @@ st.header("Error by Feature Value")
 
 st.subheader("Budget vs Prediction Error (Training Set)")
 
-_data_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'training_predictions_v17.json')
+_data_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'cv_predictions_v17_1.json')
 with open(_data_path) as _f:
     _training_preds = json.load(_f)
 

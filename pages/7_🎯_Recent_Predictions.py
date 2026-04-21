@@ -321,10 +321,10 @@ with col2:
 
 st.divider()
 
-st.header("V17: Longer-Horizon Trends + TMDB Override")
+st.header("V17.1: Data Fixes + Tuned HPs + TMDB Override")
 
 st.warning(
-    "**V17 deployed April 20, 2026** — adds ROLLING_14D/21D and TRENDS_EARLIEST features for more stable early predictions. "
+    "**V17.1 deployed April 20, 2026** — data quality fixes (100+ corrections) + tuned classifier HPs yield 76.2% CV accuracy. "
     "Three upcoming predictions below with **confidence gates**: HIGH/MEDIUM predictions are actionable, "
     "LOW/PRELIMINARY predictions are directional only and will be revised as more data becomes available."
 )

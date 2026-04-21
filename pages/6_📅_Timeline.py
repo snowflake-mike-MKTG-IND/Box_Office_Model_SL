@@ -14,7 +14,7 @@ st.header("🧪 ML Experimentation Summary")
 
 col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
-    st.metric("Model Versions", "11", "V2 -> V17", help="Total major model versions developed (V2-V5, V10-V11, V13-V17)")
+    st.metric("Model Versions", "12", "V2 -> V17.1", help="Total major model versions developed (V2-V5, V10-V11, V13-V17.1)")
 with col2:
     st.metric("Total Experiments", "76", "+104 HP tuning runs", help="76 model experiments + 104 hyperparameter tuning iterations")
 with col3:
@@ -22,7 +22,7 @@ with col3:
 with col4:
     st.metric("Feature Combos", "59", "Final feature set", help="From 200+ candidate features tested")
 with col5:
-    st.metric("Best Model", "V17 3-Tier", "73.2% CV acc", help="3-tier cascade + TMDB override (Rule C) + extended trends")
+    st.metric("Best Model", "V17.1 3-Tier", "76.2% CV acc", help="3-tier cascade + TMDB override (Rule C) + tuned classifiers + data fixes")
 
 st.divider()
 
@@ -237,6 +237,20 @@ TIMELINE_DATA = [
             "Deployed to Snowflake stage",
             "Dashboard updated for V17",
             "V16 archived to ML_MODELS_ARCHIVE"
+        ]
+    },
+    {
+        "version": "V17.1",
+        "date": "2026-04-20 15:00",
+        "category": "Production",
+        "description": "Data Quality Fixes + Tuned HPs",
+        "features": [
+            "10 cast fixes, 91 predecessor OW backfills, 4 runtime fixes",
+            "6 Google Trends gaps fixed (Joker FàD, Challengers, Air, etc.)",
+            "F1 Movie genre (Drama→Action) and IP_TIER (0→2) corrected",
+            "Targeted classifier HP tuning: S1(i=300,d=7,lr=0.03), S2(i=300,d=5,lr=0.02)",
+            "76.2% CV accuracy at -7d (up from V17's 73.2%)",
+            "$11.44M MAE at -7d (down from V17's $11.74M)"
         ]
     }
 ]
@@ -807,7 +821,8 @@ MODEL_COMPARISON = [
     {"version": "V14", "architecture": "3-Tier Cascade", "features": 51, "accuracy": 71.5, "mae": 13.1, "status": "Archived"},
     {"version": "V15", "architecture": "3-Tier Cascade", "features": 52, "accuracy": 77.3, "mae": 11.0, "status": "Archived"},
     {"version": "V16 (Override)", "architecture": "3-Tier + Override", "features": 56, "accuracy": 84.2, "mae": None, "status": "Archived"},
-    {"version": "V17 (Current)", "architecture": "3-Tier + Override", "features": 59, "accuracy": 73.2, "mae": 11.74, "status": "Production"},
+    {"version": "V17", "architecture": "3-Tier + Override", "features": 59, "accuracy": 73.2, "mae": 11.74, "status": "Archived"},
+    {"version": "V17.1 (Current)", "architecture": "3-Tier + Override", "features": 59, "accuracy": 76.2, "mae": 11.44, "status": "Production"},
 ]
 
 compare_df = pd.DataFrame(MODEL_COMPARISON)
@@ -826,6 +841,6 @@ st.dataframe(
     }
 )
 
-st.caption("V16 accuracy (84.2%) is from holdout validation with override. V17 accuracy (73.2%) is from 5-fold GroupKFold CV — a more rigorous metric.")
+st.caption("V16 accuracy (84.2%) is from holdout validation with override. V17.1 accuracy (76.2%) is from 5-fold GroupKFold CV — a more rigorous metric.")
 
 show_cortex_badge()
