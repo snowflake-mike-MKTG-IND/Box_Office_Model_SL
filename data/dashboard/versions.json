@@ -1,0 +1,16 @@
+[
+  {"version": "V2",  "date": "2026-02-15", "category": "Features",     "description": "Rolling windows",       "accuracy": 58.1, "mae": 16.8, "features": 15, "notes": "First time-series features (rolling 5D, velocity)"},
+  {"version": "V3",  "date": "2026-02-15", "category": "Features",     "description": "Star power",            "accuracy": 61.4, "mae": 16.0, "features": 20, "notes": "MAX/TOP2/AVG_STAR_POWER + interactions"},
+  {"version": "V4",  "date": "2026-02-15", "category": "Features",     "description": "3-day windows",         "accuracy": 62.8, "mae": 15.6, "features": 25, "notes": "Shorter lookback for late signals"},
+  {"version": "V5",  "date": "2026-02-15", "category": "Features",     "description": "Intent + 7-day",        "accuracy": 63.5, "mae": 15.1, "features": 35, "notes": "YT intent signals"},
+  {"version": "V10", "date": "2026-02-15", "category": "Architecture", "description": "4-tier cascade",        "accuracy": 67.8, "mae": 14.0, "features": 45, "notes": "Tiered classifier introduced"},
+  {"version": "V11", "date": "2026-02-16", "category": "Architecture", "description": "Budget features",       "accuracy": 68.4, "mae": 13.8, "features": 48, "notes": "Budget tier + interactions"},
+  {"version": "V13", "date": "2026-02-16", "category": "Architecture", "description": "Production pipeline",   "accuracy": 67.8, "mae": 14.0, "features": 51, "notes": "SPs + prediction view"},
+  {"version": "V14", "date": "2026-02-27", "category": "Production",   "description": "3-tier cascade",        "accuracy": 71.5, "mae": 13.1, "features": 51, "notes": "Consolidated LARGE+, quantile loss"},
+  {"version": "V15", "date": "2026-03-08", "category": "Production",   "description": "Data quality + OW log", "accuracy": 77.3, "mae": 11.0, "features": 52, "notes": "+30 films, PREDECESSOR_OW_LOG"},
+  {"version": "V16", "date": "2026-04-10", "category": "Production",   "description": "TMDB override (Rule C)","accuracy": 84.2, "mae": null,  "features": 56, "notes": "Holdout accuracy w/ override"},
+  {"version": "V17", "date": "2026-04-20", "category": "Production",   "description": "Extended Trends",       "accuracy": 73.2, "mae": 11.74, "features": 59, "notes": "+ROLLING_14D/21D/EARLIEST; GroupKFold CV"},
+  {"version": "V17.1","date": "2026-04-20","category": "Production",   "description": "Data fixes + tuned HPs","accuracy": 76.2, "mae": 11.44, "features": 59, "notes": "100+ data corrections, classifier HPT"},
+  {"version": "V17.2","date": "2026-04-21","category": "Production",   "description": "Dedup baseline",        "accuracy": 71.7, "mae": 11.67, "features": 59, "notes": "276-film dedup reference"},
+  {"version": "V18", "date": "2026-04-21", "category": "Production",   "description": "Wikipedia features",    "accuracy": 77.2, "mae": 10.96, "features": 72, "notes": "+13 Wiki features, full data-integrity pass"}
+]

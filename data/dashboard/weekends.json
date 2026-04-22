@@ -1,0 +1,52 @@
+{
+  "past_weekends": [
+    {"weekend": "Weekend 2",  "dates": "Jan 9-12, 2026",   "model": "V14", "movies": [
+      {"movie": "Greenland 2: Migration", "studio": "STX/Lionsgate", "pred_tier": "SMALL", "pred_ow": 9.37, "conf_low": 7.5, "conf_high": 11.24, "actual_ow": 8.40, "industry": 9.0, "note": "Gerard Butler sequel"}
+    ]},
+    {"weekend": "Weekend 3",  "dates": "Jan 16-19, 2026",  "model": "V14", "movies": [
+      {"movie": "28 Years Later: The Bone Temple", "studio": "Sony", "pred_tier": "SMALL", "pred_ow": 14.48, "conf_low": 11.58, "conf_high": 17.37, "actual_ow": 12.52, "industry": 20.0, "note": "Horror sequel"}
+    ]},
+    {"weekend": "Weekend 7",  "dates": "Feb 13-15, 2026",  "model": "V14", "movies": [
+      {"movie": "Wuthering Heights", "studio": "Warner Bros.", "pred_tier": "MID",   "pred_ow": 26.80, "conf_low": 21.44, "conf_high": 32.16, "actual_ow": 32.80, "industry": 40.0, "note": "Emerald Fennell"},
+      {"movie": "GOAT",              "studio": "Sony",         "pred_tier": "MID",   "pred_ow": 22.45, "conf_low": 17.96, "conf_high": 26.93, "actual_ow": 27.20, "industry": 25.0, "note": "Animated sports comedy"}
+    ]},
+    {"weekend": "Weekend 9",  "dates": "Feb 27-Mar 1, 2026","model": "V14", "movies": [
+      {"movie": "Scream 7", "studio": "Paramount", "pred_tier": "LARGE+", "pred_ow": 69.59, "conf_low": 55.67, "conf_high": 83.51, "actual_ow": 63.62, "industry": 40.0, "note": "Blew past all industry projections"}
+    ]},
+    {"weekend": "Weekend 10", "dates": "Mar 6-8, 2026",    "model": "V15", "movies": [
+      {"movie": "The Bride", "studio": "Warner Bros.", "pred_tier": "SMALL", "pred_ow": 8.31, "conf_low": 6.65, "conf_high": 9.97, "actual_ow": 7.20, "note": "Within CI"}
+    ]},
+    {"weekend": "Weekend 11", "dates": "Mar 13-15, 2026",  "model": "V15", "movies": [
+      {"movie": "Reminders of Him", "studio": "Universal", "pred_tier": "SMALL", "pred_ow": 7.48, "conf_low": 5.98, "conf_high": 8.98, "actual_ow": 17.98, "note": "Tier miss - Colleen Hoover adaptation"}
+    ]},
+    {"weekend": "Weekend 12", "dates": "Mar 20-22, 2026",  "model": "V15", "movies": [
+      {"movie": "Project Hail Mary", "studio": "Amazon MGM",      "pred_tier": "MID",   "pred_ow": 26.42, "conf_low": 21.14, "conf_high": 31.70, "actual_ow": 80.51, "note": "Biggest miss pre-V16"},
+      {"movie": "Ready or Not 2",    "studio": "Disney/Searchlight","pred_tier": "SMALL","pred_ow": 7.78, "conf_low": 6.22, "conf_high": 9.34,  "actual_ow": 9.08,  "note": "Within CI"}
+    ]},
+    {"weekend": "Weekend 15", "dates": "Apr 17-19, 2026",  "model": "V17.1", "movies": [
+      {"movie": "Lee Cronin's The Mummy", "studio": "Universal", "pred_tier": "SMALL", "pred_ow": 9.40, "conf_low": 7.52, "conf_high": 11.28, "actual_ow": 13.52, "note": "Tier correct; outside CI"}
+    ]}
+  ],
+  "upcoming": [
+    {"weekend": "Weekend 16", "dates": "Apr 24-26, 2026", "model": "V18",
+     "movies": [{"movie": "MICHAEL", "studio": "Lionsgate", "pred_tier": "LARGE+",
+                 "pred_ow": 76.80, "conf_low": 61.44, "conf_high": 92.16,
+                 "tmdb_d14": 51.96, "overridden": true,
+                 "reason": "Rule C: TMDB D14=52.0 ≥ 25 → LARGE+. V18 base=MID (53% prob).",
+                 "horizon": "-3d", "tier_prob": 0.53, "trends_days": 18, "days_until": 1,
+                 "note": "Michael Jackson biopic. $155M budget, PG-13."}]},
+    {"weekend": "Weekend 17", "dates": "May 1-3, 2026",  "model": "V18",
+     "movies": [{"movie": "The Devil Wears Prada 2", "studio": "Disney", "pred_tier": "LARGE+",
+                 "pred_ow": 68.52, "conf_low": 54.82, "conf_high": 82.22,
+                 "tmdb_d14": 25.13, "overridden": true,
+                 "reason": "Rule C: TMDB D14=25.13 ≥ 25 → LARGE+.",
+                 "horizon": "-14d", "tier_prob": 0.73, "trends_days": 11, "days_until": 11,
+                 "note": "Day -14 prediction. Will refine at -7d."}]},
+    {"weekend": "Weekend 18", "dates": "May 8-10, 2026", "model": "V18",
+     "movies": [{"movie": "Mortal Kombat II", "studio": "Warner Bros.", "pred_tier": "MID",
+                 "pred_ow": 24.96, "conf_low": 18.0, "conf_high": 36.0,
+                 "tmdb_d14": 18.61, "overridden": false,
+                 "horizon": "-3d", "tier_prob": 0.518, "trends_days": 6, "days_until": 16,
+                 "note": "Rescored 2026-04-22 after fixing MOVIE_GENRES franchise/sequel flags (IS_FRANCHISE=TRUE, IS_SEQUEL=TRUE, FRANCHISE_NAME='Mortal Kombat'). Base classifier: 51.8% MID / 47.3% SMALL / 0.9% LARGE+. Signals remain weak (Wiki 7D=0, GT R7D=NaN, TMDB D7=NaN) — if fresh TMDB pushes D14 ≥ 25, Rule C would override to LARGE+."}]}
+  ]
+}

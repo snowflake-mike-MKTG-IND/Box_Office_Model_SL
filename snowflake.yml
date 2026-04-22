@@ -1,0 +1,18 @@
+definition_version: 2
+entities:
+  box_office_predictor:
+    type: streamlit
+    identifier:
+      name: BOX_OFFICE_PREDICTOR
+      schema: PRODUCTION
+      database: SPARK_PAR_DEMO
+    title: Box Office Predictor
+    main_file: app.py
+    query_warehouse: TUTORIAL_WAREHOUSE
+    stage: STREAMLIT_STAGE
+    artifacts:
+      - app.py
+      - theme.py
+      - cortex_badge.py
+      - pages/
+      - data/

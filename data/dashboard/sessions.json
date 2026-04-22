@@ -1,0 +1,13 @@
+[
+  {"date": "2026-01-28", "hours": 3.0, "work": "Project kickoff, data exploration"},
+  {"date": "2026-01-30", "hours": 4.0, "work": "ML infrastructure setup, base views"},
+  {"date": "2026-02-03", "hours": 2.5, "work": "External data integration, actor tables"},
+  {"date": "2026-02-15", "hours": 8.0, "work": "Feature engineering marathon (V2-V10)"},
+  {"date": "2026-02-16", "hours": 5.0, "work": "Budget features, V11-V13 pipeline"},
+  {"date": "2026-02-27", "hours": 6.0, "work": "V14 3-tier cascade, hybrid star power"},
+  {"date": "2026-02-28", "hours": 4.0, "work": "Production deployment, visualization app"},
+  {"date": "2026-04-10", "hours": 3.0, "work": "V16 TMDB override: design, test, deploy"},
+  {"date": "2026-04-20", "hours": 3.0, "work": "V17 extended trends: feature view, training, CV, deploy"},
+  {"date": "2026-04-20", "hours": 1.0, "work": "V18 Wikipedia sprint (~49 min)"},
+  {"date": "2026-04-21", "hours": 2.5, "work": "V18 full data-integrity pass (276 films)"}
+]

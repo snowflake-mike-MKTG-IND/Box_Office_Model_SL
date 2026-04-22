@@ -1,0 +1,17 @@
+[
+  {"model": "Stage 1 Classifier", "param": "iterations",    "tested": 12, "best": "200",          "range": "100-1000"},
+  {"model": "Stage 1 Classifier", "param": "depth",         "tested": 8,  "best": "7",            "range": "4-12"},
+  {"model": "Stage 1 Classifier", "param": "learning_rate", "tested": 10, "best": "0.02",         "range": "0.005-0.1"},
+  {"model": "Stage 2 Classifier", "param": "iterations",    "tested": 12, "best": "400",          "range": "100-1000"},
+  {"model": "Stage 2 Classifier", "param": "depth",         "tested": 8,  "best": "5",            "range": "4-12"},
+  {"model": "Stage 2 Classifier", "param": "learning_rate", "tested": 10, "best": "0.03",         "range": "0.005-0.1"},
+  {"model": "SMALL Regressor",    "param": "iterations",    "tested": 8,  "best": "600",          "range": "200-1000"},
+  {"model": "SMALL Regressor",    "param": "depth",         "tested": 6,  "best": "5",            "range": "3-8"},
+  {"model": "SMALL Regressor",    "param": "l2_leaf_reg",   "tested": 5,  "best": "5",            "range": "1-10"},
+  {"model": "MID Regressor",      "param": "iterations",    "tested": 8,  "best": "800",          "range": "200-1000"},
+  {"model": "MID Regressor",      "param": "depth",         "tested": 6,  "best": "6",            "range": "3-8"},
+  {"model": "MID Regressor",      "param": "loss_function", "tested": 3,  "best": "RMSE",         "range": "MAE/RMSE/Quantile"},
+  {"model": "LARGE+ Regressor",   "param": "iterations",    "tested": 8,  "best": "500",          "range": "200-1000"},
+  {"model": "LARGE+ Regressor",   "param": "depth",         "tested": 6,  "best": "5",            "range": "3-8"},
+  {"model": "LARGE+ Regressor",   "param": "loss_function", "tested": 4,  "best": "Quantile:α=0.5","range": "MAE/RMSE/Quantile/Huber"}
+]
