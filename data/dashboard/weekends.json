@@ -37,16 +37,16 @@
                  "note": "Michael Jackson biopic. $155M budget, PG-13."}]},
     {"weekend": "Weekend 17", "dates": "May 1-3, 2026",  "model": "V18",
      "movies": [{"movie": "The Devil Wears Prada 2", "studio": "Disney", "pred_tier": "LARGE+",
-                 "pred_ow": 68.52, "conf_low": 54.82, "conf_high": 82.22,
-                 "tmdb_d14": 25.13, "overridden": true,
-                 "reason": "Rule C: TMDB D14=25.13 ≥ 25 → LARGE+.",
-                 "horizon": "-14d", "tier_prob": 0.73, "trends_days": 11, "days_until": 11,
-                 "note": "Day -14 prediction. Will refine at -7d."}]},
+                 "pred_ow": 67.63, "conf_low": 54.10, "conf_high": 81.16,
+                 "tmdb_d14": 25.13, "tmdb_d7": 38.68, "overridden": true,
+                 "reason": "Rule C: TMDB D14=25.1 ≥ 25 → LARGE+. TMDB surged 1.54x (D14→D7).",
+                 "horizon": "-7d", "tier_prob": 0.862, "trends_days": 15, "days_until": 7,
+                 "note": "Refined from -14d ($68.52M) to -7d. Meryl Streep MAX_STAR=10.0, $125M budget, R7D=123.67, Wiki 120K/day."}]},
     {"weekend": "Weekend 18", "dates": "May 8-10, 2026", "model": "V18",
      "movies": [{"movie": "Mortal Kombat II", "studio": "Warner Bros.", "pred_tier": "MID",
-                 "pred_ow": 24.96, "conf_low": 18.0, "conf_high": 36.0,
+                 "pred_ow": 25.66, "conf_low": 20.53, "conf_high": 30.79,
                  "tmdb_d14": 18.61, "overridden": false,
-                 "horizon": "-3d", "tier_prob": 0.518, "trends_days": 6, "days_until": 16,
-                 "note": "Rescored 2026-04-22 after fixing MOVIE_GENRES franchise/sequel flags (IS_FRANCHISE=TRUE, IS_SEQUEL=TRUE, FRANCHISE_NAME='Mortal Kombat'). Base classifier: 51.8% MID / 47.3% SMALL / 0.9% LARGE+. Signals remain weak (Wiki 7D=0, GT R7D=NaN, TMDB D7=NaN) — if fresh TMDB pushes D14 ≥ 25, Rule C would override to LARGE+."}]}
+                 "horizon": "-14d", "tier_prob": 0.978, "trends_days": 8, "days_until": 14,
+                 "note": "Day -14 with fresh data (Apr 24). MID 97.8% confidence. 32K YT comments, IP tier 3, low star power (1.41). TMDB D7 available ~May 1 — momentum could trigger Rule C upgrade."}]}
   ]
 }
