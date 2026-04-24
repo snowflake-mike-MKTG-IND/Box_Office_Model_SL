@@ -47,6 +47,12 @@
                  "pred_ow": 25.66, "conf_low": 20.53, "conf_high": 30.79,
                  "tmdb_d14": 18.61, "overridden": false,
                  "horizon": "-14d", "tier_prob": 0.978, "trends_days": 8, "days_until": 14,
-                 "note": "Day -14 with fresh data (Apr 24). MID 97.8% confidence. 32K YT comments, IP tier 3, low star power (1.41). TMDB D7 available ~May 1 — momentum could trigger Rule C upgrade."}]}
+                 "note": "Day -14 with fresh data (Apr 24). MID 97.8% confidence. 32K YT comments, IP tier 3, low star power (1.41). TMDB D7 available ~May 1 — momentum could trigger Rule C upgrade."}]},
+    {"weekend": "Weekend 19", "dates": "May 15-17, 2026", "model": "V18",
+     "movies": [{"movie": "In the Grey", "studio": "Amazon MGM", "pred_tier": "SMALL",
+                 "pred_ow": 4.87, "conf_low": 3.90, "conf_high": 5.84,
+                 "tmdb_d14": null, "overridden": false,
+                 "horizon": "-14d", "tier_prob": 0.842, "trends_days": 36, "days_until": 21,
+                 "note": "Early -14d prediction. SMALL 84.2% confidence. $90M budget but minimal buzz: R7D=0.92, YT=1.4K, no Wiki traffic, no TMDB history. May upgrade if TMDB/Wiki data arrives closer to release."}]}
   ]
 }
