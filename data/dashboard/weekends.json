@@ -14,7 +14,7 @@
       {"movie": "Scream 7", "studio": "Paramount", "pred_tier": "LARGE+", "pred_ow": 69.59, "conf_low": 55.67, "conf_high": 83.51, "actual_ow": 63.62, "industry": 40.0, "note": "Blew past all industry projections"}
     ]},
     {"weekend": "Weekend 10", "dates": "Mar 6-8, 2026",    "model": "V15", "movies": [
-      {"movie": "The Bride", "studio": "Warner Bros.", "pred_tier": "SMALL", "pred_ow": 8.31, "conf_low": 6.65, "conf_high": 9.97, "actual_ow": 7.20, "note": "Within CI"}
+      {"movie": "The Bride", "studio": "Warner Bros.", "pred_tier": "SMALL", "pred_ow": 8.31, "conf_low": 6.65, "conf_high": 9.97, "actual_ow": 7.20, "industry": 15.0, "note": "Within CI"}
     ]},
     {"weekend": "Weekend 11", "dates": "Mar 13-15, 2026",  "model": "V15", "movies": [
       {"movie": "Reminders of Him", "studio": "Universal", "pred_tier": "SMALL", "pred_ow": 7.48, "conf_low": 5.98, "conf_high": 8.98, "actual_ow": 17.98, "note": "Tier miss - Colleen Hoover adaptation"}
