@@ -25,28 +25,24 @@
     ]},
     {"weekend": "Weekend 15", "dates": "Apr 17-19, 2026",  "model": "V17.1", "movies": [
       {"movie": "Lee Cronin's The Mummy", "studio": "Universal", "pred_tier": "SMALL", "pred_ow": 9.40, "conf_low": 7.52, "conf_high": 11.28, "actual_ow": 13.52, "industry": 12.0, "note": "Tier correct; outside CI. Industry: ~$12M (Deadline week-of) within $10-20M range (Boxoffice Pro)."}
+    ]},
+    {"weekend": "Weekend 16", "dates": "Apr 24-26, 2026",  "model": "V18", "movies": [
+      {"movie": "MICHAEL", "studio": "Lionsgate", "pred_tier": "LARGE+", "pred_ow": 76.80, "conf_low": 61.44, "conf_high": 92.16, "actual_ow": 97.00, "industry": 60.0, "note": "Rule C override (TMDB D14=52.0). Tier correct; actual +$20M over prediction. Michael Jackson biopic, $155M budget."}
     ]}
   ],
   "upcoming": [
-    {"weekend": "Weekend 16", "dates": "Apr 24-26, 2026", "model": "V18",
-     "movies": [{"movie": "MICHAEL", "studio": "Lionsgate", "pred_tier": "LARGE+",
-                 "pred_ow": 76.80, "conf_low": 61.44, "conf_high": 92.16,
-                 "tmdb_d14": 51.96, "overridden": true,
-                 "reason": "Rule C: TMDB D14=52.0 ≥ 25 → LARGE+. V18 base=MID (53% prob).",
-                 "horizon": "-3d", "tier_prob": 0.53, "trends_days": 18, "days_until": 1,
-                 "note": "Michael Jackson biopic. $155M budget, PG-13."}]},
     {"weekend": "Weekend 17", "dates": "May 1-3, 2026",  "model": "V18",
      "movies": [{"movie": "The Devil Wears Prada 2", "studio": "Disney", "pred_tier": "LARGE+",
-                 "pred_ow": 67.63, "conf_low": 54.10, "conf_high": 81.16,
+                 "pred_ow": 70.68, "conf_low": 56.54, "conf_high": 84.82,
                  "tmdb_d14": 25.13, "tmdb_d7": 38.68, "overridden": true,
-                 "reason": "Rule C: TMDB D14=25.1 ≥ 25 → LARGE+. TMDB surged 1.54x (D14→D7).",
-                 "horizon": "-7d", "tier_prob": 0.862, "trends_days": 15, "days_until": 7,
-                 "note": "Refined from -14d ($68.52M) to -7d. Meryl Streep MAX_STAR=10.0, $125M budget, R7D=123.67, Wiki 120K/day."}]},
+                 "reason": "Rule C: TMDB D14=25.1 \u2265 25 \u2192 LARGE+. V18 base=MID (58% prob).",
+                 "horizon": "-3d", "tier_prob": 0.584, "trends_days": 22, "days_until": 4,
+                 "note": "Fresh D-3 run Apr 27. Meryl Streep MAX_STAR=10.0, $125M budget, wiki 182K/day, R7D=164. TMDB D7 surged 54% vs D14."}]},
     {"weekend": "Weekend 18", "dates": "May 8-10, 2026", "model": "V18",
      "movies": [{"movie": "Mortal Kombat II", "studio": "Warner Bros.", "pred_tier": "MID",
-                 "pred_ow": 25.66, "conf_low": 20.53, "conf_high": 30.79,
+                 "pred_ow": 25.77, "conf_low": 20.62, "conf_high": 30.92,
                  "tmdb_d14": 18.61, "overridden": false,
-                 "horizon": "-14d", "tier_prob": 0.978, "trends_days": 8, "days_until": 14,
-                 "note": "Day -14 with fresh data (Apr 24). MID 97.8% confidence. 32K YT comments, IP tier 3, low star power (1.41). TMDB D7 available ~May 1 — momentum could trigger Rule C upgrade."}]}
+                 "horizon": "-14d", "tier_prob": 0.572, "trends_days": 8, "days_until": 11,
+                 "note": "Fresh D-14 run Apr 27. MID 57.2% confidence. $68M budget, wiki 71K/day, R7D=23.6. Below Rule C threshold (needs D14\u226525). Will refine at D-7."}]}
   ]
 }
