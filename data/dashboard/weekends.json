@@ -27,7 +27,7 @@
       {"movie": "Lee Cronin's The Mummy", "studio": "Universal", "pred_tier": "SMALL", "pred_ow": 9.40, "conf_low": 7.52, "conf_high": 11.28, "actual_ow": 13.52, "industry": 12.0, "note": "Tier correct; outside CI. Industry: ~$12M (Deadline week-of) within $10-20M range (Boxoffice Pro)."}
     ]},
     {"weekend": "Weekend 16", "dates": "Apr 24-26, 2026",  "model": "V18", "movies": [
-      {"movie": "MICHAEL", "studio": "Lionsgate", "pred_tier": "LARGE+", "pred_ow": 76.80, "conf_low": 61.44, "conf_high": 92.16, "actual_ow": 97.00, "note": "Rule C override (TMDB D14=52.0). Tier correct; actual +$20M over prediction. Michael Jackson biopic, $155M budget."}
+      {"movie": "MICHAEL", "studio": "Lionsgate", "pred_tier": "LARGE+", "pred_ow": 76.80, "conf_low": 61.44, "conf_high": 92.16, "actual_ow": 97.00, "industry": 85.0, "note": "Rule C override (TMDB D14=52.0). Tier correct; actual $97M vs pred $76.8M (-$20M). Industry Apr-24 tracking: $65-70M (Boxoffice Pro long-range), $85M+ (Forbes week-of), ~$100M (Deadline/HR weekend-of). Michael Jackson biopic, $155M budget."}
     ]}
   ],
   "upcoming": [
