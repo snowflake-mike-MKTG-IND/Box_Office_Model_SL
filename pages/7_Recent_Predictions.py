@@ -148,6 +148,25 @@ with tab_upcoming:
                     unsafe_allow_html=True,
                 )
                 c4.markdown(f"Horizon: {m.get('horizon', '—')}  \nConfidence: **{level}**")
+                if all(k in m for k in ('p_small', 'p_mid', 'p_large')):
+                    ps, pm, pl = m['p_small'], m['p_mid'], m['p_large']
+                    small_c = TIER_COLORS.get('SMALL', '#999')
+                    mid_c = TIER_COLORS.get('MID', '#999')
+                    large_c = TIER_COLORS.get('LARGE+', '#999')
+                    st.markdown(
+                        f"<div style='font-size:0.82rem; color:#555; margin-top:6px;'>"
+                        f"Tier probabilities: "
+                        f"<span style='color:{small_c}; font-weight:600'>SMALL {ps*100:.0f}%</span> · "
+                        f"<span style='color:{mid_c}; font-weight:600'>MID {pm*100:.0f}%</span> · "
+                        f"<span style='color:{large_c}; font-weight:600'>LARGE+ {pl*100:.0f}%</span>"
+                        f"</div>"
+                        f"<div style='display:flex; height:8px; border-radius:4px; overflow:hidden; margin-top:4px; margin-bottom:4px;'>"
+                        f"<div style='width:{ps*100:.1f}%; background:{small_c};'></div>"
+                        f"<div style='width:{pm*100:.1f}%; background:{mid_c};'></div>"
+                        f"<div style='width:{pl*100:.1f}%; background:{large_c};'></div>"
+                        f"</div>",
+                        unsafe_allow_html=True,
+                    )
                 if m.get("overridden"):
                     st.caption(f"Rule C active — {m.get('reason', '')}")
                 if level == "PRELIMINARY":
