@@ -82,6 +82,12 @@ with tab_chart:
     fig = go.Figure()
     fig.add_trace(go.Bar(name="Predicted", x=df["Movie"], y=df["Pred OW"],
                          marker_color="#29B5E8",
+                         error_y=dict(
+                             type='data', symmetric=False,
+                             array=(df["Conf High"] - df["Pred OW"]).tolist(),
+                             arrayminus=(df["Pred OW"] - df["Conf Low"]).tolist(),
+                             color="#11567F", thickness=2, width=6,
+                         ),
                          text=[f"${v:.1f}M" for v in df["Pred OW"]], textposition="outside"))
     fig.add_trace(go.Bar(name="Actual", x=df["Movie"], y=df["Actual OW"],
                          marker_color="#11567F",
