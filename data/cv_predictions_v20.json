@@ -1,0 +1,2495 @@
+[
+  {
+    "movie_id": 214,
+    "movie_title": "THE OUTFIT",
+    "actual_ow_m": 1.49973,
+    "predicted_ow_m": 4.186381769461937,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 10,
+    "movie_title": "AMBULANCE",
+    "actual_ow_m": 8.69963,
+    "predicted_ow_m": 14.286515548222035,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 270,
+    "movie_title": "Wicked: For Good",
+    "actual_ow_m": 147.00464,
+    "predicted_ow_m": 114.71338838017189,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 119,
+    "movie_title": "KILLERS OF THE FLOWER MOON",
+    "actual_ow_m": 23.253655,
+    "predicted_ow_m": 30.956894402147167,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 143,
+    "movie_title": "Mission Impossible Dead Reckoning Part One",
+    "actual_ow_m": 54.688347,
+    "predicted_ow_m": 82.90625575891431,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 55,
+    "movie_title": "DEADPOOL & WOLVERINE",
+    "actual_ow_m": 211.435291,
+    "predicted_ow_m": 136.76822544319683,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 384,
+    "movie_title": "The Forge",
+    "actual_ow_m": 6.659508,
+    "predicted_ow_m": 6.094767716155859,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 346,
+    "movie_title": "Abigail",
+    "actual_ow_m": 10.29711,
+    "predicted_ow_m": 18.36847968150721,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 404,
+    "movie_title": "Bonhoeffer",
+    "actual_ow_m": 5.047975,
+    "predicted_ow_m": 5.299980932561135,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 345,
+    "movie_title": "The Best Christmas Pageant Ever",
+    "actual_ow_m": 10.773559,
+    "predicted_ow_m": 3.218414540464248,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 193,
+    "movie_title": "THANKSGIVING",
+    "actual_ow_m": 10.306272,
+    "predicted_ow_m": 11.153346445457188,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 24,
+    "movie_title": "Argylle",
+    "actual_ow_m": 17.446135,
+    "predicted_ow_m": 30.190029999651,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 47,
+    "movie_title": "CHAMPIONS",
+    "actual_ow_m": 5.14874,
+    "predicted_ow_m": 7.637432959472884,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 338,
+    "movie_title": "Beast",
+    "actual_ow_m": 11.575855,
+    "predicted_ow_m": 3.721502603201112,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 156,
+    "movie_title": "OPERATION FORTUNE",
+    "actual_ow_m": 3.139,
+    "predicted_ow_m": 7.658329564849591,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 95,
+    "movie_title": "GUY RITCHIE'S THE COVENANT",
+    "actual_ow_m": 6.380188,
+    "predicted_ow_m": 7.54731357242258,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 336,
+    "movie_title": "The Long Walk",
+    "actual_ow_m": 11.703621,
+    "predicted_ow_m": 14.649364197381676,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 287,
+    "movie_title": "Insidious The Red Door",
+    "actual_ow_m": 33.013036,
+    "predicted_ow_m": 18.415425611389225,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 223,
+    "movie_title": "THUNDERBOLTS",
+    "actual_ow_m": 74.300608,
+    "predicted_ow_m": 88.65914870116868,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 81,
+    "movie_title": "FALL",
+    "actual_ow_m": 2.512145,
+    "predicted_ow_m": 2.3821628070950966,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 114,
+    "movie_title": "JOKER: FOLIE \u00c0 DEUX",
+    "actual_ow_m": 37.678467,
+    "predicted_ow_m": 33.3962713951998,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 63,
+    "movie_title": "DOG",
+    "actual_ow_m": 14.883928,
+    "predicted_ow_m": 8.375086520505652,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 352,
+    "movie_title": "Imaginary",
+    "actual_ow_m": 9.912713,
+    "predicted_ow_m": 7.242683288231788,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 410,
+    "movie_title": "Whitney Houston I Wanna Dance With Somebody",
+    "actual_ow_m": 4.70045,
+    "predicted_ow_m": 9.590084114637706,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 5,
+    "movie_title": "A QUIET PLACE: DAY ONE",
+    "actual_ow_m": 52.202495,
+    "predicted_ow_m": 60.243949275118894,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 420,
+    "movie_title": "Nuremberg",
+    "actual_ow_m": 3.883294,
+    "predicted_ow_m": 5.869532025006676,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 321,
+    "movie_title": "The Creator",
+    "actual_ow_m": 14.079512,
+    "predicted_ow_m": 16.365349905908833,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 288,
+    "movie_title": "The Lost City",
+    "actual_ow_m": 30.453269,
+    "predicted_ow_m": 9.865071607580221,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 375,
+    "movie_title": "Blink Twice",
+    "actual_ow_m": 7.301894,
+    "predicted_ow_m": 8.640929513831933,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 344,
+    "movie_title": "Kraven the Hunter",
+    "actual_ow_m": 11.001109,
+    "predicted_ow_m": 28.632664357029288,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 283,
+    "movie_title": "Black Adam",
+    "actual_ow_m": 67.004323,
+    "predicted_ow_m": 78.84691871151279,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 300,
+    "movie_title": "Longlegs",
+    "actual_ow_m": 22.400119,
+    "predicted_ow_m": 15.34786337613832,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 30,
+    "movie_title": "BARBIE",
+    "actual_ow_m": 162.022044,
+    "predicted_ow_m": 98.90944499966993,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 58,
+    "movie_title": "DEVOTION",
+    "actual_ow_m": 5.902803,
+    "predicted_ow_m": 14.4646368959687,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 158,
+    "movie_title": "PREDATOR: BADLANDS",
+    "actual_ow_m": 40.016853,
+    "predicted_ow_m": 30.202621012270132,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 22,
+    "movie_title": "Alien Romulus",
+    "actual_ow_m": 42.003361,
+    "predicted_ow_m": 35.85788882652433,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 91,
+    "movie_title": "GHOSTBUSTERS: FROZEN EMPIRE",
+    "actual_ow_m": 45.004673,
+    "predicted_ow_m": 43.78217578830894,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 127,
+    "movie_title": "MARRY ME",
+    "actual_ow_m": 7.94998,
+    "predicted_ow_m": 9.759833015621663,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 353,
+    "movie_title": "The Bikeriders",
+    "actual_ow_m": 9.698275,
+    "predicted_ow_m": 11.55760150147098,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 1202,
+    "movie_title": "Goat",
+    "actual_ow_m": 27.202138,
+    "predicted_ow_m": 22.712513734958453,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 339,
+    "movie_title": "Godzilla Minus One",
+    "actual_ow_m": 11.419975,
+    "predicted_ow_m": 16.09908088308197,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 330,
+    "movie_title": "The Boogeyman",
+    "actual_ow_m": 12.356486,
+    "predicted_ow_m": 8.326428924259075,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 401,
+    "movie_title": "Immaculate",
+    "actual_ow_m": 5.338921,
+    "predicted_ow_m": 8.512277105318079,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 74,
+    "movie_title": "ETERNITY",
+    "actual_ow_m": 3.17581,
+    "predicted_ow_m": 9.72477421846205,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 302,
+    "movie_title": "One Battle After Another",
+    "actual_ow_m": 22.000387,
+    "predicted_ow_m": 11.44840474305074,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 190,
+    "movie_title": "TALK TO ME",
+    "actual_ow_m": 10.43172,
+    "predicted_ow_m": 5.214849740257858,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 368,
+    "movie_title": "Last Breath",
+    "actual_ow_m": 7.85119,
+    "predicted_ow_m": 6.857580750348095,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 49,
+    "movie_title": "COCAINE BEAR",
+    "actual_ow_m": 23.1,
+    "predicted_ow_m": 23.580999281274355,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 160,
+    "movie_title": "PREY FOR THE DEVIL",
+    "actual_ow_m": 7.185126,
+    "predicted_ow_m": 6.346091359595101,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 128,
+    "movie_title": "MATERIALISTS",
+    "actual_ow_m": 11.338642,
+    "predicted_ow_m": 9.814697492669161,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 316,
+    "movie_title": "Jesus Revolution",
+    "actual_ow_m": 15.882067,
+    "predicted_ow_m": 7.823668603003826,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 103,
+    "movie_title": "HOUSE PARTY",
+    "actual_ow_m": 3.985882,
+    "predicted_ow_m": 3.606843435425698,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 296,
+    "movie_title": "From the World of John Wick Ballerina",
+    "actual_ow_m": 24.501663,
+    "predicted_ow_m": 30.665111372350655,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 139,
+    "movie_title": "Madame Web",
+    "actual_ow_m": 15.335763,
+    "predicted_ow_m": 51.94257663855512,
+    "actual_tier": "MID",
+    "predicted_tier": "LARGE+",
+    "correct": "False"
+  },
+  {
+    "movie_id": 393,
+    "movie_title": "Joy Ride",
+    "actual_ow_m": 5.806277,
+    "predicted_ow_m": 7.958456151752994,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 255,
+    "movie_title": "WOLF MAN",
+    "actual_ow_m": 10.897495,
+    "predicted_ow_m": 18.48438304807641,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 347,
+    "movie_title": "M3GAN 2.0",
+    "actual_ow_m": 10.201625,
+    "predicted_ow_m": 24.57893796114887,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 388,
+    "movie_title": "Ordinary Angels",
+    "actual_ow_m": 6.1636,
+    "predicted_ow_m": 7.193803476163987,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 236,
+    "movie_title": "The Hunger Games The Ballad of Songbirds Snakes",
+    "actual_ow_m": 44.607143,
+    "predicted_ow_m": 42.302102838255195,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 274,
+    "movie_title": "Five Nights at Freddys 2",
+    "actual_ow_m": 64.00743,
+    "predicted_ow_m": 78.72454935312132,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 32,
+    "movie_title": "BLACK PHONE 2",
+    "actual_ow_m": 27.33204,
+    "predicted_ow_m": 30.526194890008053,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 166,
+    "movie_title": "ROOFMAN",
+    "actual_ow_m": 8.108861,
+    "predicted_ow_m": 11.176386791929742,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 367,
+    "movie_title": "Renfield",
+    "actual_ow_m": 8.026475,
+    "predicted_ow_m": 23.281697738101307,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 424,
+    "movie_title": "The Substance",
+    "actual_ow_m": 3.205212,
+    "predicted_ow_m": 8.345625878327407,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 365,
+    "movie_title": "Strays",
+    "actual_ow_m": 8.24781,
+    "predicted_ow_m": 9.047425857248367,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 184,
+    "movie_title": "Shazam Fury of the Gods",
+    "actual_ow_m": 30.111158,
+    "predicted_ow_m": 25.397633328533928,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 419,
+    "movie_title": "Ferrari",
+    "actual_ow_m": 3.921773,
+    "predicted_ow_m": 8.421426824544618,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 34,
+    "movie_title": "BLUE BEETLE",
+    "actual_ow_m": 25.030225,
+    "predicted_ow_m": 27.125511072037234,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 357,
+    "movie_title": "The Ministry of Ungentlemanly Warfare",
+    "actual_ow_m": 8.913698,
+    "predicted_ow_m": 14.272582119799347,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 208,
+    "movie_title": "THE KING'S DAUGHTER",
+    "actual_ow_m": 0.722796,
+    "predicted_ow_m": 3.5204459621057245,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 28,
+    "movie_title": "BAD BOYS: RIDE OR DIE",
+    "actual_ow_m": 56.527324,
+    "predicted_ow_m": 60.894130414803335,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 133,
+    "movie_title": "MISSING",
+    "actual_ow_m": 9.154695,
+    "predicted_ow_m": 7.4759117619150395,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 148,
+    "movie_title": "NE ZHA 2",
+    "actual_ow_m": 7.2,
+    "predicted_ow_m": 16.55459217129768,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 249,
+    "movie_title": "Uncharted",
+    "actual_ow_m": 44.010155,
+    "predicted_ow_m": 34.28322596958451,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 356,
+    "movie_title": "The Popes Exorcist",
+    "actual_ow_m": 9.006368,
+    "predicted_ow_m": 10.822460204451417,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 205,
+    "movie_title": "THE HOUSEMAID",
+    "actual_ow_m": 19.01,
+    "predicted_ow_m": 13.02497400032349,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 106,
+    "movie_title": "IF",
+    "actual_ow_m": 33.728375,
+    "predicted_ow_m": 19.232926766849847,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 126,
+    "movie_title": "M3GAN",
+    "actual_ow_m": 30.42986,
+    "predicted_ow_m": 25.065974846555736,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 212,
+    "movie_title": "THE NORTHMAN",
+    "actual_ow_m": 12.2908,
+    "predicted_ow_m": 27.261836791236124,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 140,
+    "movie_title": "Magic Mike s Last Dance",
+    "actual_ow_m": 8.310234,
+    "predicted_ow_m": 15.125752745873573,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 14,
+    "movie_title": "AQUAMAN AND THE LOST KINGDOM",
+    "actual_ow_m": 27.686211,
+    "predicted_ow_m": 43.945004101350634,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 157,
+    "movie_title": "OPPENHEIMER",
+    "actual_ow_m": 82.45542,
+    "predicted_ow_m": 98.28974164356207,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 26,
+    "movie_title": "BABYGIRL",
+    "actual_ow_m": 4.490145,
+    "predicted_ow_m": 11.22783529561534,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 390,
+    "movie_title": "The Blackening",
+    "actual_ow_m": 6.013131,
+    "predicted_ow_m": 5.98592285468357,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 4,
+    "movie_title": "A Minecraft Movie",
+    "actual_ow_m": 162.753003,
+    "predicted_ow_m": 96.02909755267271,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 224,
+    "movie_title": "TICKET TO PARADISE",
+    "actual_ow_m": 16.509095,
+    "predicted_ow_m": 12.392278619016022,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 418,
+    "movie_title": "A Man Called Otto",
+    "actual_ow_m": 4.202386,
+    "predicted_ow_m": 9.267680543394848,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 174,
+    "movie_title": "SISU",
+    "actual_ow_m": 3.330891,
+    "predicted_ow_m": 8.024799332125157,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 269,
+    "movie_title": "Anaconda",
+    "actual_ow_m": 14.502218,
+    "predicted_ow_m": 43.30184974147644,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 377,
+    "movie_title": "Song Sung Blue",
+    "actual_ow_m": 7.07363,
+    "predicted_ow_m": 10.762599280926718,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 219,
+    "movie_title": "THE UNBEARABLE WEIGHT OF MASSIVE TALENT",
+    "actual_ow_m": 7.131703,
+    "predicted_ow_m": 10.269008141036524,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 407,
+    "movie_title": "Here",
+    "actual_ow_m": 4.875195,
+    "predicted_ow_m": 10.530557202737894,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 2,
+    "movie_title": "65",
+    "actual_ow_m": 12.3,
+    "predicted_ow_m": 11.835786678626215,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 9,
+    "movie_title": "AIR",
+    "actual_ow_m": 14.456279,
+    "predicted_ow_m": 18.283876766977144,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 221,
+    "movie_title": "THE WOMAN IN THE YARD",
+    "actual_ow_m": 9.395255,
+    "predicted_ow_m": 7.726532301869814,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 161,
+    "movie_title": "Plane",
+    "actual_ow_m": 10.253307,
+    "predicted_ow_m": 5.778433586034624,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 295,
+    "movie_title": "The Accountant 2",
+    "actual_ow_m": 24.533959,
+    "predicted_ow_m": 21.032595554083382,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 196,
+    "movie_title": "THE BATMAN",
+    "actual_ow_m": 134.008624,
+    "predicted_ow_m": 121.71800565220943,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 290,
+    "movie_title": "28 Years Later",
+    "actual_ow_m": 30.002966,
+    "predicted_ow_m": 50.84846020205648,
+    "actual_tier": "MID",
+    "predicted_tier": "LARGE+",
+    "correct": "False"
+  },
+  {
+    "movie_id": 226,
+    "movie_title": "TRANSFORMERS: RISE OF THE BEASTS",
+    "actual_ow_m": 61.045464,
+    "predicted_ow_m": 76.3466047252212,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 361,
+    "movie_title": "The Boys in the Boat",
+    "actual_ow_m": 8.400548,
+    "predicted_ow_m": 8.582108631738636,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 370,
+    "movie_title": "Unsung Hero",
+    "actual_ow_m": 7.731539,
+    "predicted_ow_m": 6.025674681715457,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 40,
+    "movie_title": "BULLET TRAIN",
+    "actual_ow_m": 30.030156,
+    "predicted_ow_m": 24.038757436057857,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 202,
+    "movie_title": "THE FALL GUY",
+    "actual_ow_m": 27.747035,
+    "predicted_ow_m": 35.818879430971144,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 314,
+    "movie_title": "Where the Crawdads Sing",
+    "actual_ow_m": 17.253227,
+    "predicted_ow_m": 14.580808356067688,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 141,
+    "movie_title": "Mickey 17",
+    "actual_ow_m": 19.002852,
+    "predicted_ow_m": 22.13723566021472,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 86,
+    "movie_title": "FLIGHT RISK",
+    "actual_ow_m": 11.583488,
+    "predicted_ow_m": 8.643441076737687,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 334,
+    "movie_title": "One of Them Days",
+    "actual_ow_m": 11.807731,
+    "predicted_ow_m": 7.5654930339580915,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 348,
+    "movie_title": "Monkey Man",
+    "actual_ow_m": 10.119435,
+    "predicted_ow_m": 12.521296160779803,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 374,
+    "movie_title": "Drop",
+    "actual_ow_m": 7.397015,
+    "predicted_ow_m": 8.576238765780364,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 78,
+    "movie_title": "F1 Movie",
+    "actual_ow_m": 57.001667,
+    "predicted_ow_m": 35.43550060488533,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 412,
+    "movie_title": "Am I Racist",
+    "actual_ow_m": 4.544063,
+    "predicted_ow_m": 7.847539414391874,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 392,
+    "movie_title": "Homestead",
+    "actual_ow_m": 6.000241,
+    "predicted_ow_m": 5.838459995635317,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 369,
+    "movie_title": "Caught Stealing",
+    "actual_ow_m": 7.803925,
+    "predicted_ow_m": 12.751082061897694,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 256,
+    "movie_title": "WONKA",
+    "actual_ow_m": 39.0058,
+    "predicted_ow_m": 54.85421407730145,
+    "actual_tier": "MID",
+    "predicted_tier": "LARGE+",
+    "correct": "False"
+  },
+  {
+    "movie_id": 310,
+    "movie_title": "The Woman King",
+    "actual_ow_m": 19.051442,
+    "predicted_ow_m": 9.539511725099072,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 276,
+    "movie_title": "Sinners",
+    "actual_ow_m": 48.007468,
+    "predicted_ow_m": 48.086574322918416,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 233,
+    "movie_title": "The Beekeeper",
+    "actual_ow_m": 16.569283,
+    "predicted_ow_m": 18.91127338284694,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 13,
+    "movie_title": "ANT-MAN AND THE WASP: QUANTUMANIA",
+    "actual_ow_m": 106.10965,
+    "predicted_ow_m": 76.42523134215558,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 396,
+    "movie_title": "Death of a Unicorn",
+    "actual_ow_m": 5.787425,
+    "predicted_ow_m": 8.280089286204257,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 294,
+    "movie_title": "Furiosa A Mad Max Saga",
+    "actual_ow_m": 26.326462,
+    "predicted_ow_m": 68.4780655348124,
+    "actual_tier": "MID",
+    "predicted_tier": "LARGE+",
+    "correct": "False"
+  },
+  {
+    "movie_id": 358,
+    "movie_title": "Springsteen Deliver Me From Nowhere",
+    "actual_ow_m": 8.887255,
+    "predicted_ow_m": 8.229512342306883,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 265,
+    "movie_title": "PRIMATE",
+    "actual_ow_m": 11.155908,
+    "predicted_ow_m": 5.977899364572461,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 318,
+    "movie_title": "Trap",
+    "actual_ow_m": 15.454146,
+    "predicted_ow_m": 11.764945161258156,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 185,
+    "movie_title": "Snow White",
+    "actual_ow_m": 42.206415,
+    "predicted_ow_m": 54.14663801759965,
+    "actual_tier": "MID",
+    "predicted_tier": "LARGE+",
+    "correct": "False"
+  },
+  {
+    "movie_id": 380,
+    "movie_title": "The Invitation",
+    "actual_ow_m": 6.805468,
+    "predicted_ow_m": 7.217557529068356,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 93,
+    "movie_title": "GOOD FORTUNE",
+    "actual_ow_m": 6.163433,
+    "predicted_ow_m": 6.1155722191132575,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 108,
+    "movie_title": "INDIANA JONES AND THE DIAL OF DESTINY",
+    "actual_ow_m": 60.368101,
+    "predicted_ow_m": 84.79526534341957,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 240,
+    "movie_title": "The Marvels",
+    "actual_ow_m": 46.110859,
+    "predicted_ow_m": 23.66422080465076,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 207,
+    "movie_title": "THE KILLER'S GAME",
+    "actual_ow_m": 2.69785,
+    "predicted_ow_m": 6.259013498578487,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 378,
+    "movie_title": "The Watchers",
+    "actual_ow_m": 7.003537,
+    "predicted_ow_m": 9.881979254561749,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 164,
+    "movie_title": "REGRETTING YOU",
+    "actual_ow_m": 13.68753,
+    "predicted_ow_m": 17.07010268774128,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 31,
+    "movie_title": "BLACK PANTHER: WAKANDA FOREVER",
+    "actual_ow_m": 181.339761,
+    "predicted_ow_m": 91.23047932982266,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 182,
+    "movie_title": "SUPERMAN",
+    "actual_ow_m": 125.021735,
+    "predicted_ow_m": 105.53144332655039,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 217,
+    "movie_title": "THE SMASHING MACHINE",
+    "actual_ow_m": 5.841662,
+    "predicted_ow_m": 17.52958309451386,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 89,
+    "movie_title": "Five Nights at Freddys",
+    "actual_ow_m": 80.00172,
+    "predicted_ow_m": 57.994496669173834,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 76,
+    "movie_title": "Elvis",
+    "actual_ow_m": 31.211579,
+    "predicted_ow_m": 33.715044704540716,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 168,
+    "movie_title": "Red One",
+    "actual_ow_m": 32.106112,
+    "predicted_ow_m": 35.597668814255805,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 46,
+    "movie_title": "CHALLENGERS",
+    "actual_ow_m": 15.011061,
+    "predicted_ow_m": 20.81532617300699,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 72,
+    "movie_title": "Dungeons Dragons Honor Among Thieves",
+    "actual_ow_m": 37.205784,
+    "predicted_ow_m": 48.21158492651079,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 360,
+    "movie_title": "Borderlands",
+    "actual_ow_m": 8.601572,
+    "predicted_ow_m": 20.05371881047015,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 120,
+    "movie_title": "KINGDOM OF THE PLANET OF THE APES",
+    "actual_ow_m": 58.400788,
+    "predicted_ow_m": 66.7738879608659,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 150,
+    "movie_title": "NOPE",
+    "actual_ow_m": 44.36691,
+    "predicted_ow_m": 21.37402931907354,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 247,
+    "movie_title": "UMMA",
+    "actual_ow_m": 0.91529,
+    "predicted_ow_m": 3.6836216633503818,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 149,
+    "movie_title": "NIGHT SWIM",
+    "actual_ow_m": 11.797155,
+    "predicted_ow_m": 8.780039587097056,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 1257,
+    "movie_title": "Project Hail Mary",
+    "actual_ow_m": 80.506007,
+    "predicted_ow_m": 67.64990738970532,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 1259,
+    "movie_title": "Reminders of Him",
+    "actual_ow_m": 17.97994,
+    "predicted_ow_m": 8.217160201313138,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 327,
+    "movie_title": "I Know What You Did Last Summer 2025",
+    "actual_ow_m": 12.755359,
+    "predicted_ow_m": 13.3155878173451,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 383,
+    "movie_title": "Book Club The Next Chapter",
+    "actual_ow_m": 6.67758,
+    "predicted_ow_m": 5.393867336393888,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 113,
+    "movie_title": "JOHN WICK: CHAPTER 4",
+    "actual_ow_m": 73.81795,
+    "predicted_ow_m": 107.5664250665995,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 181,
+    "movie_title": "SPIDER-MAN: ACROSS THE SPIDER-VERSE",
+    "actual_ow_m": 120.663589,
+    "predicted_ow_m": 79.36640388743513,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 372,
+    "movie_title": "Arthur the King",
+    "actual_ow_m": 7.633898,
+    "predicted_ow_m": 12.770231419217934,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 286,
+    "movie_title": "Tron Ares",
+    "actual_ow_m": 33.241433,
+    "predicted_ow_m": 29.171059822920622,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 277,
+    "movie_title": "The Conjuring: Last Rites",
+    "actual_ow_m": 84.006121,
+    "predicted_ow_m": 34.1915620535332,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 408,
+    "movie_title": "The Iron Claw",
+    "actual_ow_m": 4.86837,
+    "predicted_ow_m": 13.609243657869461,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 359,
+    "movie_title": "Novocaine",
+    "actual_ow_m": 8.809436,
+    "predicted_ow_m": 7.446273388599525,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 84,
+    "movie_title": "FINAL DESTINATION BLOODLINES",
+    "actual_ow_m": 51.600106,
+    "predicted_ow_m": 41.31873919480922,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 315,
+    "movie_title": "Downton Abbey A New Era",
+    "actual_ow_m": 16.000495,
+    "predicted_ow_m": 16.442444016480238,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 146,
+    "movie_title": "Morbius",
+    "actual_ow_m": 39.005895,
+    "predicted_ow_m": 34.869583817566614,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 121,
+    "movie_title": "KNOCK AT THE CABIN",
+    "actual_ow_m": 14.12717,
+    "predicted_ow_m": 12.35457463582557,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 170,
+    "movie_title": "SAW X",
+    "actual_ow_m": 18.309301,
+    "predicted_ow_m": 15.854559306867309,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 252,
+    "movie_title": "WICKED",
+    "actual_ow_m": 112.50889,
+    "predicted_ow_m": 111.10118032098542,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 351,
+    "movie_title": "My Big Fat Greek Wedding 3",
+    "actual_ow_m": 10.028675,
+    "predicted_ow_m": 12.058576859070058,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 317,
+    "movie_title": "A Working Man",
+    "actual_ow_m": 15.510312,
+    "predicted_ow_m": 12.876399572154641,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 169,
+    "movie_title": "Redeeming Love",
+    "actual_ow_m": 3.53,
+    "predicted_ow_m": 7.8773832329467295,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 382,
+    "movie_title": "Are You There God Its Me Margaret",
+    "actual_ow_m": 6.739037,
+    "predicted_ow_m": 8.755109433755113,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 282,
+    "movie_title": "Fast X",
+    "actual_ow_m": 67.01741,
+    "predicted_ow_m": 81.08437985838458,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 319,
+    "movie_title": "No Hard Feelings",
+    "actual_ow_m": 15.00277,
+    "predicted_ow_m": 13.882616472597551,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 98,
+    "movie_title": "Guardians of the Galaxy Vol 3",
+    "actual_ow_m": 118.414021,
+    "predicted_ow_m": 91.93780184521576,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 395,
+    "movie_title": "Love Hurts",
+    "actual_ow_m": 5.80044,
+    "predicted_ow_m": 8.395855019764776,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 7,
+    "movie_title": "A REAL PAIN",
+    "actual_ow_m": 0.228856,
+    "predicted_ow_m": 3.4777117953650687,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 115,
+    "movie_title": "JURASSIC WORLD DOMINION",
+    "actual_ow_m": 145.075625,
+    "predicted_ow_m": 101.21820080061578,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 62,
+    "movie_title": "DOCTOR STRANGE IN THE MULTIVERSE OF MADNESS",
+    "actual_ow_m": 187.420998,
+    "predicted_ow_m": 118.15758306408927,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 82,
+    "movie_title": "FANTASTIC BEASTS: THE SECRETS OF DUMBLEDORE",
+    "actual_ow_m": 42.151256,
+    "predicted_ow_m": 55.030855210060885,
+    "actual_tier": "MID",
+    "predicted_tier": "LARGE+",
+    "correct": "False"
+  },
+  {
+    "movie_id": 291,
+    "movie_title": "Meg 2 The Trench",
+    "actual_ow_m": 30.002735,
+    "predicted_ow_m": 42.25890409631343,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 415,
+    "movie_title": "About My Father",
+    "actual_ow_m": 4.321148,
+    "predicted_ow_m": 5.872769297354406,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 376,
+    "movie_title": "Cabrini",
+    "actual_ow_m": 7.16852,
+    "predicted_ow_m": 8.138850336750115,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 18,
+    "movie_title": "AVATAR: THE WAY OF WATER",
+    "actual_ow_m": 134.100226,
+    "predicted_ow_m": 100.2499745605568,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 364,
+    "movie_title": "Heart Eyes",
+    "actual_ow_m": 8.305156,
+    "predicted_ow_m": 7.354940695524421,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 195,
+    "movie_title": "THE AMATEUR",
+    "actual_ow_m": 14.802849,
+    "predicted_ow_m": 16.614415715143675,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 210,
+    "movie_title": "THE MENU",
+    "actual_ow_m": 9.004957,
+    "predicted_ow_m": 7.9792671464628375,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 200,
+    "movie_title": "THE EQUALIZER 3",
+    "actual_ow_m": 34.604229,
+    "predicted_ow_m": 44.06346765068879,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 83,
+    "movie_title": "FATHER STU",
+    "actual_ow_m": 5.402642,
+    "predicted_ow_m": 10.516035833463325,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 257,
+    "movie_title": "WUTHERING HEIGHTS",
+    "actual_ow_m": 32.801647,
+    "predicted_ow_m": 26.658923783528117,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 337,
+    "movie_title": "A Complete Unknown",
+    "actual_ow_m": 11.655553,
+    "predicted_ow_m": 17.466420495486076,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 51,
+    "movie_title": "CREED III",
+    "actual_ow_m": 58.370007,
+    "predicted_ow_m": 76.05103970600702,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 411,
+    "movie_title": "The 355",
+    "actual_ow_m": 4.621765,
+    "predicted_ow_m": 8.938350988502016,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 201,
+    "movie_title": "THE EXORCIST: BELIEVER",
+    "actual_ow_m": 26.4976,
+    "predicted_ow_m": 13.553996127067846,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 234,
+    "movie_title": "The Fantastic Four First Steps",
+    "actual_ow_m": 117.644828,
+    "predicted_ow_m": 79.23886212842663,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 29,
+    "movie_title": "BARBARIAN",
+    "actual_ow_m": 10.543948,
+    "predicted_ow_m": 5.394415575564965,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 97,
+    "movie_title": "Godzilla x Kong The New Empire",
+    "actual_ow_m": 80.031984,
+    "predicted_ow_m": 74.50001246407219,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 386,
+    "movie_title": "The Last Voyage of the Demeter",
+    "actual_ow_m": 6.50495,
+    "predicted_ow_m": 10.876189903311802,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 387,
+    "movie_title": "Tarot",
+    "actual_ow_m": 6.503012,
+    "predicted_ow_m": 6.542628564582651,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 222,
+    "movie_title": "THOR: LOVE AND THUNDER",
+    "actual_ow_m": 144.165107,
+    "predicted_ow_m": 148.46771860564533,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 135,
+    "movie_title": "MISSION: IMPOSSIBLE \u2013 THE FINAL RECKONING",
+    "actual_ow_m": 64.036428,
+    "predicted_ow_m": 71.26565125681084,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 177,
+    "movie_title": "SMILE 2",
+    "actual_ow_m": 23.021692,
+    "predicted_ow_m": 20.505465262971608,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 406,
+    "movie_title": "The Machine",
+    "actual_ow_m": 5.000545,
+    "predicted_ow_m": 7.655325158629324,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 322,
+    "movie_title": "The Monkey",
+    "actual_ow_m": 14.014649,
+    "predicted_ow_m": 8.9864269359902,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 197,
+    "movie_title": "THE BLACK PHONE",
+    "actual_ow_m": 23.63322,
+    "predicted_ow_m": 9.815470531429108,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 385,
+    "movie_title": "Conclave",
+    "actual_ow_m": 6.601995,
+    "predicted_ow_m": 16.014882952605845,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 400,
+    "movie_title": "The Last Rodeo",
+    "actual_ow_m": 5.426885,
+    "predicted_ow_m": 5.048838257962907,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 335,
+    "movie_title": "The Color Purple",
+    "actual_ow_m": 11.737072,
+    "predicted_ow_m": 9.902834744563089,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 35,
+    "movie_title": "BOB MARLEY: ONE LOVE",
+    "actual_ow_m": 28.6,
+    "predicted_ow_m": 12.316208869539507,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 129,
+    "movie_title": "MAXXXINE",
+    "actual_ow_m": 6.705038,
+    "predicted_ow_m": 12.556282875745968,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 204,
+    "movie_title": "THE FLASH",
+    "actual_ow_m": 55.043679,
+    "predicted_ow_m": 84.81081559085928,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 273,
+    "movie_title": "28 Years Later The Bone Temple",
+    "actual_ow_m": 12.521327,
+    "predicted_ow_m": 23.15784846193198,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 99,
+    "movie_title": "HERETIC",
+    "actual_ow_m": 10.82981,
+    "predicted_ow_m": 8.605298628574438,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 263,
+    "movie_title": "SCREAM 7",
+    "actual_ow_m": 63.615172,
+    "predicted_ow_m": 74.02509470741145,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 154,
+    "movie_title": "Napoleon Movie",
+    "actual_ow_m": 20.632569,
+    "predicted_ow_m": 26.3731272780285,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 363,
+    "movie_title": "Warfare",
+    "actual_ow_m": 8.317989,
+    "predicted_ow_m": 9.746348603323378,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 48,
+    "movie_title": "CIVIL WAR",
+    "actual_ow_m": 25.537368,
+    "predicted_ow_m": 18.478576274702842,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 64,
+    "movie_title": "DOWNTON ABBEY: THE GRAND FINALE",
+    "actual_ow_m": 18.107405,
+    "predicted_ow_m": 10.77637757453575,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 151,
+    "movie_title": "NOSFERATU",
+    "actual_ow_m": 21.65256,
+    "predicted_ow_m": 54.030567494436966,
+    "actual_tier": "MID",
+    "predicted_tier": "LARGE+",
+    "correct": "False"
+  },
+  {
+    "movie_id": 1205,
+    "movie_title": "The Bride",
+    "actual_ow_m": 7.051476,
+    "predicted_ow_m": 11.788304007103408,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 311,
+    "movie_title": "Chainsaw Man The Movie Reze Arc",
+    "actual_ow_m": 18.030883,
+    "predicted_ow_m": 13.817686407469896,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 94,
+    "movie_title": "GREENLAND 2: MIGRATION",
+    "actual_ow_m": 8.401148,
+    "predicted_ow_m": 12.999461357117895,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 92,
+    "movie_title": "GLADIATOR II",
+    "actual_ow_m": 55.034715,
+    "predicted_ow_m": 84.38136510622111,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 320,
+    "movie_title": "A Haunting in Venice",
+    "actual_ow_m": 14.279529,
+    "predicted_ow_m": 19.35636066792172,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 213,
+    "movie_title": "THE NUN II",
+    "actual_ow_m": 32.603336,
+    "predicted_ow_m": 24.719267997423135,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 130,
+    "movie_title": "MEAN GIRLS",
+    "actual_ow_m": 28.635307,
+    "predicted_ow_m": 14.923891047643371,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 248,
+    "movie_title": "UNTIL DAWN",
+    "actual_ow_m": 8.003402,
+    "predicted_ow_m": 11.419737842190408,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 136,
+    "movie_title": "MOONFALL",
+    "actual_ow_m": 9.868997,
+    "predicted_ow_m": 13.641545367076283,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 413,
+    "movie_title": "Never Let Go",
+    "actual_ow_m": 4.449065,
+    "predicted_ow_m": 5.250761353176029,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 284,
+    "movie_title": "Halloween Ends",
+    "actual_ow_m": 40.050355,
+    "predicted_ow_m": 30.909537412817297,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 101,
+    "movie_title": "HIM",
+    "actual_ow_m": 13.25156,
+    "predicted_ow_m": 11.534949601969103,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 56,
+    "movie_title": "DEATH ON THE NILE",
+    "actual_ow_m": 12.891109,
+    "predicted_ow_m": 28.871456050445452,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 172,
+    "movie_title": "SCREAM VI",
+    "actual_ow_m": 44.447272,
+    "predicted_ow_m": 31.519270284548387,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 307,
+    "movie_title": "Karate Kid Legends",
+    "actual_ow_m": 20.302016,
+    "predicted_ow_m": 24.945671324716365,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 131,
+    "movie_title": "MICHAEL",
+    "actual_ow_m": 97.0,
+    "predicted_ow_m": 69.98088008309166,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 324,
+    "movie_title": "Violent Night",
+    "actual_ow_m": 13.45024,
+    "predicted_ow_m": 11.862138683875227,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 27,
+    "movie_title": "BABYLON",
+    "actual_ow_m": 3.603368,
+    "predicted_ow_m": 21.70610450471574,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 332,
+    "movie_title": "The Strangers Chapter 1",
+    "actual_ow_m": 11.825058,
+    "predicted_ow_m": 7.383013389886421,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 211,
+    "movie_title": "THE NAKED GUN",
+    "actual_ow_m": 16.80556,
+    "predicted_ow_m": 27.88706508721337,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 280,
+    "movie_title": "Taylor Swift The Eras Tour",
+    "actual_ow_m": 93.224755,
+    "predicted_ow_m": 67.32555369415384,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 366,
+    "movie_title": "Expend4bles",
+    "actual_ow_m": 8.039021,
+    "predicted_ow_m": 21.997993787890508,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 42,
+    "movie_title": "Beetlejuice Beetlejuice",
+    "actual_ow_m": 111.023805,
+    "predicted_ow_m": 110.64006391812708,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 313,
+    "movie_title": "Gran Turismo",
+    "actual_ow_m": 17.410552,
+    "predicted_ow_m": 15.404340205198531,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 250,
+    "movie_title": "Venom The Last Dance",
+    "actual_ow_m": 51.012404,
+    "predicted_ow_m": 74.89843812290263,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 45,
+    "movie_title": "CAPTAIN AMERICA: BRAVE NEW WORLD",
+    "actual_ow_m": 88.842603,
+    "predicted_ow_m": 59.91162597479664,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 225,
+    "movie_title": "TOP GUN: MAVERICK",
+    "actual_ow_m": 126.707459,
+    "predicted_ow_m": 127.61288723275683,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 12,
+    "movie_title": "AMSTERDAM",
+    "actual_ow_m": 6.444896,
+    "predicted_ow_m": 15.448848483153393,
+    "actual_tier": "SMALL",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 138,
+    "movie_title": "MUFASA: THE LION KING",
+    "actual_ow_m": 35.409365,
+    "predicted_ow_m": 36.08254849625794,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 414,
+    "movie_title": "The Blind",
+    "actual_ow_m": 4.341725,
+    "predicted_ow_m": 4.5325647065937735,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 77,
+    "movie_title": "Evil Dead Rise",
+    "actual_ow_m": 24.504319,
+    "predicted_ow_m": 17.923622368284065,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 281,
+    "movie_title": "Demon Slayer The Movie Infinity Castle",
+    "actual_ow_m": 70.611098,
+    "predicted_ow_m": 40.293725188529415,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "MID",
+    "correct": "False"
+  },
+  {
+    "movie_id": 33,
+    "movie_title": "BLACKLIGHT",
+    "actual_ow_m": 3.502475,
+    "predicted_ow_m": 4.169116991640641,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 1258,
+    "movie_title": "Ready or Not 2: Here I Come",
+    "actual_ow_m": 9.075271,
+    "predicted_ow_m": 12.348308388685457,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 245,
+    "movie_title": "Transformers One",
+    "actual_ow_m": 24.61397,
+    "predicted_ow_m": 34.27111535597261,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 1291,
+    "movie_title": "Undertone",
+    "actual_ow_m": 9.339663,
+    "predicted_ow_m": 4.659916147040372,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 112,
+    "movie_title": "JACKASS FOREVER",
+    "actual_ow_m": 23.154123,
+    "predicted_ow_m": 16.348105186680858,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 57,
+    "movie_title": "DEN OF THIEVES 2: PANTERA",
+    "actual_ow_m": 15.022909,
+    "predicted_ow_m": 18.37898801305337,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 355,
+    "movie_title": "Nobody 2",
+    "actual_ow_m": 9.25119,
+    "predicted_ow_m": 14.11255705367637,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 192,
+    "movie_title": "TERRIFIER 3",
+    "actual_ow_m": 18.928113,
+    "predicted_ow_m": 11.048439274168064,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 116,
+    "movie_title": "JURASSIC WORLD REBIRTH",
+    "actual_ow_m": 92.016065,
+    "predicted_ow_m": 82.34005162113095,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 293,
+    "movie_title": "Freakier Friday",
+    "actual_ow_m": 28.583167,
+    "predicted_ow_m": 22.46656599907844,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 373,
+    "movie_title": "Black Bag",
+    "actual_ow_m": 7.60725,
+    "predicted_ow_m": 6.026082000894541,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 165,
+    "movie_title": "RETRIBUTION",
+    "actual_ow_m": 3.51883,
+    "predicted_ow_m": 3.747619925756567,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 215,
+    "movie_title": "THE ROSES",
+    "actual_ow_m": 6.265264,
+    "predicted_ow_m": 8.743759975004536,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 198,
+    "movie_title": "THE CONTRACTOR",
+    "actual_ow_m": 0.560678,
+    "predicted_ow_m": 4.196158280008763,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 301,
+    "movie_title": "David",
+    "actual_ow_m": 22.000554,
+    "predicted_ow_m": 7.974705073345607,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 251,
+    "movie_title": "WEAPONS",
+    "actual_ow_m": 43.501217,
+    "predicted_ow_m": 16.34882314287561,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 309,
+    "movie_title": "Dont Worry Darling",
+    "actual_ow_m": 19.353213,
+    "predicted_ow_m": 17.005824814942184,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 341,
+    "movie_title": "Speak No Evil",
+    "actual_ow_m": 11.397595,
+    "predicted_ow_m": 11.569729691001191,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 354,
+    "movie_title": "Fly Me to the Moon",
+    "actual_ow_m": 9.402176,
+    "predicted_ow_m": 14.19850575256419,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 167,
+    "movie_title": "THE RUNNING MAN",
+    "actual_ow_m": 16.495564,
+    "predicted_ow_m": 36.41045507646419,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 111,
+    "movie_title": "IT ENDS WITH US",
+    "actual_ow_m": 50.016652,
+    "predicted_ow_m": 12.619412516000738,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 394,
+    "movie_title": "The Strangers Chapter 2",
+    "actual_ow_m": 5.806192,
+    "predicted_ow_m": 6.057331634342935,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 3,
+    "movie_title": "80 FOR BRADY",
+    "actual_ow_m": 12.70164,
+    "predicted_ow_m": 8.916323323659453,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 38,
+    "movie_title": "BRING HER BACK",
+    "actual_ow_m": 7.081501,
+    "predicted_ow_m": 6.197969289540655,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 155,
+    "movie_title": "Now You See Me Now You Dont",
+    "actual_ow_m": 21.014,
+    "predicted_ow_m": 24.450170138042385,
+    "actual_tier": "MID",
+    "predicted_tier": "MID",
+    "correct": "True"
+  },
+  {
+    "movie_id": 176,
+    "movie_title": "SMILE",
+    "actual_ow_m": 22.609925,
+    "predicted_ow_m": 11.58482173728433,
+    "actual_tier": "MID",
+    "predicted_tier": "SMALL",
+    "correct": "False"
+  },
+  {
+    "movie_id": 50,
+    "movie_title": "COMPANION",
+    "actual_ow_m": 9.300113,
+    "predicted_ow_m": 8.891594382604923,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 362,
+    "movie_title": "The First Omen",
+    "actual_ow_m": 8.35371,
+    "predicted_ow_m": 11.642820095621984,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 17,
+    "movie_title": "AVATAR: FIRE AND ASH",
+    "actual_ow_m": 89.16086,
+    "predicted_ow_m": 113.90973498194096,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 132,
+    "movie_title": "MILLER'S GIRL",
+    "actual_ow_m": 0.321,
+    "predicted_ow_m": 4.156810816643595,
+    "actual_tier": "SMALL",
+    "predicted_tier": "SMALL",
+    "correct": "True"
+  },
+  {
+    "movie_id": 230,
+    "movie_title": "TWISTERS",
+    "actual_ow_m": 81.251415,
+    "predicted_ow_m": 92.93997878946799,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  },
+  {
+    "movie_id": 65,
+    "movie_title": "DUNE: PART TWO",
+    "actual_ow_m": 82.505391,
+    "predicted_ow_m": 107.59655345359754,
+    "actual_tier": "LARGE+",
+    "predicted_tier": "LARGE+",
+    "correct": "True"
+  }
+]

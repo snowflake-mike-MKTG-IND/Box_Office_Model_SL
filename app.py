@@ -1,4 +1,4 @@
-"""V18 Opening Weekend Prediction Model — Home / navigation hub."""
+"""V20 Opening Weekend Prediction Model — Home / navigation hub."""
 import streamlit as st
 
 from theme import (
@@ -11,11 +11,11 @@ from theme import (
     show_cortex_badge,
 )
 
-apply_page_config("V18 OW Prediction Model", icon="🎬")
+apply_page_config("V20 OW Prediction Model", icon="🎬")
 
 page_header(
-    "V18 Opening Weekend Prediction Model",
-    "3-Tier Cascade · Google Trends · Wikipedia pageviews",
+    "V20 Opening Weekend Prediction Model",
+    "V18.7 soft-mixture cascade · V20 adaptive quantile window · guarded Rule C",
 )
 
 # -- Cortex Code velocity hero ----------------------------------------------
@@ -30,14 +30,13 @@ st.markdown(
       </div>
       <div style="font-size: 1.55rem; font-weight: 700; line-height: 1.25;
                   margin-bottom: 0.4rem;">
-        One person. One AI. ~41 hours of active work.
+        One person. One AI. ~44 hours of active work.
       </div>
       <div style="font-size: 0.98rem; opacity: 0.95; line-height: 1.45; max-width: 860px;">
-        End-to-end ML product — data engineering, 14 model versions, 79 experiments,
-        108 HP configs, 664 Snowflake artifacts, and this 8-page dashboard — shipped in
-        <b>~1 week of working hours</b>. Traditionally a 4–6 week effort for a team of
-        2–3 engineers. The final V18 Wikipedia feature sprint: <b>49 minutes</b>
-        from idea to tuned production model.
+        End-to-end ML product — data engineering, 18 model versions, 83 experiments,
+        108 HP configs, 664 Snowflake artifacts, and this 9-page dashboard — shipped in
+        <b>~1 week of working hours</b>. The V18 Wikipedia sprint took <b>49 minutes</b>.
+        The V18 → V20-Clip + Rule C jump (-17.4% MAE) took <b>one working session</b>.
       </div>
     </div>
     """,
@@ -46,10 +45,10 @@ st.markdown(
 
 # Velocity stats
 kpi_row([
-    ("Active work",    "~41h",  "vs ~250h traditional"),
-    ("Calendar span",  "10 sessions", "over 83 days"),
+    ("Active work",    "~44h",  "vs ~250h traditional"),
+    ("Calendar span",  "12 sessions", "over 90 days"),
     ("Team size",      "1 + AI", "vs 2-3 engineers"),
-    ("V18 Wiki sprint","49 min", "idea → prod"),
+    ("V18 → V20 jump","1 session", "-17.4% MAE"),
 ])
 
 st.caption(
@@ -62,24 +61,24 @@ section("Model performance")
 kpi_row([
     ("Training films",     "276",     None),
     ("Features",           "72",      "+13 Wikipedia"),
-    ("CV Accuracy (-7d)",  "77.2%",   "+5.5pp vs V17.2"),
-    ("CV MAE (-7d)",       "$10.96M", "-$0.71M vs V17.2"),
+    ("V18 CV MAE (-7d)",   "$10.96M", "77.2% tier acc"),
+    ("V20 CV MAE (-7d)",   "$9.58M",  "R² 0.814, -16.5% vs V18.0"),
 ])
-freshness_caption("5-fold GroupKFold CV on 276 validated films", "2026-04-21")
+freshness_caption("5-fold GroupKFold CV on 277 films · V20-Clip + Rule C", "2026-04-27")
 
 # -- Navigation grid ---------------------------------------------------------
 section("Explore the model", "Pick a section below. Each page owns one topic.")
 
 NAV = [
-    ("Architecture", "3-tier cascade, classifier configs, Rule C override.",
+    ("Architecture", "V20 cascade: soft mixture + quantile window + guarded Rule C.",
      "pages/1_Architecture.py"),
-    ("Features", "Top drivers across static, Trends, and Wikipedia signals.",
+    ("Features", "72 features (V20 inherits the V18 feature set unchanged).",
      "pages/2_Features.py"),
-    ("Performance", "Accuracy, MAE, per-tier results, V18 vs prior versions.",
+    ("Performance", "V20 CV results ($9.48M MAE, R² 0.808) vs V18 baseline.",
      "pages/3_Performance.py"),
-    ("Predict", "Run the V18 model interactively on any film.",
+    ("Predict", "Cascade simulator — V18/V20 base logic (live V20 in Snowflake).",
      "pages/4_Predictions.py"),
-    ("Errors", "Biggest misses and known limitations.",
+    ("Errors", "V20 base cascade biggest misses and what V20-Clip + RC fixes.",
      "pages/5_Errors.py"),
     ("Recent Predictions", "Live tracking of predictions vs actual weekends.",
      "pages/7_Recent_Predictions.py"),
@@ -87,6 +86,8 @@ NAV = [
      "pages/6_Timeline.py"),
     ("Development Story", "The 49-minute Wikipedia sprint with Cortex Code.",
      "pages/8_Wikipedia_Integration.py"),
+    ("V20 Model Story", "How V20-Clip + Rule C dropped MAE from $11.48M to $9.48M in one session.",
+     "pages/9_V20_Model_Story.py"),
 ]
 
 cols = st.columns(4)
@@ -98,7 +99,17 @@ for i, (title, desc, page) in enumerate(NAV):
             st.page_link(page, label="Open")
 
 # -- What's new --------------------------------------------------------------
-section("What's new in V18")
+section("What's new in V20")
+st.markdown(
+    "- **V20-Clip + Rule C** — 5-fold CV MAE dropped from $11.48M (V18.0 argmax) to "
+    "**$9.58M** (-16.5%), R² 0.724 → 0.814. See "
+    "[V20 Model Story](./V20_Model_Story) for the session arc, architecture, and scatter.\n"
+    "- **DWP2 + MK2 rescored** under V20 in `OW_PREDICTIONS_V20`. See "
+    "[Recent Predictions](./Recent_Predictions) for the updated upcoming weekends.\n"
+    "- **V18 table preserved** — `OW_PREDICTIONS_V18` and MICHAEL's locked row untouched.\n"
+)
+
+section("Previously — V18 build")
 st.markdown(
     "- **+13 Wikipedia pageview features** lift CV accuracy by **5.5pp** to **77.2%** — "
     "see [Performance](./3_📈_Performance) for the full breakdown.\n"

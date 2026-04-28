@@ -26,14 +26,14 @@ hparams = pd.DataFrame(load_json("hyperparams.json"))
 
 page_header(
     "Model History",
-    "V2 → V18 evolution — every version, active sessions, and the hyperparameters behind them.",
+    "V2 → V20 evolution — every version, active sessions, and the hyperparameters behind them.",
 )
 
 kpi_row([
-    ("Model versions", str(len(versions)), "V2 → V18"),
-    ("Best CV accuracy", "77.2%", "V18 @ -7d"),
+    ("Model versions", str(len(versions)), "V2 → V20-Clip+RC"),
+    ("Best CV MAE",    "$9.48M",           "V20-Clip+RC @ -7d"),
+    ("Best CV accuracy", "77.2%",          "V18.7 classifier @ -7d"),
     ("Active sessions", str(len(sessions)), f"{sessions['hours'].sum():.0f}h active work"),
-    ("HP params tuned", str(len(hparams)), f"{hparams['tested'].sum()} configs"),
 ])
 
 tab_versions, tab_velocity, tab_hpt = st.tabs(
@@ -71,10 +71,10 @@ with tab_versions:
 with tab_velocity:
     active_days = sessions["date"].nunique()
     total_hours = sessions["hours"].sum()
-    calendar_span = 83
+    calendar_span = 90
 
     kpi_row([
-        ("Calendar span", f"{calendar_span} days", "Jan 28 → Apr 21"),
+        ("Calendar span", f"{calendar_span} days", "Jan 28 → Apr 27"),
         ("Active days", str(active_days), f"{active_days/calendar_span*100:.0f}% of calendar"),
         ("Total hours", f"~{total_hours:.0f}h", f"~{total_hours/active_days:.1f}h / session"),
         ("Sessions", str(len(sessions)), "Individual work blocks"),
@@ -112,12 +112,15 @@ with tab_hpt:
             "range":  "Search range",
         },
     )
-    section("Why the V18 retune matters")
+    section("Why V18 → V20 matters")
     st.markdown(
-        "- **Stage 1** shrunk from 300 iters / lr=0.03 → 200 iters / lr=0.02. "
-        "Fewer, more-conservative boundaries trade training fit for generalization.\n"
-        "- **Stage 2** doubled to 400 iters / lr=0.03 so the MID vs LARGE+ split "
-        "could absorb the new Wikipedia signal."
+        "- **V18.7 soft mixture** — probability-weighted blend across the 3 tier regressors lifted "
+        "MAE $11.48M → $10.42M.\n"
+        "- **V20 quantile window** — 6 expanded-pool quantile regressors give every film a learned "
+        "[Q10, Q90] range.\n"
+        "- **V20-Clip + guarded Rule C** — clip soft mixture into the window, then allow TMDB-D14 "
+        "override only when V20-Clip < $60M. Final MAE $9.48M, R² 0.808 (-17.4% MAE vs V18.0). "
+        "See [V20 Model Story](./V20_Model_Story) for the full arc."
     )
 
 show_cortex_badge()

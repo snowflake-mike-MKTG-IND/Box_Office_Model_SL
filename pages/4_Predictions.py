@@ -21,13 +21,18 @@ apply_page_config("Cascade simulator", icon="🔮")
 
 page_header(
     "Cascade Simulator",
-    "Explore how the 3-tier cascade + Rule C reacts to inputs.",
+    "V18/V20 base cascade logic — live V20-Clip pipeline runs in Snowflake.",
 )
 
+st.info(
+    "The live V20-Clip + Rule C pipeline runs in Snowflake (`SPARK_PAR_DEMO.PRODUCTION."
+    "OW_PREDICTIONS_V20`). This page runs the locally-bundled V17.1 joblib to illustrate "
+    "the 2-stage cascade + Rule C logic that V20 inherits from V18.7. The **tier decision** "
+    "matches V18/V20; the **dollar point** is a V17.1-equivalent estimate and does not include "
+    "V20's adaptive quantile window or the V20-Clip step."
+)
 st.caption(
-    "Inference uses the locally-bundled V17.1 joblib — V18's Wikipedia features live in Snowflake "
-    "and aren't packaged here. Treat the $ output as a V17.1-equivalent estimate; tier logic is "
-    "identical to V18."
+    "For actual V20 predictions see the Recent Predictions page (DWP2 / MK2) or the V20 Model Story."
 )
 
 

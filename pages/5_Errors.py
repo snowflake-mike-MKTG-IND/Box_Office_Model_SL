@@ -1,4 +1,4 @@
-"""Page 5: Error analysis — V18 biggest misses and known limits."""
+"""Page 5: Error analysis — V20 base cascade biggest misses and what V20-Clip + RC fixes."""
 import json
 import os
 
@@ -13,7 +13,7 @@ apply_page_config("Errors", icon="⚠️")
 
 page_header(
     "Error Analysis",
-    "Where V18 misses and why — sourced from the V18 out-of-fold CV predictions.",
+    "Biggest misses on the V20 base cascade (V18.7 soft-mixture OOF), plus what V20-Clip + RC fixes.",
 )
 
 
@@ -35,8 +35,9 @@ tab_worst, tab_patterns, tab_limits = st.tabs(
 
 with tab_worst:
     section(
-        "Top 15 largest OOF errors (V18)",
-        "Out-of-fold predictions; each film was predicted by a model that never saw it in training.",
+        "Top 15 largest OOF errors (V20 base cascade)",
+        "Out-of-fold predictions from the V18.7 soft-mixture stage that V20 inherits; "
+        "each film was predicted by a model that never saw it in training.",
     )
     worst = df.nlargest(15, "abs_error_m")[[
         "movie_title", "actual_tier", "predicted_tier", "actual_ow_m", "predicted_ow_m", "error_m"
@@ -88,6 +89,11 @@ with tab_patterns:
     c4.metric("|error| ≤ $15M", f"{(df['abs_error_m'] <= 15).mean() * 100:.0f}%")
 
 with tab_limits:
+    st.info(
+        "**What V20 fixes vs V18.0:** V20-Clip trims MID uncertainty (MID MAE $11.92M → $9.27M) by "
+        "clipping to the adaptive [Q10, Q90] window, and guarded Rule C attacks the LARGE+ tail "
+        "(LARGE+ MAE $31.24M → $25.17M) by lifting tentpoles flagged by TMDB D14 when V20-Clip < $60M."
+    )
     c1, c2 = st.columns(2)
     with c1:
         st.markdown("**Where the model still struggles**")
@@ -98,7 +104,7 @@ with tab_limits:
             "- **Anime** (Demon Slayer, Dragon Ball) — excluded from training, different fanbase."
         )
     with c2:
-        st.markdown("**Where V18 excels**")
+        st.markdown("**Where V20 excels**")
         st.markdown(
             "- Standard studio releases with typical marketing patterns.\n"
             "- Established franchises that aren't fatigued.\n"

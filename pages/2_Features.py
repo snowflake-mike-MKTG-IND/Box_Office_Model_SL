@@ -1,4 +1,4 @@
-"""Page 2: Feature importance — V18."""
+"""Page 2: Feature importance — V20 inherits V18's feature set unchanged."""
 import pandas as pd
 import plotly.express as px
 import streamlit as st
@@ -9,7 +9,7 @@ apply_page_config("Features", icon="📊")
 
 page_header(
     "Feature Importance",
-    "What drives V18 predictions across 72 features (36 static + 23 Trends + 13 Wikipedia).",
+    "V20 inherits V18's 72 features unchanged (36 static + 23 Trends + 13 Wikipedia).",
 )
 
 # Snapshot: V17.2 CatBoost importances (exported from the pre-Wiki tuned model).
@@ -91,9 +91,13 @@ with tab_top:
     fig.update_traces(texttemplate="%{x:.1f}", textposition="outside")
     st.plotly_chart(fig, use_container_width=True)
     st.caption(
-        "Weighted-average CatBoost importance across the 5 V18 model components (2 classifiers + "
-        "3 tier regressors) at -7d. YouTube comments, star power, and budget continue to dominate "
-        "the top ranks; Wikipedia features land strongest inside the classifier (see Category view)."
+        "V20 reuses V18.7's classifier + tier regressors unchanged, so feature importance "
+        "is inherited directly from V18. YouTube comments, star power, and budget dominate "
+        "the top ranks; Wikipedia features contribute strongest inside the classifier."
+    )
+    st.info(
+        "**V20 addition:** 6 expanded-pool quantile regressors (Q10/Q90 × 3 tiers) trained on "
+        "the same 72 features with a pinball loss — these feed the V20-Clip window."
     )
 
 with tab_category:

@@ -31,20 +31,24 @@
     ]}
   ],
   "upcoming": [
-    {"weekend": "Weekend 17", "dates": "May 1-3, 2026",  "model": "V18",
+    {"weekend": "Weekend 17", "dates": "May 1-3, 2026",  "model": "V20-Clip+RuleC",
      "movies": [{"movie": "The Devil Wears Prada 2", "studio": "Disney", "pred_tier": "LARGE+",
-                 "pred_ow": 70.68, "conf_low": 56.54, "conf_high": 84.82,
+                 "pred_ow": 71.03, "conf_low": 56.82, "conf_high": 85.24,
+                 "v20_clip_point": 37.46, "v187_soft_mixture": 37.46,
+                 "window_low": 19.11, "window_high": 44.93,
                  "tmdb_d14": 25.13, "tmdb_d7": 38.68, "overridden": true,
-                 "p_small": 0.298, "p_mid": 0.584, "p_large": 0.119,
-                 "reason": "Rule C: TMDB D14=25.1 \u2265 25 \u2192 LARGE+. V18 base=MID (58% prob).",
-                 "horizon": "-3d", "tier_prob": 0.584, "trends_days": 22, "days_until": 4,
-                 "note": "Fresh D-3 run Apr 27. Meryl Streep MAX_STAR=10.0, $125M budget, wiki 182K/day, R7D=164. TMDB D7 surged 54% vs D14."}]},
-    {"weekend": "Weekend 18", "dates": "May 8-10, 2026", "model": "V18",
+                 "p_small": 0.200, "p_mid": 0.492, "p_large": 0.307,
+                 "reason": "Rule C: TMDB D14=25.1 \u2265 25 \u2192 LARGE+. V20-Clip was $37.5M MID; override fires because V20-Clip < $60M guard.",
+                 "horizon": "-7d", "tier_prob": 0.492, "trends_days": 22, "days_until": 4,
+                 "note": "Fresh D-7 run Apr 27 under V20-Clip + Rule C. V18.7 soft mixture + quantile window: $37.46M [$19.11-$44.93]. Rule C lifts to LARGE+ via reg_LARGE ($71.03M). Meryl Streep MAX_STAR=10.0, $125M budget."}]},
+    {"weekend": "Weekend 18", "dates": "May 8-10, 2026", "model": "V20-Clip+RuleC",
      "movies": [{"movie": "Mortal Kombat II", "studio": "Warner Bros.", "pred_tier": "MID",
-                 "pred_ow": 25.77, "conf_low": 20.62, "conf_high": 30.92,
+                 "pred_ow": 18.32, "conf_low": 11.73, "conf_high": 18.78,
+                 "v20_clip_point": 18.32, "v187_soft_mixture": 18.32,
+                 "window_low": 11.73, "window_high": 18.78,
                  "tmdb_d14": 18.61, "overridden": false,
-                 "p_small": 0.417, "p_mid": 0.572, "p_large": 0.011,
-                 "horizon": "-14d", "tier_prob": 0.572, "trends_days": 8, "days_until": 11,
-                 "note": "Fresh D-14 run Apr 27. MID 57.2% confidence. $68M budget, wiki 71K/day, R7D=23.6. Below Rule C threshold (needs D14\u226525). Will refine at D-7."}]}
+                 "p_small": 0.462, "p_mid": 0.529, "p_large": 0.009,
+                 "horizon": "-7d", "tier_prob": 0.529, "trends_days": 15, "days_until": 11,
+                 "note": "Fresh D-7 run Apr 27 under V20-Clip. MID 52.9% confidence. V20-Clip point sits at window high; band = [$11.73M, $18.78M]. No Rule C (momentum data unavailable). $68M budget."}]}
   ]
 }

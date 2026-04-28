@@ -9,5 +9,6 @@
   {"date": "2026-04-10", "hours": 3.0, "work": "V16 TMDB override: design, test, deploy"},
   {"date": "2026-04-20", "hours": 3.0, "work": "V17 extended trends: feature view, training, CV, deploy"},
   {"date": "2026-04-20", "hours": 1.0, "work": "V18 Wikipedia sprint (~49 min)"},
-  {"date": "2026-04-21", "hours": 2.5, "work": "V18 full data-integrity pass (276 films)"}
+  {"date": "2026-04-21", "hours": 2.5, "work": "V18 full data-integrity pass (276 films)"},
+  {"date": "2026-04-27", "hours": 2.0, "work": "V18.6 \u2192 V20-Clip + Rule C iteration; Streamlit V20 refresh"}
 ]
