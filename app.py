@@ -1,4 +1,4 @@
-"""V20 Opening Weekend Prediction Model — Home / navigation hub."""
+"""V21 Opening Weekend Prediction Model — Home / navigation hub."""
 import streamlit as st
 
 from theme import (
@@ -11,11 +11,11 @@ from theme import (
     show_cortex_badge,
 )
 
-apply_page_config("V20 OW Prediction Model", icon="🎬")
+apply_page_config("V21 OW Prediction Model", icon="🎬")
 
 page_header(
-    "V20 Opening Weekend Prediction Model",
-    "V18.7 soft-mixture cascade · V20 adaptive quantile window · guarded Rule C",
+    "V21 Opening Weekend Prediction Model",
+    "V18.7 soft-mixture cascade · V20 adaptive quantile window · Rule D (Static Tentpole Gate) · guarded Rule C",
 )
 
 # -- Cortex Code velocity hero ----------------------------------------------
@@ -48,7 +48,7 @@ kpi_row([
     ("Active work",    "~44h",  "vs ~250h traditional"),
     ("Calendar span",  "12 sessions", "over 90 days"),
     ("Team size",      "1 + AI", "vs 2-3 engineers"),
-    ("V18 → V20 jump","1 session", "-17.4% MAE"),
+    ("V18 → V21","2 sessions", "Rule D + D-21 horizon"),
 ])
 
 st.caption(
@@ -62,23 +62,23 @@ kpi_row([
     ("Training films",     "276",     None),
     ("Features",           "72",      "+13 Wikipedia"),
     ("V18 CV MAE (-7d)",   "$10.96M", "77.2% tier acc"),
-    ("V20 CV MAE (-7d)",   "$9.58M",  "R² 0.814, -16.5% vs V18.0"),
+    ("V21 CV MAE (-7d)",   "$9.58M",  "R² 0.814 + Rule D gate"),
 ])
-freshness_caption("5-fold GroupKFold CV on 277 films · V20-Clip + Rule C", "2026-04-27")
+freshness_caption("5-fold GroupKFold CV on 278 films · V21: V20-Clip + Rule D + Rule C", "2026-05-04")
 
 # -- Navigation grid ---------------------------------------------------------
 section("Explore the model", "Pick a section below. Each page owns one topic.")
 
 NAV = [
-    ("Architecture", "V20 cascade: soft mixture + quantile window + guarded Rule C.",
+    ("Architecture", "V21 cascade: soft mixture + quantile window + Rule D + Rule C.",
      "pages/1_Architecture.py"),
-    ("Features", "72 features (V20 inherits the V18 feature set unchanged).",
+    ("Features", "72 features (V21 inherits V18 feature set + D-21 horizon).",
      "pages/2_Features.py"),
-    ("Performance", "V20 CV results ($9.48M MAE, R² 0.808) vs V18 baseline.",
+    ("Performance", "V21 CV results ($9.58M MAE, R² 0.814) vs V18 baseline.",
      "pages/3_Performance.py"),
-    ("Predict", "Cascade simulator — V18/V20 base logic (live V20 in Snowflake).",
+    ("Predict", "Cascade simulator — V21 logic (live in Snowflake).",
      "pages/4_Predictions.py"),
-    ("Errors", "V20 base cascade biggest misses and what V20-Clip + RC fixes.",
+    ("Errors", "V20 base cascade biggest misses and what Rule D + Rule C fixes.",
      "pages/5_Errors.py"),
     ("Recent Predictions", "Live tracking of predictions vs actual weekends.",
      "pages/7_Recent_Predictions.py"),
@@ -86,7 +86,7 @@ NAV = [
      "pages/6_Timeline.py"),
     ("Development Story", "The 49-minute Wikipedia sprint with Cortex Code.",
      "pages/8_Wikipedia_Integration.py"),
-    ("V20 Model Story", "How V20-Clip + Rule C dropped MAE from $11.48M to $9.48M in one session.",
+    ("V20/V21 Model Story", "V20-Clip + Rule C → V21 Rule D (Static Tentpole Gate).",
      "pages/9_V20_Model_Story.py"),
 ]
 
@@ -99,14 +99,15 @@ for i, (title, desc, page) in enumerate(NAV):
             st.page_link(page, label="Open")
 
 # -- What's new --------------------------------------------------------------
-section("What's new in V20")
+section("What's new in V21")
 st.markdown(
-    "- **V20-Clip + Rule C** — 5-fold CV MAE dropped from $11.48M (V18.0 argmax) to "
-    "**$9.58M** (-16.5%), R² 0.724 → 0.814. See "
-    "[V20 Model Story](./V20_Model_Story) for the session arc, architecture, and scatter.\n"
-    "- **DWP2 + MK2 rescored** under V20 in `OW_PREDICTIONS_V20`. See "
-    "[Recent Predictions](./Recent_Predictions) for the updated upcoming weekends.\n"
-    "- **V18 table preserved** — `OW_PREDICTIONS_V18` and MICHAEL's locked row untouched.\n"
+    "- **Rule D (Static Tentpole Gate)** — identifies obvious tentpoles at D-18+ before TMDB data arrives. "
+    "Gate: Budget≥$125M + IP≥3 + Star≥9 + Predecessor≥$108M + Major Studio. 100% precision in backtest.\n"
+    "- **D-21 horizon extended** — features view now starts at D-21 (was D-15) for earlier predictions.\n"
+    "- **Rule C enhanced** — now checks best available TMDB (D7 priority over D14).\n"
+    "- **Prediction history preserved** — all model versions tracked in `OW_PREDICTIONS_V21` (append-only). "
+    "See [Recent Predictions](./Recent_Predictions) for Mandalorian (Rule D) and MK2 (Rule C).\n"
+    "- **Wikipedia fix** — Mandalorian article corrected: 10,644 views/day (was 12/day due to wrong article).\n"
 )
 
 section("Previously — V18 build")
