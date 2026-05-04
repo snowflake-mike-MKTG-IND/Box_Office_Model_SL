@@ -28,27 +28,63 @@
     ]},
     {"weekend": "Weekend 16", "dates": "Apr 24-26, 2026",  "model": "V18", "movies": [
       {"movie": "MICHAEL", "studio": "Lionsgate", "pred_tier": "LARGE+", "pred_ow": 76.80, "conf_low": 61.44, "conf_high": 92.16, "actual_ow": 97.00, "industry": 85.0, "note": "Rule C override (TMDB D14=52.0). Tier correct; actual $97M vs pred $76.8M (-$20M). Industry Apr-24 tracking: $65-70M (Boxoffice Pro long-range), $85M+ (Forbes week-of), ~$100M (Deadline/HR weekend-of). Michael Jackson biopic, $155M budget."}
+    ]},
+    {"weekend": "Weekend 17", "dates": "May 1-3, 2026",  "model": "V18+RuleC", "movies": [
+      {"movie": "The Devil Wears Prada 2", "studio": "Disney", "pred_tier": "LARGE+", "pred_ow": 70.79, "conf_low": 56.63, "conf_high": 84.95, "actual_ow": 77.00, "industry": 76.5, "note": "Rule C override (TMDB D14=25.1). Tier correct; within CI. TMDB momentum 25\u219239\u219260 (2.4x). Industry: $73-80M (Apr 28 tracking). Meryl Streep (star=10), $125M budget, PG-13 prestige sequel."}
     ]}
   ],
   "upcoming": [
-    {"weekend": "Weekend 17", "dates": "May 1-3, 2026",  "model": "V20-Clip+RuleC",
-     "movies": [{"movie": "The Devil Wears Prada 2", "studio": "Disney", "pred_tier": "LARGE+",
-                 "pred_ow": 71.03, "conf_low": 56.82, "conf_high": 85.24,
-                 "v20_clip_point": 37.46, "v187_soft_mixture": 37.46,
-                 "window_low": 19.11, "window_high": 44.93,
-                 "tmdb_d14": 25.13, "tmdb_d7": 38.68, "overridden": true,
-                 "p_small": 0.200, "p_mid": 0.492, "p_large": 0.307,
-                 "reason": "Rule C: TMDB D14=25.1 \u2265 25 \u2192 LARGE+. V20-Clip was $37.5M MID; override fires because V20-Clip < $60M guard.",
-                 "horizon": "-7d", "tier_prob": 0.492, "trends_days": 22, "days_until": 4,
-                 "note": "Fresh D-7 run Apr 27 under V20-Clip + Rule C. V18.7 soft mixture + quantile window: $37.46M [$19.11-$44.93]. Rule C lifts to LARGE+ via reg_LARGE ($71.03M). Meryl Streep MAX_STAR=10.0, $125M budget."}]},
-    {"weekend": "Weekend 18", "dates": "May 8-10, 2026", "model": "V20-Clip+RuleC",
-     "movies": [{"movie": "Mortal Kombat II", "studio": "Warner Bros.", "pred_tier": "MID",
-                 "pred_ow": 18.32, "conf_low": 11.73, "conf_high": 18.78,
-                 "v20_clip_point": 18.32, "v187_soft_mixture": 18.32,
-                 "window_low": 11.73, "window_high": 18.78,
-                 "tmdb_d14": 18.61, "overridden": false,
-                 "p_small": 0.462, "p_mid": 0.529, "p_large": 0.009,
-                 "horizon": "-7d", "tier_prob": 0.529, "trends_days": 15, "days_until": 11,
-                 "note": "Fresh D-7 run Apr 27 under V20-Clip. MID 52.9% confidence. V20-Clip point sits at window high; band = [$11.73M, $18.78M]. No Rule C (momentum data unavailable). $68M budget."}]}
+    {"weekend": "Weekend 18", "dates": "May 8-10, 2026", "model": "V21-RuleD-RuleC",
+     "movies": [
+       {"movie": "Mortal Kombat II", "studio": "Warner Bros.", "pred_tier": "LARGE+",
+        "pred_ow": 68.82, "conf_low": 10.46, "conf_high": 16.29,
+        "v20_clip_point": 16.29, "v187_soft_mixture": 20.05,
+        "window_low": 10.46, "window_high": 16.29,
+        "tmdb_d14": 18.61, "tmdb_d7": 36.51, "overridden": true,
+        "p_small": 0.496, "p_mid": 0.468, "p_large": 0.036,
+        "reason": "Rule C: TMDB D7=36.5 >= 25 -> LARGE+. V21 now checks best available TMDB (D7 priority over D14).",
+        "horizon": "-4d", "tier_prob": 0.496, "trends_days": 22, "days_until": 4,
+        "note": "D-4 prediction May 4 (V21). Rule C fires on TMDB D7=36.5>=25. LARGE+ regressor=$68.8M. Budget $68M, IP tier 3 (video game), momentum 1.96x."},
+       {"movie": "The Sheep Detectives", "studio": "Aardman/Netflix", "pred_tier": "SMALL",
+        "pred_ow": 5.63, "conf_low": 5.63, "conf_high": 7.25,
+        "p_small": 0.891, "p_mid": 0.108, "p_large": 0.001,
+        "horizon": "-7d", "tier_prob": 0.891, "trends_days": 18, "days_until": 4,
+        "note": "D-7 prediction May 4. SMALL 89.1% confidence. Window [$5.6-$7.3M]."},
+       {"movie": "Billie Eilish Concert Film", "studio": "Interscope/IMAX", "pred_tier": "SMALL",
+        "pred_ow": 8.19, "conf_low": 5.85, "conf_high": 8.19,
+        "p_small": 0.827, "p_mid": 0.171, "p_large": 0.002,
+        "horizon": "-4d", "tier_prob": 0.827, "trends_days": 22, "days_until": 4,
+        "note": "D-4 prediction May 4 (V21). Concert film caveat. SMALL 82.7% confidence."}
+     ]},
+    {"weekend": "Weekend 19", "dates": "May 15-17, 2026", "model": "V21-RuleD-RuleC",
+     "movies": [
+       {"movie": "In the Grey", "studio": "Warner Bros.", "pred_tier": "SMALL",
+        "pred_ow": 9.34, "conf_low": 1.91, "conf_high": 10.57,
+        "p_small": 0.716, "p_mid": 0.282, "p_large": 0.003,
+        "horizon": "-11d", "tier_prob": 0.716, "trends_days": 11, "days_until": 11,
+        "note": "D-11 prediction May 4 (V21). SMALL 71.6% confidence. $90M budget but low buzz."},
+       {"movie": "Obsession", "studio": "Blumhouse/Universal", "pred_tier": "SMALL",
+        "pred_ow": 3.86, "conf_low": 3.76, "conf_high": 7.17,
+        "p_small": 0.956, "p_mid": 0.043, "p_large": 0.000,
+        "horizon": "-11d", "tier_prob": 0.956, "trends_days": 11, "days_until": 11,
+        "note": "D-11 prediction May 4 (V21). SMALL 95.6% confidence. Window [$3.8-$7.2M]."},
+       {"movie": "Is God Is", "studio": "A24", "pred_tier": "SMALL",
+        "pred_ow": 3.98, "conf_low": 2.22, "conf_high": 6.42,
+        "p_small": 0.963, "p_mid": 0.036, "p_large": 0.001,
+        "horizon": "-14d", "tier_prob": 0.963, "trends_days": 11, "days_until": 11,
+        "note": "D-14 prediction May 4. SMALL 96.3% confidence. Window [$2.2-$6.4M]."}
+     ]},
+    {"weekend": "Weekend 20", "dates": "May 22-25, 2026", "model": "V21-RuleD-RuleC",
+     "movies": [
+       {"movie": "The Mandalorian & Grogu", "studio": "Disney", "pred_tier": "LARGE+",
+        "pred_ow": 70.46, "conf_low": 29.34, "conf_high": 43.24,
+        "v20_clip_point": 35.85, "v187_soft_mixture": 35.85,
+        "window_low": 29.34, "window_high": 43.24,
+        "p_small": 0.026, "p_mid": 0.848, "p_large": 0.126,
+        "horizon": "-18d", "tier_prob": 0.848, "trends_days": 4, "days_until": 18,
+        "overridden": true,
+        "reason": "Rule D (Static Tentpole Gate): Budget=$166M, IP=3 (Star Wars), Star=10 (Pascal), PredecessorLog=18.99 ($177M Rise of Skywalker), MajorStudio=Disney. Gate fires because V20-Clip $35.8M < $60M guard.",
+        "note": "V21 RULE D FIRED. First use of Static Tentpole Gate. Classifier sees MID 84.8% but static features are definitive: $166M budget, Star Wars IP tier 3, Pedro Pascal star=10, predecessor=$177M. TMDB D-14 not yet available (due May 8). Wikipedia corrected: 10,644 views/day (was broken at 12/day due to wrong article mapping)."}
+     ]}
   ]
 }

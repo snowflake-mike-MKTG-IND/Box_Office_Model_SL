@@ -1,4 +1,4 @@
-"""Page 1: Architecture — V20 cascade (V18.7 soft mixture + quantile window + guarded Rule C)."""
+"""Page 1: Architecture — V21 cascade (V18.7 soft mixture + quantile window + Rule D tentpole gate + guarded Rule C)."""
 import plotly.graph_objects as go
 import streamlit as st
 
@@ -18,14 +18,14 @@ from theme import (
 apply_page_config("Architecture", icon="🏗️")
 
 page_header(
-    "V20 Model Architecture",
-    "V18.7 soft-mixture cascade · 6 expanded-pool quantile regressors · V20-Clip · guarded Rule C",
+    "V21 Model Architecture",
+    "V18.7 soft-mixture cascade · 6 expanded-pool quantile regressors · V20-Clip · Rule D (Static Tentpole Gate) · guarded Rule C",
 )
 
 # -- Cascade diagram ---------------------------------------------------------
 section(
-    "V20 cascade flow",
-    "Stage 1 → Stage 2 → 3 tier regressors (soft mixture) → V20-Clip window → guarded Rule C.",
+    "V21 cascade flow",
+    "Stage 1 → Stage 2 → 3 tier regressors (soft mixture) → V20-Clip window → Rule D (tentpole gate) → guarded Rule C.",
 )
 
 fig = go.Figure()
@@ -48,9 +48,12 @@ boxes = [
     {"x": 0.5, "y": 0.22, "color": VIOLET, "label": "V20-CLIP",
      "sublabel": "Adaptive window",
      "hover": "6 expanded-pool quantile regressors → clip soft mixture to [Q10, Q90]"},
-    {"x": 0.5, "y": 0.06, "color": "#e377c2", "label": "RULE C (guarded)",
-     "sublabel": "TMDB override · guard < $60M",
-     "hover": "Fires only when V20-Clip point < $60M. Can only raise tier."},
+    {"x": 0.3, "y": 0.06, "color": "#22c55e", "label": "RULE D (tentpole)",
+     "sublabel": "Static gate · guard < $60M",
+     "hover": "Budget>=$125M + IP>=3 + Star>=9 + PredLog>=18.5 + MajorStudio. Fires first. 100% precision in backtest."},
+    {"x": 0.7, "y": 0.06, "color": "#e377c2", "label": "RULE C (TMDB)",
+     "sublabel": "Momentum · guard < $60M",
+     "hover": "TMDB D7/D14 >= 25 -> LARGE+. Only fires if Rule D didn't."},
 ]
 
 for b in boxes:
@@ -79,8 +82,9 @@ conns = [
     (0.18, 0.54, 0.42, 0.26, VIOLET),
     (0.38, 0.36, 0.46, 0.26, VIOLET),
     (0.62, 0.36, 0.54, 0.26, VIOLET),
-    # V20-CLIP(0.22) -> RULE C(0.06)
-    (0.5, 0.18, 0.5, 0.10, "#e377c2"),
+    # V20-CLIP(0.22) -> RULE D(0.06) and RULE C(0.06)
+    (0.42, 0.18, 0.3, 0.10, "#22c55e"),
+    (0.58, 0.18, 0.7, 0.10, "#e377c2"),
 ]
 for x0, y0, x1, y1, c in conns:
     fig.add_annotation(x=x1, y=y1, ax=x0, ay=y0, xref="x", yref="y", axref="x", ayref="y",
@@ -90,8 +94,13 @@ for x0, y0, x1, y1, c in conns:
 fig.add_annotation(x=0.64, y=0.06, ax=0.76, ay=0.40, xref="x", yref="y", axref="x", ayref="y",
                    showarrow=True, arrowhead=2, arrowsize=1.2, arrowwidth=1.8,
                    arrowcolor="#e377c2", opacity=0.8)
-fig.add_annotation(x=0.86, y=0.22, text="<i>Rule C bypass</i><br>(override uses<br>LARGE+ directly)",
+fig.add_annotation(x=0.86, y=0.22, text="<i>Rule C bypass</i><br>(TMDB override uses<br>LARGE+ directly)",
                    showarrow=False, font=dict(color="#e377c2", size=9), align="left")
+fig.add_annotation(x=0.24, y=0.06, ax=0.62, ay=0.40, xref="x", yref="y", axref="x", ayref="y",
+                   showarrow=True, arrowhead=2, arrowsize=1.2, arrowwidth=1.8,
+                   arrowcolor="#22c55e", opacity=0.8)
+fig.add_annotation(x=0.04, y=0.22, text="<i>Rule D bypass</i><br>(static tentpole<br>gate → LARGE+)",
+                   showarrow=False, font=dict(color="#22c55e", size=9), align="left")
 
 fig.update_layout(showlegend=False, height=720, margin=dict(l=20, r=20, t=20, b=20),
                   xaxis=dict(range=[0, 1], visible=False, fixedrange=True),
@@ -101,9 +110,9 @@ fig.update_layout(showlegend=False, height=720, margin=dict(l=20, r=20, t=20, b=
 st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
 # -- Tabbed details ----------------------------------------------------------
-tab_tiers, tab_configs, tab_window, tab_rulec, tab_features = st.tabs(
+tab_tiers, tab_configs, tab_window, tab_ruled, tab_rulec, tab_features = st.tabs(
     ["Tier boundaries", "Classifier & regressor configs", "V20 quantile window",
-     "Rule C (guarded, V20)", "Feature set"]
+     "Rule D (V21 tentpole gate)", "Rule C (TMDB, V20)", "Feature set"]
 )
 
 with tab_tiers:
@@ -201,6 +210,33 @@ with tab_window:
             "CV result: V20-Clip alone → MAE $10.29M (-10.4% vs V18.0). Adding guarded Rule C "
             "→ $9.48M (-17.4%). See Performance page and V20 Model Story for the full arc."
         )
+
+with tab_ruled:
+    st.markdown(
+        "**Rule D (Static Tentpole Gate)** is new in V21. It fires **before** Rule C when "
+        "momentum signals (Trends, TMDB) are too sparse to be reliable — typically at D-18 or earlier."
+    )
+    st.markdown(
+        """
+        **Gate conditions (ALL must be true):**
+        | Condition | Threshold | Rationale |
+        |-----------|-----------|-----------|
+        | Budget | ≥ $125M | Mega-budget = studio conviction |
+        | IP Tier | ≥ 3 (high-profile) | Proven franchise with built-in audience |
+        | Star Power | ≥ 9 | A-list lead with OW track record |
+        | Predecessor OW (log) | ≥ 18.5 (~$108M+) | Prior installment was massive |
+        | Major Studio | = 1 | Disney, WB, Universal, Paramount, Sony, Fox |
+        | **Guard** | V20-Clip < $60M | Don't override if model already predicts high |
+
+        **Action:** Force LARGE+ regressor output (skip classifier).
+
+        **Backtest:** 100% precision (10/10 films that match → all were LARGE+). Zero false positives.
+        Eliminates Aquaman 2 ($28M, pred_log=18.03), Indiana Jones 5 ($60M, pred_log=18.42), Fast X ($67M, pred_log=18.06).
+
+        **First production use:** The Mandalorian & Grogu (May 4, 2026 at D-18).
+        Classifier said MID 85% → Rule D overrode to LARGE+ $70.5M.
+        """
+    )
 
 with tab_rulec:
     st.markdown(
