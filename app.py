@@ -59,12 +59,12 @@ st.caption(
 # -- Model performance hero --------------------------------------------------
 section("Model performance")
 kpi_row([
-    ("Training films",     "282",     "413 with GT data"),
+    ("Training films",     "287",     "413 with GT data"),
     ("Features",           "72",      "+13 Wikipedia"),
-    ("V23b CV MAE (-7d)",  "$8.74M",  "80.1% tier acc"),
-    ("Horror accuracy",    "69.2%",   "breakout detection"),
+    ("V23b CV MAE (-7d)",  "$10.41M",  "76.3% tier acc"),
+    ("Horror accuracy",    "73.5%",   "50/68 films"),
 ])
-freshness_caption("5-fold GroupKFold CV on 282 films · V23b: Horror-first routing, deployed to Snowflake Model Registry", "2026-05-27")
+freshness_caption("5-fold GroupKFold CV on 287 films · V23b: Horror-first routing, deployed to Snowflake Model Registry", "2026-05-27")
 
 # -- Navigation grid ---------------------------------------------------------
 section("Explore the model", "Pick a section below. Each page owns one topic.")

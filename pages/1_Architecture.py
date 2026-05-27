@@ -1,4 +1,4 @@
-"""Page 1: Architecture — V21 cascade (V18.7 soft mixture + quantile window + Rule D tentpole gate + guarded Rule C)."""
+"""Page 1: Architecture — V23b cascade (Horror-first 2-bucket routing + 3-tier non-horror cascade)."""
 import plotly.graph_objects as go
 import streamlit as st
 
@@ -18,14 +18,14 @@ from theme import (
 apply_page_config("Architecture", icon="🏗️")
 
 page_header(
-    "V21 Model Architecture",
-    "V18.7 soft-mixture cascade · 6 expanded-pool quantile regressors · V20-Clip · Rule D (Static Tentpole Gate) · guarded Rule C",
+    "V23b Model Architecture",
+    "Horror-first routing · 2-bucket horror regressors · 3-tier non-horror cascade · V20-Clip · Rule C/D",
 )
 
 # -- Cascade diagram ---------------------------------------------------------
 section(
-    "V21 cascade flow",
-    "Stage 1 → Stage 2 → 3 tier regressors (soft mixture) → V20-Clip window → Rule D (tentpole gate) → guarded Rule C.",
+    "V23b cascade flow",
+    "Horror gate → Horror 2-bucket (or) Stage 1 → Stage 2 → 3 tier regressors (soft mixture) → V20-Clip window → Rule C/D.",
 )
 
 fig = go.Figure()
@@ -34,26 +34,35 @@ box_w, box_h = 0.14, 0.04
 boxes = [
     {"x": 0.5, "y": 0.94, "color": DK2, "label": "INPUT", "sublabel": "72 Features",
      "hover": "36 static + 23 Google Trends + 13 Wikipedia features"},
-    {"x": 0.5, "y": 0.78, "color": "#2ca02c", "label": "STAGE 1",
+    {"x": 0.5, "y": 0.80, "color": "#dc2626", "label": "HORROR?",
+     "sublabel": "Genre routing",
+     "hover": "If GENRE_HORROR=1 → dedicated horror path. Otherwise → standard cascade."},
+    {"x": 0.18, "y": 0.64, "color": "#dc2626", "label": "HORROR CLF",
+     "sublabel": "Small vs Large ($17M)",
+     "hover": "CatBoost classifier: small (<$17M) vs large (≥$17M). Split determined by log-space KMeans on 68 horror films."},
+    {"x": 0.08, "y": 0.48, "color": "#f87171", "label": "HORROR-S",
+     "sublabel": "Regressor <$17M",
+     "hover": "MAE loss · 500 iters · 41 films. Trained only on horror films <$17M."},
+    {"x": 0.28, "y": 0.48, "color": "#991b1b", "label": "HORROR-L",
+     "sublabel": "Regressor ≥$17M",
+     "hover": "RMSE loss · 600 iters · 27 films. Trained only on horror films ≥$17M."},
+    {"x": 0.68, "y": 0.64, "color": "#2ca02c", "label": "STAGE 1",
      "sublabel": "SMALL vs NON-SMALL",
-     "hover": "CatBoost classifier: i=200, d=7, lr=0.02"},
-    {"x": 0.18, "y": 0.58, "color": TIER_COLORS["SMALL"], "label": "SMALL",
-     "sublabel": "Regressor", "hover": "MAE loss · 600 iters · 142 films"},
-    {"x": 0.5, "y": 0.58, "color": ORANGE, "label": "STAGE 2",
+     "hover": "CatBoost classifier: i=300, d=7, lr=0.015. Non-horror only."},
+    {"x": 0.55, "y": 0.48, "color": TIER_COLORS["SMALL"], "label": "SMALL",
+     "sublabel": "Regressor", "hover": "MAE loss · 600 iters"},
+    {"x": 0.68, "y": 0.48, "color": ORANGE, "label": "STAGE 2",
      "sublabel": "MID vs LARGE+", "hover": "CatBoost classifier: i=400, d=5, lr=0.03"},
-    {"x": 0.38, "y": 0.40, "color": TIER_COLORS["MID"], "label": "MID",
-     "sublabel": "Regressor", "hover": "RMSE loss · 800 iters · 84 films"},
-    {"x": 0.62, "y": 0.40, "color": TIER_COLORS["LARGE+"], "label": "LARGE+",
-     "sublabel": "Regressor", "hover": "Quantile loss (α=0.5) · 500 iters · 51 films"},
-    {"x": 0.5, "y": 0.22, "color": VIOLET, "label": "V20-CLIP",
+    {"x": 0.62, "y": 0.32, "color": TIER_COLORS["MID"], "label": "MID",
+     "sublabel": "Regressor", "hover": "RMSE loss · 800 iters"},
+    {"x": 0.78, "y": 0.32, "color": TIER_COLORS["LARGE+"], "label": "LARGE+",
+     "sublabel": "Regressor", "hover": "Quantile loss (α=0.5) · 500 iters"},
+    {"x": 0.68, "y": 0.16, "color": VIOLET, "label": "V20-CLIP",
      "sublabel": "Adaptive window",
-     "hover": "6 expanded-pool quantile regressors → clip soft mixture to [Q10, Q90]"},
-    {"x": 0.3, "y": 0.06, "color": "#22c55e", "label": "RULE D (tentpole)",
-     "sublabel": "Static gate · guard < $60M",
-     "hover": "Budget>=$125M + IP>=3 + Star>=9 + PredLog>=18.5 + MajorStudio. Fires first. 100% precision in backtest."},
-    {"x": 0.7, "y": 0.06, "color": "#e377c2", "label": "RULE C (TMDB)",
-     "sublabel": "Momentum · guard < $60M",
-     "hover": "TMDB D7/D14 >= 25 -> LARGE+. Only fires if Rule D didn't."},
+     "hover": "6 quantile regressors → clip soft mixture to [Q10, Q90]"},
+    {"x": 0.5, "y": 0.04, "color": "#e377c2", "label": "RULE C/D",
+     "sublabel": "Override gates",
+     "hover": "Rule D: static tentpole gate. Rule C: TMDB D14≥25 → LARGE+. Guard <$60M."},
 ]
 
 for b in boxes:
@@ -70,37 +79,26 @@ for b in boxes:
 
 # Box half-height is 0.04. Arrows connect from bottom of upper box to top of lower box.
 conns = [
-    # INPUT(0.94) -> STAGE 1(0.78)
-    (0.5, 0.90, 0.5, 0.82, "#666"),
-    # STAGE 1(0.78) -> SMALL(0.58) + STAGE 2(0.58)
-    (0.5, 0.74, 0.18, 0.62, TIER_COLORS["SMALL"]),
-    (0.5, 0.74, 0.5, 0.62, ORANGE),
-    # STAGE 2(0.58) -> MID(0.40) + LARGE+(0.40)
-    (0.5, 0.54, 0.38, 0.44, TIER_COLORS["MID"]),
-    (0.5, 0.54, 0.62, 0.44, TIER_COLORS["LARGE+"]),
-    # SMALL(0.58) / MID(0.40) / LARGE+(0.40) -> V20-CLIP(0.22)
-    (0.18, 0.54, 0.42, 0.26, VIOLET),
-    (0.38, 0.36, 0.46, 0.26, VIOLET),
-    (0.62, 0.36, 0.54, 0.26, VIOLET),
-    # V20-CLIP(0.22) -> RULE D(0.06) and RULE C(0.06)
-    (0.42, 0.18, 0.3, 0.10, "#22c55e"),
-    (0.58, 0.18, 0.7, 0.10, "#e377c2"),
+    (0.5, 0.90, 0.5, 0.84, "#666"),
+    (0.5, 0.76, 0.18, 0.68, "#dc2626"),
+    (0.5, 0.76, 0.68, 0.68, "#2ca02c"),
+    (0.18, 0.60, 0.08, 0.52, "#f87171"),
+    (0.18, 0.60, 0.28, 0.52, "#991b1b"),
+    (0.68, 0.60, 0.55, 0.52, TIER_COLORS["SMALL"]),
+    (0.68, 0.60, 0.68, 0.52, ORANGE),
+    (0.68, 0.44, 0.62, 0.36, TIER_COLORS["MID"]),
+    (0.68, 0.44, 0.78, 0.36, TIER_COLORS["LARGE+"]),
+    (0.55, 0.44, 0.60, 0.20, VIOLET),
+    (0.62, 0.28, 0.64, 0.20, VIOLET),
+    (0.78, 0.28, 0.72, 0.20, VIOLET),
+    (0.68, 0.12, 0.5, 0.08, "#e377c2"),
 ]
 for x0, y0, x1, y1, c in conns:
     fig.add_annotation(x=x1, y=y1, ax=x0, ay=y0, xref="x", yref="y", axref="x", ayref="y",
                        showarrow=True, arrowhead=2, arrowsize=1.5, arrowwidth=2, arrowcolor=c)
 
-# Rule C bypass: when override fires, LARGE+ regressor feeds RULE C directly, skipping V20-Clip.
-fig.add_annotation(x=0.64, y=0.06, ax=0.76, ay=0.40, xref="x", yref="y", axref="x", ayref="y",
-                   showarrow=True, arrowhead=2, arrowsize=1.2, arrowwidth=1.8,
-                   arrowcolor="#e377c2", opacity=0.8)
-fig.add_annotation(x=0.86, y=0.22, text="<i>Rule C bypass</i><br>(TMDB override uses<br>LARGE+ directly)",
-                   showarrow=False, font=dict(color="#e377c2", size=9), align="left")
-fig.add_annotation(x=0.24, y=0.06, ax=0.62, ay=0.40, xref="x", yref="y", axref="x", ayref="y",
-                   showarrow=True, arrowhead=2, arrowsize=1.2, arrowwidth=1.8,
-                   arrowcolor="#22c55e", opacity=0.8)
-fig.add_annotation(x=0.04, y=0.22, text="<i>Rule D bypass</i><br>(static tentpole<br>gate → LARGE+)",
-                   showarrow=False, font=dict(color="#22c55e", size=9), align="left")
+fig.add_annotation(x=0.18, y=0.56, text="<i>Weighted blend:</i><br>OW = (1-p_large)·reg_S + p_large·reg_L",
+                   showarrow=False, font=dict(color="#dc2626", size=9), align="center")
 
 fig.update_layout(showlegend=False, height=720, margin=dict(l=20, r=20, t=20, b=20),
                   xaxis=dict(range=[0, 1], visible=False, fixedrange=True),
@@ -110,9 +108,9 @@ fig.update_layout(showlegend=False, height=720, margin=dict(l=20, r=20, t=20, b=
 st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
 # -- Tabbed details ----------------------------------------------------------
-tab_tiers, tab_configs, tab_window, tab_ruled, tab_rulec, tab_features = st.tabs(
-    ["Tier boundaries", "Classifier & regressor configs", "V20 quantile window",
-     "Rule D (V21 tentpole gate)", "Rule C (TMDB, V20)", "Feature set"]
+tab_tiers, tab_horror, tab_configs, tab_window, tab_ruled, tab_rulec, tab_features = st.tabs(
+    ["Tier boundaries", "Horror routing (V23b new)", "Non-horror configs", "V20 quantile window",
+     "Rule D (tentpole gate)", "Rule C (TMDB)", "Feature set"]
 )
 
 with tab_tiers:
@@ -120,31 +118,71 @@ with tab_tiers:
         """
         | Tier | Revenue range | Training films |
         |------|---------------|----------------|
-        | **SMALL** | < $15M | 142 (52%) |
-        | **MID** | $15–50M | 84 (30%) |
-        | **LARGE+** | ≥ $50M | 50 (18%) |
+        | **SMALL** | < $15M | 147 (51%) |
+        | **MID** | $15–50M | 87 (30%) |
+        | **LARGE+** | ≥ $50M | 53 (18%) |
         """
     )
     st.caption(
-        "Why 3 tiers and not 4? V13's 4-tier split had only 27 LARGE and 19 BLOCKBUSTER films — "
-        "LARGE accuracy cratered at 27%. Consolidating into LARGE+ (50 films) was the breakthrough "
-        "behind V14's jump to 71.5%."
+        "287 training films total. Horror subset: 68 films (41 small, 27 large by the $17M horror split)."
+    )
+
+with tab_horror:
+    st.markdown(
+        "**V23b introduces horror-first routing.** Before any tier classification, the model checks "
+        "`GENRE_HORROR=1`. If true, the movie bypasses the standard cascade entirely."
+    )
+    c1, c2 = st.columns(2)
+    with c1:
+        st.markdown(
+            """
+            **Horror 2-bucket architecture**
+
+            1. **Horror classifier** — CatBoost binary: small (<$17M) vs large (≥$17M)
+            2. **Horror-Small regressor** — trained on 41 horror films <$17M (MAE loss)
+            3. **Horror-Large regressor** — trained on 27 horror films ≥$17M (RMSE loss)
+            4. **Weighted blend** — `OW = (1-p_large)·reg_S + p_large·reg_L`
+
+            The $17M split was determined by log-space KMeans on 68 horror training films.
+            """
+        )
+    with c2:
+        st.code(
+            "HORROR_SPLIT = $17M  # log-space KMeans\n\n"
+            "HORROR_CLASSIFIER = {\n"
+            "    iterations: 300, depth: 5,\n"
+            "    learning_rate: 0.02\n"
+            "}\n\n"
+            "HORROR_SMALL_REG = {\n"
+            "    iterations: 500, depth: 5,\n"
+            "    lr: 0.02, loss: 'MAE'\n"
+            "}\n\n"
+            "HORROR_LARGE_REG = {\n"
+            "    iterations: 600, depth: 5,\n"
+            "    lr: 0.015, loss: 'RMSE'\n"
+            "}",
+            language="python",
+        )
+    st.markdown(
+        "**Why?** Budget-anchoring bias: horror films are almost always low-budget ($1-30M) "
+        "but can break out to $50M+. The standard cascade's budget feature anchors predictions low. "
+        "Separating horror removes this tension. CV result: **73.5% accuracy** on 68 horror films, **$8.73M MAE**."
     )
 
 with tab_configs:
     c1, c2 = st.columns(2)
     with c1:
-        st.markdown("**Stage 1 — SMALL vs NON-SMALL**")
+        st.markdown("**Stage 1 — SMALL vs NON-SMALL** (non-horror only)")
         st.code(
             "CatBoostClassifier(\n"
-            "    iterations=200,\n"
+            "    iterations=300,\n"
             "    depth=7,\n"
-            "    learning_rate=0.02,\n"
+            "    learning_rate=0.015,\n"
             ")",
             language="python",
         )
     with c2:
-        st.markdown("**Stage 2 — MID vs LARGE+**")
+        st.markdown("**Stage 2 — MID vs LARGE+** (non-horror only)")
         st.code(
             "CatBoostClassifier(\n"
             "    iterations=400,\n"
@@ -156,7 +194,7 @@ with tab_configs:
             language="python",
         )
 
-    st.markdown("**Tier-specific regressors**")
+    st.markdown("**Tier-specific regressors** (non-horror)")
     rc1, rc2, rc3 = st.columns(3)
     for col, tier, body, note in [
         (rc1, "SMALL",
@@ -279,7 +317,7 @@ with tab_rulec:
         )
 
 with tab_features:
-    st.caption("V20 inherits the full V18 feature set unchanged — 72 features. Breakdown by family:")
+    st.caption("V23b uses the full V18 feature set — 72 features. Same for horror and non-horror paths:")
     c1, c2, c3 = st.columns(3)
     with c1:
         st.markdown("**Static (36)**")

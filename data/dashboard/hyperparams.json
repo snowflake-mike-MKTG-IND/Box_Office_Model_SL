@@ -13,5 +13,12 @@
   {"model": "MID Regressor",      "param": "loss_function", "tested": 3,  "best": "RMSE",         "range": "MAE/RMSE/Quantile"},
   {"model": "LARGE+ Regressor",   "param": "iterations",    "tested": 8,  "best": "500",          "range": "200-1000"},
   {"model": "LARGE+ Regressor",   "param": "depth",         "tested": 6,  "best": "5",            "range": "3-8"},
-  {"model": "LARGE+ Regressor",   "param": "loss_function", "tested": 4,  "best": "Quantile:α=0.5","range": "MAE/RMSE/Quantile/Huber"}
+  {"model": "LARGE+ Regressor",   "param": "loss_function", "tested": 4,  "best": "Quantile:α=0.5","range": "MAE/RMSE/Quantile/Huber"},
+  {"model": "Horror Classifier",  "param": "iterations",    "tested": 6,  "best": "300",          "range": "100-600"},
+  {"model": "Horror Classifier",  "param": "depth",         "tested": 5,  "best": "5",            "range": "3-8"},
+  {"model": "Horror-Small Reg",   "param": "iterations",    "tested": 5,  "best": "500",          "range": "200-800"},
+  {"model": "Horror-Small Reg",   "param": "loss_function", "tested": 3,  "best": "MAE",          "range": "MAE/RMSE/Quantile"},
+  {"model": "Horror-Large Reg",   "param": "iterations",    "tested": 5,  "best": "600",          "range": "200-800"},
+  {"model": "Horror-Large Reg",   "param": "loss_function", "tested": 3,  "best": "RMSE",         "range": "MAE/RMSE/Quantile"},
+  {"model": "Horror Split",       "param": "boundary_$M",   "tested": 5,  "best": "17.0",         "range": "KMeans/12/15/17/20/25"}
 ]

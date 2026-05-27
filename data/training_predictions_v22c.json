@@ -1,0 +1,1694 @@
+[
+  {
+    "movie_title": "The Bikeriders",
+    "actual_ow_m": 9.7,
+    "predicted_ow_m": 10.12,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "THE OUTFIT",
+    "actual_ow_m": 1.5,
+    "predicted_ow_m": 1.97,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "UMMA",
+    "actual_ow_m": 0.92,
+    "predicted_ow_m": 1.45,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "BLACK PANTHER: WAKANDA FOREVER",
+    "actual_ow_m": 181.34,
+    "predicted_ow_m": 176.69,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "The Bride",
+    "actual_ow_m": 7.05,
+    "predicted_ow_m": 8.57,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "NOSFERATU",
+    "actual_ow_m": 21.65,
+    "predicted_ow_m": 23.24,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Red One",
+    "actual_ow_m": 32.11,
+    "predicted_ow_m": 31.59,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "HERETIC",
+    "actual_ow_m": 10.83,
+    "predicted_ow_m": 10.93,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Taylor Swift The Eras Tour",
+    "actual_ow_m": 93.22,
+    "predicted_ow_m": 73.89,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "One Battle After Another",
+    "actual_ow_m": 22.0,
+    "predicted_ow_m": 20.18,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "The Blackening",
+    "actual_ow_m": 6.01,
+    "predicted_ow_m": 6.28,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "GUY RITCHIE'S THE COVENANT",
+    "actual_ow_m": 6.38,
+    "predicted_ow_m": 6.9,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Five Nights at Freddys 2",
+    "actual_ow_m": 64.01,
+    "predicted_ow_m": 62.45,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "FLIGHT RISK",
+    "actual_ow_m": 11.58,
+    "predicted_ow_m": 11.13,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Trap",
+    "actual_ow_m": 15.45,
+    "predicted_ow_m": 15.37,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "GOOD FORTUNE",
+    "actual_ow_m": 6.16,
+    "predicted_ow_m": 6.45,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Never Let Go",
+    "actual_ow_m": 4.45,
+    "predicted_ow_m": 4.61,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "COCAINE BEAR",
+    "actual_ow_m": 23.1,
+    "predicted_ow_m": 22.71,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "The Woman King",
+    "actual_ow_m": 19.05,
+    "predicted_ow_m": 16.62,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "MISSION: IMPOSSIBLE \u2013 THE FINAL RECKONING",
+    "actual_ow_m": 64.04,
+    "predicted_ow_m": 63.11,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "MUFASA: THE LION KING",
+    "actual_ow_m": 35.41,
+    "predicted_ow_m": 35.88,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "BRING HER BACK",
+    "actual_ow_m": 7.08,
+    "predicted_ow_m": 7.13,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Joy Ride",
+    "actual_ow_m": 5.81,
+    "predicted_ow_m": 5.92,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Drop",
+    "actual_ow_m": 7.4,
+    "predicted_ow_m": 7.54,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "MEAN GIRLS",
+    "actual_ow_m": 28.64,
+    "predicted_ow_m": 26.26,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Argylle",
+    "actual_ow_m": 17.45,
+    "predicted_ow_m": 19.37,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Love Hurts",
+    "actual_ow_m": 5.8,
+    "predicted_ow_m": 6.22,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "65",
+    "actual_ow_m": 12.3,
+    "predicted_ow_m": 12.25,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "David",
+    "actual_ow_m": 22.0,
+    "predicted_ow_m": 18.15,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "OPERATION FORTUNE",
+    "actual_ow_m": 3.14,
+    "predicted_ow_m": 4.05,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Are You There God Its Me Margaret",
+    "actual_ow_m": 6.74,
+    "predicted_ow_m": 7.11,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "ANT-MAN AND THE WASP: QUANTUMANIA",
+    "actual_ow_m": 106.11,
+    "predicted_ow_m": 104.66,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Mission Impossible Dead Reckoning Part One",
+    "actual_ow_m": 54.69,
+    "predicted_ow_m": 54.61,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "NE ZHA 2",
+    "actual_ow_m": 7.2,
+    "predicted_ow_m": 9.27,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Undertone",
+    "actual_ow_m": 9.34,
+    "predicted_ow_m": 7.9,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "CREED III",
+    "actual_ow_m": 58.37,
+    "predicted_ow_m": 56.0,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "THE FALL GUY",
+    "actual_ow_m": 27.75,
+    "predicted_ow_m": 28.72,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "WUTHERING HEIGHTS",
+    "actual_ow_m": 32.8,
+    "predicted_ow_m": 31.8,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Abigail",
+    "actual_ow_m": 10.3,
+    "predicted_ow_m": 12.61,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Anaconda",
+    "actual_ow_m": 14.5,
+    "predicted_ow_m": 14.97,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "DOG",
+    "actual_ow_m": 14.88,
+    "predicted_ow_m": 10.95,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "AVATAR: THE WAY OF WATER",
+    "actual_ow_m": 134.1,
+    "predicted_ow_m": 132.56,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "TOP GUN: MAVERICK",
+    "actual_ow_m": 126.71,
+    "predicted_ow_m": 125.98,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "THE EXORCIST: BELIEVER",
+    "actual_ow_m": 26.5,
+    "predicted_ow_m": 23.47,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "The First Omen",
+    "actual_ow_m": 8.35,
+    "predicted_ow_m": 9.44,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "JOHN WICK: CHAPTER 4",
+    "actual_ow_m": 73.82,
+    "predicted_ow_m": 73.5,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "BLUE BEETLE",
+    "actual_ow_m": 25.03,
+    "predicted_ow_m": 25.99,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "THE NAKED GUN",
+    "actual_ow_m": 16.81,
+    "predicted_ow_m": 18.63,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Borderlands",
+    "actual_ow_m": 8.6,
+    "predicted_ow_m": 11.43,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Monkey Man",
+    "actual_ow_m": 10.12,
+    "predicted_ow_m": 10.59,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Imaginary",
+    "actual_ow_m": 9.91,
+    "predicted_ow_m": 9.03,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "THOR: LOVE AND THUNDER",
+    "actual_ow_m": 144.17,
+    "predicted_ow_m": 143.24,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "BABYLON",
+    "actual_ow_m": 3.6,
+    "predicted_ow_m": 6.67,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Shazam Fury of the Gods",
+    "actual_ow_m": 30.11,
+    "predicted_ow_m": 30.02,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "THE EQUALIZER 3",
+    "actual_ow_m": 34.6,
+    "predicted_ow_m": 34.94,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "AVATAR: FIRE AND ASH",
+    "actual_ow_m": 89.16,
+    "predicted_ow_m": 88.05,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "REGRETTING YOU",
+    "actual_ow_m": 13.69,
+    "predicted_ow_m": 13.23,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Black Bag",
+    "actual_ow_m": 7.61,
+    "predicted_ow_m": 7.46,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Nobody 2",
+    "actual_ow_m": 9.25,
+    "predicted_ow_m": 10.59,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "MAXXXINE",
+    "actual_ow_m": 6.71,
+    "predicted_ow_m": 7.57,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "HIM",
+    "actual_ow_m": 13.25,
+    "predicted_ow_m": 12.88,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Plane",
+    "actual_ow_m": 10.25,
+    "predicted_ow_m": 8.89,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Violent Night",
+    "actual_ow_m": 13.45,
+    "predicted_ow_m": 12.66,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Long Walk",
+    "actual_ow_m": 11.7,
+    "predicted_ow_m": 12.42,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Accountant 2",
+    "actual_ow_m": 24.53,
+    "predicted_ow_m": 23.79,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "AMBULANCE",
+    "actual_ow_m": 8.7,
+    "predicted_ow_m": 10.17,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Wicked: For Good",
+    "actual_ow_m": 147.0,
+    "predicted_ow_m": 144.16,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Reminders of Him",
+    "actual_ow_m": 17.98,
+    "predicted_ow_m": 15.92,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "MARRY ME",
+    "actual_ow_m": 7.95,
+    "predicted_ow_m": 8.81,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Demon Slayer The Movie Infinity Castle",
+    "actual_ow_m": 70.61,
+    "predicted_ow_m": 66.98,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Billie Eilish Hit Me Hard And Soft The Tour Live In 3D",
+    "actual_ow_m": 7.01,
+    "predicted_ow_m": 7.57,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Where the Crawdads Sing",
+    "actual_ow_m": 17.25,
+    "predicted_ow_m": 16.32,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "SMILE",
+    "actual_ow_m": 22.61,
+    "predicted_ow_m": 19.49,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "TRANSFORMERS: RISE OF THE BEASTS",
+    "actual_ow_m": 61.05,
+    "predicted_ow_m": 58.78,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Snow White",
+    "actual_ow_m": 42.21,
+    "predicted_ow_m": 43.35,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Blink Twice",
+    "actual_ow_m": 7.3,
+    "predicted_ow_m": 7.59,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "28 Years Later The Bone Temple",
+    "actual_ow_m": 12.52,
+    "predicted_ow_m": 13.45,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "SISU",
+    "actual_ow_m": 3.33,
+    "predicted_ow_m": 4.89,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Uncharted",
+    "actual_ow_m": 44.01,
+    "predicted_ow_m": 41.48,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "TWISTERS",
+    "actual_ow_m": 81.25,
+    "predicted_ow_m": 79.49,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Tarot",
+    "actual_ow_m": 6.5,
+    "predicted_ow_m": 6.65,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "SPIDER-MAN: ACROSS THE SPIDER-VERSE",
+    "actual_ow_m": 120.66,
+    "predicted_ow_m": 112.4,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "BARBIE",
+    "actual_ow_m": 162.02,
+    "predicted_ow_m": 156.34,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "PREDATOR: BADLANDS",
+    "actual_ow_m": 40.02,
+    "predicted_ow_m": 38.08,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Morbius",
+    "actual_ow_m": 39.01,
+    "predicted_ow_m": 38.74,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "THE WOMAN IN THE YARD",
+    "actual_ow_m": 9.4,
+    "predicted_ow_m": 9.62,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "No Hard Feelings",
+    "actual_ow_m": 15.0,
+    "predicted_ow_m": 15.26,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "The Monkey",
+    "actual_ow_m": 14.01,
+    "predicted_ow_m": 11.46,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Beekeeper",
+    "actual_ow_m": 16.57,
+    "predicted_ow_m": 16.12,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Fly Me to the Moon",
+    "actual_ow_m": 9.4,
+    "predicted_ow_m": 12.29,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Blind",
+    "actual_ow_m": 4.34,
+    "predicted_ow_m": 4.58,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Ferrari",
+    "actual_ow_m": 3.92,
+    "predicted_ow_m": 5.5,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "FINAL DESTINATION BLOODLINES",
+    "actual_ow_m": 51.6,
+    "predicted_ow_m": 49.65,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "JOKER: FOLIE \u00c0 DEUX",
+    "actual_ow_m": 37.68,
+    "predicted_ow_m": 37.56,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Fast X",
+    "actual_ow_m": 67.02,
+    "predicted_ow_m": 65.88,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "I Know What You Did Last Summer 2025",
+    "actual_ow_m": 12.76,
+    "predicted_ow_m": 12.44,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Strangers Chapter 1",
+    "actual_ow_m": 11.83,
+    "predicted_ow_m": 11.68,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "One of Them Days",
+    "actual_ow_m": 11.81,
+    "predicted_ow_m": 9.45,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Springsteen Deliver Me From Nowhere",
+    "actual_ow_m": 8.89,
+    "predicted_ow_m": 9.48,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Ordinary Angels",
+    "actual_ow_m": 6.16,
+    "predicted_ow_m": 6.87,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "SCREAM 7",
+    "actual_ow_m": 63.62,
+    "predicted_ow_m": 59.21,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "DEADPOOL & WOLVERINE",
+    "actual_ow_m": 211.44,
+    "predicted_ow_m": 204.42,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Beetlejuice Beetlejuice",
+    "actual_ow_m": 111.02,
+    "predicted_ow_m": 106.65,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "CHAMPIONS",
+    "actual_ow_m": 5.15,
+    "predicted_ow_m": 5.97,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "BLACKLIGHT",
+    "actual_ow_m": 3.5,
+    "predicted_ow_m": 3.88,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "FATHER STU",
+    "actual_ow_m": 5.4,
+    "predicted_ow_m": 6.6,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Ready or Not 2: Here I Come",
+    "actual_ow_m": 9.08,
+    "predicted_ow_m": 10.53,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Sheep Detectives",
+    "actual_ow_m": 15.09,
+    "predicted_ow_m": 15.1,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "A Complete Unknown",
+    "actual_ow_m": 11.66,
+    "predicted_ow_m": 13.39,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "OPPENHEIMER",
+    "actual_ow_m": 82.46,
+    "predicted_ow_m": 78.86,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "SCREAM VI",
+    "actual_ow_m": 44.45,
+    "predicted_ow_m": 41.42,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Now You See Me Now You Dont",
+    "actual_ow_m": 21.01,
+    "predicted_ow_m": 21.21,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "THE HOUSEMAID",
+    "actual_ow_m": 19.01,
+    "predicted_ow_m": 18.3,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "DOWNTON ABBEY: THE GRAND FINALE",
+    "actual_ow_m": 18.11,
+    "predicted_ow_m": 15.87,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "TERRIFIER 3",
+    "actual_ow_m": 18.93,
+    "predicted_ow_m": 17.32,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "The Strangers Chapter 2",
+    "actual_ow_m": 5.81,
+    "predicted_ow_m": 6.43,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "THE KILLER'S GAME",
+    "actual_ow_m": 2.7,
+    "predicted_ow_m": 4.36,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "CAPTAIN AMERICA: BRAVE NEW WORLD",
+    "actual_ow_m": 88.84,
+    "predicted_ow_m": 77.84,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Here",
+    "actual_ow_m": 4.88,
+    "predicted_ow_m": 6.88,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "MILLER'S GIRL",
+    "actual_ow_m": 0.32,
+    "predicted_ow_m": 1.4,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "GLADIATOR II",
+    "actual_ow_m": 55.03,
+    "predicted_ow_m": 54.71,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "THE MENU",
+    "actual_ow_m": 9.0,
+    "predicted_ow_m": 9.07,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "PRIMATE",
+    "actual_ow_m": 11.16,
+    "predicted_ow_m": 11.18,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Kraven the Hunter",
+    "actual_ow_m": 11.0,
+    "predicted_ow_m": 17.19,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "FALL",
+    "actual_ow_m": 2.51,
+    "predicted_ow_m": 2.88,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "THE AMATEUR",
+    "actual_ow_m": 14.8,
+    "predicted_ow_m": 12.7,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Furiosa A Mad Max Saga",
+    "actual_ow_m": 26.33,
+    "predicted_ow_m": 31.62,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "AIR",
+    "actual_ow_m": 14.46,
+    "predicted_ow_m": 15.2,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Black Adam",
+    "actual_ow_m": 67.0,
+    "predicted_ow_m": 65.75,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Halloween Ends",
+    "actual_ow_m": 40.05,
+    "predicted_ow_m": 37.79,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Beast",
+    "actual_ow_m": 11.58,
+    "predicted_ow_m": 9.97,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Arthur the King",
+    "actual_ow_m": 7.63,
+    "predicted_ow_m": 9.96,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "DEATH ON THE NILE",
+    "actual_ow_m": 12.89,
+    "predicted_ow_m": 18.08,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "A Man Called Otto",
+    "actual_ow_m": 4.2,
+    "predicted_ow_m": 5.48,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "My Big Fat Greek Wedding 3",
+    "actual_ow_m": 10.03,
+    "predicted_ow_m": 11.11,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Song Sung Blue",
+    "actual_ow_m": 7.07,
+    "predicted_ow_m": 7.95,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "DUNE: PART TWO",
+    "actual_ow_m": 82.51,
+    "predicted_ow_m": 82.24,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Napoleon Movie",
+    "actual_ow_m": 20.63,
+    "predicted_ow_m": 21.02,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "BAD BOYS: RIDE OR DIE",
+    "actual_ow_m": 56.53,
+    "predicted_ow_m": 53.54,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Madame Web",
+    "actual_ow_m": 15.34,
+    "predicted_ow_m": 18.53,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "THE FLASH",
+    "actual_ow_m": 55.04,
+    "predicted_ow_m": 54.86,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "A Working Man",
+    "actual_ow_m": 15.51,
+    "predicted_ow_m": 15.06,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "WOLF MAN",
+    "actual_ow_m": 10.9,
+    "predicted_ow_m": 12.68,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Cabrini",
+    "actual_ow_m": 7.17,
+    "predicted_ow_m": 7.88,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Homestead",
+    "actual_ow_m": 6.0,
+    "predicted_ow_m": 6.39,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "JACKASS FOREVER",
+    "actual_ow_m": 23.15,
+    "predicted_ow_m": 21.88,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Goat",
+    "actual_ow_m": 27.2,
+    "predicted_ow_m": 25.51,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "GREENLAND 2: MIGRATION",
+    "actual_ow_m": 8.4,
+    "predicted_ow_m": 10.33,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Godzilla Minus One",
+    "actual_ow_m": 11.42,
+    "predicted_ow_m": 12.79,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "SAW X",
+    "actual_ow_m": 18.31,
+    "predicted_ow_m": 16.89,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Gran Turismo",
+    "actual_ow_m": 17.41,
+    "predicted_ow_m": 16.61,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Insidious The Red Door",
+    "actual_ow_m": 33.01,
+    "predicted_ow_m": 29.31,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Freakier Friday",
+    "actual_ow_m": 28.58,
+    "predicted_ow_m": 26.66,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "The Hunger Games The Ballad of Songbirds Snakes",
+    "actual_ow_m": 44.61,
+    "predicted_ow_m": 42.59,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "From the World of John Wick Ballerina",
+    "actual_ow_m": 24.5,
+    "predicted_ow_m": 24.99,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Dont Worry Darling",
+    "actual_ow_m": 19.35,
+    "predicted_ow_m": 19.1,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Longlegs",
+    "actual_ow_m": 22.4,
+    "predicted_ow_m": 21.98,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "The Creator",
+    "actual_ow_m": 14.08,
+    "predicted_ow_m": 14.0,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "DEVOTION",
+    "actual_ow_m": 5.9,
+    "predicted_ow_m": 9.59,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "ROOFMAN",
+    "actual_ow_m": 8.11,
+    "predicted_ow_m": 8.7,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Last Rodeo",
+    "actual_ow_m": 5.43,
+    "predicted_ow_m": 5.7,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Magic Mike s Last Dance",
+    "actual_ow_m": 8.31,
+    "predicted_ow_m": 10.0,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Unsung Hero",
+    "actual_ow_m": 7.73,
+    "predicted_ow_m": 7.58,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Whitney Houston I Wanna Dance With Somebody",
+    "actual_ow_m": 4.7,
+    "predicted_ow_m": 5.74,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "ETERNITY",
+    "actual_ow_m": 3.18,
+    "predicted_ow_m": 4.76,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "THE BLACK PHONE",
+    "actual_ow_m": 23.63,
+    "predicted_ow_m": 18.09,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "AMSTERDAM",
+    "actual_ow_m": 6.44,
+    "predicted_ow_m": 8.83,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "RETRIBUTION",
+    "actual_ow_m": 3.52,
+    "predicted_ow_m": 3.99,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "SUPERMAN",
+    "actual_ow_m": 125.02,
+    "predicted_ow_m": 124.41,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "JURASSIC WORLD REBIRTH",
+    "actual_ow_m": 92.02,
+    "predicted_ow_m": 90.85,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Sinners",
+    "actual_ow_m": 48.01,
+    "predicted_ow_m": 45.58,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Caught Stealing",
+    "actual_ow_m": 7.8,
+    "predicted_ow_m": 9.16,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "THE KING'S DAUGHTER",
+    "actual_ow_m": 0.72,
+    "predicted_ow_m": 1.23,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "WEAPONS",
+    "actual_ow_m": 43.5,
+    "predicted_ow_m": 38.68,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "DOCTOR STRANGE IN THE MULTIVERSE OF MADNESS",
+    "actual_ow_m": 187.42,
+    "predicted_ow_m": 181.22,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "PREY FOR THE DEVIL",
+    "actual_ow_m": 7.19,
+    "predicted_ow_m": 7.32,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "BOB MARLEY: ONE LOVE",
+    "actual_ow_m": 28.6,
+    "predicted_ow_m": 23.41,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "The Devil Wears Prada 2",
+    "actual_ow_m": 76.75,
+    "predicted_ow_m": 72.13,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Transformers One",
+    "actual_ow_m": 24.61,
+    "predicted_ow_m": 25.6,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Lee Cronin's The Mummy",
+    "actual_ow_m": 13.52,
+    "predicted_ow_m": 13.65,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Elvis",
+    "actual_ow_m": 31.21,
+    "predicted_ow_m": 30.39,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "A QUIET PLACE: DAY ONE",
+    "actual_ow_m": 52.2,
+    "predicted_ow_m": 50.91,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "THE NORTHMAN",
+    "actual_ow_m": 12.29,
+    "predicted_ow_m": 18.34,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Fantastic Four First Steps",
+    "actual_ow_m": 117.64,
+    "predicted_ow_m": 111.65,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "A REAL PAIN",
+    "actual_ow_m": 0.23,
+    "predicted_ow_m": 0.86,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "M3GAN",
+    "actual_ow_m": 30.43,
+    "predicted_ow_m": 29.45,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "THE NUN II",
+    "actual_ow_m": 32.6,
+    "predicted_ow_m": 30.79,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Mickey 17",
+    "actual_ow_m": 19.0,
+    "predicted_ow_m": 18.97,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "THE SMASHING MACHINE",
+    "actual_ow_m": 5.84,
+    "predicted_ow_m": 8.0,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Best Christmas Pageant Ever",
+    "actual_ow_m": 10.77,
+    "predicted_ow_m": 9.31,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "A Minecraft Movie",
+    "actual_ow_m": 162.75,
+    "predicted_ow_m": 154.92,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "HOUSE PARTY",
+    "actual_ow_m": 3.99,
+    "predicted_ow_m": 4.23,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "SMILE 2",
+    "actual_ow_m": 23.02,
+    "predicted_ow_m": 22.22,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Nuremberg",
+    "actual_ow_m": 3.88,
+    "predicted_ow_m": 4.67,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Strays",
+    "actual_ow_m": 8.25,
+    "predicted_ow_m": 8.83,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "THE RUNNING MAN",
+    "actual_ow_m": 16.5,
+    "predicted_ow_m": 19.32,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "THE ROSES",
+    "actual_ow_m": 6.27,
+    "predicted_ow_m": 7.1,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "FANTASTIC BEASTS: THE SECRETS OF DUMBLEDORE",
+    "actual_ow_m": 42.15,
+    "predicted_ow_m": 42.57,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "The Boogeyman",
+    "actual_ow_m": 12.36,
+    "predicted_ow_m": 10.53,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Immaculate",
+    "actual_ow_m": 5.34,
+    "predicted_ow_m": 5.66,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Bonhoeffer",
+    "actual_ow_m": 5.05,
+    "predicted_ow_m": 5.39,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Alien Romulus",
+    "actual_ow_m": 42.0,
+    "predicted_ow_m": 40.6,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "MOONFALL",
+    "actual_ow_m": 9.87,
+    "predicted_ow_m": 11.54,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "TICKET TO PARADISE",
+    "actual_ow_m": 16.51,
+    "predicted_ow_m": 16.17,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "KNOCK AT THE CABIN",
+    "actual_ow_m": 14.13,
+    "predicted_ow_m": 13.94,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Color Purple",
+    "actual_ow_m": 11.74,
+    "predicted_ow_m": 12.63,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "KILLERS OF THE FLOWER MOON",
+    "actual_ow_m": 23.25,
+    "predicted_ow_m": 23.57,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "The Conjuring: Last Rites",
+    "actual_ow_m": 84.01,
+    "predicted_ow_m": 80.22,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "The Boys in the Boat",
+    "actual_ow_m": 8.4,
+    "predicted_ow_m": 9.22,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "JURASSIC WORLD DOMINION",
+    "actual_ow_m": 145.08,
+    "predicted_ow_m": 142.52,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "INDIANA JONES AND THE DIAL OF DESTINY",
+    "actual_ow_m": 60.37,
+    "predicted_ow_m": 59.5,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "CHALLENGERS",
+    "actual_ow_m": 15.01,
+    "predicted_ow_m": 15.38,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "The Forge",
+    "actual_ow_m": 6.66,
+    "predicted_ow_m": 6.92,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "NOPE",
+    "actual_ow_m": 44.37,
+    "predicted_ow_m": 40.14,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "IT ENDS WITH US",
+    "actual_ow_m": 50.02,
+    "predicted_ow_m": 47.69,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "NIGHT SWIM",
+    "actual_ow_m": 11.8,
+    "predicted_ow_m": 10.61,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "MISSING",
+    "actual_ow_m": 9.15,
+    "predicted_ow_m": 8.67,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Meg 2 The Trench",
+    "actual_ow_m": 30.0,
+    "predicted_ow_m": 31.13,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "THE BATMAN",
+    "actual_ow_m": 134.01,
+    "predicted_ow_m": 132.7,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Last Breath",
+    "actual_ow_m": 7.85,
+    "predicted_ow_m": 8.03,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "WICKED",
+    "actual_ow_m": 112.51,
+    "predicted_ow_m": 110.21,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "BULLET TRAIN",
+    "actual_ow_m": 30.03,
+    "predicted_ow_m": 26.21,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "The Last Voyage of the Demeter",
+    "actual_ow_m": 6.5,
+    "predicted_ow_m": 7.59,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "KINGDOM OF THE PLANET OF THE APES",
+    "actual_ow_m": 58.4,
+    "predicted_ow_m": 57.06,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "M3GAN 2.0",
+    "actual_ow_m": 10.2,
+    "predicted_ow_m": 12.18,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "THANKSGIVING",
+    "actual_ow_m": 10.31,
+    "predicted_ow_m": 10.82,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "THE CONTRACTOR",
+    "actual_ow_m": 0.56,
+    "predicted_ow_m": 1.15,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "COMPANION",
+    "actual_ow_m": 9.3,
+    "predicted_ow_m": 9.68,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Ministry of Ungentlemanly Warfare",
+    "actual_ow_m": 8.91,
+    "predicted_ow_m": 10.79,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Speak No Evil",
+    "actual_ow_m": 11.4,
+    "predicted_ow_m": 12.24,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "THE UNBEARABLE WEIGHT OF MASSIVE TALENT",
+    "actual_ow_m": 7.13,
+    "predicted_ow_m": 7.81,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Invitation",
+    "actual_ow_m": 6.81,
+    "predicted_ow_m": 6.98,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "28 Years Later",
+    "actual_ow_m": 30.0,
+    "predicted_ow_m": 31.43,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Conclave",
+    "actual_ow_m": 6.6,
+    "predicted_ow_m": 8.32,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Machine",
+    "actual_ow_m": 5.0,
+    "predicted_ow_m": 5.85,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "WONKA",
+    "actual_ow_m": 39.01,
+    "predicted_ow_m": 39.58,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "AQUAMAN AND THE LOST KINGDOM",
+    "actual_ow_m": 27.69,
+    "predicted_ow_m": 29.26,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Am I Racist",
+    "actual_ow_m": 4.54,
+    "predicted_ow_m": 4.8,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Godzilla x Kong The New Empire",
+    "actual_ow_m": 80.03,
+    "predicted_ow_m": 77.78,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Novocaine",
+    "actual_ow_m": 8.81,
+    "predicted_ow_m": 8.87,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Downton Abbey A New Era",
+    "actual_ow_m": 16.0,
+    "predicted_ow_m": 15.74,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Death of a Unicorn",
+    "actual_ow_m": 5.79,
+    "predicted_ow_m": 6.49,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The 355",
+    "actual_ow_m": 4.62,
+    "predicted_ow_m": 5.93,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Marvels",
+    "actual_ow_m": 46.11,
+    "predicted_ow_m": 41.14,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Guardians of the Galaxy Vol 3",
+    "actual_ow_m": 118.41,
+    "predicted_ow_m": 117.4,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "MORTAL KOMBAT II",
+    "actual_ow_m": 38.5,
+    "predicted_ow_m": 35.52,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Venom The Last Dance",
+    "actual_ow_m": 51.01,
+    "predicted_ow_m": 49.82,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "About My Father",
+    "actual_ow_m": 4.32,
+    "predicted_ow_m": 4.53,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Heart Eyes",
+    "actual_ow_m": 8.31,
+    "predicted_ow_m": 8.42,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Watchers",
+    "actual_ow_m": 7.0,
+    "predicted_ow_m": 8.15,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "BARBARIAN",
+    "actual_ow_m": 10.54,
+    "predicted_ow_m": 8.68,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Evil Dead Rise",
+    "actual_ow_m": 24.5,
+    "predicted_ow_m": 22.63,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "The Iron Claw",
+    "actual_ow_m": 4.87,
+    "predicted_ow_m": 6.54,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "The Substance",
+    "actual_ow_m": 3.21,
+    "predicted_ow_m": 4.76,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Five Nights at Freddys",
+    "actual_ow_m": 80.0,
+    "predicted_ow_m": 77.63,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Chainsaw Man The Movie Reze Arc",
+    "actual_ow_m": 18.03,
+    "predicted_ow_m": 18.05,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "DEN OF THIEVES 2: PANTERA",
+    "actual_ow_m": 15.02,
+    "predicted_ow_m": 14.71,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Project Hail Mary",
+    "actual_ow_m": 80.51,
+    "predicted_ow_m": 76.77,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "CIVIL WAR",
+    "actual_ow_m": 25.54,
+    "predicted_ow_m": 24.24,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "BLACK PHONE 2",
+    "actual_ow_m": 27.33,
+    "predicted_ow_m": 27.2,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "The Popes Exorcist",
+    "actual_ow_m": 9.01,
+    "predicted_ow_m": 9.72,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Tron Ares",
+    "actual_ow_m": 33.24,
+    "predicted_ow_m": 31.56,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "THUNDERBOLTS",
+    "actual_ow_m": 74.3,
+    "predicted_ow_m": 73.19,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "UNTIL DAWN",
+    "actual_ow_m": 8.0,
+    "predicted_ow_m": 8.86,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Book Club The Next Chapter",
+    "actual_ow_m": 6.68,
+    "predicted_ow_m": 6.31,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Dungeons Dragons Honor Among Thieves",
+    "actual_ow_m": 37.21,
+    "predicted_ow_m": 37.12,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "The Lost City",
+    "actual_ow_m": 30.45,
+    "predicted_ow_m": 25.95,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "A Haunting in Venice",
+    "actual_ow_m": 14.28,
+    "predicted_ow_m": 16.28,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "IF",
+    "actual_ow_m": 33.73,
+    "predicted_ow_m": 30.94,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Redeeming Love",
+    "actual_ow_m": 3.53,
+    "predicted_ow_m": 4.49,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "Renfield",
+    "actual_ow_m": 8.03,
+    "predicted_ow_m": 13.12,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "BABYGIRL",
+    "actual_ow_m": 4.49,
+    "predicted_ow_m": 7.09,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "F1 Movie",
+    "actual_ow_m": 57.0,
+    "predicted_ow_m": 53.58,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Karate Kid Legends",
+    "actual_ow_m": 20.3,
+    "predicted_ow_m": 20.1,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Expend4bles",
+    "actual_ow_m": 8.04,
+    "predicted_ow_m": 12.47,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "TALK TO ME",
+    "actual_ow_m": 10.43,
+    "predicted_ow_m": 9.1,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "80 FOR BRADY",
+    "actual_ow_m": 12.7,
+    "predicted_ow_m": 12.94,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "MATERIALISTS",
+    "actual_ow_m": 11.34,
+    "predicted_ow_m": 10.28,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "MICHAEL",
+    "actual_ow_m": 97.21,
+    "predicted_ow_m": 90.67,
+    "actual_tier": "LARGE+"
+  },
+  {
+    "movie_title": "Jesus Revolution",
+    "actual_ow_m": 15.88,
+    "predicted_ow_m": 11.9,
+    "actual_tier": "MID"
+  },
+  {
+    "movie_title": "Warfare",
+    "actual_ow_m": 8.32,
+    "predicted_ow_m": 8.62,
+    "actual_tier": "SMALL"
+  },
+  {
+    "movie_title": "GHOSTBUSTERS: FROZEN EMPIRE",
+    "actual_ow_m": 45.0,
+    "predicted_ow_m": 42.03,
+    "actual_tier": "MID"
+  }
+]

@@ -10,5 +10,8 @@
   {"date": "2026-04-20", "hours": 3.0, "work": "V17 extended trends: feature view, training, CV, deploy"},
   {"date": "2026-04-20", "hours": 1.0, "work": "V18 Wikipedia sprint (~49 min)"},
   {"date": "2026-04-21", "hours": 2.5, "work": "V18 full data-integrity pass (276 films)"},
-  {"date": "2026-04-27", "hours": 2.0, "work": "V18.6 \u2192 V20-Clip + Rule C iteration; Streamlit V20 refresh"}
+  {"date": "2026-04-27", "hours": 2.0, "work": "V18.6 \u2192 V20-Clip + Rule C iteration; Streamlit V20 refresh"},
+  {"date": "2026-05-12", "hours": 3.5, "work": "V22c: Hybrid Original-IP Blend + Dual Rule C + Rule D tuning"},
+  {"date": "2026-05-26", "hours": 6.0, "work": "V23b: Horror routing research, PRODUCTION data fix, Snowflake ML deployment"},
+  {"date": "2026-05-27", "hours": 2.0, "work": "V23b CV evaluation, dashboard update, predictions refresh"}
 ]

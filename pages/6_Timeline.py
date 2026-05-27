@@ -26,13 +26,13 @@ hparams = pd.DataFrame(load_json("hyperparams.json"))
 
 page_header(
     "Model History",
-    "V2 → V20 evolution — every version, active sessions, and the hyperparameters behind them.",
+    "V2 → V23b evolution — every version, active sessions, and the hyperparameters behind them.",
 )
 
 kpi_row([
-    ("Model versions", str(len(versions)), "V2 → V20-Clip+RC"),
-    ("Best CV MAE",    "$9.48M",           "V20-Clip+RC @ -7d"),
-    ("Best CV accuracy", "77.2%",          "V18.7 classifier @ -7d"),
+    ("Model versions", str(len(versions)), "V2 → V23b"),
+    ("Best CV MAE",    "$9.65M",           "V22c @ -7d"),
+    ("Best CV accuracy", "78.4%",          "V22c @ -7d"),
     ("Active sessions", str(len(sessions)), f"{sessions['hours'].sum():.0f}h active work"),
 ])
 
@@ -71,10 +71,10 @@ with tab_versions:
 with tab_velocity:
     active_days = sessions["date"].nunique()
     total_hours = sessions["hours"].sum()
-    calendar_span = 90
+    calendar_span = 120
 
     kpi_row([
-        ("Calendar span", f"{calendar_span} days", "Jan 28 → Apr 27"),
+        ("Calendar span", f"{calendar_span} days", "Jan 28 → May 27"),
         ("Active days", str(active_days), f"{active_days/calendar_span*100:.0f}% of calendar"),
         ("Total hours", f"~{total_hours:.0f}h", f"~{total_hours/active_days:.1f}h / session"),
         ("Sessions", str(len(sessions)), "Individual work blocks"),
@@ -112,15 +112,16 @@ with tab_hpt:
             "range":  "Search range",
         },
     )
-    section("Why V18 → V20 matters")
+    section("Why V18 → V23b matters")
     st.markdown(
-        "- **V18.7 soft mixture** — probability-weighted blend across the 3 tier regressors lifted "
+        "- **V18.7 soft mixture** — probability-weighted blend across 3 tier regressors lifted "
         "MAE $11.48M → $10.42M.\n"
         "- **V20 quantile window** — 6 expanded-pool quantile regressors give every film a learned "
         "[Q10, Q90] range.\n"
-        "- **V20-Clip + guarded Rule C** — clip soft mixture into the window, then allow TMDB-D14 "
-        "override only when V20-Clip < $60M. Final MAE $9.48M, R² 0.808 (-17.4% MAE vs V18.0). "
-        "See [V20 Model Story](./V20_Model_Story) for the full arc."
+        "- **V22c Dual Rule C** — TMDB D14≥25 static + D7 surge (TMDB≥35 AND GT≥70). Fixes MK2 false positive.\n"
+        "- **V23b Horror routing** — Genre-first split: horror → dedicated 2-bucket regressors ($17M KMeans split). "
+        "Non-horror → standard cascade. Horror accuracy 73.5%.\n"
+        "- **V23b deployed to Snowflake Model Registry** — Feature Store + CustomModel + batch inference via mv.run()."
     )
 
 show_cortex_badge()

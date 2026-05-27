@@ -1,4 +1,4 @@
-"""Page 2: Feature importance — V20 inherits V18's feature set unchanged."""
+"""Page 2: Feature importance — V23b uses V18's 72-feature set for both horror and non-horror paths."""
 import pandas as pd
 import plotly.express as px
 import streamlit as st
@@ -9,7 +9,7 @@ apply_page_config("Features", icon="📊")
 
 page_header(
     "Feature Importance",
-    "V20 inherits V18's 72 features unchanged (36 static + 23 Trends + 13 Wikipedia).",
+    "V23b uses V18's 72 features unchanged (36 static + 23 Trends + 13 Wikipedia) for both horror and non-horror paths.",
 )
 
 # Snapshot: V17.2 CatBoost importances (exported from the pre-Wiki tuned model).
