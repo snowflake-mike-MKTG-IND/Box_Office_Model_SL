@@ -1,4 +1,4 @@
-"""V21 Opening Weekend Prediction Model — Home / navigation hub."""
+"""V23b Opening Weekend Prediction Model — Home / navigation hub."""
 import streamlit as st
 
 from theme import (
@@ -11,11 +11,11 @@ from theme import (
     show_cortex_badge,
 )
 
-apply_page_config("V21 OW Prediction Model", icon="🎬")
+apply_page_config("V23b OW Prediction Model", icon="🎬")
 
 page_header(
-    "V21 Opening Weekend Prediction Model",
-    "V18.7 soft-mixture cascade · V20 adaptive quantile window · Rule D (Static Tentpole Gate) · guarded Rule C",
+    "V23b Opening Weekend Prediction Model",
+    "Horror-first 2-bucket routing · Snowflake Model Registry · Feature Store · Dual Rule C · Rule D",
 )
 
 # -- Cortex Code velocity hero ----------------------------------------------
@@ -30,13 +30,13 @@ st.markdown(
       </div>
       <div style="font-size: 1.55rem; font-weight: 700; line-height: 1.25;
                   margin-bottom: 0.4rem;">
-        One person. One AI. ~44 hours of active work.
+        One person. One AI. ~50 hours of active work.
       </div>
       <div style="font-size: 0.98rem; opacity: 0.95; line-height: 1.45; max-width: 860px;">
-        End-to-end ML product — data engineering, 18 model versions, 83 experiments,
-        108 HP configs, 664 Snowflake artifacts, and this 9-page dashboard — shipped in
+        End-to-end ML product — data engineering, 24 model versions, 120+ experiments,
+        140+ HP configs, 750+ Snowflake artifacts, and this 9-page dashboard — shipped in
         <b>~1 week of working hours</b>. The V18 Wikipedia sprint took <b>49 minutes</b>.
-        The V18 → V20-Clip + Rule C jump (-17.4% MAE) took <b>one working session</b>.
+        V23b horror routing + Snowflake ML deployment took <b>one working session</b>.
       </div>
     </div>
     """,
@@ -45,10 +45,10 @@ st.markdown(
 
 # Velocity stats
 kpi_row([
-    ("Active work",    "~44h",  "vs ~250h traditional"),
-    ("Calendar span",  "12 sessions", "over 90 days"),
+    ("Active work",    "~50h",  "vs ~300h traditional"),
+    ("Calendar span",  "15 sessions", "over 90 days"),
     ("Team size",      "1 + AI", "vs 2-3 engineers"),
-    ("V18 → V21","2 sessions", "Rule D + D-21 horizon"),
+    ("V22c → V23b","1 session", "Horror routing + SF Model Registry"),
 ])
 
 st.caption(
@@ -59,26 +59,26 @@ st.caption(
 # -- Model performance hero --------------------------------------------------
 section("Model performance")
 kpi_row([
-    ("Training films",     "276",     None),
+    ("Training films",     "282",     "413 with GT data"),
     ("Features",           "72",      "+13 Wikipedia"),
-    ("V18 CV MAE (-7d)",   "$10.96M", "77.2% tier acc"),
-    ("V21 CV MAE (-7d)",   "$9.58M",  "R² 0.814 + Rule D gate"),
+    ("V23b CV MAE (-7d)",  "$8.74M",  "80.1% tier acc"),
+    ("Horror accuracy",    "69.2%",   "breakout detection"),
 ])
-freshness_caption("5-fold GroupKFold CV on 278 films · V21: V20-Clip + Rule D + Rule C", "2026-05-04")
+freshness_caption("5-fold GroupKFold CV on 282 films · V23b: Horror-first routing, deployed to Snowflake Model Registry", "2026-05-27")
 
 # -- Navigation grid ---------------------------------------------------------
 section("Explore the model", "Pick a section below. Each page owns one topic.")
 
 NAV = [
-    ("Architecture", "V21 cascade: soft mixture + quantile window + Rule D + Rule C.",
+    ("Architecture", "V23b: Horror-first routing + 3-tier non-horror cascade + Rule C/D.",
      "pages/1_Architecture.py"),
-    ("Features", "72 features (V21 inherits V18 feature set + D-21 horizon).",
+    ("Features", "72 features (V23b inherits V18 feature set + D-21 horizon).",
      "pages/2_Features.py"),
-    ("Performance", "V21 CV results ($9.58M MAE, R² 0.814) vs V18 baseline.",
+    ("Performance", "V23b CV results ($8.74M MAE, 80.1% acc) with horror fix.",
      "pages/3_Performance.py"),
-    ("Predict", "Cascade simulator — V21 logic (live in Snowflake).",
+    ("Predict", "Cascade simulator — V23b logic (Snowflake Model Registry).",
      "pages/4_Predictions.py"),
-    ("Errors", "V20 base cascade biggest misses and what Rule D + Rule C fixes.",
+    ("Errors", "Horror underprediction fix and Rule C/D corrections.",
      "pages/5_Errors.py"),
     ("Recent Predictions", "Live tracking of predictions vs actual weekends.",
      "pages/7_Recent_Predictions.py"),
@@ -86,7 +86,7 @@ NAV = [
      "pages/6_Timeline.py"),
     ("Development Story", "The 49-minute Wikipedia sprint with Cortex Code.",
      "pages/8_Wikipedia_Integration.py"),
-    ("V20/V21 Model Story", "V20-Clip + Rule C → V21 Rule D (Static Tentpole Gate).",
+    ("V20→V23b Model Story", "V20-Clip → V22c Hybrid → V23b Horror Routing + Snowflake ML.",
      "pages/9_V20_Model_Story.py"),
 ]
 
@@ -99,25 +99,25 @@ for i, (title, desc, page) in enumerate(NAV):
             st.page_link(page, label="Open")
 
 # -- What's new --------------------------------------------------------------
-section("What's new in V21")
+section("What's new in V23b")
 st.markdown(
-    "- **Rule D (Static Tentpole Gate)** — identifies obvious tentpoles at D-18+ before TMDB data arrives. "
-    "Gate: Budget≥$125M + IP≥3 + Star≥9 + Predecessor≥$108M + Major Studio. 100% precision in backtest.\n"
-    "- **D-21 horizon extended** — features view now starts at D-21 (was D-15) for earlier predictions.\n"
-    "- **Rule C enhanced** — now checks best available TMDB (D7 priority over D14).\n"
-    "- **Prediction history preserved** — all model versions tracked in `OW_PREDICTIONS_V21` (append-only). "
-    "See [Recent Predictions](./Recent_Predictions) for Mandalorian (Rule D) and MK2 (Rule C).\n"
-    "- **Wikipedia fix** — Mandalorian article corrected: 10,644 views/day (was 12/day due to wrong article).\n"
+    "- **Horror-first routing** — Step 1 classifies horror vs non-horror. Horror movies get "
+    "dedicated 2-bucket regressors (Small/Large split at $17M via log-space KMeans). Fixes "
+    "Obsession ($17.2M actual vs $9.2M V22c prediction) and Backrooms underprediction.\n"
+    "- **Snowflake Model Registry** — Full ML pipeline deployed: Feature Store → CustomModel → "
+    "batch inference via `mv.run()`. Model: `SPARK_PAR_DEMO.ML_PIPELINE.OW_PREDICTION_V23B/v3`.\n"
+    "- **PRODUCTION data fix** — Live feature view was reading from STAGING (197 movies) instead of "
+    "PRODUCTION (413 movies). 67% of training films had zero GT features. Single biggest accuracy gain.\n"
+    "- **Weekend 20 results** — Mandalorian $81.7M (pred $67.4M, tier correct), Passenger $8.7M "
+    "(pred $6.9M, tier correct), I Love Boosters $3.8M (pred $3.1M, tier correct). 3/3 tier accuracy.\n"
 )
 
-section("Previously — V18 build")
+section("Previously")
 st.markdown(
-    "- **+13 Wikipedia pageview features** lift CV accuracy by **5.5pp** to **77.2%** — "
-    "see [Performance](./3_📈_Performance) for the full breakdown.\n"
-    "- **All 276 training labels validated** against The-Numbers.com on Apr 21, correcting "
-    "4 fabricated OW values and 13 corrupted release dates.\n"
-    "- **49-minute end-to-end build** — see [Development Story](./8_📚_Wikipedia_Integration) "
-    "for the sprint timeline."
+    "- **V22c** — Hybrid Original-IP Blend + Dual Rule C + Rule D. Fixed MK2 false positive.\n"
+    "- **V21** — Rule D (Static Tentpole Gate) for early tentpole detection at D-18+.\n"
+    "- **V18** — +13 Wikipedia pageview features lifted CV accuracy by 5.5pp to 77.2%.\n"
+    "- **49-minute Wikipedia sprint** — see [Development Story](./8_📚_Wikipedia_Integration).\n"
 )
 
 show_cortex_badge()

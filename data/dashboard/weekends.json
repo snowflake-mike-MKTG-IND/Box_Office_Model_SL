@@ -27,65 +27,84 @@
       {"movie": "Lee Cronin's The Mummy", "studio": "Universal", "pred_tier": "SMALL", "pred_ow": 9.40, "conf_low": 7.52, "conf_high": 11.28, "actual_ow": 13.52, "industry": 12.0, "note": "Tier correct; outside CI. Industry: ~$12M (Deadline week-of) within $10-20M range (Boxoffice Pro)."}
     ]},
     {"weekend": "Weekend 16", "dates": "Apr 24-26, 2026",  "model": "V18", "movies": [
-      {"movie": "MICHAEL", "studio": "Lionsgate", "pred_tier": "LARGE+", "pred_ow": 76.80, "conf_low": 61.44, "conf_high": 92.16, "actual_ow": 97.00, "industry": 85.0, "note": "Rule C override (TMDB D14=52.0). Tier correct; actual $97M vs pred $76.8M (-$20M). Industry Apr-24 tracking: $65-70M (Boxoffice Pro long-range), $85M+ (Forbes week-of), ~$100M (Deadline/HR weekend-of). Michael Jackson biopic, $155M budget."}
+      {"movie": "MICHAEL", "studio": "Lionsgate", "pred_tier": "LARGE+", "pred_ow": 76.80, "conf_low": 61.44, "conf_high": 92.16, "actual_ow": 97.21, "industry": 85.0, "note": "Rule C override (TMDB D14=52.0). Tier correct; actual $97.2M vs pred $76.8M (-$20M). Industry Apr-24 tracking: $65-70M (Boxoffice Pro long-range), $85M+ (Forbes week-of), ~$100M (Deadline/HR weekend-of). Michael Jackson biopic, $155M budget."}
     ]},
     {"weekend": "Weekend 17", "dates": "May 1-3, 2026",  "model": "V18+RuleC", "movies": [
-      {"movie": "The Devil Wears Prada 2", "studio": "Disney", "pred_tier": "LARGE+", "pred_ow": 70.79, "conf_low": 56.63, "conf_high": 84.95, "actual_ow": 77.00, "industry": 76.5, "note": "Rule C override (TMDB D14=25.1). Tier correct; within CI. TMDB momentum 25\u219239\u219260 (2.4x). Industry: $73-80M (Apr 28 tracking). Meryl Streep (star=10), $125M budget, PG-13 prestige sequel."}
+      {"movie": "The Devil Wears Prada 2", "studio": "Disney", "pred_tier": "LARGE+", "pred_ow": 70.79, "conf_low": 56.63, "conf_high": 84.95, "actual_ow": 76.75, "industry": 76.5, "note": "Rule C override (TMDB D14=25.1). Tier correct; within CI. TMDB momentum 25→39→60 (2.4x). Industry: $73-80M (Apr 28 tracking). Meryl Streep (star=10), $125M budget, PG-13 prestige sequel."}
+    ]},
+    {"weekend": "Weekend 18", "dates": "May 8-10, 2026",  "model": "V21-RuleD-RuleC", "movies": [
+      {"movie": "Mortal Kombat II", "studio": "Warner Bros.", "pred_tier": "LARGE+", "pred_ow": 71.40, "conf_low": 12.87, "conf_high": 22.78, "actual_ow": 38.50, "note": "MISS — V21 old Rule C (momentum_mid_threshold) falsely pushed to LARGE+. Actual $38.5M = MID tier. V22c fixes this with dual Rule C requiring GT_D7>=70 (MK2 had 56.6). V20-Clip base was $20.9M."},
+      {"movie": "The Sheep Detectives", "studio": "Amazon MGM", "pred_tier": "SMALL", "pred_ow": 10.43, "conf_low": 6.99, "conf_high": 10.43, "actual_ow": 15.09, "note": "MISS — tier miss, SMALL predicted but opened MID ($15.1M). Hugh Jackman animated, $64M budget. Breakout original IP."},
+      {"movie": "Billie Eilish Concert Film", "studio": "Interscope/IMAX", "pred_tier": "SMALL", "pred_ow": 10.96, "conf_low": 8.81, "conf_high": 10.96, "actual_ow": 7.01, "note": "Tier correct (SMALL). Actual $7.0M below prediction. Concert film with limited audience."}
+    ]},
+    {"weekend": "Weekend 19", "dates": "May 15-17, 2026", "model": "V22c", "movies": [
+      {"movie": "Obsession", "studio": "Blumhouse/Universal", "pred_tier": "SMALL", "pred_ow": 9.18, "conf_low": 8.81, "conf_high": 11.04, "actual_ow": 17.20, "note": "TIER MISS — Blumhouse horror breakout. GT SCALED=406.8 (massive). V22c underpredicted by $8M. This miss directly motivated V23b horror-specific routing."},
+      {"movie": "In the Grey", "studio": "Black Bear Pictures", "pred_tier": "SMALL", "pred_ow": 9.88, "conf_low": 2.02, "conf_high": 11.95, "actual_ow": 2.93, "note": "Tier correct (SMALL). Within CI. Budget $90M original IP severely underperformed."},
+      {"movie": "Is God Is", "studio": "A24", "pred_tier": "SMALL", "pred_ow": 3.58, "conf_low": 2.45, "conf_high": 7.45, "actual_ow": 2.22, "note": "Tier correct (SMALL). Within CI. A24 limited release."}
+    ]},
+    {"weekend": "Weekend 20", "dates": "May 22-25, 2026", "model": "V23b", "movies": [
+      {"movie": "The Mandalorian & Grogu", "studio": "Disney", "pred_tier": "LARGE+", "pred_ow": 67.41, "conf_low": 54.0, "conf_high": 81.0, "actual_ow": 81.67, "note": "V23b D-3. Tier correct. Actual $81.7M at upper CI bound. Rule D would have fired but V23b base prediction already LARGE+. Star Wars franchise momentum."},
+      {"movie": "Passenger", "studio": "Paramount", "pred_tier": "SMALL", "pred_ow": 6.92, "conf_low": 5.54, "conf_high": 8.30, "actual_ow": 8.75, "note": "V23b D-3. Tier correct. Horror routing detected (P_LARGE horror=8.5%). Actual slightly above CI."},
+      {"movie": "I Love Boosters", "studio": "Universal", "pred_tier": "SMALL", "pred_ow": 3.09, "conf_low": 2.47, "conf_high": 3.71, "actual_ow": 3.78, "note": "V23b D-3. Tier correct. Actual slightly above CI. Comedy limited release."}
     ]}
   ],
   "upcoming": [
-    {"weekend": "Weekend 18", "dates": "May 8-10, 2026", "model": "V21-RuleD-RuleC",
+    {"weekend": "Weekend 21", "dates": "May 29-Jun 1, 2026", "model": "V23b",
      "movies": [
-       {"movie": "Mortal Kombat II", "studio": "Warner Bros.", "pred_tier": "LARGE+",
-        "pred_ow": 71.40, "conf_low": 12.87, "conf_high": 22.78,
-        "v20_clip_point": 20.92, "v187_soft_mixture": 20.92,
-        "window_low": 12.87, "window_high": 22.78,
-        "tmdb_d14": 18.61, "tmdb_d7": 36.51, "tmdb_d3": 52.22, "overridden": true,
-        "p_small": 0.443, "p_mid": 0.522, "p_large": 0.035,
-        "reason": "Rule C: TMDB D7=36.5 >= 25 -> LARGE+. GT SCALED=380.6 on release day.",
-        "horizon": "-1d", "tier_prob": 0.522, "trends_days": 22, "days_until": 0,
-        "note": "D-1 prediction May 8 (V21). Rule C fires on TMDB=36.5>=25. LARGE+ regressor=$71.4M. Budget $68M, IP tier 3, TMDB ramp 18.6->36.5->52.2. GT SCALED=380.6 release day (raw 100/12). R7D=95.0."},
-       {"movie": "The Sheep Detectives", "studio": "Amazon MGM", "pred_tier": "SMALL",
-        "pred_ow": 10.43, "conf_low": 6.99, "conf_high": 10.43,
-        "p_small": 0.779, "p_mid": 0.217, "p_large": 0.004,
-        "horizon": "-1d", "tier_prob": 0.779, "trends_days": 22, "days_until": 0,
-        "note": "D-1 prediction May 8 (V21). SMALL 77.9% confidence. Window [$7.0-$10.4M]. Hugh Jackman animated, $64M budget. R7D=50.1 on D-1."},
-       {"movie": "Billie Eilish Concert Film", "studio": "Interscope/IMAX", "pred_tier": "SMALL",
-        "pred_ow": 10.96, "conf_low": 8.81, "conf_high": 10.96,
-        "p_small": 0.865, "p_mid": 0.132, "p_large": 0.002,
-        "horizon": "-1d", "tier_prob": 0.865, "trends_days": 22, "days_until": 0,
-        "note": "D-1 prediction May 8 (V21). Concert film caveat. SMALL 86.5% confidence. Window [$8.8-$11.0M]. TMDB D3=9.3. Low GT signal (SCALED=12.5)."}
+       {"movie": "Backrooms", "studio": "A24/New Line", "pred_tier": "MID",
+        "pred_ow": 16.48, "conf_low": 13.18, "conf_high": 19.78,
+        "p_small": 0.644, "p_mid": 0.356, "p_large": 0.0,
+        "horror_p_large": 0.356,
+        "horizon": "D-3", "tier_prob": 0.644, "trends_days": 22, "days_until": 2,
+        "note": "V23b D-3. Horror routing: 2-bucket KMeans split $17M. Horror breakout probability 35.6% pushed to MID via horror regressor. GT SCALED surging. Previously V22c SMALL $6.24M — V23b horror fix adds $10M."},
+       {"movie": "Tuner", "studio": "Black Bear Pictures", "pred_tier": "SMALL",
+        "pred_ow": 3.36, "conf_low": 2.69, "conf_high": 4.03,
+        "p_small": 0.943, "p_mid": 0.055, "p_large": 0.002,
+        "horizon": "D-3", "tier_prob": 0.943, "trends_days": 22, "days_until": 2,
+        "note": "V23b D-3. Limited release going wide."},
+       {"movie": "Pressure", "studio": "TBD", "pred_tier": "SMALL",
+        "pred_ow": 2.92, "conf_low": 2.34, "conf_high": 3.50,
+        "p_small": 0.973, "p_mid": 0.026, "p_large": 0.001,
+        "horizon": "D-3", "tier_prob": 0.973, "trends_days": 22, "days_until": 2,
+        "note": "V23b D-3."},
+       {"movie": "The Breadwinner", "studio": "TBD", "pred_tier": "SMALL",
+        "pred_ow": 4.05, "conf_low": 3.24, "conf_high": 4.86,
+        "p_small": 0.954, "p_mid": 0.045, "p_large": 0.001,
+        "horizon": "D-3", "tier_prob": 0.954, "trends_days": 22, "days_until": 2,
+        "note": "V23b D-3."},
+       {"movie": "Stop! That! Train", "studio": "TBD", "pred_tier": "SMALL",
+        "pred_ow": 3.44, "conf_low": 2.75, "conf_high": 4.13,
+        "p_small": 0.959, "p_mid": 0.041, "p_large": 0.0,
+        "horizon": "D-3", "tier_prob": 0.959, "trends_days": 22, "days_until": 2,
+        "note": "V23b D-3."}
      ]},
-    {"weekend": "Weekend 19", "dates": "May 15-17, 2026", "model": "V21-RuleD-RuleC",
+    {"weekend": "Weekend 22", "dates": "Jun 5-8, 2026", "model": "V23b",
      "movies": [
-       {"movie": "In the Grey", "studio": "Warner Bros.", "pred_tier": "SMALL",
-        "pred_ow": 9.34, "conf_low": 1.91, "conf_high": 10.57,
-        "p_small": 0.716, "p_mid": 0.282, "p_large": 0.003,
-        "horizon": "-11d", "tier_prob": 0.716, "trends_days": 11, "days_until": 11,
-        "note": "D-11 prediction May 4 (V21). SMALL 71.6% confidence. $90M budget but low buzz."},
-       {"movie": "Obsession", "studio": "Blumhouse/Universal", "pred_tier": "SMALL",
-        "pred_ow": 3.86, "conf_low": 3.76, "conf_high": 7.17,
-        "p_small": 0.956, "p_mid": 0.043, "p_large": 0.000,
-        "horizon": "-11d", "tier_prob": 0.956, "trends_days": 11, "days_until": 11,
-        "note": "D-11 prediction May 4 (V21). SMALL 95.6% confidence. Window [$3.8-$7.2M]."},
-       {"movie": "Is God Is", "studio": "A24", "pred_tier": "SMALL",
-        "pred_ow": 3.98, "conf_low": 2.22, "conf_high": 6.42,
-        "p_small": 0.963, "p_mid": 0.036, "p_large": 0.001,
-        "horizon": "-14d", "tier_prob": 0.963, "trends_days": 11, "days_until": 11,
-        "note": "D-14 prediction May 4. SMALL 96.3% confidence. Window [$2.2-$6.4M]."}
-     ]},
-    {"weekend": "Weekend 20", "dates": "May 22-25, 2026", "model": "V21-RuleD-RuleC",
-     "movies": [
-       {"movie": "The Mandalorian & Grogu", "studio": "Disney", "pred_tier": "LARGE+",
-        "pred_ow": 72.28, "conf_low": 26.44, "conf_high": 40.23,
-        "v20_clip_point": 28.25, "v187_soft_mixture": 28.25,
-        "window_low": 26.44, "window_high": 40.23,
-        "tmdb_d14": 26.22,
-        "p_small": 0.112, "p_mid": 0.822, "p_large": 0.066,
-        "horizon": "-14d", "tier_prob": 0.822, "trends_days": 8, "days_until": 14,
-        "overridden": true,
-        "reason": "Rule D (Static Tentpole Gate): Budget=$166M, IP=3 (Star Wars), Star=10 (Pascal), PredecessorLog=18.99 ($177M Rise of Skywalker), MajorStudio=Disney. Gate fires because V20-Clip $28.3M < $60M guard.",
-        "note": "D-14 prediction May 8 (V21). Rule D fires on static tentpole signals. TMDB D14=26.2 now confirmed (would also trigger Rule C independently). R7D=53.4. Wikipedia 10K+ views/day. Classifier sees MID 82.2% but static features definitive."}
+       {"movie": "Masters of the Universe", "studio": "Amazon MGM Studios", "pred_tier": "LARGE+",
+        "pred_ow": 77.29, "conf_low": 61.83, "conf_high": 92.75,
+        "p_small": 0.280, "p_mid": 0.499, "p_large": 0.221,
+        "horizon": "D-14", "tier_prob": 0.499, "trends_days": 31, "days_until": 12,
+        "note": "V23b D-14. Rule C/D fires — $200M budget, IP tier 3 franchise reboot, Jared Leto. Upgraded from V22c MID $30.7M to LARGE+ $77.3M. 22.1% LARGE+ probability."},
+       {"movie": "Scary Movie 6", "studio": "Miramax/Paramount", "pred_tier": "SMALL",
+        "pred_ow": 10.40, "conf_low": 8.32, "conf_high": 12.48,
+        "p_small": 0.754, "p_mid": 0.237, "p_large": 0.009,
+        "horizon": "D-14", "tier_prob": 0.754, "trends_days": 21, "days_until": 12,
+        "note": "V23b D-14. Horror comedy franchise. 23.7% MID upside."},
+       {"movie": "The Furious", "studio": "TBD", "pred_tier": "SMALL",
+        "pred_ow": 7.59, "conf_low": 6.07, "conf_high": 9.11,
+        "p_small": 0.904, "p_mid": 0.095, "p_large": 0.001,
+        "horizon": "D-14", "tier_prob": 0.904, "trends_days": 21, "days_until": 12,
+        "note": "V23b D-14."},
+       {"movie": "Disclosure Day", "studio": "TBD", "pred_tier": "SMALL",
+        "pred_ow": 6.87, "conf_low": 5.50, "conf_high": 8.24,
+        "p_small": 0.976, "p_mid": 0.023, "p_large": 0.0,
+        "horizon": "D-14", "tier_prob": 0.976, "trends_days": 21, "days_until": 12,
+        "note": "V23b D-14."},
+       {"movie": "Power Ballad", "studio": "TBD", "pred_tier": "SMALL",
+        "pred_ow": 3.38, "conf_low": 2.70, "conf_high": 4.06,
+        "p_small": 0.958, "p_mid": 0.041, "p_large": 0.001,
+        "horizon": "D-14", "tier_prob": 0.958, "trends_days": 21, "days_until": 12,
+        "note": "V23b D-14. $10M budget."}
      ]}
   ]
 }

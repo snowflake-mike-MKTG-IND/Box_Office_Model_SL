@@ -16,5 +16,7 @@
   {"version": "V18.7","date": "2026-04-27","category": "Architecture", "description": "Soft mixture cascade",   "accuracy": 77.2, "mae": 10.42, "features": 72, "notes": "Probability-weighted blend across 3 tier regressors"},
   {"version": "V19",  "date": "2026-04-27","category": "Architecture", "description": "Tiered quantile hybrid", "accuracy": 77.2, "mae": 10.17, "features": 72, "notes": "10/50 boundaries, quantile MID regressor"},
   {"version": "V20-Clip","date": "2026-04-27","category": "Architecture","description": "Adaptive window + clip","accuracy": 77.2, "mae": 10.29, "features": 72, "notes": "6 expanded-pool quantile regressors, soft mixture clipped to [Q10,Q90]"},
-  {"version": "V20-Clip+RC","date": "2026-04-27","category": "Production","description": "V20-Clip + guarded Rule C","accuracy": 77.2, "mae": 9.48, "features": 72, "notes": "TMDB D14 override with V20-Clip<$60M guard"}
+  {"version": "V20-Clip+RC","date": "2026-04-27","category": "Production","description": "V20-Clip + guarded Rule C","accuracy": 77.2, "mae": 9.48, "features": 72, "notes": "TMDB D14 override with V20-Clip<$60M guard"},
+  {"version": "V22c","date": "2026-05-12","category": "Production","description": "Dual Rule C + Rule D","accuracy": 78.5, "mae": 9.21, "features": 72, "notes": "Rule C requires GT_D7>=70 (fixes MK2 false positive). Rule D static tentpole gate. Hybrid probability blend."},
+  {"version": "V23b","date": "2026-05-26","category": "Production","description": "Horror-first 2-bucket routing","accuracy": 80.1, "mae": 8.74, "features": 72, "notes": "Horror vs non-horror split. Horror: 2-bucket KMeans ($17M boundary). Non-horror: 3-tier cascade. Deployed to Snowflake Model Registry. Fixed STAGING data bug (+216 movies with GT features)."}
 ]
