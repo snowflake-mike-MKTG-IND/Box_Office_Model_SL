@@ -90,11 +90,6 @@
         "p_small": 0.754, "p_mid": 0.237, "p_large": 0.009,
         "horizon": "D-14", "tier_prob": 0.754, "trends_days": 21, "days_until": 12,
         "note": "V23b D-14. Horror comedy franchise. 23.7% MID upside."},
-       {"movie": "The Furious", "studio": "Lionsgate", "pred_tier": "SMALL",
-        "pred_ow": 7.59, "conf_low": 6.07, "conf_high": 9.11,
-        "p_small": 0.904, "p_mid": 0.095, "p_large": 0.001,
-        "horizon": "D-14", "tier_prob": 0.904, "trends_days": 21, "days_until": 12,
-        "note": "V23b D-14."},
        {"movie": "Disclosure Day", "studio": "Focus Features", "pred_tier": "SMALL",
         "pred_ow": 6.87, "conf_low": 5.50, "conf_high": 8.24,
         "p_small": 0.976, "p_mid": 0.023, "p_large": 0.0,
@@ -105,6 +100,14 @@
         "p_small": 0.958, "p_mid": 0.041, "p_large": 0.001,
         "horizon": "D-14", "tier_prob": 0.958, "trends_days": 21, "days_until": 12,
         "note": "V23b D-14. $10M budget."}
+     ]},
+    {"weekend": "Weekend 23", "dates": "Jun 12-14, 2026", "model": "V23b",
+     "movies": [
+       {"movie": "The Furious", "studio": "Lionsgate", "pred_tier": "SMALL",
+        "pred_ow": 7.59, "conf_low": 6.07, "conf_high": 9.11,
+        "p_small": 0.904, "p_mid": 0.095, "p_large": 0.001,
+        "horizon": "D-14", "tier_prob": 0.904, "trends_days": 21, "days_until": 19,
+        "note": "V23b D-14."}
      ]}
   ]
 }
