@@ -49,14 +49,14 @@
     ]}
   ],
   "upcoming": [
-    {"weekend": "Weekend 21", "dates": "May 29-Jun 1, 2026", "model": "V23b",
+    {"weekend": "Weekend 21", "dates": "May 29-Jun 1, 2026", "model": "V23c",
      "movies": [
        {"movie": "Backrooms", "studio": "A24/New Line", "pred_tier": "MID",
-        "pred_ow": 16.48, "conf_low": 13.18, "conf_high": 19.78,
-        "p_small": 0.644, "p_mid": 0.356, "p_large": 0.0,
+        "pred_ow": 27.4, "conf_low": 22.0, "conf_high": 41.0,
+        "p_small": 0.0, "p_mid": 0.972, "p_large": 0.028,
         "horror_p_large": 0.356,
-        "horizon": "D-3", "tier_prob": 0.644, "trends_days": 22, "days_until": 2,
-        "note": "V23b D-3. Horror routing: 2-bucket KMeans split $17M. Horror breakout probability 35.6% pushed to MID via horror regressor. GT SCALED surging. Previously V22c SMALL $6.24M — V23b horror fix adds $10M."},
+        "horizon": "D-3", "tier_prob": 0.972, "trends_days": 22, "days_until": 1,
+        "note": "V23c D-3. RULE E FIRED: ROLLING_7D=325.8 + YT=23179 exceeds demand threshold (200/10K). Budget disregarded — P_SMALL zeroed, renormalized to P_MID=97.2%. MID regressor $26.1M + LARGE+ blend = $27.4M. GT SCALED=590.68 at D-2 is highest pre-release signal EVER. Comparables: FNAF ($80M, GT7=215), NOPE ($44M, GT7=308), Longlegs ($22M, GT7=257). Prediction may be conservative — historical floor at this signal level is $25.5M."},
        {"movie": "Tuner", "studio": "Black Bear Pictures", "pred_tier": "SMALL",
         "pred_ow": 3.36, "conf_low": 2.69, "conf_high": 4.03,
         "p_small": 0.943, "p_mid": 0.055, "p_large": 0.002,
