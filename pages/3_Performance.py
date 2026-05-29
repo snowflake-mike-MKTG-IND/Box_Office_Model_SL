@@ -1,4 +1,4 @@
-"""Page 3: Performance — V23b CV results; V22c retained for comparison."""
+"""Page 3: Performance — V24 CV results with escape velocity detection."""
 import json
 import os
 
@@ -21,16 +21,16 @@ apply_page_config("Performance", icon="📈")
 
 page_header(
     "Performance",
-    "V23b Horror-first routing · 5-fold GroupKFold CV · 287 films · 72 features.",
+    "V24 Escape Velocity · 5-fold GroupKFold CV · 287 films · 75 features.",
 )
 
 kpi_row([
-    ("V23b CV MAE (-7d)",   "$10.41M",  "287 films"),
-    ("V23b CV Accuracy",    "76.3%",   "219/287 correct"),
-    ("Horror Accuracy",     "73.5%",   "50/68 horror films"),
-    ("Horror MAE",          "$8.73M",  "dedicated routing"),
+    ("V24 CV MAE (-7d)",   "$9.89M",  "287 films"),
+    ("V24 CV Accuracy",    "77.4%",   "222/287 at D-7"),
+    ("Rule F fires (D-3)", "24",      "0 false positives"),
+    ("Rule G fires (D-3)", "9",       "demand dominance"),
 ])
-freshness_caption("5-fold GroupKFold CV · V23b horror-first routing · 287 films · real holdout", "2026-05-27")
+freshness_caption("5-fold GroupKFold CV · V24 escape velocity + demand dominance · 287 films", "2026-05-29")
 
 tab_scatter, tab_tier, tab_versions = st.tabs(
     ["Predicted vs actual", "By tier", "Version comparison"]

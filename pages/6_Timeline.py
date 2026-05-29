@@ -26,13 +26,13 @@ hparams = pd.DataFrame(load_json("hyperparams.json"))
 
 page_header(
     "Model History",
-    "V2 → V23b evolution — every version, active sessions, and the hyperparameters behind them.",
+    "V2 → V24 evolution — every version, active sessions, and the hyperparameters behind them.",
 )
 
 kpi_row([
-    ("Model versions", str(len(versions)), "V2 → V23b"),
-    ("Best CV MAE",    "$9.65M",           "V22c @ -7d"),
-    ("Best CV accuracy", "78.4%",          "V22c @ -7d"),
+    ("Model versions", str(len(versions)), "V2 → V24"),
+    ("Best CV MAE",    "$9.89M",           "V24 @ -7d"),
+    ("Best CV accuracy", "77.4%",          "V24 @ -3d"),
     ("Active sessions", str(len(sessions)), f"{sessions['hours'].sum():.0f}h active work"),
 ])
 

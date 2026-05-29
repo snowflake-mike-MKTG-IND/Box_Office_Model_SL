@@ -1,22 +1,222 @@
 [
-  {"version": "V2",  "date": "2026-02-15", "category": "Features",     "description": "Rolling windows",       "accuracy": 58.1, "mae": 16.8, "features": 15, "notes": "First time-series features (rolling 5D, velocity)"},
-  {"version": "V3",  "date": "2026-02-15", "category": "Features",     "description": "Star power",            "accuracy": 61.4, "mae": 16.0, "features": 20, "notes": "MAX/TOP2/AVG_STAR_POWER + interactions"},
-  {"version": "V4",  "date": "2026-02-15", "category": "Features",     "description": "3-day windows",         "accuracy": 62.8, "mae": 15.6, "features": 25, "notes": "Shorter lookback for late signals"},
-  {"version": "V5",  "date": "2026-02-15", "category": "Features",     "description": "Intent + 7-day",        "accuracy": 63.5, "mae": 15.1, "features": 35, "notes": "YT intent signals"},
-  {"version": "V10", "date": "2026-02-15", "category": "Architecture", "description": "4-tier cascade",        "accuracy": 67.8, "mae": 14.0, "features": 45, "notes": "Tiered classifier introduced"},
-  {"version": "V11", "date": "2026-02-16", "category": "Architecture", "description": "Budget features",       "accuracy": 68.4, "mae": 13.8, "features": 48, "notes": "Budget tier + interactions"},
-  {"version": "V13", "date": "2026-02-16", "category": "Architecture", "description": "Production pipeline",   "accuracy": 67.8, "mae": 14.0, "features": 51, "notes": "SPs + prediction view"},
-  {"version": "V14", "date": "2026-02-27", "category": "Production",   "description": "3-tier cascade",        "accuracy": 71.5, "mae": 13.1, "features": 51, "notes": "Consolidated LARGE+, quantile loss"},
-  {"version": "V15", "date": "2026-03-08", "category": "Production",   "description": "Data quality + OW log", "accuracy": 77.3, "mae": 11.0, "features": 52, "notes": "+30 films, PREDECESSOR_OW_LOG"},
-  {"version": "V16", "date": "2026-04-10", "category": "Production",   "description": "TMDB override (Rule C)","accuracy": 84.2, "mae": null,  "features": 56, "notes": "Holdout accuracy w/ override"},
-  {"version": "V17", "date": "2026-04-20", "category": "Production",   "description": "Extended Trends",       "accuracy": 73.2, "mae": 11.74, "features": 59, "notes": "+ROLLING_14D/21D/EARLIEST; GroupKFold CV"},
-  {"version": "V17.1","date": "2026-04-20","category": "Production",   "description": "Data fixes + tuned HPs","accuracy": 76.2, "mae": 11.44, "features": 59, "notes": "100+ data corrections, classifier HPT"},
-  {"version": "V17.2","date": "2026-04-21","category": "Production",   "description": "Dedup baseline",        "accuracy": 71.7, "mae": 11.67, "features": 59, "notes": "276-film dedup reference"},
-  {"version": "V18", "date": "2026-04-21", "category": "Production",   "description": "Wikipedia features",    "accuracy": 77.2, "mae": 10.96, "features": 72, "notes": "+13 Wiki features, full data-integrity pass"},
-  {"version": "V18.7","date": "2026-04-27","category": "Architecture", "description": "Soft mixture cascade",   "accuracy": 77.2, "mae": 10.42, "features": 72, "notes": "Probability-weighted blend across 3 tier regressors"},
-  {"version": "V19",  "date": "2026-04-27","category": "Architecture", "description": "Tiered quantile hybrid", "accuracy": 77.2, "mae": 10.17, "features": 72, "notes": "10/50 boundaries, quantile MID regressor"},
-  {"version": "V20-Clip","date": "2026-04-27","category": "Architecture","description": "Adaptive window + clip","accuracy": 77.2, "mae": 10.29, "features": 72, "notes": "6 expanded-pool quantile regressors, soft mixture clipped to [Q10,Q90]"},
-  {"version": "V20-Clip+RC","date": "2026-04-27","category": "Production","description": "V20-Clip + guarded Rule C","accuracy": 77.2, "mae": 9.48, "features": 72, "notes": "TMDB D14 override with V20-Clip<$60M guard"},
-  {"version": "V22c","date": "2026-05-12","category": "Production","description": "Dual Rule C + Rule D","accuracy": 78.5, "mae": 9.21, "features": 72, "notes": "Rule C requires GT_D7>=70 (fixes MK2 false positive). Rule D static tentpole gate. Hybrid probability blend."},
-  {"version": "V23b","date": "2026-05-26","category": "Production","description": "Horror-first 2-bucket routing","accuracy": 80.1, "mae": 8.74, "features": 72, "notes": "Horror vs non-horror split. Horror: 2-bucket KMeans ($17M boundary). Non-horror: 3-tier cascade. Deployed to Snowflake Model Registry. Fixed STAGING data bug (+216 movies with GT features)."}
+  {
+    "version": "V2",
+    "date": "2026-02-15",
+    "category": "Features",
+    "description": "Rolling windows",
+    "accuracy": 58.1,
+    "mae": 16.8,
+    "features": 15,
+    "notes": "First time-series features (rolling 5D, velocity)"
+  },
+  {
+    "version": "V3",
+    "date": "2026-02-15",
+    "category": "Features",
+    "description": "Star power",
+    "accuracy": 61.4,
+    "mae": 16.0,
+    "features": 20,
+    "notes": "MAX/TOP2/AVG_STAR_POWER + interactions"
+  },
+  {
+    "version": "V4",
+    "date": "2026-02-15",
+    "category": "Features",
+    "description": "3-day windows",
+    "accuracy": 62.8,
+    "mae": 15.6,
+    "features": 25,
+    "notes": "Shorter lookback for late signals"
+  },
+  {
+    "version": "V5",
+    "date": "2026-02-15",
+    "category": "Features",
+    "description": "Intent + 7-day",
+    "accuracy": 63.5,
+    "mae": 15.1,
+    "features": 35,
+    "notes": "YT intent signals"
+  },
+  {
+    "version": "V10",
+    "date": "2026-02-15",
+    "category": "Architecture",
+    "description": "4-tier cascade",
+    "accuracy": 67.8,
+    "mae": 14.0,
+    "features": 45,
+    "notes": "Tiered classifier introduced"
+  },
+  {
+    "version": "V11",
+    "date": "2026-02-16",
+    "category": "Architecture",
+    "description": "Budget features",
+    "accuracy": 68.4,
+    "mae": 13.8,
+    "features": 48,
+    "notes": "Budget tier + interactions"
+  },
+  {
+    "version": "V13",
+    "date": "2026-02-16",
+    "category": "Architecture",
+    "description": "Production pipeline",
+    "accuracy": 67.8,
+    "mae": 14.0,
+    "features": 51,
+    "notes": "SPs + prediction view"
+  },
+  {
+    "version": "V14",
+    "date": "2026-02-27",
+    "category": "Production",
+    "description": "3-tier cascade",
+    "accuracy": 71.5,
+    "mae": 13.1,
+    "features": 51,
+    "notes": "Consolidated LARGE+, quantile loss"
+  },
+  {
+    "version": "V15",
+    "date": "2026-03-08",
+    "category": "Production",
+    "description": "Data quality + OW log",
+    "accuracy": 77.3,
+    "mae": 11.0,
+    "features": 52,
+    "notes": "+30 films, PREDECESSOR_OW_LOG"
+  },
+  {
+    "version": "V16",
+    "date": "2026-04-10",
+    "category": "Production",
+    "description": "TMDB override (Rule C)",
+    "accuracy": 84.2,
+    "mae": null,
+    "features": 56,
+    "notes": "Holdout accuracy w/ override"
+  },
+  {
+    "version": "V17",
+    "date": "2026-04-20",
+    "category": "Production",
+    "description": "Extended Trends",
+    "accuracy": 73.2,
+    "mae": 11.74,
+    "features": 59,
+    "notes": "+ROLLING_14D/21D/EARLIEST; GroupKFold CV"
+  },
+  {
+    "version": "V17.1",
+    "date": "2026-04-20",
+    "category": "Production",
+    "description": "Data fixes + tuned HPs",
+    "accuracy": 76.2,
+    "mae": 11.44,
+    "features": 59,
+    "notes": "100+ data corrections, classifier HPT"
+  },
+  {
+    "version": "V17.2",
+    "date": "2026-04-21",
+    "category": "Production",
+    "description": "Dedup baseline",
+    "accuracy": 71.7,
+    "mae": 11.67,
+    "features": 59,
+    "notes": "276-film dedup reference"
+  },
+  {
+    "version": "V18",
+    "date": "2026-04-21",
+    "category": "Production",
+    "description": "Wikipedia features",
+    "accuracy": 77.2,
+    "mae": 10.96,
+    "features": 72,
+    "notes": "+13 Wiki features, full data-integrity pass"
+  },
+  {
+    "version": "V18.7",
+    "date": "2026-04-27",
+    "category": "Architecture",
+    "description": "Soft mixture cascade",
+    "accuracy": 77.2,
+    "mae": 10.42,
+    "features": 72,
+    "notes": "Probability-weighted blend across 3 tier regressors"
+  },
+  {
+    "version": "V19",
+    "date": "2026-04-27",
+    "category": "Architecture",
+    "description": "Tiered quantile hybrid",
+    "accuracy": 77.2,
+    "mae": 10.17,
+    "features": 72,
+    "notes": "10/50 boundaries, quantile MID regressor"
+  },
+  {
+    "version": "V20-Clip",
+    "date": "2026-04-27",
+    "category": "Architecture",
+    "description": "Adaptive window + clip",
+    "accuracy": 77.2,
+    "mae": 10.29,
+    "features": 72,
+    "notes": "6 expanded-pool quantile regressors, soft mixture clipped to [Q10,Q90]"
+  },
+  {
+    "version": "V20-Clip+RC",
+    "date": "2026-04-27",
+    "category": "Production",
+    "description": "V20-Clip + guarded Rule C",
+    "accuracy": 77.2,
+    "mae": 9.48,
+    "features": 72,
+    "notes": "TMDB D14 override with V20-Clip<$60M guard"
+  },
+  {
+    "version": "V22c",
+    "date": "2026-05-12",
+    "category": "Production",
+    "description": "Dual Rule C + Rule D",
+    "accuracy": 78.5,
+    "mae": 9.21,
+    "features": 72,
+    "notes": "Rule C requires GT_D7>=70 (fixes MK2 false positive). Rule D static tentpole gate. Hybrid probability blend."
+  },
+  {
+    "version": "V23b",
+    "date": "2026-05-26",
+    "category": "Production",
+    "description": "Horror-first 2-bucket routing",
+    "accuracy": 80.1,
+    "mae": 8.74,
+    "features": 72,
+    "notes": "Horror vs non-horror split. Horror: 2-bucket KMeans ($17M boundary). Non-horror: 3-tier cascade. Deployed to Snowflake Model Registry. Fixed STAGING data bug (+216 movies with GT features)."
+  },
+  {
+    "version": "V23c",
+    "date": "2026-05-28",
+    "category": "Production",
+    "description": "Rule E (Demand Override Budget Gate)",
+    "accuracy": 80.5,
+    "mae": 9.69,
+    "features": 72,
+    "notes": "When ROLLING_7D>=200 AND YT>=10000, P_SMALL zeroed. Zero false positives. Backrooms: V23b $16.5M -> V23c $27.4M."
+  },
+  {
+    "version": "V24",
+    "date": "2026-05-29",
+    "category": "Architecture",
+    "description": "Escape Velocity + Demand Dominance",
+    "accuracy": 77.4,
+    "mae": 9.89,
+    "features": 75,
+    "notes": "3 velocity features (VEL_3v7, VEL_7v14, LOG_SLOPE). Rule F: escape velocity (R7D>200 + SLOPE>0.04 + YT>5K). Rule G: demand dominance (R7D tier \u2192 L+ blend). Backrooms: $14.8M -> $52.5M (D-3) / $65.4M (D0). Zero Rule F false positives."
+  }
 ]

@@ -1,4 +1,4 @@
-"""Page 1: Architecture — V23b cascade (Horror-first 2-bucket routing + 3-tier non-horror cascade)."""
+"""Page 1: Architecture — V24 cascade (Escape Velocity Detection + Demand Dominance)."""
 import plotly.graph_objects as go
 import streamlit as st
 
@@ -18,14 +18,14 @@ from theme import (
 apply_page_config("Architecture", icon="🏗️")
 
 page_header(
-    "V23b Model Architecture",
-    "Horror-first routing · 2-bucket horror regressors · 3-tier non-horror cascade · V20-Clip · Rule C/D",
+    "V24 Model Architecture",
+    "Escape velocity detection · Demand dominance · Horror routing · 3-tier cascade · V20-Clip · Rules C/D/E/F/G",
 )
 
 # -- Cascade diagram ---------------------------------------------------------
 section(
-    "V23b cascade flow",
-    "Horror gate → Horror 2-bucket (or) Stage 1 → Stage 2 → 3 tier regressors (soft mixture) → V20-Clip window → Rule C/D.",
+    "V24 cascade flow",
+    "Horror gate → Horror 2-bucket (or) Stage 1 → Stage 2 → 3 tier regressors (soft mixture) → V20-Clip → Rule E/F/G (velocity overrides) → Rule C/D.",
 )
 
 fig = go.Figure()
@@ -60,9 +60,9 @@ boxes = [
     {"x": 0.68, "y": 0.16, "color": VIOLET, "label": "V20-CLIP",
      "sublabel": "Adaptive window",
      "hover": "6 quantile regressors → clip soft mixture to [Q10, Q90]"},
-    {"x": 0.5, "y": 0.04, "color": "#e377c2", "label": "RULE C/D",
+    {"x": 0.5, "y": 0.04, "color": "#e377c2", "label": "RULES C–G",
      "sublabel": "Override gates",
-     "hover": "Rule D: static tentpole gate. Rule C: TMDB D14≥25 → LARGE+. Guard <$60M."},
+     "hover": "Rule E: demand override. Rule F: escape velocity. Rule G: demand dominance. Rule C/D: TMDB + tentpole."},
 ]
 
 for b in boxes:
@@ -108,9 +108,9 @@ fig.update_layout(showlegend=False, height=720, margin=dict(l=20, r=20, t=20, b=
 st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
 # -- Tabbed details ----------------------------------------------------------
-tab_tiers, tab_horror, tab_configs, tab_window, tab_ruled, tab_rulec, tab_features = st.tabs(
-    ["Tier boundaries", "Horror routing (V23b new)", "Non-horror configs", "V20 quantile window",
-     "Rule D (tentpole gate)", "Rule C (TMDB)", "Feature set"]
+tab_tiers, tab_horror, tab_configs, tab_window, tab_velocity, tab_ruled, tab_rulec, tab_features = st.tabs(
+    ["Tier boundaries", "Horror routing", "Non-horror configs", "V20 quantile window",
+     "Rules E/F/G (V24 new)", "Rule D (tentpole gate)", "Rule C (TMDB)", "Feature set"]
 )
 
 with tab_tiers:
@@ -249,6 +249,85 @@ with tab_window:
             "→ $9.48M (-17.4%). See Performance page and V20 Model Story for the full arc."
         )
 
+with tab_velocity:
+    st.markdown(
+        "**V24 introduces Escape Velocity Detection** — three rules that override the classifier "
+        "when demand signals are undeniable. Motivated by the Backrooms case (V23c predicted $16.5M, "
+        "actual tracking $60-80M from $10-11M Thursday previews)."
+    )
+    st.markdown("---")
+    st.markdown("### Rule E — Demand Override (V23c)")
+    st.markdown(
+        "When `ROLLING_7D ≥ 200` AND `YT_COMMENTS ≥ 10,000`, P_SMALL is zeroed and probabilities "
+        "renormalized. **Rationale:** No SMALL film in 287 training examples has both GT7>200 and YT>10K."
+    )
+    st.markdown("### Rule F — Escape Velocity (V24 new)")
+    c1, c2 = st.columns(2)
+    with c1:
+        st.markdown(
+            """
+            **Conditions (ALL must be true):**
+            | Signal | Threshold |
+            |--------|-----------|
+            | ROLLING_7D | ≥ 200 |
+            | LOG_SLOPE_14_TO_3 | ≥ 0.04 |
+            | YT_COMMENTS | ≥ 5,000 |
+
+            **Action:** Zero out P_SMALL, renormalize.
+
+            **Backtest:** 0 false positives in 287-film training set.
+            Historical minimum OW when rule fires: $21.6M (Nosferatu).
+            """
+        )
+    with c2:
+        st.code(
+            "LOG_SLOPE_14_TO_3 =\n"
+            "  (LN(ROLLING_3D) - LN(ROLLING_14D)) / 11\n\n"
+            "# Measures exponential acceleration\n"
+            "# of demand in the 14-to-3 day window.\n"
+            "#\n"
+            "# Backrooms: 0.0422\n"
+            "# Longlegs:  0.159 (but YT=1250 < 5K)\n"
+            "# Threshold: 0.04",
+            language="python",
+        )
+    st.markdown("### Rule G — Demand Dominance (V24 new)")
+    st.markdown(
+        "When Rule F fires, the prediction is blended toward the **LARGE+ regressor** based on "
+        "demand intensity. Budget becomes irrelevant — demand has taken over."
+    )
+    st.markdown(
+        """
+        | R7D Level | LARGE+ Weight | Blend Formula |
+        |-----------|--------------|---------------|
+        | 200–300 | 40% | `0.6·pred_MID + 0.4·pred_L+` |
+        | 300–400 | 60% | `0.4·pred_MID + 0.6·pred_L+` |
+        | > 400 | 80% | `0.2·pred_MID + 0.8·pred_L+` |
+        """
+    )
+    st.markdown(
+        "**Backrooms at D-3:** R7D=326 → 60% weight → `0.4×$26.9M + 0.6×$69.6M` = **$52.5M** "
+        "(vs V23c's $16.5M). At D0 with R7D=455 → 80% weight → **$65.4M**."
+    )
+    st.success(
+        "**Design principle:** When demand signals (GT velocity + YouTube social proof) exceed "
+        "ALL historical SMALL-tier examples, budget becomes irrelevant. Let demand dominate."
+    )
+
+    st.markdown("### New Velocity Features (V24)")
+    st.markdown(
+        "Added to `OW_PREDICTION_FEATURES_V` as CatBoost inputs + rule triggers:"
+    )
+    st.markdown(
+        """
+        | Feature | Formula | Purpose |
+        |---------|---------|---------|
+        | `VEL_3v7` | ROLLING_3D / ROLLING_7D | Short-term acceleration |
+        | `VEL_7v14` | ROLLING_7D / ROLLING_14D | Medium-term acceleration |
+        | `LOG_SLOPE_14_TO_3` | (LN(R3D) - LN(R14D)) / 11 | Exponential ramp rate |
+        """
+    )
+
 with tab_ruled:
     st.markdown(
         "**Rule D (Static Tentpole Gate)** is new in V21. It fires **before** Rule C when "
@@ -317,7 +396,7 @@ with tab_rulec:
         )
 
 with tab_features:
-    st.caption("V23b uses the full V18 feature set — 72 features. Same for horror and non-horror paths:")
+    st.caption("V24 uses 75 features (72 from V18 + 3 velocity features):")
     c1, c2, c3 = st.columns(3)
     with c1:
         st.markdown("**Static (36)**")
@@ -330,15 +409,16 @@ with tab_features:
             "- TMDB daily (3) — D14, D7, momentum"
         )
     with c2:
-        st.markdown("**Google Trends (23)**")
+        st.markdown("**Google Trends (26)**")
         st.markdown(
             "- Rolling: 3D / 5D / 7D / 14D / 21D + priors (9)\n"
             "- Velocity 3D / 5D / 7D (3)\n"
+            "- **VEL_3v7 / VEL_7v14 / LOG_SLOPE (3) ← V24 new**\n"
             "- Cumulative, volatility, peak, days_with_data, earliest (5)\n"
             "- Interactions (6) — Trends × IP / Genre / Star / Intent"
         )
     with c3:
-        st.markdown("**Wikipedia (13) — V18 new, reused in V20**")
+        st.markdown("**Wikipedia (13)**")
         st.markdown(
             "- Rolling pageviews 3D / 7D / 14D + priors\n"
             "- Velocity (7D / prior 7D)\n"
