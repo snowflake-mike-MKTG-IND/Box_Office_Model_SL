@@ -1,4 +1,4 @@
-"""Page 1: Architecture — V24 cascade (Escape Velocity Detection + Demand Dominance)."""
+"""Page 1: Architecture — V28-A rule-free learned meta-combiner."""
 import plotly.graph_objects as go
 import streamlit as st
 
@@ -7,6 +7,7 @@ from theme import (
     DK2,
     ORANGE,
     SF_BLUE,
+    TEAL,
     TIER_COLORS,
     VIOLET,
     apply_page_config,
@@ -18,87 +19,85 @@ from theme import (
 apply_page_config("Architecture", icon="🏗️")
 
 page_header(
-    "V24 Model Architecture",
-    "Escape velocity detection · Demand dominance · Horror routing · 3-tier cascade · V20-Clip · Rules C/D/E/F/G",
+    "V28-A Model Architecture",
+    "Rule-free learned meta-combiner · CatBoost + TabPFN soft-vote base · per-tier regressors · conformal bands · calibrated breakout odds",
+)
+
+st.info(
+    "**Retired in V25 → V28-A.** The hand-coded rule stack — horror routing, V20-Clip, and "
+    "Rules C / D / E / F / G — was **removed**. V28-A learns the *combine* step those rules used to "
+    "hard-code, via a small meta-combiner. It is fully rule-free. (The detailed rule history lives on "
+    "the V24 / V25 Model Story pages.)"
 )
 
 # -- Cascade diagram ---------------------------------------------------------
 section(
-    "V24 cascade flow",
-    "Horror gate → Horror 2-bucket (or) Stage 1 → Stage 2 → 3 tier regressors (soft mixture) → V20-Clip → Rule E/F/G (velocity overrides) → Rule C/D.",
+    "V28-A flow",
+    "Features → CatBoost + TabPFN soft-vote classifier → per-tier $ regressors → soft mixture → "
+    "learned meta-combiner g → FINAL = 0.7·g + 0.3·mixture → conformal bands + breakout odds.",
 )
 
 fig = go.Figure()
-box_w, box_h = 0.14, 0.04
+box_w, box_h = 0.15, 0.042
 
 boxes = [
-    {"x": 0.5, "y": 0.94, "color": DK2, "label": "INPUT", "sublabel": "72 Features",
-     "hover": "36 static + 23 Google Trends + 13 Wikipedia features"},
-    {"x": 0.5, "y": 0.80, "color": "#dc2626", "label": "HORROR?",
-     "sublabel": "Genre routing",
-     "hover": "If GENRE_HORROR=1 → dedicated horror path. Otherwise → standard cascade."},
-    {"x": 0.18, "y": 0.64, "color": "#dc2626", "label": "HORROR CLF",
-     "sublabel": "Small vs Large ($17M)",
-     "hover": "CatBoost classifier: small (<$17M) vs large (≥$17M). Split determined by log-space KMeans on 68 horror films."},
-    {"x": 0.08, "y": 0.48, "color": "#f87171", "label": "HORROR-S",
-     "sublabel": "Regressor <$17M",
-     "hover": "MAE loss · 500 iters · 41 films. Trained only on horror films <$17M."},
-    {"x": 0.28, "y": 0.48, "color": "#991b1b", "label": "HORROR-L",
-     "sublabel": "Regressor ≥$17M",
-     "hover": "RMSE loss · 600 iters · 27 films. Trained only on horror films ≥$17M."},
-    {"x": 0.68, "y": 0.64, "color": "#2ca02c", "label": "STAGE 1",
-     "sublabel": "SMALL vs NON-SMALL",
-     "hover": "CatBoost classifier: i=300, d=7, lr=0.015. Non-horror only."},
-    {"x": 0.55, "y": 0.48, "color": TIER_COLORS["SMALL"], "label": "SMALL",
-     "sublabel": "Regressor", "hover": "MAE loss · 600 iters"},
-    {"x": 0.68, "y": 0.48, "color": ORANGE, "label": "STAGE 2",
-     "sublabel": "MID vs LARGE+", "hover": "CatBoost classifier: i=400, d=5, lr=0.03"},
-    {"x": 0.62, "y": 0.32, "color": TIER_COLORS["MID"], "label": "MID",
-     "sublabel": "Regressor", "hover": "RMSE loss · 800 iters"},
-    {"x": 0.78, "y": 0.32, "color": TIER_COLORS["LARGE+"], "label": "LARGE+",
-     "sublabel": "Regressor", "hover": "Quantile loss (α=0.5) · 500 iters"},
-    {"x": 0.68, "y": 0.16, "color": VIOLET, "label": "V20-CLIP",
-     "sublabel": "Adaptive window",
-     "hover": "6 quantile regressors → clip soft mixture to [Q10, Q90]"},
-    {"x": 0.5, "y": 0.04, "color": "#e377c2", "label": "RULES C–G",
-     "sublabel": "Override gates",
-     "hover": "Rule E: demand override. Rule F: escape velocity. Rule G: demand dominance. Rule C/D: TMDB + tentpole."},
+    {"x": 0.5, "y": 0.93, "color": DK2, "label": "INPUT", "sublabel": "Features + OOF-stack",
+     "hover": "STATIC_WIKI feature set (36 static + Google Trends + Wikipedia) plus one stacked OOF point estimate (log-OW from a regressor on the full feature set)."},
+    {"x": 0.5, "y": 0.78, "color": SF_BLUE, "label": "CLASSIFIER", "sublabel": "CatBoost + TabPFN (soft-vote)",
+     "hover": "Single 3-class tier classifier. CatBoost (tuned via the V27 sweep) and TabPFN (pretrained transformer) each predict_proba; probabilities are AVERAGED → tier probs (SMALL / MID / LARGE+). No two-stage cascade."},
+    {"x": 0.18, "y": 0.62, "color": TIER_COLORS["SMALL"], "label": "SMALL reg", "sublabel": "$ point",
+     "hover": "CatBoost regressor trained on SMALL films (MAE loss). Produces a SMALL-tier dollar point."},
+    {"x": 0.5, "y": 0.62, "color": ORANGE, "label": "MID reg", "sublabel": "$ point",
+     "hover": "CatBoost regressor trained on MID films (RMSE loss). Produces a MID-tier dollar point."},
+    {"x": 0.82, "y": 0.62, "color": VIOLET, "label": "LARGE+ reg", "sublabel": "$ point",
+     "hover": "CatBoost regressor trained on LARGE+ films (Quantile α=0.5). Missing tier falls back to the global stack point."},
+    {"x": 0.5, "y": 0.46, "color": TEAL, "label": "SOFT MIXTURE", "sublabel": "Σ prob · point",
+     "hover": "Probability-weighted blend of the three tier points: mix = Σ_t prob_t · point_t."},
+    {"x": 0.5, "y": 0.30, "color": "#0E7C5B", "label": "META-COMBINER g", "sublabel": "CatBoost d3 · MAE",
+     "hover": "Learned combine step. CatBoost(iters=400, depth=3, lr=0.03, l2=6, MAE) over 7 meta-features = [log tier-points (3), tier-probs (3), log mixture (1)] → log(OW). Fit on inner-OOF base preds (nested stacking)."},
+    {"x": 0.5, "y": 0.16, "color": DK1, "label": "FINAL", "sublabel": "0.7·g + 0.3·mixture",
+     "hover": "FINAL = 0.7 · exp(g) + 0.3 · mixture (BLEND_W = 0.7). The learned combiner does most of the work; the mixture term stabilizes it."},
+    {"x": 0.27, "y": 0.03, "color": "#7D44CF", "label": "CONFORMAL BANDS", "sublabel": "bear / base / bull",
+     "hover": "Per-tier expanded-pool quantile regressors (q10/q90) widened by a CQR conformal constant (calibrated on a held-out 20% slice), sampled → bear / base / bull range."},
+    {"x": 0.73, "y": 0.03, "color": "#B83280", "label": "BREAKOUT ODDS", "sublabel": "P(LARGE+) + flag",
+     "hover": "breakout_prob = P(LARGE+). Calibrated buckets + an upside flag when P(LARGE+) ≥ 0.30 while the point tier is below LARGE+."},
 ]
 
 for b in boxes:
     fig.add_shape(type="rect", x0=b["x"] - box_w, y0=b["y"] - box_h,
                   x1=b["x"] + box_w, y1=b["y"] + box_h,
                   fillcolor=b["color"], line=dict(color=b["color"], width=2), layer="below")
-    fig.add_annotation(x=b["x"], y=b["y"] + 0.012, text=f"<b>{b['label']}</b>",
+    fig.add_annotation(x=b["x"], y=b["y"] + 0.013, text=f"<b>{b['label']}</b>",
                        showarrow=False, font=dict(color="white", size=12))
-    fig.add_annotation(x=b["x"], y=b["y"] - 0.015, text=b["sublabel"],
+    fig.add_annotation(x=b["x"], y=b["y"] - 0.016, text=b["sublabel"],
                        showarrow=False, font=dict(color="white", size=9))
     fig.add_trace(go.Scatter(x=[b["x"]], y=[b["y"]], mode="markers",
                              marker=dict(size=1, color="rgba(0,0,0,0)"),
                              hoverinfo="text", hovertext=b["hover"], showlegend=False))
 
-# Box half-height is 0.04. Arrows connect from bottom of upper box to top of lower box.
+# Arrows connect from bottom of upper box to top of lower box (box half-height 0.042).
 conns = [
-    (0.5, 0.90, 0.5, 0.84, "#666"),
-    (0.5, 0.76, 0.18, 0.68, "#dc2626"),
-    (0.5, 0.76, 0.68, 0.68, "#2ca02c"),
-    (0.18, 0.60, 0.08, 0.52, "#f87171"),
-    (0.18, 0.60, 0.28, 0.52, "#991b1b"),
-    (0.68, 0.60, 0.55, 0.52, TIER_COLORS["SMALL"]),
-    (0.68, 0.60, 0.68, 0.52, ORANGE),
-    (0.68, 0.44, 0.62, 0.36, TIER_COLORS["MID"]),
-    (0.68, 0.44, 0.78, 0.36, TIER_COLORS["LARGE+"]),
-    (0.55, 0.44, 0.60, 0.20, VIOLET),
-    (0.62, 0.28, 0.64, 0.20, VIOLET),
-    (0.78, 0.28, 0.72, 0.20, VIOLET),
-    (0.68, 0.12, 0.5, 0.08, "#e377c2"),
+    (0.5, 0.888, 0.5, 0.822, "#888"),
+    (0.5, 0.738, 0.18, 0.662, SF_BLUE),
+    (0.5, 0.738, 0.5, 0.662, SF_BLUE),
+    (0.5, 0.738, 0.82, 0.662, SF_BLUE),
+    (0.18, 0.578, 0.5, 0.502, TEAL),
+    (0.5, 0.578, 0.5, 0.502, TEAL),
+    (0.82, 0.578, 0.5, 0.502, TEAL),
+    (0.5, 0.418, 0.5, 0.342, "#0E7C5B"),
+    (0.5, 0.258, 0.5, 0.202, DK1),
+    (0.5, 0.118, 0.27, 0.072, "#7D44CF"),
+    (0.5, 0.118, 0.73, 0.072, "#B83280"),
 ]
 for x0, y0, x1, y1, c in conns:
     fig.add_annotation(x=x1, y=y1, ax=x0, ay=y0, xref="x", yref="y", axref="x", ayref="y",
                        showarrow=True, arrowhead=2, arrowsize=1.5, arrowwidth=2, arrowcolor=c)
 
-fig.add_annotation(x=0.18, y=0.56, text="<i>Weighted blend:</i><br>OW = (1-p_large)·reg_S + p_large·reg_L",
-                   showarrow=False, font=dict(color="#dc2626", size=9), align="center")
+# annotate the meta-feature path + blend
+fig.add_annotation(x=0.80, y=0.38, text="<i>probs + tier points also<br>feed g as meta-features</i>",
+                   showarrow=False, font=dict(color="#0E7C5B", size=9), align="center")
+fig.add_annotation(x=0.80, y=0.225, text="<i>mixture also feeds<br>FINAL (0.3 weight)</i>",
+                   showarrow=False, font=dict(color=DK1, size=9), align="center")
 
 fig.update_layout(showlegend=False, height=720, margin=dict(l=20, r=20, t=20, b=20),
                   xaxis=dict(range=[0, 1], visible=False, fixedrange=True),
@@ -108,314 +107,173 @@ fig.update_layout(showlegend=False, height=720, margin=dict(l=20, r=20, t=20, b=
 st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
 # -- Tabbed details ----------------------------------------------------------
-tab_tiers, tab_horror, tab_configs, tab_window, tab_velocity, tab_ruled, tab_rulec, tab_features = st.tabs(
-    ["Tier boundaries", "Horror routing", "Non-horror configs", "V20 quantile window",
-     "Rules E/F/G (V24 new)", "Rule D (tentpole gate)", "Rule C (TMDB)", "Feature set"]
+tab_tiers, tab_clf, tab_regs, tab_meta, tab_bands, tab_breakout, tab_leak, tab_features = st.tabs(
+    ["Tier boundaries", "Base classifier", "Per-tier regressors", "Meta-combiner (g)",
+     "Uncertainty bands", "Breakout layer", "Leakage control", "Feature set"]
 )
 
 with tab_tiers:
     st.markdown(
         """
-        | Tier | Revenue range | Training films |
+        | Tier | Revenue range | Backtest films |
         |------|---------------|----------------|
-        | **SMALL** | < $15M | 147 (51%) |
-        | **MID** | $15–50M | 87 (30%) |
-        | **LARGE+** | ≥ $50M | 53 (18%) |
+        | **SMALL** | < $15M | 148 (51%) |
+        | **MID** | $15–50M | 88 (31%) |
+        | **LARGE+** | ≥ $50M | 52 (18%) |
         """
     )
     st.caption(
-        "287 training films total. Horror subset: 68 films (41 small, 27 large by the $17M horror split)."
+        "288-film leak-safe backtest. The classifier predicts these three tiers; each has its own "
+        "dollar regressor, and the meta-combiner reconciles the probabilities and points into one number."
     )
 
-with tab_horror:
+with tab_clf:
     st.markdown(
-        "**V23b introduces horror-first routing.** Before any tier classification, the model checks "
-        "`GENRE_HORROR=1`. If true, the movie bypasses the standard cascade entirely."
+        "**A single 3-class tier classifier — no cascade, no horror gate.** Two diverse learners vote:"
     )
     c1, c2 = st.columns(2)
     with c1:
         st.markdown(
-            """
-            **Horror 2-bucket architecture**
-
-            1. **Horror classifier** — CatBoost binary: small (<$17M) vs large (≥$17M)
-            2. **Horror-Small regressor** — trained on 41 horror films <$17M (MAE loss)
-            3. **Horror-Large regressor** — trained on 27 horror films ≥$17M (RMSE loss)
-            4. **Weighted blend** — `OW = (1-p_large)·reg_S + p_large·reg_L`
-
-            The $17M split was determined by log-space KMeans on 68 horror training films.
-            """
+            "**CatBoost** (gradient-boosted trees)\n\n"
+            "- Tuned via the V27 hyperparameter sweep\n"
+            "- Inputs: `STATIC_WIKI` features + one OOF-stack point\n"
+            "- Captures sharp threshold interactions"
         )
     with c2:
-        st.code(
-            "HORROR_SPLIT = $17M  # log-space KMeans\n\n"
-            "HORROR_CLASSIFIER = {\n"
-            "    iterations: 300, depth: 5,\n"
-            "    learning_rate: 0.02\n"
-            "}\n\n"
-            "HORROR_SMALL_REG = {\n"
-            "    iterations: 500, depth: 5,\n"
-            "    lr: 0.02, loss: 'MAE'\n"
-            "}\n\n"
-            "HORROR_LARGE_REG = {\n"
-            "    iterations: 600, depth: 5,\n"
-            "    lr: 0.015, loss: 'RMSE'\n"
-            "}",
-            language="python",
+        st.markdown(
+            "**TabPFN** (pretrained transformer)\n\n"
+            "- Foundation model for small-table classification\n"
+            "- Runs locally (torch); no per-film training\n"
+            "- Diverse errors vs. trees → better borderline calls"
         )
-    st.markdown(
-        "**Why?** Budget-anchoring bias: horror films are almost always low-budget ($1-30M) "
-        "but can break out to $50M+. The standard cascade's budget feature anchors predictions low. "
-        "Separating horror removes this tension. CV result: **73.5% accuracy** on 68 horror films, **$8.73M MAE**."
+    st.code(
+        "probs = (catboost.predict_proba(X) + tabpfn.predict_proba(X)) / 2   # soft-vote average\n"
+        "# member agreement ~87.5%, corr ~0.95 — diversity is what lifts borderline tiers",
+        language="python",
     )
+    st.caption("Soft-vote averaging beat every single-model and 3-member variant tested in the V27/V28 sweeps.")
 
-with tab_configs:
-    c1, c2 = st.columns(2)
-    with c1:
-        st.markdown("**Stage 1 — SMALL vs NON-SMALL** (non-horror only)")
-        st.code(
-            "CatBoostClassifier(\n"
-            "    iterations=300,\n"
-            "    depth=7,\n"
-            "    learning_rate=0.015,\n"
-            ")",
-            language="python",
-        )
-    with c2:
-        st.markdown("**Stage 2 — MID vs LARGE+** (non-horror only)")
-        st.code(
-            "CatBoostClassifier(\n"
-            "    iterations=400,\n"
-            "    depth=5,\n"
-            "    learning_rate=0.03,\n"
-            "    l2_leaf_reg=5,\n"
-            "    subsample=0.8,\n"
-            ")",
-            language="python",
-        )
-
-    st.markdown("**Tier-specific regressors** (non-horror)")
+with tab_regs:
+    st.markdown(
+        "Each tier has a dedicated CatBoost **dollar regressor** (trained on that tier's films) that "
+        "produces a per-tier point estimate. These are unchanged from the tuned V25/V27 base."
+    )
     rc1, rc2, rc3 = st.columns(3)
     for col, tier, body, note in [
-        (rc1, "SMALL",
-         "iterations=600\ndepth=5\nlearning_rate=0.02\nl2_leaf_reg=5\nloss='MAE'",
-         "MAE loss for many low-variance films"),
-        (rc2, "MID",
-         "iterations=800\ndepth=6\nlearning_rate=0.015\nl2_leaf_reg=5\nloss='RMSE'",
-         "Balanced loss across the widest revenue band"),
-        (rc3, "LARGE+",
-         "iterations=500\ndepth=5\nlearning_rate=0.02\nl2_leaf_reg=8\nloss='Quantile:α=0.5'",
-         "Quantile loss handles high-variance blockbusters"),
+        (rc1, "SMALL", "iterations=600\ndepth=5\nlearning_rate=0.02\nl2_leaf_reg=5\nloss='MAE'",
+         "MAE for many low-variance films"),
+        (rc2, "MID", "iterations=800\ndepth=6\nlearning_rate=0.015\nl2_leaf_reg=5\nloss='RMSE'",
+         "Balanced loss across the widest band"),
+        (rc3, "LARGE+", "iterations=500\ndepth=5\nlearning_rate=0.02\nl2_leaf_reg=8\nloss='Quantile:α=0.5'",
+         "Quantile loss handles blockbuster variance"),
     ]:
         with col:
             st.markdown(f"**{tier}**")
             st.code(body, language="python")
             st.caption(note)
+    st.caption("A missing tier regressor falls back to a global stacked-regressor point, so every film always has 3 points.")
 
-with tab_window:
+with tab_meta:
     st.markdown(
-        "**V20 adds 6 expanded-pool quantile regressors** (Q10 and Q90 for each of SMALL / MID / "
-        "LARGE+). Each tier regressor is trained on its own films **plus 30% of each neighbor tier**, "
-        "so the window can stretch when the classifier is uncertain."
+        "**The headline of V28-A.** Instead of hand-coded rules deciding when to trust which tier, a "
+        "small regressor **learns how to combine** the base outputs into a single dollar prediction."
     )
     c1, c2 = st.columns(2)
     with c1:
         st.markdown(
-            """
-            **Window construction**
-            1. For a film with tier probabilities `(p_S, p_M, p_L)`, compute the soft-mixture
-               point = `p_S·reg_S + p_M·reg_M + p_L·reg_L`.
-            2. Predict expanded `Q10_t` and `Q90_t` for each tier.
-            3. **Window low** = min of `Q10_t` weighted by probability; **window high** = max of
-               `Q90_t` weighted by probability.
-            4. Post-hoc sort-and-clamp to prevent quantile crossing.
-            5. **V20-Clip point** = `clip(soft_mixture, window_low, window_high)`.
-            """
+            "**Meta-features (7)** fed to g:\n"
+            "- `log(point_SMALL, point_MID, point_LARGE+)` (3)\n"
+            "- `prob_SMALL, prob_MID, prob_LARGE+` (3)\n"
+            "- `log(soft mixture)` (1)\n\n"
+            "**Target:** `log(OW)`."
         )
     with c2:
         st.code(
-            "QREG_CONFIG = {\n"
-            "    'iterations': 500,\n"
-            "    'depth': 5,\n"
-            "    'learning_rate': 0.02,\n"
-            "    'l2_leaf_reg': 8,\n"
-            "    'loss_function': 'Quantile:alpha=0.10/0.90',\n"
-            "}\n"
-            "NEIGH_PCT = 0.30  # include 30% of each neighbor tier",
+            "G_PARAMS = dict(\n"
+            "    iterations=400, depth=3,\n"
+            "    learning_rate=0.03, l2_leaf_reg=6,\n"
+            "    loss_function='MAE',\n"
+            ")\n\n"
+            "FINAL = 0.7 * exp(g) + 0.3 * mixture",
             language="python",
         )
-        st.caption(
-            "CV result: V20-Clip alone → MAE $10.29M (-10.4% vs V18.0). Adding guarded Rule C "
-            "→ $9.48M (-17.4%). See Performance page and V20 Model Story for the full arc."
-        )
-
-with tab_velocity:
-    st.markdown(
-        "**V24 introduces Escape Velocity Detection** — three rules that override the classifier "
-        "when demand signals are undeniable. Motivated by the Backrooms case (V23c predicted $16.5M, "
-        "actual tracking $60-80M from $10-11M Thursday previews)."
-    )
-    st.markdown("---")
-    st.markdown("### Rule E — Demand Override (V23c)")
-    st.markdown(
-        "When `ROLLING_7D ≥ 200` AND `YT_COMMENTS ≥ 10,000`, P_SMALL is zeroed and probabilities "
-        "renormalized. **Rationale:** No SMALL film in 287 training examples has both GT7>200 and YT>10K."
-    )
-    st.markdown("### Rule F — Escape Velocity (V24 new)")
-    c1, c2 = st.columns(2)
-    with c1:
-        st.markdown(
-            """
-            **Conditions (ALL must be true):**
-            | Signal | Threshold |
-            |--------|-----------|
-            | ROLLING_7D | ≥ 200 |
-            | LOG_SLOPE_14_TO_3 | ≥ 0.04 |
-            | YT_COMMENTS | ≥ 5,000 |
-
-            **Action:** Zero out P_SMALL, renormalize.
-
-            **Backtest:** 0 false positives in 287-film training set.
-            Historical minimum OW when rule fires: $21.6M (Nosferatu).
-            """
-        )
-    with c2:
-        st.code(
-            "LOG_SLOPE_14_TO_3 =\n"
-            "  (LN(ROLLING_3D) - LN(ROLLING_14D)) / 11\n\n"
-            "# Measures exponential acceleration\n"
-            "# of demand in the 14-to-3 day window.\n"
-            "#\n"
-            "# Backrooms: 0.0422\n"
-            "# Longlegs:  0.159 (but YT=1250 < 5K)\n"
-            "# Threshold: 0.04",
-            language="python",
-        )
-    st.markdown("### Rule G — Demand Dominance (V24 new)")
-    st.markdown(
-        "When Rule F fires, the prediction is blended toward the **LARGE+ regressor** based on "
-        "demand intensity. Budget becomes irrelevant — demand has taken over."
-    )
-    st.markdown(
-        """
-        | R7D Level | LARGE+ Weight | Blend Formula |
-        |-----------|--------------|---------------|
-        | 200–300 | 40% | `0.6·pred_MID + 0.4·pred_L+` |
-        | 300–400 | 60% | `0.4·pred_MID + 0.6·pred_L+` |
-        | > 400 | 80% | `0.2·pred_MID + 0.8·pred_L+` |
-        """
-    )
-    st.markdown(
-        "**Backrooms at D-3:** R7D=326 → 60% weight → `0.4×$26.9M + 0.6×$69.6M` = **$52.5M** "
-        "(vs V23c's $16.5M). At D0 with R7D=455 → 80% weight → **$65.4M**."
-    )
     st.success(
-        "**Design principle:** When demand signals (GT velocity + YouTube social proof) exceed "
-        "ALL historical SMALL-tier examples, budget becomes irrelevant. Let demand dominate."
+        "**Why it works:** the mixture-mean hedges across far-apart tier points when the classifier is "
+        "uncertain. g learns when to commit to a tier vs. hedge — the data-driven analog of the old "
+        "C / D / G demand rules, with zero hand-tuning."
     )
 
-    st.markdown("### New Velocity Features (V24)")
+with tab_bands:
     st.markdown(
-        "Added to `OW_PREDICTION_FEATURES_V` as CatBoost inputs + rule triggers:"
+        "Every prediction ships with a **bear / base / bull** range, not just a point."
+    )
+    st.markdown(
+        "1. Per-tier **expanded-pool quantile regressors** predict `q10` and `q90` (each tier trained on "
+        "its own films plus a slice of neighbors).\n"
+        "2. A **CQR conformal** widening constant (`Qlog`), calibrated on a held-out **20%** slice "
+        "(`CAL_FRAC = 0.20`), corrects the quantiles so coverage holds out-of-sample.\n"
+        "3. The tier quantiles are sampled by the tier probabilities and recentred on FINAL → "
+        "**bear (low) / base (FINAL) / bull (high)**."
+    )
+    st.caption("Band coverage ≈ 85% in backtest. See the Recent Predictions page for live ranges.")
+
+with tab_breakout:
+    st.markdown(
+        "V28-A reports a **calibrated probability of a breakout** (opening ≥ $50M / LARGE+), because for "
+        "the biggest films the point estimate sits at a measured noise floor — the odds are more honest "
+        "than a single number."
     )
     st.markdown(
         """
-        | Feature | Formula | Purpose |
-        |---------|---------|---------|
-        | `VEL_3v7` | ROLLING_3D / ROLLING_7D | Short-term acceleration |
-        | `VEL_7v14` | ROLLING_7D / ROLLING_14D | Medium-term acceleration |
-        | `LOG_SLOPE_14_TO_3` | (LN(R3D) - LN(R14D)) / 11 | Exponential ramp rate |
+        | P(LARGE+) bucket | Wording | Actual LARGE+ rate |
+        |---|---|---|
+        | < 15% | (quiet) | **1%** |
+        | 15–30% | "~1 in 5" | **17%** |
+        | 30–50% | "~1 in 3" | **39%** |
+        | ≥ 50% | "better than even" | **87%** |
         """
     )
+    st.code(
+        "breakout_prob = P(LARGE+)\n"
+        "breakout_flag = (P(LARGE+) >= 0.30) and (point_tier < LARGE+)   # upside the point call misses",
+        language="python",
+    )
+    st.caption("The flag is the Marketing / P&A 'lean in' trigger: real upside above the base call.")
 
-with tab_ruled:
+with tab_leak:
     st.markdown(
-        "**Rule D (Static Tentpole Gate)** is new in V21. It fires **before** Rule C when "
-        "momentum signals (Trends, TMDB) are too sparse to be reliable — typically at D-18 or earlier."
+        "**Nested stacking** keeps the learned combiner honest — every test film is scored by base "
+        "models *and* a g that never saw it during training."
     )
     st.markdown(
-        """
-        **Gate conditions (ALL must be true):**
-        | Condition | Threshold | Rationale |
-        |-----------|-----------|-----------|
-        | Budget | ≥ $125M | Mega-budget = studio conviction |
-        | IP Tier | ≥ 3 (high-profile) | Proven franchise with built-in audience |
-        | Star Power | ≥ 9 | A-list lead with OW track record |
-        | Predecessor OW (log) | ≥ 18.5 (~$108M+) | Prior installment was massive |
-        | Major Studio | = 1 | Disney, WB, Universal, Paramount, Sony, Fox |
-        | **Guard** | V20-Clip < $60M | Don't override if model already predicts high |
-
-        **Action:** Force LARGE+ regressor output (skip classifier).
-
-        **Backtest:** 100% precision (10/10 films that match → all were LARGE+). Zero false positives.
-        Eliminates Aquaman 2 ($28M, pred_log=18.03), Indiana Jones 5 ($60M, pred_log=18.42), Fast X ($67M, pred_log=18.06).
-
-        **First production use:** The Mandalorian & Grogu (May 4, 2026 at D-18).
-        Classifier said MID 85% → Rule D overrode to LARGE+ $70.5M.
-        """
+        "- **Outer:** 5-fold `GroupKFold(MOVIE_ID)` → the reported out-of-fold predictions.\n"
+        "- **Inner:** within each outer-train fold, a second 5-fold `GroupKFold` produces OOF base "
+        "predictions for every outer-train film — **g is fit on those**, never on its own in-sample base preds.\n"
+        "- Base models are then refit on the full outer-train fold and applied to the outer-test fold; "
+        "g is applied there.\n"
+        "- Grouping by `MOVIE_ID` prevents a film's multiple horizon rows from leaking across folds."
     )
-
-with tab_rulec:
-    st.markdown(
-        "Rule C is a **post-prediction safety net**: it runs after V20-Clip and "
-        "can only raise a tier, never lower it. It exists because TMDB daily popularity data "
-        "is only available for ~30 training films — too sparse for CatBoost to learn — but the raw "
-        "signal correlates strongly with actual OW (Spearman r = 0.817 at D-14). "
-        "**V20 adds a guard: Rule C only fires when the V20-Clip point is below $60M**, so already-"
-        "large predictions (e.g. Oppenheimer-style tentpoles) aren't double-lifted."
-    )
-    c1, c2 = st.columns(2)
-    with c1:
-        st.markdown(
-            """
-            **Rules**
-
-            | Condition | Action |
-            |---|---|
-            | `V20_CLIP ≥ $60M` | **Guard** — skip Rule C, trust V20 |
-            | `TMDB_POP_D14 ≥ 25` | Force minimum **LARGE+** |
-            | `TMDB_POP_D14 ≥ 15` AND `D7/D14 ≥ 1.3` | Force minimum **MID** |
-            | Otherwise | Trust the model |
-            """
-        )
-    with c2:
-        st.markdown(
-            """
-            **Holdout validation (19 blind films)**
-
-            | Metric | Without | With Rule C |
-            |---|---|---|
-            | Tier accuracy | 63.2% | **84.2%** |
-            | Overrides applied | 0 | 4 |
-            | Correct / wrong | — | **4 / 0** |
-            """
-        )
-        st.caption(
-            "The momentum gate (D7/D14 ≥ 1.3) prevents false positives — e.g. PRIMATE had "
-            "D14 = 24.6 but momentum 0.96, correctly kept as SMALL."
-        )
+    st.caption("This is why the backtest numbers are trustworthy: no film grades its own homework, at any layer.")
 
 with tab_features:
-    st.caption("V24 uses 75 features (72 from V18 + 3 velocity features):")
+    st.caption("Base feature universe (~72) feeding the classifier/regressors, plus the OOF-stack point and 7 learned meta-features:")
     c1, c2, c3 = st.columns(3)
     with c1:
         st.markdown("**Static (36)**")
         st.markdown(
             "- YouTube + sentiment (7)\n"
-            "- Movie attributes (8) — budget, runtime, TMDB pop, month, peak, "
-            "predecessor OW, `IS_MAJOR_STUDIO`\n"
+            "- Movie attributes (8) — budget, runtime, TMDB pop, month, peak, predecessor OW, `IS_MAJOR_STUDIO`\n"
             "- Star power (4)\n"
             "- Genre (5) · Rating (4) · IP/Franchise (5)\n"
             "- TMDB daily (3) — D14, D7, momentum"
         )
     with c2:
-        st.markdown("**Google Trends (26)**")
+        st.markdown("**Google Trends (~23)**")
         st.markdown(
-            "- Rolling: 3D / 5D / 7D / 14D / 21D + priors (9)\n"
-            "- Velocity 3D / 5D / 7D (3)\n"
-            "- **VEL_3v7 / VEL_7v14 / LOG_SLOPE (3) ← V24 new**\n"
-            "- Cumulative, volatility, peak, days_with_data, earliest (5)\n"
-            "- Interactions (6) — Trends × IP / Genre / Star / Intent"
+            "- Rolling 3D / 5D / 7D / 14D / 21D + priors\n"
+            "- Velocity 3D / 5D / 7D · VEL_3v7 / VEL_7v14 / LOG_SLOPE\n"
+            "- Cumulative, volatility, peak, days_with_data, earliest\n"
+            "- Interactions — Trends × IP / Genre / Star / Intent"
         )
     with c3:
         st.markdown("**Wikipedia (13)**")
@@ -424,7 +282,11 @@ with tab_features:
             "- Velocity (7D / prior 7D)\n"
             "- Peak day, cumulative, anchor day\n"
             "- Log-transformed versions\n\n"
-            "→ corr(14D, OW) = **0.749** (vs Trends ~0.50)"
+            "→ corr(14D, OW) = **0.749**"
         )
+    st.caption(
+        "Plus: 1 OOF-stack point (a stacked regressor's log-OW) into the classifier, and the 7 meta-features "
+        "into g. The velocity features remain as model inputs — but no longer trigger any hand-coded rule."
+    )
 
 show_cortex_badge()
