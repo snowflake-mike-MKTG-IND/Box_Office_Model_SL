@@ -1,4 +1,4 @@
-"""V23b Opening Weekend Prediction Model — Home / navigation hub."""
+"""V28-A Opening Weekend Prediction Model — Home / navigation hub."""
 import streamlit as st
 
 from theme import (
@@ -11,11 +11,11 @@ from theme import (
     show_cortex_badge,
 )
 
-apply_page_config("V23b OW Prediction Model", icon="🎬")
+apply_page_config("V28-A OW Prediction Model", icon="🎬")
 
 page_header(
-    "V23b Opening Weekend Prediction Model",
-    "Horror-first 2-bucket routing · Snowflake Model Registry · Feature Store · Dual Rule C · Rule D",
+    "V28-A Opening Weekend Prediction Model",
+    "Rule-free learned meta-combiner · tuned CatBoost + TabPFN · calibrated breakout odds · Snowflake Model Registry + Feature Store",
 )
 
 # -- Cortex Code velocity hero ----------------------------------------------
@@ -33,10 +33,10 @@ st.markdown(
         One person. One AI. ~50 hours of active work.
       </div>
       <div style="font-size: 0.98rem; opacity: 0.95; line-height: 1.45; max-width: 860px;">
-        End-to-end ML product — data engineering, 24 model versions, 120+ experiments,
-        140+ HP configs, 750+ Snowflake artifacts, and this 9-page dashboard — shipped in
+        End-to-end ML product — data engineering, 28 model versions, 150+ experiments,
+        140+ HP configs, 750+ Snowflake artifacts, and this 10-page dashboard — shipped in
         <b>~1 week of working hours</b>. The V18 Wikipedia sprint took <b>49 minutes</b>.
-        V23b horror routing + Snowflake ML deployment took <b>one working session</b>.
+        The V27→V28-A rule-free meta-combiner + Snowflake ML deployment took <b>one working session</b>.
       </div>
     </div>
     """,
@@ -48,7 +48,7 @@ kpi_row([
     ("Active work",    "~50h",  "vs ~300h traditional"),
     ("Calendar span",  "15 sessions", "over 90 days"),
     ("Team size",      "1 + AI", "vs 2-3 engineers"),
-    ("V22c → V23b","1 session", "Horror routing + SF Model Registry"),
+    ("V27 → V28-A","1 session", "Rule-free meta-combiner + SF Model Registry"),
 ])
 
 st.caption(
@@ -59,26 +59,26 @@ st.caption(
 # -- Model performance hero --------------------------------------------------
 section("Model performance")
 kpi_row([
-    ("Training films",     "287",     "413 with GT data"),
-    ("Features",           "72",      "+13 Wikipedia"),
-    ("V23b CV MAE (-7d)",  "$10.41M",  "76.3% tier acc"),
-    ("Horror accuracy",    "73.5%",   "50/68 films"),
+    ("Training films",       "291",     "413 with GT data"),
+    ("V28-A CV (-7d)",       "77.7%",   "$9.99M MAE · 287 films"),
+    ("Leak-safe backtest",   "75.3%",   "$10.96M · 288 incl. recent breakouts"),
+    ("Breakout odds",        "calibrated", ">50% → 87% actual LARGE+"),
 ])
-freshness_caption("5-fold GroupKFold CV on 287 films · V23b: Horror-first routing, deployed to Snowflake Model Registry", "2026-05-27")
+freshness_caption("Nested 5-fold GroupKFold CV · V28-A: rule-free learned meta-combiner, deployed to Snowflake Model Registry (OW_PREDICTION_V28)", "2026-06-08")
 
 # -- Navigation grid ---------------------------------------------------------
 section("Explore the model", "Pick a section below. Each page owns one topic.")
 
 NAV = [
-    ("Architecture", "V23b: Horror-first routing + 3-tier non-horror cascade + Rule C/D.",
+    ("Architecture", "V28-A: rule-free learned meta-combiner over CatBoost + TabPFN base.",
      "pages/1_Architecture.py"),
-    ("Features", "72 features (V23b inherits V18 feature set + D-21 horizon).",
+    ("Features", "72 features (V18 feature set + D-21 horizon) + learned meta-features.",
      "pages/2_Features.py"),
-    ("Performance", "V23b CV results ($8.74M MAE, 80.1% acc) with horror fix.",
+    ("Performance", "V28-A backtest: 75.3% acc, $10.96M MAE, calibrated breakout odds.",
      "pages/3_Performance.py"),
-    ("Predict", "Cascade simulator — V23b logic (Snowflake Model Registry).",
+    ("Predict", "Cascade simulator — base logic (live V28-A runs in Snowflake).",
      "pages/4_Predictions.py"),
-    ("Errors", "Horror underprediction fix and Rule C/D corrections.",
+    ("Errors", "Where the model misses — breakouts and the measured noise floor.",
      "pages/5_Errors.py"),
     ("Recent Predictions", "Live tracking of predictions vs actual weekends.",
      "pages/7_Recent_Predictions.py"),
@@ -86,8 +86,8 @@ NAV = [
      "pages/6_Timeline.py"),
     ("Development Story", "The 49-minute Wikipedia sprint with Cortex Code.",
      "pages/8_Wikipedia_Integration.py"),
-    ("V20→V23b Model Story", "V20-Clip → V22c Hybrid → V23b Horror Routing + Snowflake ML.",
-     "pages/9_V20_Model_Story.py"),
+    ("V25 Model Story", "Demand-driven classifier — the step before the rule-free V28-A combiner.",
+     "pages/10_V25_Model_Story.py"),
 ]
 
 cols = st.columns(4)
@@ -99,25 +99,25 @@ for i, (title, desc, page) in enumerate(NAV):
             st.page_link(page, label="Open")
 
 # -- What's new --------------------------------------------------------------
-section("What's new in V23b")
+section("What's new in V28-A")
 st.markdown(
-    "- **Horror-first routing** — Step 1 classifies horror vs non-horror. Horror movies get "
-    "dedicated 2-bucket regressors (Small/Large split at $17M via log-space KMeans). Fixes "
-    "Obsession ($17.2M actual vs $9.2M V22c prediction) and Backrooms underprediction.\n"
-    "- **Snowflake Model Registry** — Full ML pipeline deployed: Feature Store → CustomModel → "
-    "batch inference via `mv.run()`. Model: `SPARK_PAR_DEMO.ML_PIPELINE.OW_PREDICTION_V23B/v3`.\n"
-    "- **PRODUCTION data fix** — Live feature view was reading from STAGING (197 movies) instead of "
-    "PRODUCTION (413 movies). 67% of training films had zero GT features. Single biggest accuracy gain.\n"
-    "- **Weekend 20 results** — Mandalorian $81.7M (pred $67.4M, tier correct), Passenger $8.7M "
-    "(pred $6.9M, tier correct), I Love Boosters $3.8M (pred $3.1M, tier correct). 3/3 tier accuracy.\n"
+    "- **Rule-free learned meta-combiner** — instead of hand-coded rules, a small model learns how to "
+    "combine the base classifier + per-tier regressors (FINAL = 0.7·g + 0.3·mixture). Same-basis nested-CV "
+    "D-7 = **77.7% / $9.99M** (287 films).\n"
+    "- **Calibrated breakout odds** — every film gets a bear/base/bull range plus P(LARGE+). Calibration "
+    "holds: films flagged >50% broke out **87%** of the time; '~1 in 3' flags broke out ~39%.\n"
+    "- **Honest noise floor** — on the latest data (incl. the 4 hardest recent breakouts) the leak-safe "
+    "backtest is **75.3% / $10.96M**; LARGE+ now sits at the measured noise floor, so the model trades "
+    "point-accuracy chasing for calibrated probability.\n"
+    "- **Snowflake Model Registry** — deployed as `SPARK_PAR_DEMO.ML_PIPELINE.OW_PREDICTION_V28` (default).\n"
 )
 
 section("Previously")
 st.markdown(
-    "- **V22c** — Hybrid Original-IP Blend + Dual Rule C + Rule D. Fixed MK2 false positive.\n"
-    "- **V21** — Rule D (Static Tentpole Gate) for early tentpole detection at D-18+.\n"
+    "- **V27** — modern ensemble: tuned CatBoost (trees) + TabPFN (transformer) soft-vote, no hand rules.\n"
+    "- **V25** — demand-driven classifier; Google Trends moved into tier assignment so budget no longer dominates.\n"
+    "- **V23b** — horror-first 2-bucket routing; fixed Obsession / Backrooms underprediction.\n"
     "- **V18** — +13 Wikipedia pageview features lifted CV accuracy by 5.5pp to 77.2%.\n"
-    "- **49-minute Wikipedia sprint** — see [Development Story](./8_📚_Wikipedia_Integration).\n"
 )
 
 show_cortex_badge()

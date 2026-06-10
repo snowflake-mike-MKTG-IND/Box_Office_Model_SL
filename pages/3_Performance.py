@@ -21,16 +21,16 @@ apply_page_config("Performance", icon="📈")
 
 page_header(
     "Performance",
-    "V24 Escape Velocity · 5-fold GroupKFold CV · 287 films · 75 features.",
+    "V28-A rule-free meta-combiner · nested 5-fold GroupKFold CV · calibrated breakout odds.",
 )
 
 kpi_row([
-    ("V24 CV MAE (-7d)",   "$9.89M",  "287 films"),
-    ("V24 CV Accuracy",    "77.4%",   "222/287 at D-7"),
-    ("Rule F fires (D-3)", "24",      "0 false positives"),
-    ("Rule G fires (D-3)", "9",       "demand dominance"),
+    ("V28-A CV MAE (-7d)",  "$9.99M",  "77.7% acc · 287 films"),
+    ("Leak-safe backtest",  "$10.96M", "75.3% · 288 incl. recent breakouts"),
+    ("Breakout recall",     "67%",     "of breakouts flagged early"),
+    ("Calibration",         ">50%→87%", "flagged → actual LARGE+"),
 ])
-freshness_caption("5-fold GroupKFold CV · V24 escape velocity + demand dominance · 287 films", "2026-05-29")
+freshness_caption("Nested 5-fold GroupKFold CV · V28-A rule-free learned meta-combiner · deployed to Snowflake Model Registry (OW_PREDICTION_V28)", "2026-06-08")
 
 tab_scatter, tab_tier, tab_versions = st.tabs(
     ["Predicted vs actual", "By tier", "Version comparison"]
@@ -39,43 +39,49 @@ tab_scatter, tab_tier, tab_versions = st.tabs(
 with tab_tier:
     tier_data = pd.DataFrame({
         "Tier": ["SMALL", "MID", "LARGE+"],
-        "V22c MAE ($M)": [4.11, 9.24, 25.65],
         "V23b MAE ($M)": [4.32, 8.87, 29.84],
-        "V23b Accuracy": ["81.0%", "71.3%", "71.7%"],
-        "Training films": [147, 87, 53],
+        "V28-A MAE ($M)": [3.85, 8.60, 35.16],
+        "V28-A Accuracy": ["81.1%", "71.6%", "65.4%"],
+        "Films (backtest)": [148, 88, 52],
     })
 
     c1, c2 = st.columns([1, 1])
     with c1:
-        plot_df = tier_data.melt(id_vars="Tier", value_vars=["V22c MAE ($M)", "V23b MAE ($M)"],
+        plot_df = tier_data.melt(id_vars="Tier", value_vars=["V23b MAE ($M)", "V28-A MAE ($M)"],
                                  var_name="Model", value_name="MAE ($M)")
         fig = px.bar(plot_df, x="Tier", y="MAE ($M)", color="Model", barmode="group",
                      text="MAE ($M)",
-                     color_discrete_map={"V22c MAE ($M)": "#11567F", "V23b MAE ($M)": "#29B5E8"})
+                     color_discrete_map={"V23b MAE ($M)": "#11567F", "V28-A MAE ($M)": "#29B5E8"})
         fig.update_traces(texttemplate="$%{text:.2f}M", textposition="outside")
         fig.update_layout(height=360)
         st.plotly_chart(fig, use_container_width=True)
     with c2:
         st.dataframe(tier_data, use_container_width=True, hide_index=True)
         st.caption(
-            "V23b improves MID MAE by **$0.37M** vs V22c via horror routing. "
-            "LARGE+ MAE increases slightly due to expanded pool (53 vs 52 films). "
-            "Horror subset: 73.5% accuracy, $8.73M MAE with dedicated regressors."
+            "V28-A (rule-free) tightens SMALL and MID MAE vs V23b. LARGE+ MAE rises because the "
+            "288-film leak-safe backtest now includes the 4 hardest recent breakouts — and LARGE+ "
+            "sits at the **measured noise floor**, where two films that look identical pre-release can "
+            "open $50M apart. So V28-A reports a calibrated **breakout probability** instead of chasing "
+            "a point estimate the data can't support."
+        )
+        st.markdown(
+            "**Breakout-odds calibration** (P(LARGE+) bucket → actual LARGE+ rate): "
+            "<15% → 1% · 15-30% → 17% · 30-50% → 39% · >50% → **87%**."
         )
 
 with tab_scatter:
     view_mode = st.radio(
         "View",
-        ["V23b CV (out-of-sample)", "V22c CV (comparison)"],
+        ["V28-A backtest (out-of-sample)", "V23b CV (comparison)"],
         horizontal=True,
-        help="V23b = horror-first routing. V22c = hybrid blend baseline. Both are real 5-fold GroupKFold CV at D-7.",
+        help="V28-A = rule-free meta-combiner, 288-film leak-safe backtest. V23b = horror-first routing. Both are out-of-fold at D-7.",
     )
-    if view_mode == "V23b CV (out-of-sample)":
-        path = os.path.join(os.path.dirname(__file__), "..", "data", "cv_predictions_v23b.json")
-        st.caption("V23b Horror-first routing out-of-fold predictions (287 films, 5-fold GroupKFold CV at -7d). Each film predicted by a model that never saw it during training.")
+    if view_mode == "V28-A backtest (out-of-sample)":
+        path = os.path.join(os.path.dirname(__file__), "..", "data", "cv_predictions_v28.json")
+        st.caption("V28-A rule-free meta-combiner out-of-fold predictions (288 films, leak-safe backtest at -7d incl. the 4 hardest recent breakouts). Each film predicted by a model that never saw it during training.")
     else:
-        path = os.path.join(os.path.dirname(__file__), "..", "data", "cv_predictions_v22c.json")
-        st.caption("V22c Hybrid Blend out-of-fold predictions (282 films, 5-fold GroupKFold CV at -7d). Retained for comparison.")
+        path = os.path.join(os.path.dirname(__file__), "..", "data", "cv_predictions_v23b.json")
+        st.caption("V23b Horror-first routing out-of-fold predictions (287 films, 5-fold GroupKFold CV at -7d). Retained for comparison.")
     with open(path) as f:
         preds = json.load(f)
 
@@ -120,28 +126,31 @@ with tab_scatter:
 
 with tab_versions:
     comparison = pd.DataFrame({
-        "Metric": ["Training films", "Features", "CV MAE -7d", "CV Accuracy",
-                   "SMALL MAE", "MID MAE", "LARGE+ MAE", "Horror Accuracy"],
-        "V18.0":       ["276", "72", "$11.48M", "75.7%", "$4.12M", "$11.92M", "$31.24M", "—"],
-        "V22c":        ["282", "72", "$9.65M", "78.4%", "$4.11M", "$9.24M", "$25.65M", "—"],
-        "V23b":        ["287", "72", "**$10.41M**", "**76.3%**", "**$4.32M**", "**$8.87M**", "**$29.84M**", "**73.5%**"],
+        "Metric": ["Films", "CV MAE -7d", "CV Accuracy",
+                   "SMALL MAE", "MID MAE", "LARGE+ MAE", "Rule-free?"],
+        "V18.0":       ["276", "$11.48M", "75.7%", "$4.12M", "$11.92M", "$31.24M", "No"],
+        "V23b":        ["287", "$10.41M", "76.3%", "$4.32M", "$8.87M", "$29.84M", "No (rules)"],
+        "V25":         ["287", "$9.88M", "77.4%", "—", "—", "—", "No (rules)"],
+        "V28-A":       ["288", "**$10.96M**", "**75.3%**", "**$3.85M**", "**$8.60M**", "**$35.16M**", "**Yes**"],
     })
     st.dataframe(comparison, use_container_width=True, hide_index=True)
+    st.caption(
+        "V28-A's backtest (288 films) includes the 4 hardest recent breakouts that earlier versions "
+        "were never measured against; on the **same-basis** nested CV it is **77.7% / $9.99M** (287 films), "
+        "comparable to V25/V27. The headline change isn't raw accuracy — it's being fully rule-free and "
+        "adding calibrated breakout odds."
+    )
 
-    section("What changed from V22c → V23b")
+    section("What changed: V25 → V27 → V28-A")
     st.markdown(
-        "- **Horror-first routing** — Step 1 splits horror vs non-horror before any tier classification. "
-        "Horror movies get dedicated 2-bucket regressors (Small/Large split at $17M via log-space KMeans). "
-        "Non-horror movies proceed through standard 3-tier cascade.\n"
-        "- **PRODUCTION data fix** — Live feature view was reading from STAGING (197 movies) instead of "
-        "PRODUCTION (413 movies). 67% of training films had zero GT features. Single biggest fix.\n"
-        "- **287 training films** — +5 from V22c after data quality pass.\n"
-        "- **Snowflake Model Registry** — Full ML pipeline: Feature Store → CustomModel → batch inference.\n"
-        "- **Note on CV numbers**: V23b overall MAE ($10.41M) is slightly higher than V22c ($9.65M) in CV "
-        "because (1) 5 additional films added volatility, (2) horror routing optimizes for horror accuracy "
-        "at a small cost to non-horror, and (3) the PRODUCTION data fix helps live predictions more than "
-        "CV (CV already had the training data available). The key win is horror breakout detection: "
-        "73.5% accuracy on 68 horror films with $8.73M MAE.\n"
+        "- **V25 — demand-driven classifier**: Google Trends features moved into tier assignment so budget "
+        "no longer dominates. D-7 77.4% / $9.88M.\n"
+        "- **V27 — modern ensemble**: tuned CatBoost (trees) + TabPFN (transformer) soft-vote classifier, "
+        "no hand rules. Diverse members lift borderline tier accuracy (agreement 87.5%, corr 0.95).\n"
+        "- **V28-A — rule-free learned meta-combiner**: a small model learns how to combine the base "
+        "classifier + per-tier regressors (FINAL = 0.7·g + 0.3·mixture) instead of hand-coded rules. "
+        "Adds bear/base/bull ranges + calibrated P(LARGE+). LARGE+ now sits at the measured noise floor, "
+        "so V28-A reports probability rather than chasing point accuracy the data can't support.\n"
     )
 
 show_cortex_badge()
