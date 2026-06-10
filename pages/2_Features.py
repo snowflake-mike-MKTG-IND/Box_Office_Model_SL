@@ -13,8 +13,8 @@ apply_page_config("Features", icon="📊")
 
 page_header(
     "Feature Importance",
-    "V28-A base tier-classifier importances (static + Wikipedia features + the stacked OOF point), "
-    "plus what the rule-free meta-combiner leans on. No horror routing, no rule overrides.",
+    "V28-A base tier-classifier importances at the **-14 day** horizon — the early-warning case this model "
+    "is built for — plus what the rule-free meta-combiner leans on. No horror routing, no rule overrides.",
 )
 
 
@@ -67,14 +67,17 @@ with tab_top:
     fig.update_traces(texttemplate="%{x:.1f}", textposition="outside")
     st.plotly_chart(fig, use_container_width=True)
     st.caption(
-        f"V28-A base tier classifier (CatBoost), importances normalized to 100 over {N_FILMS} films at -7d. "
-        "The **stacked OOF point** is the single strongest input, followed by star power, predecessor OW, "
-        "YouTube comments and TMDB popularity — demand and pedigree, not budget alone."
+        f"V28-A base tier classifier (CatBoost), importances normalized to 100 over {N_FILMS} films at **-14d**. "
+        "The **stacked OOF point** is the single strongest input, followed by star power, **YouTube comments**, "
+        "predecessor OW and TMDB popularity — demand and pedigree, not budget alone."
     )
     st.info(
-        "These are the **classifier's** inputs (the static + Wikipedia set plus the stacked point). "
-        "The three per-tier $ regressors additionally use the full Google-Trends rolling windows, and a "
-        "separate pool of quantile regressors produces the conformal bear/base/bull bands."
+        "**Why -14d?** Two weeks out is where an early call is most valuable — and hardest. The live Google-Trends "
+        "spike hasn't formed yet, so the model leans more on signals that are already meaningful that early: the "
+        "stacked OOF point, star power, **YouTube comment volume** and predecessor OW. The short-window Trends "
+        "features (ROLLING_3D/14D) carry more weight closer to release. These are the **classifier's** inputs; the "
+        "three per-tier $ regressors additionally use the full Trends windows, and a separate quantile pool "
+        "produces the conformal bear/base/bull bands."
     )
 
 with tab_category:
