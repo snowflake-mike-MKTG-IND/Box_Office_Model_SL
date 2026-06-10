@@ -86,8 +86,8 @@ NAV = [
      "pages/6_Timeline.py"),
     ("Development Story", "The 49-minute Wikipedia sprint with Cortex Code.",
      "pages/8_Wikipedia_Integration.py"),
-    ("V25 Model Story", "Demand-driven classifier — the step before the rule-free V28-A combiner.",
-     "pages/10_V25_Model_Story.py"),
+    ("V28-A Model Story", "Rule-free learned meta-combiner + calibrated breakout odds — the current model.",
+     "pages/11_V28A_Model_Story.py"),
 ]
 
 cols = st.columns(4)

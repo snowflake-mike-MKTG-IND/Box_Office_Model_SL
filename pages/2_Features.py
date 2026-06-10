@@ -1,4 +1,8 @@
-"""Page 2: Feature importance — V23b uses V18's 72-feature set for both horror and non-horror paths."""
+"""Page 2: Feature importance — V28-A base tier-classifier (static + Wikipedia + stacked OOF point)
+plus the learned meta-combiner's inputs. Rule-free; importances pulled from the fitted V28-A bundle."""
+import json
+import os
+
 import pandas as pd
 import plotly.express as px
 import streamlit as st
@@ -9,20 +13,26 @@ apply_page_config("Features", icon="📊")
 
 page_header(
     "Feature Importance",
-    "V23b uses V18's 72 features unchanged (36 static + 23 Trends + 13 Wikipedia) for both horror and non-horror paths.",
+    "V28-A base tier-classifier importances (static + Wikipedia features + the stacked OOF point), "
+    "plus what the rule-free meta-combiner leans on. No horror routing, no rule overrides.",
 )
 
-# Snapshot: V17.2 CatBoost importances (exported from the pre-Wiki tuned model).
-# Wikipedia features (13) add classifier signal in V18 — measured +3.0–3.6pp
-# accuracy across horizons. Category-level summary reflects V18 composition.
+
+@st.cache_data
+def load_importance():
+    p = os.path.join(os.path.dirname(__file__), "..", "data", "feature_importance_v28.json")
+    with open(p) as f:
+        return json.load(f)
+
+
+_imp = load_importance()
+FEATURE_IMPORTANCE = _imp["base"]          # base CatBoost classifier over STATIC_WIKI + OOF_STACK
+META_IMPORTANCE = _imp["meta"]             # learned combiner g over its 7 meta-features
+N_FILMS = _imp.get("n_films", 291)
+
+# Categories rebuilt to match the actual V28-A STATIC_WIKI feature set + the stacked point.
 FEATURE_CATEGORIES = {
-    "Google Trends": [
-        "ROLLING_3D", "ROLLING_5D", "ROLLING_7D",
-        "ROLLING_3D_PRIOR", "ROLLING_5D_PRIOR", "ROLLING_7D_PRIOR",
-        "ROLLING_14D", "ROLLING_21D", "TRENDS_EARLIEST",
-        "VELOCITY_3D", "VELOCITY_5D", "VELOCITY_7D",
-        "TRENDS_CUMULATIVE", "TRENDS_VOLATILITY", "TRENDS_PEAK_SO_FAR", "DAYS_WITH_DATA",
-    ],
+    "Stacked signal": ["OOF_STACK"],
     "Star Power": ["MAX_STAR_POWER", "TOP2_STAR_POWER", "AVG_STAR_POWER", "NUM_STARS_WITH_HISTORY"],
     "Movie Attributes": [
         "BUDGET", "BUDGET_LOG", "RUNTIME", "TMDB_POPULARITY", "RELEASE_MONTH",
@@ -36,50 +46,16 @@ FEATURE_CATEGORIES = {
     "Rating": ["RATING_G", "RATING_PG", "RATING_PG13", "RATING_R"],
     "IP/Franchise": ["KNOWN_IP_TIER", "IP_HIGH_PROFILE", "IP_MODERATE", "IP_NICHE", "IP_ORIGINAL"],
     "TMDB Daily": ["TMDB_POPULARITY_D14", "TMDB_POPULARITY_D7", "TMDB_POP_MOMENTUM"],
-    "Interactions": [
-        "ROLLING_X_IP_HIGH", "ROLLING_X_ACTION", "ROLLING_X_HORROR",
-        "SENTIMENT_X_ROLLING", "STAR_X_ROLLING", "STAR_X_IP_HIGH", "INTENT_X_ROLLING",
-    ],
-    "Wikipedia (V18)": [
-        "WIKI_ROLLING_7D", "WIKI_ROLLING_14D", "WIKI_ROLLING_7D_PRIOR",
-        "WIKI_VELOCITY", "WIKI_PEAK", "WIKI_CUMULATIVE", "WIKI_ANCHOR_DAY",
-        "WIKI_LOG_7D", "WIKI_LOG_14D", "WIKI_LOG_PEAK",
-        "WIKI_LOG_CUMULATIVE", "WIKI_DAYS_WITH_DATA", "WIKI_ROLLING_3D",
+    "Google Trends": ["ROLLING_3D", "ROLLING_7D", "ROLLING_14D", "TRENDS_PEAK_SO_FAR", "VEL_3V7", "LOG_SLOPE_14_TO_3"],
+    "Wikipedia": [
+        "WIKI_7D_LOG", "WIKI_14D_LOG", "WIKI_ROLLING_3D", "WIKI_ROLLING_7D", "WIKI_ROLLING_14D",
+        "WIKI_ROLLING_7D_PRIOR", "WIKI_VELOCITY_7D", "WIKI_PEAK", "WIKI_PEAK_LOG",
+        "WIKI_CUMULATIVE", "WIKI_CUMULATIVE_LOG", "WIKI_DAYS_WITH_DATA",
     ],
 }
 
-# Top non-Wiki CatBoost importances at -7d (weighted across 2 classifiers + 3 regressors).
-FEATURE_IMPORTANCE = {
-    "YT_COMMENTS": 8.03, "TOP2_STAR_POWER": 5.67, "BUDGET_LOG": 5.23,
-    "TMDB_POPULARITY": 5.19, "STREAMING_INTENT_PCT": 4.95, "BUDGET": 4.77,
-    "AVG_STAR_POWER": 4.35, "ENGAGEMENT_RATIO": 3.50, "THEATRICAL_INTENT_PCT": 3.44,
-    "RELEASE_MONTH": 3.41, "MAX_STAR_POWER": 3.35, "PASS_INTENT_PCT": 3.18,
-    "KNOWN_IP_TIER": 3.08, "RUNTIME": 3.07, "IS_MAJOR_STUDIO": 2.97,
-    "NET_INTENT_PCT": 2.97, "SENTIMENT": 2.91, "GENRE_ORIGINAL": 1.95,
-    "PREDECESSOR_OW_LOG": 1.80, "VELOCITY_7D": 1.60, "GENRE_ACTION_FRANCHISE": 1.51,
-    "IP_HIGH_PROFILE": 1.26, "VELOCITY_3D": 1.04, "TRENDS_VOLATILITY": 0.99,
-    "INTENT_X_ROLLING": 0.98, "RATING_R": 0.96, "TRENDS_EARLIEST": 0.95,
-    "ROLLING_5D": 0.95, "ROLLING_5D_PRIOR": 0.92, "VELOCITY_5D": 0.91,
-    "IS_PEAK_SEASON": 0.83, "STAR_X_ROLLING": 0.80, "ROLLING_3D": 0.78,
-    "ROLLING_X_ACTION": 0.76, "SENTIMENT_X_ROLLING": 0.74, "ROLLING_3D_PRIOR": 0.74,
-    "ROLLING_7D_PRIOR": 0.73, "ROLLING_14D": 0.72, "TRENDS_PEAK_SO_FAR": 0.69,
-    "RATING_PG13": 0.69, "NUM_STARS_WITH_HISTORY": 0.64, "STAR_X_IP_HIGH": 0.62,
-    "ROLLING_21D": 0.58, "TRENDS_CUMULATIVE": 0.56, "IP_ORIGINAL": 0.51,
-    "ROLLING_X_IP_HIGH": 0.48, "ROLLING_X_HORROR": 0.45, "GENRE_HORROR": 0.43,
-    "IP_MODERATE": 0.42, "GENRE_PRESTIGE": 0.39, "ROLLING_7D": 0.37,
-    "TMDB_POPULARITY_D7": 0.36, "TMDB_POP_MOMENTUM": 0.33, "TMDB_POPULARITY_D14": 0.23,
-    "IP_NICHE": 0.17, "RATING_PG": 0.06, "DAYS_WITH_DATA": 0.03,
-    "GENRE_ANIMATION_FAMILY": 0.00, "RATING_G": 0.00,
-    # Wikipedia family — aggregate signal shown in category rollup.
-    "WIKI_ROLLING_7D": 2.1, "WIKI_LOG_14D": 1.9, "WIKI_PEAK": 1.6,
-    "WIKI_ROLLING_14D": 1.4, "WIKI_VELOCITY": 1.2, "WIKI_CUMULATIVE": 1.0,
-    "WIKI_LOG_7D": 0.9, "WIKI_ANCHOR_DAY": 0.8, "WIKI_LOG_PEAK": 0.6,
-    "WIKI_LOG_CUMULATIVE": 0.5, "WIKI_ROLLING_7D_PRIOR": 0.4,
-    "WIKI_ROLLING_3D": 0.3, "WIKI_DAYS_WITH_DATA": 0.1,
-}
-
-tab_top, tab_category, tab_drill, tab_availability = st.tabs(
-    ["Top 20 features", "By category", "Drill-down", "Availability by horizon"]
+tab_top, tab_category, tab_drill, tab_meta, tab_availability = st.tabs(
+    ["Top 20 features", "By category", "Drill-down", "Meta-combiner inputs", "Availability by horizon"]
 )
 
 with tab_top:
@@ -91,13 +67,14 @@ with tab_top:
     fig.update_traces(texttemplate="%{x:.1f}", textposition="outside")
     st.plotly_chart(fig, use_container_width=True)
     st.caption(
-        "V20 reuses V18.7's classifier + tier regressors unchanged, so feature importance "
-        "is inherited directly from V18. YouTube comments, star power, and budget dominate "
-        "the top ranks; Wikipedia features contribute strongest inside the classifier."
+        f"V28-A base tier classifier (CatBoost), importances normalized to 100 over {N_FILMS} films at -7d. "
+        "The **stacked OOF point** is the single strongest input, followed by star power, predecessor OW, "
+        "YouTube comments and TMDB popularity — demand and pedigree, not budget alone."
     )
     st.info(
-        "**V20 addition:** 6 expanded-pool quantile regressors (Q10/Q90 × 3 tiers) trained on "
-        "the same 72 features with a pinball loss — these feed the V20-Clip window."
+        "These are the **classifier's** inputs (the static + Wikipedia set plus the stacked point). "
+        "The three per-tier $ regressors additionally use the full Google-Trends rolling windows, and a "
+        "separate pool of quantile regressors produces the conformal bear/base/bull bands."
     )
 
 with tab_category:
@@ -110,9 +87,9 @@ with tab_category:
     fig_cat.update_layout(height=420)
     st.plotly_chart(fig_cat, use_container_width=True)
     st.caption(
-        "Wikipedia concentrates its signal in the classifier, which is why its category total looks "
-        "modest but its marginal accuracy lift was **+3.6pp** in CV. See the Development Story page "
-        "for the variant study that established this."
+        "Wikipedia and Google-Trends families concentrate demand signal across many small features, so their "
+        "category totals are larger than any single feature suggests. Genre and rating contribute little to the "
+        "classifier directly — the model reads demand, not labels."
     )
 
 with tab_drill:
@@ -128,7 +105,27 @@ with tab_drill:
     st.plotly_chart(fig, use_container_width=True)
     total = df_drill["Importance"].sum()
     share = total / sum(FEATURE_IMPORTANCE.values()) * 100
-    st.caption(f"{len(feats)} features · total importance {total:.1f} · {share:.1f}% of model total")
+    st.caption(f"{len(feats)} features · total importance {total:.1f} · {share:.1f}% of classifier total")
+
+with tab_meta:
+    section("What the rule-free combiner leans on")
+    st.markdown(
+        "V28-A replaced the hand-coded demand rules with a learned meta-combiner **g** — a small CatBoost "
+        "regressor over **7 meta-features** built from the base layer: the log of each tier's $ point estimate, "
+        "the three class probabilities, and the log of the soft mixture (Σ prob·point). Its importances show "
+        "the model trusting the **mixture and the class-probability distribution** above any single tier point."
+    )
+    df_meta = pd.DataFrame({"Meta-feature": list(META_IMPORTANCE), "Importance": list(META_IMPORTANCE.values())})
+    df_meta = df_meta.sort_values("Importance", ascending=True)
+    fig_m = px.bar(df_meta, x="Importance", y="Meta-feature", orientation="h",
+                   color="Importance", color_continuous_scale="Teal")
+    fig_m.update_layout(height=360)
+    fig_m.update_traces(texttemplate="%{x:.1f}", textposition="outside")
+    st.plotly_chart(fig_m, use_container_width=True)
+    st.caption(
+        "Final OW = 0.7·exp(g) + 0.3·mixture. The combiner is fit on inner-OOF base predictions inside each "
+        "outer fold, so it never sees a film whose base predictions trained it (leakage-safe nested stacking)."
+    )
 
 with tab_availability:
     st.markdown(
@@ -145,8 +142,8 @@ with tab_availability:
         """
     )
     st.caption(
-        "At -14d the Rule C override has only the D14 threshold available; the full momentum rule "
-        "turns on at -7d when D7 exists."
+        "Earlier horizons carry less daily demand signal, so predictions at -14d are wider and the model "
+        "leans more on static pedigree; by -7d the full TMDB momentum and intent signals are present."
     )
 
 show_cortex_badge()
