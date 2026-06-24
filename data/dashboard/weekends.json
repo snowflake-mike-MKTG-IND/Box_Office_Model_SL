@@ -434,64 +434,60 @@
   ],
   "upcoming_weekends": [
     {
-      "weekend": "Weekend 21",
-      "dates": "May 29-Jun 1, 2026",
-      "model": "V23c",
+      "weekend": "Weekend 26",
+      "dates": "Jun 26-29, 2026",
+      "model": "V28-A",
       "movies": [
         {
-          "movie": "Backrooms",
-          "studio": "A24/Atomic Monster",
+          "movie": "Supergirl",
+          "studio": "DC/Warner Bros.",
           "pred_tier": "MID",
-          "pred_ow": 16.48,
-          "conf_low": 8.49,
-          "conf_high": 15.72,
-          "tier_prob": 0.3,
-          "trends_days": 22,
-          "note": "V23c Rule E fired (R7D=326, YT=23179). Horror routing. Thursday previews $10-11M tracking $60-80M. V24 (with Rule F+G) would predict $52.5M \u2014 see Architecture page for the fix."
+          "pred_ow": 37.3,
+          "conf_low": 31.5,
+          "conf_high": 34.5,
+          "tier_prob": 0.46,
+          "trends_days": 19,
+          "note": "DC franchise (Superman predecessor $125M). Momoa star power + TMDB surge to 59.7. Moderate GT demand (R7D=42) offsets strong static signals."
         },
         {
-          "movie": "Pressure",
-          "studio": "20th Century Studios",
-          "pred_tier": "SMALL",
-          "pred_ow": 5.92,
-          "conf_low": 4.17,
-          "conf_high": 9.77,
-          "tier_prob": 0.89,
-          "trends_days": 22,
-          "note": "Danny Boyle sci-fi thriller. GT SCALED=91.5 on D0 (strong release day)."
-        },
-        {
-          "movie": "Tuner",
-          "studio": "Sony",
-          "pred_tier": "SMALL",
-          "pred_ow": 3.36,
-          "conf_low": 2.6,
-          "conf_high": 7.84,
-          "tier_prob": 0.93,
-          "trends_days": 22,
-          "note": ""
-        },
-        {
-          "movie": "The Breadwinner",
-          "studio": "Universal",
-          "pred_tier": "SMALL",
-          "pred_ow": 4.05,
-          "conf_low": 3.2,
-          "conf_high": 8.12,
-          "tier_prob": 0.91,
-          "trends_days": 22,
-          "note": ""
-        },
-        {
-          "movie": "Stop! That! Train",
+          "movie": "Jackass Best And Last",
           "studio": "Paramount",
           "pred_tier": "SMALL",
-          "pred_ow": 3.44,
-          "conf_low": 2.8,
-          "conf_high": 6.5,
-          "tier_prob": 0.95,
-          "trends_days": 22,
-          "note": ""
+          "pred_ow": 13.5,
+          "conf_low": 11.7,
+          "conf_high": 15.5,
+          "tier_prob": 0.69,
+          "trends_days": 19,
+          "note": "Franchise finale. Low budget ($10M), IP tier 3. Broader entity R7D=23 confirms film-specific prediction."
+        },
+        {
+          "movie": "The Invite",
+          "studio": "",
+          "pred_tier": "SMALL",
+          "pred_ow": 10.6,
+          "conf_low": 8.5,
+          "conf_high": 11.7,
+          "tier_prob": 0.81,
+          "trends_days": 19,
+          "note": "Original IP. Moderate Wiki interest (114K views D-30 to D-3)."
+        }
+      ]
+    },
+    {
+      "weekend": "Weekend 27",
+      "dates": "Jul 3-6, 2026",
+      "model": "V28-A",
+      "movies": [
+        {
+          "movie": "Young Washington",
+          "studio": "",
+          "pred_tier": "SMALL",
+          "pred_ow": 9.9,
+          "conf_low": 7.4,
+          "conf_high": 10.5,
+          "tier_prob": 0.89,
+          "trends_days": 12,
+          "note": "D-14 horizon. Strong Wiki trajectory (6.9K/day and rising). GT accelerating."
         }
       ]
     }
