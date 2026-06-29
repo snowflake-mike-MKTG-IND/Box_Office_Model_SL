@@ -348,45 +348,31 @@
           "note": "V25 D-3. Paul Rudd indie comedy. Low demand signals (R7D=10, R3D=11.5). $10M budget. RESULT: actual $0.18M (SMALL) \u2014 tier correct."
         }
       ]
-    }
-  ],
-  "upcoming": [
+    },
     {
       "weekend": "Weekend 23",
       "dates": "Jun 12-14, 2026",
-      "model": "V28-A",
+      "model": "V28-A@D3",
       "movies": [
         {
           "movie": "Disclosure Day",
           "studio": "Amblin/Universal",
           "pred_tier": "MID",
-          "pred_ow": 37.83,
-          "conf_low": 17.9,
-          "conf_high": 99.6,
-          "p_small": 0.09,
-          "p_mid": 0.52,
-          "p_large": 0.39,
-          "horizon": "D-3",
-          "tier_prob": 0.52,
-          "trends_days": 21,
-          "days_until": 2,
-          "note": "V28-A @ D-3. Emily Blunt, $115M Amblin/Universal. BREAKOUT WATCH: P(LARGE+)=39% (~2 in 5). Strong GT signal (R7D=124). Base $38M; bull $100M. Rule-free meta-combiner."
+          "pred_ow": 40.1,
+          "conf_low": 16.9,
+          "conf_high": 105.4,
+          "actual_ow": 44.53,
+          "note": "V28-A @ D-3. Emily Blunt, $115M Amblin/Universal. Predicted MID ($40M) with 42% breakout odds (P_LARGE). RESULT: actual $44.5M (MID) \u2014 tier correct, within CI. Breakout-watch flag was warranted; landed as a strong MID."
         },
         {
           "movie": "The Furious",
           "studio": "Lionsgate",
           "pred_tier": "SMALL",
-          "pred_ow": 11.6,
-          "conf_low": 4.4,
-          "conf_high": 63.7,
-          "p_small": 0.79,
-          "p_mid": 0.18,
-          "p_large": 0.03,
-          "horizon": "D-3",
-          "tier_prob": 0.79,
-          "trends_days": 21,
-          "days_until": 2,
-          "note": "V28-A @ D-3. Martial-arts action, low demand (P_SMALL 79%). Steady at ~$12M. 3% breakout odds."
+          "pred_ow": 9.7,
+          "conf_low": 4.1,
+          "conf_high": 66.5,
+          "actual_ow": 2.81,
+          "note": "V28-A @ D-3. Martial-arts action, low demand (P_SMALL 76%). RESULT: actual $2.8M (SMALL) \u2014 tier correct; opened below the CI floor."
         }
       ]
     },
@@ -402,15 +388,8 @@
           "pred_ow": 10.58,
           "conf_low": 8.02,
           "conf_high": 12.17,
-          "p_small": 0.96,
-          "p_mid": 0.04,
-          "p_large": 0.0,
-          "horizon": "D-3",
-          "tier_prob": 0.96,
-          "trends_days": 7,
-          "days_until": 9,
-          "note": "V28-A @ D-3 (final). Low breakout odds (4%). Tight bear/bull range.",
-          "breakout_pct": 4
+          "actual_ow": 1.6,
+          "note": "V28-A @ D-3 (final). Low breakout odds (4%). RESULT: actual $1.6M (SMALL) \u2014 tier correct; opened well below CI."
         },
         {
           "movie": "The Death of Robin Hood",
@@ -419,24 +398,17 @@
           "pred_ow": 13.02,
           "conf_low": 15.49,
           "conf_high": 16.49,
-          "p_small": 0.9,
-          "p_mid": 0.08,
-          "p_large": 0.02,
-          "horizon": "D-3",
-          "tier_prob": 0.9,
-          "trends_days": 7,
-          "days_until": 9,
-          "note": "V28-A @ D-3 (final). Hugh Jackman, Jodie Comer. 10% breakout odds.",
-          "breakout_pct": 10
+          "actual_ow": 2.62,
+          "note": "V28-A @ D-3 (final). Hugh Jackman, Jodie Comer. 10% breakout odds. RESULT: actual $2.6M (SMALL) \u2014 tier correct; opened well below CI."
         }
       ]
     }
   ],
-  "upcoming_weekends": [
+  "upcoming": [
     {
       "weekend": "Weekend 26",
       "dates": "Jun 26-29, 2026",
-      "model": "V28-A",
+      "model": "V28-A@D3",
       "movies": [
         {
           "movie": "Supergirl",
@@ -445,51 +417,72 @@
           "pred_ow": 37.3,
           "conf_low": 31.5,
           "conf_high": 34.5,
+          "p_small": 0.25,
+          "p_mid": 0.46,
+          "p_large": 0.29,
+          "horizon": "D-3",
           "tier_prob": 0.46,
           "trends_days": 19,
-          "note": "DC franchise (Superman predecessor $125M). Momoa star power + TMDB surge to 59.7. Moderate GT demand (R7D=42) offsets strong static signals."
+          "days_until": 0,
+          "note": "V28-A @ D-3. DC franchise (Superman predecessor $125M). Momoa star power + TMDB surge to 59.7. Moderate GT demand (R7D=42) offsets strong static signals. Breakout odds 29%. Awaiting weekend actuals."
         },
         {
           "movie": "Jackass Best And Last",
           "studio": "Paramount",
           "pred_tier": "SMALL",
-          "pred_ow": 13.5,
-          "conf_low": 11.7,
-          "conf_high": 15.5,
+          "pred_ow": 13.52,
+          "conf_low": 11.72,
+          "conf_high": 15.51,
+          "p_small": 0.69,
+          "p_mid": 0.26,
+          "p_large": 0.05,
+          "horizon": "D-3",
           "tier_prob": 0.69,
           "trends_days": 19,
-          "note": "Franchise finale. Low budget ($10M), IP tier 3. Broader entity R7D=23 confirms film-specific prediction."
+          "days_until": 0,
+          "note": "V28-A @ D-3. Franchise finale. Low budget ($10M), IP tier 3. Broader entity R7D=23 confirms film-specific prediction. Awaiting weekend actuals."
         },
         {
           "movie": "The Invite",
           "studio": "",
           "pred_tier": "SMALL",
-          "pred_ow": 10.6,
-          "conf_low": 8.5,
+          "pred_ow": 10.58,
+          "conf_low": 8.47,
           "conf_high": 11.7,
+          "p_small": 0.81,
+          "p_mid": 0.15,
+          "p_large": 0.04,
+          "horizon": "D-3",
           "tier_prob": 0.81,
           "trends_days": 19,
-          "note": "Original IP. Moderate Wiki interest (114K views D-30 to D-3)."
+          "days_until": 0,
+          "note": "V28-A @ D-3. Original IP. Moderate Wiki interest (114K views D-30 to D-3). Awaiting weekend actuals."
         }
       ]
     },
     {
       "weekend": "Weekend 27",
       "dates": "Jul 3-6, 2026",
-      "model": "V28-A",
+      "model": "V28-A@D14",
       "movies": [
         {
           "movie": "Young Washington",
           "studio": "",
           "pred_tier": "SMALL",
-          "pred_ow": 9.9,
-          "conf_low": 7.4,
-          "conf_high": 10.5,
+          "pred_ow": 9.91,
+          "conf_low": 7.39,
+          "conf_high": 10.49,
+          "p_small": 0.89,
+          "p_mid": 0.09,
+          "p_large": 0.02,
+          "horizon": "D-14",
           "tier_prob": 0.89,
           "trends_days": 12,
-          "note": "D-14 horizon. Strong Wiki trajectory (6.9K/day and rising). GT accelerating."
+          "days_until": 4,
+          "note": "V28-A @ D-14. Strong Wiki trajectory (6.9K/day and rising). GT accelerating. Will be refined at D-3."
         }
       ]
     }
-  ]
+  ],
+  "upcoming_weekends": []
 }
