@@ -402,9 +402,7 @@
           "note": "V28-A @ D-3 (final). Hugh Jackman, Jodie Comer. 10% breakout odds. RESULT: actual $2.6M (SMALL) \u2014 tier correct; opened well below CI."
         }
       ]
-    }
-  ],
-  "upcoming": [
+    },
     {
       "weekend": "Weekend 26",
       "dates": "Jun 26-29, 2026",
@@ -424,7 +422,8 @@
           "tier_prob": 0.46,
           "trends_days": 19,
           "days_until": 0,
-          "note": "V28-A @ D-3. DC franchise (Superman predecessor $125M). Momoa star power + TMDB surge to 59.7. Moderate GT demand (R7D=42) offsets strong static signals. Breakout odds 29%. Awaiting weekend actuals."
+          "note": "V28-A @ D-3. RESULT: actual $37.1M (MID) \u2014 tier correct, pred $37.3M within 1%.",
+          "actual_ow": 37.1
         },
         {
           "movie": "Jackass Best And Last",
@@ -440,7 +439,8 @@
           "tier_prob": 0.69,
           "trends_days": 19,
           "days_until": 0,
-          "note": "V28-A @ D-3. Franchise finale. Low budget ($10M), IP tier 3. Broader entity R7D=23 confirms film-specific prediction. Awaiting weekend actuals."
+          "note": "V28-A @ D-3. RESULT: actual $8.5M (SMALL) \u2014 tier correct, pred missed by $5M (overestimate).",
+          "actual_ow": 8.5
         },
         {
           "movie": "The Invite",
@@ -456,10 +456,13 @@
           "tier_prob": 0.81,
           "trends_days": 19,
           "days_until": 0,
-          "note": "V28-A @ D-3. Original IP. Moderate Wiki interest (114K views D-30 to D-3). Awaiting weekend actuals."
+          "note": "Limited release (7 screens). Removed from model \u2014 not a wide release.",
+          "actual_ow": 0.4
         }
       ]
-    },
+    }
+  ],
+  "upcoming": [
     {
       "weekend": "Weekend 27",
       "dates": "Jul 3-6, 2026",
@@ -482,7 +485,109 @@
           "note": "V28-A @ D-14. Strong Wiki trajectory (6.9K/day and rising). GT accelerating. Will be refined at D-3."
         }
       ]
+    },
+    {
+      "weekend": "Weekend 28",
+      "dates": "Jul 10-13, 2026",
+      "model": "V28-A@D7",
+      "movies": [
+        {
+          "movie": "Moana",
+          "studio": "Disney",
+          "pred_tier": "MID",
+          "pred_ow": 22.0,
+          "conf_low": 21.9,
+          "conf_high": 23.3,
+          "p_small": 0.43,
+          "p_mid": 0.37,
+          "p_large": 0.2,
+          "horizon": "D-7",
+          "tier_prob": 0.37,
+          "trends_days": 15,
+          "days_until": 7,
+          "note": "V28-A @ D-7. Disney live-action adaptation ($200M budget, IP tier 4, Dwayne Johnson). Low GT demand (R7D=14.4) conflicts with strong static profile. TMDB momentum 2.1x. Will refine at D-3."
+        },
+        {
+          "movie": "Evil Dead Burn",
+          "studio": "Neon",
+          "pred_tier": "SMALL",
+          "pred_ow": 14.6,
+          "conf_low": 13.1,
+          "conf_high": 14.6,
+          "p_small": 0.62,
+          "p_mid": 0.31,
+          "p_large": 0.07,
+          "horizon": "D-7",
+          "tier_prob": 0.62,
+          "trends_days": 15,
+          "days_until": 7,
+          "note": "V28-A @ D-7. Evil Dead franchise (predecessor Rise $24.5M). $15M horror with no star power. GT demand low (R7D=9.0) but TMDB momentum rising (26.5 from 19.3). Borderline SMALL/MID. Will refine at D-3."
+        }
+      ]
     }
   ],
-  "upcoming_weekends": []
+  "upcoming_weekends": [
+    {
+      "weekend": "Weekend 27",
+      "dates": "Jul 3-6, 2026",
+      "model": "V28-A@D14",
+      "movies": [
+        {
+          "movie": "Young Washington",
+          "studio": "",
+          "pred_tier": "SMALL",
+          "pred_ow": 9.91,
+          "conf_low": 7.39,
+          "conf_high": 10.49,
+          "p_small": 0.89,
+          "p_mid": 0.09,
+          "p_large": 0.02,
+          "horizon": "D-14",
+          "tier_prob": 0.89,
+          "trends_days": 12,
+          "days_until": 4,
+          "note": "V28-A @ D-14. Strong Wiki trajectory (6.9K/day and rising). GT accelerating. Will be refined at D-3."
+        }
+      ]
+    },
+    {
+      "weekend": "Weekend 28",
+      "dates": "Jul 10-13, 2026",
+      "model": "V28-A@D7",
+      "movies": [
+        {
+          "movie": "Moana",
+          "studio": "Disney",
+          "pred_tier": "MID",
+          "pred_ow": 22.0,
+          "conf_low": 21.9,
+          "conf_high": 23.3,
+          "p_small": 0.43,
+          "p_mid": 0.37,
+          "p_large": 0.2,
+          "horizon": "D-7",
+          "tier_prob": 0.37,
+          "trends_days": 15,
+          "days_until": 7,
+          "note": "V28-A @ D-7. Disney live-action adaptation ($200M budget, IP tier 4, Dwayne Johnson). Low GT demand (R7D=14.4) conflicts with strong static profile. TMDB momentum 2.1x. Will refine at D-3."
+        },
+        {
+          "movie": "Evil Dead Burn",
+          "studio": "Neon",
+          "pred_tier": "SMALL",
+          "pred_ow": 14.6,
+          "conf_low": 13.1,
+          "conf_high": 14.6,
+          "p_small": 0.62,
+          "p_mid": 0.31,
+          "p_large": 0.07,
+          "horizon": "D-7",
+          "tier_prob": 0.62,
+          "trends_days": 15,
+          "days_until": 7,
+          "note": "V28-A @ D-7. Evil Dead franchise (predecessor Rise $24.5M). $15M horror with no star power. GT demand low (R7D=9.0) but TMDB momentum rising (26.5 from 19.3). Borderline SMALL/MID. Will refine at D-3."
+        }
+      ]
+    }
+  ]
 }
