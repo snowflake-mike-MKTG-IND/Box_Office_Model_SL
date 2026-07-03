@@ -1,4 +1,4 @@
-"""Page 1: Architecture — V28-A rule-free learned meta-combiner."""
+"""Page 1: Architecture — V28-B horizon-normalized demand classification."""
 import plotly.graph_objects as go
 import streamlit as st
 
@@ -19,15 +19,23 @@ from theme import (
 apply_page_config("Architecture", icon="🏗️")
 
 page_header(
-    "V28-A Model Architecture",
-    "Rule-free learned meta-combiner · CatBoost + TabPFN soft-vote base · per-tier regressors · conformal bands · calibrated breakout odds",
+    "V28-B Model Architecture",
+    "Horizon-normalized demand classification · Percentile-rank GT + Wiki features · Per-tier regressors · Range-clip",
+)
+
+st.success(
+    "**V28-B (Jul 3, 2026):** Demand features (Google Trends rolling averages, Wikipedia pageviews) are now "
+    "converted to **horizon-relative percentiles** before classification. A film's R7D at D-14 is compared to "
+    "other films at D-14 (not D-7). This fixes systematic underestimation at early horizons — e.g., THE ODYSSEY "
+    "went from $27.5M (V28-A) to $44.1M (V28-B) at D-14 because its 68th-percentile demand signal was correctly "
+    "recognized as strong *for that stage*."
 )
 
 st.info(
-    "**Retired in V25 → V28-A.** The hand-coded rule stack — horror routing, V20-Clip, and "
-    "Rules C / D / E / F / G — was **removed**. V28-A learns the *combine* step those rules used to "
-    "hard-code, via a small meta-combiner. It is fully rule-free. (The detailed rule history lives on "
-    "the V24 / V25 Model Story pages.)"
+    "**V28-A → V28-B change:** The classifier now sees 52 features (36 static + 6 GT percentiles + 6 Wiki "
+    "percentiles + 3 percentile interactions + DAYS_OUT). Regressors still use absolute values for dollar "
+    "prediction. Trained on 928 rows (310 films x 3 horizons: D-14, D-7, D-3). CV accuracy: "
+    "D-14: 75.2% | D-7: 77.0% | D-3: 77.7% | Overall: 76.6%."
 )
 
 # -- Cascade diagram ---------------------------------------------------------

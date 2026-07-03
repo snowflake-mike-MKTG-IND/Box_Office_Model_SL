@@ -1,5 +1,5 @@
-"""Page 2: Feature importance — V28-A base tier-classifier (static + Wikipedia + stacked OOF point)
-plus the learned meta-combiner's inputs. Rule-free; importances pulled from the fitted V28-A bundle."""
+"""Page 2: Feature importance — V28-B horizon-normalized classifier
+(static + GT percentiles + Wiki percentiles + interactions + DAYS_OUT)."""
 import json
 import os
 
@@ -13,8 +13,8 @@ apply_page_config("Features", icon="📊")
 
 page_header(
     "Feature Importance",
-    "V28-A base tier-classifier importances at the **-14 day** horizon — the early-warning case this model "
-    "is built for — plus what the rule-free meta-combiner leans on. No horror routing, no rule overrides.",
+    "V28-B classifier importances — now using **horizon-relative percentiles** for demand features. "
+    "A film's Google Trends and Wikipedia signals are compared to other films at the *same stage* (D-14 vs D-14, D-7 vs D-7).",
 )
 
 
