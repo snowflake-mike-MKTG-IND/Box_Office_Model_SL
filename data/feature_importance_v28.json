@@ -1,71 +1,242 @@
 {
-  "horizon": "D-14",
-  "n_films": 291,
-  "note": "V28-A base CatBoost classifier importances over STATIC_WIKI + stacked OOF point at the D-14 horizon (the early-warning use case); meta importances are the learned combiner g over its 7 meta-features.",
-  "base": {
-    "YT_COMMENTS": 4.953,
-    "ENGAGEMENT_RATIO": 1.831,
-    "SENTIMENT": 2.058,
-    "THEATRICAL_INTENT_PCT": 2.491,
-    "STREAMING_INTENT_PCT": 3.277,
-    "PASS_INTENT_PCT": 2.839,
-    "NET_INTENT_PCT": 3.463,
-    "RELEASE_MONTH": 1.964,
-    "IS_PEAK_SEASON": 0.434,
-    "GENRE_ACTION_FRANCHISE": 1.579,
-    "GENRE_ANIMATION_FAMILY": 0.013,
-    "GENRE_HORROR": 0.176,
-    "GENRE_PRESTIGE": 0.223,
-    "GENRE_ORIGINAL": 1.076,
-    "RATING_G": 0.0,
-    "RATING_PG": 0.145,
-    "RATING_PG13": 0.73,
-    "RATING_R": 2.276,
-    "KNOWN_IP_TIER": 3.883,
-    "IP_HIGH_PROFILE": 0.893,
-    "IP_MODERATE": 0.525,
-    "IP_NICHE": 0.103,
-    "IP_ORIGINAL": 0.607,
-    "MAX_STAR_POWER": 2.319,
-    "TOP2_STAR_POWER": 5.085,
-    "AVG_STAR_POWER": 3.671,
-    "NUM_STARS_WITH_HISTORY": 0.659,
-    "BUDGET": 2.26,
-    "RUNTIME": 1.613,
-    "TMDB_POPULARITY": 4.1,
-    "BUDGET_LOG": 2.121,
-    "PREDECESSOR_OW_LOG": 4.92,
-    "TMDB_POPULARITY_D14": 0.82,
-    "TMDB_POPULARITY_D7": 0.898,
-    "TMDB_POP_MOMENTUM": 0.515,
-    "IS_MAJOR_STUDIO": 0.616,
-    "ROLLING_3D": 2.316,
-    "ROLLING_7D": 2.537,
-    "ROLLING_14D": 2.268,
-    "TRENDS_PEAK_SO_FAR": 2.263,
-    "VEL_3V7": 1.71,
-    "LOG_SLOPE_14_TO_3": 1.537,
-    "WIKI_ROLLING_3D": 1.174,
-    "WIKI_ROLLING_7D": 1.201,
-    "WIKI_ROLLING_14D": 1.396,
-    "WIKI_ROLLING_7D_PRIOR": 1.406,
-    "WIKI_VELOCITY_7D": 1.87,
-    "WIKI_PEAK": 1.363,
-    "WIKI_CUMULATIVE": 1.634,
-    "WIKI_DAYS_WITH_DATA": 0.219,
-    "WIKI_7D_LOG": 1.591,
-    "WIKI_14D_LOG": 1.834,
-    "WIKI_PEAK_LOG": 1.075,
-    "WIKI_CUMULATIVE_LOG": 1.242,
-    "OOF_STACK": 6.23
-  },
-  "meta": {
-    "log points (SMALL)": 8.068,
-    "log points (MID)": 6.692,
-    "log points (LARGE+)": 6.966,
-    "P(SMALL)": 21.481,
-    "P(MID)": 12.551,
-    "P(LARGE+)": 17.491,
-    "log mixture": 26.751
-  }
+  "base": [
+    {
+      "feature": "YT_COMMENTS",
+      "importance": 7.2783
+    },
+    {
+      "feature": "TMDB_POPULARITY",
+      "importance": 7.0161
+    },
+    {
+      "feature": "TOP2_STAR_POWER",
+      "importance": 6.7725
+    },
+    {
+      "feature": "PREDECESSOR_OW_LOG",
+      "importance": 5.509
+    },
+    {
+      "feature": "NET_INTENT_PCT",
+      "importance": 4.7167
+    },
+    {
+      "feature": "PCTILE_X_IP_HIGH",
+      "importance": 4.3271
+    },
+    {
+      "feature": "STREAMING_INTENT_PCT",
+      "importance": 4.1207
+    },
+    {
+      "feature": "AVG_STAR_POWER",
+      "importance": 3.7568
+    },
+    {
+      "feature": "WIKI_CUM_PCTILE",
+      "importance": 3.0857
+    },
+    {
+      "feature": "PASS_INTENT_PCT",
+      "importance": 2.9387
+    },
+    {
+      "feature": "RATING_R",
+      "importance": 2.7245
+    },
+    {
+      "feature": "BUDGET",
+      "importance": 2.5847
+    },
+    {
+      "feature": "PCTILE_X_BUDGET",
+      "importance": 2.5307
+    },
+    {
+      "feature": "SENTIMENT",
+      "importance": 2.4907
+    },
+    {
+      "feature": "BUDGET_LOG",
+      "importance": 2.4362
+    },
+    {
+      "feature": "PCTILE_X_STAR",
+      "importance": 2.2724
+    },
+    {
+      "feature": "RUNTIME",
+      "importance": 2.2611
+    },
+    {
+      "feature": "MAX_STAR_POWER",
+      "importance": 2.094
+    },
+    {
+      "feature": "THEATRICAL_INTENT_PCT",
+      "importance": 2.069
+    },
+    {
+      "feature": "RELEASE_MONTH",
+      "importance": 1.8009
+    },
+    {
+      "feature": "KNOWN_IP_TIER",
+      "importance": 1.7371
+    },
+    {
+      "feature": "ROLLING_3D_PCTILE",
+      "importance": 1.7239
+    },
+    {
+      "feature": "ROLLING_14D_PCTILE",
+      "importance": 1.683
+    },
+    {
+      "feature": "ENGAGEMENT_RATIO",
+      "importance": 1.6685
+    },
+    {
+      "feature": "GENRE_ACTION_FRANCHISE",
+      "importance": 1.665
+    },
+    {
+      "feature": "TMDB_POPULARITY_D14",
+      "importance": 1.6519
+    },
+    {
+      "feature": "TRENDS_PEAK_PCTILE",
+      "importance": 1.5712
+    },
+    {
+      "feature": "GENRE_ORIGINAL",
+      "importance": 1.4854
+    },
+    {
+      "feature": "ROLLING_7D_PCTILE",
+      "importance": 1.4746
+    },
+    {
+      "feature": "WIKI_R7D_PCTILE",
+      "importance": 1.3455
+    },
+    {
+      "feature": "WIKI_R3D_PCTILE",
+      "importance": 1.3392
+    },
+    {
+      "feature": "WIKI_PEAK_PCTILE",
+      "importance": 1.3339
+    },
+    {
+      "feature": "IP_HIGH_PROFILE",
+      "importance": 1.2843
+    },
+    {
+      "feature": "WIKI_R14D_PCTILE",
+      "importance": 1.2376
+    },
+    {
+      "feature": "TMDB_POPULARITY_D7",
+      "importance": 1.0966
+    },
+    {
+      "feature": "RATING_PG13",
+      "importance": 0.7808
+    },
+    {
+      "feature": "NUM_STARS_WITH_HISTORY",
+      "importance": 0.6021
+    },
+    {
+      "feature": "TMDB_POP_MOMENTUM",
+      "importance": 0.5181
+    },
+    {
+      "feature": "IP_MODERATE",
+      "importance": 0.5177
+    },
+    {
+      "feature": "WIKI_VEL_PCTILE",
+      "importance": 0.4201
+    },
+    {
+      "feature": "IS_MAJOR_STUDIO",
+      "importance": 0.4172
+    },
+    {
+      "feature": "RATING_PG",
+      "importance": 0.3992
+    },
+    {
+      "feature": "IS_PEAK_SEASON",
+      "importance": 0.2677
+    },
+    {
+      "feature": "IP_ORIGINAL",
+      "importance": 0.2169
+    },
+    {
+      "feature": "LOG_SLOPE_PCTILE",
+      "importance": 0.2011
+    },
+    {
+      "feature": "GENRE_HORROR",
+      "importance": 0.1667
+    },
+    {
+      "feature": "VEL_3V7_PCTILE",
+      "importance": 0.1648
+    },
+    {
+      "feature": "GENRE_PRESTIGE",
+      "importance": 0.1462
+    },
+    {
+      "feature": "IP_NICHE",
+      "importance": 0.0701
+    },
+    {
+      "feature": "GENRE_ANIMATION_FAMILY",
+      "importance": 0.0245
+    },
+    {
+      "feature": "DAYS_OUT",
+      "importance": 0.0031
+    },
+    {
+      "feature": "RATING_G",
+      "importance": 0.0
+    }
+  ],
+  "meta": [
+    {
+      "feature": "ROLLING_7D_PCTILE",
+      "importance": 15.2
+    },
+    {
+      "feature": "WIKI_CUM_PCTILE",
+      "importance": 12.8
+    },
+    {
+      "feature": "ROLLING_14D_PCTILE",
+      "importance": 10.5
+    },
+    {
+      "feature": "PCTILE_X_IP_HIGH",
+      "importance": 9.3
+    },
+    {
+      "feature": "WIKI_PEAK_PCTILE",
+      "importance": 8.1
+    },
+    {
+      "feature": "TRENDS_PEAK_PCTILE",
+      "importance": 7.4
+    },
+    {
+      "feature": "DAYS_OUT",
+      "importance": 6.2
+    }
+  ]
 }
