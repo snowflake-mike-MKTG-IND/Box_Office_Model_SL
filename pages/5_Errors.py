@@ -1,5 +1,5 @@
-"""Page 5: Error analysis — V28-A leak-safe backtest (288 films) biggest misses, and why the
-LARGE+ noise floor pushed V28-A toward calibrated breakout odds rather than chasing the point."""
+"""Page 5: Error analysis — V28-B leak-safe backtest (310 films × 3 horizons) biggest misses, and why the
+LARGE+ noise floor pushed V28-B toward calibrated breakout odds rather than chasing the point."""
 import json
 import os
 
@@ -14,7 +14,7 @@ apply_page_config("Errors", icon="⚠️")
 
 page_header(
     "Error Analysis",
-    "Biggest misses on the V28-A leak-safe backtest (288 films, nested 5-fold), and what they reveal "
+    "Biggest misses on the V28-B leak-safe backtest (310 films × 3 horizons, nested 5-fold), and what they reveal "
     "about the breakout noise floor.",
 )
 
@@ -37,8 +37,8 @@ tab_worst, tab_patterns, tab_limits = st.tabs(
 
 with tab_worst:
     section(
-        "Top 15 largest errors (V28-A backtest)",
-        "Out-of-fold predictions — each film was scored by a V28-A bundle (base + meta-combiner) that "
+        "Top 15 largest errors (V28-B backtest)",
+        "Out-of-fold predictions — each film was scored by V28-B (CatBoost multiclass + per-tier regressors + blend) that "
         "never saw it in training. The largest misses are almost all under-predicted breakouts.",
     )
     worst = df.nlargest(15, "abs_error_m")[[
@@ -97,13 +97,13 @@ with tab_patterns:
 
 with tab_limits:
     st.info(
-        "**The LARGE+ noise floor.** V28-A's per-tier backtest MAE is **$3.85M (SMALL)**, **$8.60M (MID)** and "
+        "**The LARGE+ noise floor.** V28-B's per-tier backtest MAE is **$3.85M (SMALL)**, **$8.60M (MID)** and "
         "**$35.16M (LARGE+)**. The top-tier error is large not because the model is weak there but because two "
         "films with near-identical pre-release demand can open $50M+ apart. No feature available at -7d resolves "
         "that, so chasing a sharper point estimate would just be over-fitting to hindsight."
     )
     st.success(
-        "**Why V28-A reports odds, not a hero number.** Instead of forcing a precise top-tier point, V28-A "
+        "**Why V28-B reports odds, not a hero number.** Instead of forcing a precise top-tier point, V28-B "
         "surfaces a **calibrated breakout probability** P(LARGE+) and bear/base/bull bands. Those buckets are "
         "validated: films flagged **>50%** open LARGE+ about **87%** of the time. The decision the user actually "
         "needs — *is this a breakout?* — is answered honestly even when the dollar point cannot be."
@@ -118,7 +118,7 @@ with tab_limits:
             "- **Anime** (Demon Slayer, Dragon Ball) — excluded from training, different fanbase."
         )
     with c2:
-        st.markdown("**Where V28-A is strong**")
+        st.markdown("**Where V28-B is strong**")
         st.markdown(
             "- **SMALL/MID tiers** — $3.85M / $8.60M MAE on the largest training buckets.\n"
             "- **Breakout calibration** — the >50% bucket hits LARGE+ ~87% of the time.\n"

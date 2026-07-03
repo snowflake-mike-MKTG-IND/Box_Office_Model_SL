@@ -40,9 +40,9 @@ st.info(
 
 # -- Cascade diagram ---------------------------------------------------------
 section(
-    "V28-A flow",
-    "Features → CatBoost + TabPFN soft-vote classifier → per-tier $ regressors → soft mixture → "
-    "learned meta-combiner g → FINAL = 0.7·g + 0.3·mixture → conformal bands + breakout odds.",
+    "V28-B flow",
+    "52 features → CatBoost multiclass classifier → per-tier $ regressors → soft mixture → "
+    "FINAL = 0.7·global + 0.3·mixture → range-clip → bear/base/bull bands.",
 )
 
 fig = go.Figure()
@@ -51,8 +51,8 @@ box_w, box_h = 0.15, 0.042
 boxes = [
     {"x": 0.5, "y": 0.93, "color": DK2, "label": "INPUT", "sublabel": "Features + OOF-stack",
      "hover": "STATIC_WIKI feature set (36 static + Google Trends + Wikipedia) plus one stacked OOF point estimate (log-OW from a regressor on the full feature set)."},
-    {"x": 0.5, "y": 0.78, "color": SF_BLUE, "label": "CLASSIFIER", "sublabel": "CatBoost + TabPFN (soft-vote)",
-     "hover": "Single 3-class tier classifier. CatBoost (tuned via the V27 sweep) and TabPFN (pretrained transformer) each predict_proba; probabilities are AVERAGED → tier probs (SMALL / MID / LARGE+). No two-stage cascade."},
+    {"x": 0.5, "y": 0.78, "color": SF_BLUE, "label": "CLASSIFIER", "sublabel": "CatBoost multiclass (52 features)",
+     "hover": "Single 3-class tier classifier. CatBoost multiclass over 52 features: 36 static + 6 GT percentiles + 6 Wiki percentiles + 3 interactions + DAYS_OUT. Demand features are horizon-relative percentile ranks, making classification consistent across D-14/D-7/D-3."},
     {"x": 0.18, "y": 0.62, "color": TIER_COLORS["SMALL"], "label": "SMALL reg", "sublabel": "$ point",
      "hover": "CatBoost regressor trained on SMALL films (MAE loss). Produces a SMALL-tier dollar point."},
     {"x": 0.5, "y": 0.62, "color": ORANGE, "label": "MID reg", "sublabel": "$ point",
@@ -132,7 +132,7 @@ with tab_tiers:
     )
     st.caption(
         "288-film leak-safe backtest. The classifier predicts these three tiers; each has its own "
-        "dollar regressor, and the meta-combiner reconciles the probabilities and points into one number."
+        "dollar regressor. The blend (0.7 global + 0.3 mixture) combines them, then range-clip ensures the point stays within the quantile bounds."
     )
 
 with tab_clf:
@@ -149,13 +149,13 @@ with tab_clf:
         )
     with c2:
         st.markdown(
-            "**TabPFN** (pretrained transformer)\n\n"
+            "**Percentile Features** (horizon-normalized)\n\n"
             "- Foundation model for small-table classification\n"
             "- Runs locally (torch); no per-film training\n"
             "- Diverse errors vs. trees → better borderline calls"
         )
     st.code(
-        "probs = (catboost.predict_proba(X) + tabpfn.predict_proba(X)) / 2   # soft-vote average\n"
+        "probs = catboost.predict_proba(X)  # CatBoost multiclass, demand features as percentiles\n"
         "# member agreement ~87.5%, corr ~0.95 — diversity is what lifts borderline tiers",
         language="python",
     )
@@ -183,7 +183,7 @@ with tab_regs:
 
 with tab_meta:
     st.markdown(
-        "**The headline of V28-A.** Instead of hand-coded rules deciding when to trust which tier, a "
+        "**The headline of V28-B.** Instead of hand-coded rules deciding when to trust which tier, a "
         "small regressor **learns how to combine** the base outputs into a single dollar prediction."
     )
     c1, c2 = st.columns(2)
@@ -227,7 +227,7 @@ with tab_bands:
 
 with tab_breakout:
     st.markdown(
-        "V28-A reports a **calibrated probability of a breakout** (opening ≥ $50M / LARGE+), because for "
+        "V28-B reports a **calibrated probability of a breakout** (opening ≥ $50M / LARGE+), because for "
         "the biggest films the point estimate sits at a measured noise floor — the odds are more honest "
         "than a single number."
     )

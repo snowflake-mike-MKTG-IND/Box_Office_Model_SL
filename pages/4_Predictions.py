@@ -21,19 +21,19 @@ apply_page_config("Cascade simulator", icon="🔮")
 
 page_header(
     "Cascade Simulator",
-    "Explore the base cascade logic — the live V28-A meta-combiner runs in Snowflake.",
+    "Explore the base cascade logic — the live V28-B model runs in Snowflake.",
 )
 
 st.info(
-    "The current production model is **V28-A** — a rule-free learned meta-combiner over a tuned "
-    "CatBoost + TabPFN base, deployed to the Snowflake Model Registry "
+    "The current production model is **V28-B** — a horizon-normalized demand classification over a tuned "
+    "CatBoost multiclass base, deployed to the Snowflake Model Registry "
     "(`SPARK_PAR_DEMO.ML_PIPELINE.OW_PREDICTION_V28`). This page runs the locally-bundled V17.1 joblib "
     "to let you explore the 2-stage cascade + Rule C logic that the base inherits from V18.7. The "
     "**tier decision** illustrates the cascade; the **dollar point** is a V17.1-equivalent estimate and "
-    "does not include V28-A's learned meta-combiner, calibrated breakout odds, or bear/base/bull range."
+    "does not include V28-B's full horizon-normalized pipeline, breakout odds, or bear/base/bull range."
 )
 st.caption(
-    "For actual V28-A predictions see the Recent Predictions page (live weekend tracking)."
+    "For actual V28-B predictions see the Recent Predictions page (live weekend tracking)."
 )
 
 

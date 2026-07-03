@@ -30,7 +30,7 @@ FEATURE_IMPORTANCE = _imp["base"]          # base CatBoost classifier over STATI
 META_IMPORTANCE = _imp["meta"]             # learned combiner g over its 7 meta-features
 N_FILMS = _imp.get("n_films", 291)
 
-# Categories rebuilt to match the actual V28-A STATIC_WIKI feature set + the stacked point.
+# Categories rebuilt to match the actual V28-B feature set (52 features: 36 static + 6 GT pctile + 6 Wiki pctile + 3 interactions + DAYS_OUT).
 FEATURE_CATEGORIES = {
     "Stacked signal": ["OOF_STACK"],
     "Star Power": ["MAX_STAR_POWER", "TOP2_STAR_POWER", "AVG_STAR_POWER", "NUM_STARS_WITH_HISTORY"],
@@ -67,7 +67,7 @@ with tab_top:
     fig.update_traces(texttemplate="%{x:.1f}", textposition="outside")
     st.plotly_chart(fig, use_container_width=True)
     st.caption(
-        f"V28-A base tier classifier (CatBoost), importances normalized to 100 over {N_FILMS} films at **-14d**. "
+        f"V28-B tier classifier (CatBoost multiclass), importances normalized to 100 over {N_FILMS} films at **-14d**. "
         "The **stacked OOF point** is the single strongest input, followed by star power, **YouTube comments**, "
         "predecessor OW and TMDB popularity — demand and pedigree, not budget alone."
     )
@@ -113,7 +113,7 @@ with tab_drill:
 with tab_meta:
     section("What the rule-free combiner leans on")
     st.markdown(
-        "V28-A replaced the hand-coded demand rules with a learned meta-combiner **g** — a small CatBoost "
+        "V28-B converts demand features (Google Trends + Wikipedia) to horizon-relative percentiles — a CatBoost "
         "regressor over **7 meta-features** built from the base layer: the log of each tier's $ point estimate, "
         "the three class probabilities, and the log of the soft mixture (Σ prob·point). Its importances show "
         "the model trusting the **mixture and the class-probability distribution** above any single tier point."

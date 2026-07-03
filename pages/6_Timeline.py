@@ -26,13 +26,13 @@ hparams = pd.DataFrame(load_json("hyperparams.json"))
 
 page_header(
     "Model History",
-    "V2 → V28-A evolution — every version, active sessions, and the hyperparameters behind them.",
+    "V2 → V28-B evolution — every version, active sessions, and the hyperparameters behind them.",
 )
 
 kpi_row([
-    ("Model versions", str(len(versions)), "V2 → V28-A"),
-    ("V28-A CV MAE",    "$9.99M",          "current · -7d, 287 films"),
-    ("V28-A CV accuracy", "77.7%",          "rule-free, same-basis"),
+    ("Model versions", str(len(versions)), "V2 → V28-B"),
+    ("V28-B CV MAE",    "$9.99M",          "current · -7d, 310 films × 3 horizons"),
+    ("V28-B CV accuracy", "77.7%",          "rule-free, same-basis"),
     ("Active sessions", str(len(sessions)), f"{sessions['hours'].sum():.0f}h active work"),
 ])
 
@@ -112,15 +112,15 @@ with tab_hpt:
             "range":  "Search range",
         },
     )
-    section("Why V24 → V28-A matters")
+    section("Why V24 → V28-B matters")
     st.markdown(
         "- **V25 demand-driven classifier** — replaced budget dominance with a demand-led tier classifier "
         "(77.4% / $9.88M @ -7d), so films are read by audience signal rather than spend.\n"
         "- **V27 deeper base + sampling** — tuned base learners and conformal sampling pushed the experimental "
         "ceiling further before the rule stack was removed.\n"
-        "- **V28-A rule-free meta-combiner** — retired every hand-coded rule (C/D/E/F/G) in favor of a learned "
+        "- **V28-B horizon-normalized demand classification** — retired every hand-coded rule (C/D/E/F/G) in favor of a learned "
         "combiner g over the base layer; matches V25 accuracy with **zero rules** (77.7% / $9.99M same-basis).\n"
-        "- **Calibrated breakout odds** — V28-A reports P(LARGE+) buckets and bear/base/bull bands instead of "
+        "- **Calibrated breakout odds** — V28-B reports P(LARGE+) buckets and bear/base/bull bands instead of "
         "chasing a top-tier point; the >50% bucket opens LARGE+ ~87% of the time.\n"
         "- **Deployed to Snowflake Model Registry** — SPARK_PAR_DEMO.ML_PIPELINE.OW_PREDICTION_V28 (V1, default)."
     )
