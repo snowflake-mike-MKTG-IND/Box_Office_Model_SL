@@ -489,39 +489,62 @@
     {
       "weekend": "Weekend 28",
       "dates": "Jul 10-13, 2026",
-      "model": "V28-A@D7",
+      "model": "V28-B@D7",
       "movies": [
         {
           "movie": "Moana",
           "studio": "Disney",
           "pred_tier": "MID",
-          "pred_ow": 22.0,
-          "conf_low": 21.9,
-          "conf_high": 23.3,
-          "p_small": 0.43,
-          "p_mid": 0.37,
-          "p_large": 0.2,
+          "pred_ow": 26.7,
+          "conf_low": 26.7,
+          "conf_high": 33.5,
+          "p_small": 0.17,
+          "p_mid": 0.74,
+          "p_large": 0.09,
           "horizon": "D-7",
-          "tier_prob": 0.37,
+          "tier_prob": 0.74,
           "trends_days": 15,
           "days_until": 7,
-          "note": "V28-A @ D-7. Disney live-action adaptation ($200M budget, IP tier 4, Dwayne Johnson). Low GT demand (R7D=14.4) conflicts with strong static profile. TMDB momentum 2.1x. Will refine at D-3."
+          "note": "V28-B @ D-7. Disney live-action Moana ($200M, IP tier 4, Dwayne Johnson). Demand percentile 20th at D-7 \u2014 tracking below franchise average. Will refine at D-3."
         },
         {
           "movie": "Evil Dead Burn",
           "studio": "Neon",
-          "pred_tier": "SMALL",
-          "pred_ow": 14.6,
-          "conf_low": 13.1,
-          "conf_high": 14.6,
-          "p_small": 0.62,
-          "p_mid": 0.31,
-          "p_large": 0.07,
+          "pred_tier": "MID",
+          "pred_ow": 18.7,
+          "conf_low": 18.7,
+          "conf_high": 19.8,
+          "p_small": 0.48,
+          "p_mid": 0.46,
+          "p_large": 0.05,
           "horizon": "D-7",
-          "tier_prob": 0.62,
+          "tier_prob": 0.46,
           "trends_days": 15,
           "days_until": 7,
-          "note": "V28-A @ D-7. Evil Dead franchise (predecessor Rise $24.5M). $15M horror with no star power. GT demand low (R7D=9.0) but TMDB momentum rising (26.5 from 19.3). Borderline SMALL/MID. Will refine at D-3."
+          "note": "V28-B @ D-7. Evil Dead franchise ($15M horror, predecessor Rise $24.5M). Borderline SMALL/MID. Demand percentile 6th \u2014 low buzz but IP drives prediction above $15M threshold."
+        }
+      ]
+    },
+    {
+      "weekend": "Weekend 29",
+      "dates": "Jul 17-20, 2026",
+      "model": "V28-B@D14",
+      "movies": [
+        {
+          "movie": "THE ODYSSEY",
+          "studio": "Warner Bros./Nolan",
+          "pred_tier": "MID",
+          "pred_ow": 44.1,
+          "conf_low": 44.1,
+          "conf_high": 57.0,
+          "p_small": 0.08,
+          "p_mid": 0.46,
+          "p_large": 0.47,
+          "horizon": "D-14",
+          "tier_prob": 0.46,
+          "trends_days": 8,
+          "days_until": 14,
+          "note": "V28-B @ D-14. Christopher Nolan Odyssey adaptation ($250M, Matt Damon/Tom Holland/Zendaya). 47% P(LARGE+) \u2014 right on the boundary. Demand percentile 68th at D-14 = strong for this stage. Will refine at D-7."
         }
       ]
     }
@@ -553,39 +576,62 @@
     {
       "weekend": "Weekend 28",
       "dates": "Jul 10-13, 2026",
-      "model": "V28-A@D7",
+      "model": "V28-B@D7",
       "movies": [
         {
           "movie": "Moana",
           "studio": "Disney",
           "pred_tier": "MID",
-          "pred_ow": 22.0,
-          "conf_low": 21.9,
-          "conf_high": 23.3,
-          "p_small": 0.43,
-          "p_mid": 0.37,
-          "p_large": 0.2,
+          "pred_ow": 26.7,
+          "conf_low": 26.7,
+          "conf_high": 33.5,
+          "p_small": 0.17,
+          "p_mid": 0.74,
+          "p_large": 0.09,
           "horizon": "D-7",
-          "tier_prob": 0.37,
+          "tier_prob": 0.74,
           "trends_days": 15,
           "days_until": 7,
-          "note": "V28-A @ D-7. Disney live-action adaptation ($200M budget, IP tier 4, Dwayne Johnson). Low GT demand (R7D=14.4) conflicts with strong static profile. TMDB momentum 2.1x. Will refine at D-3."
+          "note": "V28-B @ D-7. Disney live-action Moana ($200M, IP tier 4, Dwayne Johnson). Demand percentile 20th at D-7 \u2014 tracking below franchise average. Will refine at D-3."
         },
         {
           "movie": "Evil Dead Burn",
           "studio": "Neon",
-          "pred_tier": "SMALL",
-          "pred_ow": 14.6,
-          "conf_low": 13.1,
-          "conf_high": 14.6,
-          "p_small": 0.62,
-          "p_mid": 0.31,
-          "p_large": 0.07,
+          "pred_tier": "MID",
+          "pred_ow": 18.7,
+          "conf_low": 18.7,
+          "conf_high": 19.8,
+          "p_small": 0.48,
+          "p_mid": 0.46,
+          "p_large": 0.05,
           "horizon": "D-7",
-          "tier_prob": 0.62,
+          "tier_prob": 0.46,
           "trends_days": 15,
           "days_until": 7,
-          "note": "V28-A @ D-7. Evil Dead franchise (predecessor Rise $24.5M). $15M horror with no star power. GT demand low (R7D=9.0) but TMDB momentum rising (26.5 from 19.3). Borderline SMALL/MID. Will refine at D-3."
+          "note": "V28-B @ D-7. Evil Dead franchise ($15M horror, predecessor Rise $24.5M). Borderline SMALL/MID. Demand percentile 6th \u2014 low buzz but IP drives prediction above $15M threshold."
+        }
+      ]
+    },
+    {
+      "weekend": "Weekend 29",
+      "dates": "Jul 17-20, 2026",
+      "model": "V28-B@D14",
+      "movies": [
+        {
+          "movie": "THE ODYSSEY",
+          "studio": "Warner Bros./Nolan",
+          "pred_tier": "MID",
+          "pred_ow": 44.1,
+          "conf_low": 44.1,
+          "conf_high": 57.0,
+          "p_small": 0.08,
+          "p_mid": 0.46,
+          "p_large": 0.47,
+          "horizon": "D-14",
+          "tier_prob": 0.46,
+          "trends_days": 8,
+          "days_until": 14,
+          "note": "V28-B @ D-14. Christopher Nolan Odyssey adaptation ($250M, Matt Damon/Tom Holland/Zendaya). 47% P(LARGE+) \u2014 right on the boundary. Demand percentile 68th at D-14 = strong for this stage. Will refine at D-7."
         }
       ]
     }
