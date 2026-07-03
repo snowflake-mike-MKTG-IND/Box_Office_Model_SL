@@ -55,7 +55,7 @@ FEATURE_CATEGORIES = {
 }
 
 tab_top, tab_category, tab_drill, tab_meta, tab_availability = st.tabs(
-    ["Top 20 features", "By category", "Drill-down", "Meta-combiner inputs", "Availability by horizon"]
+    ["Top 20 features", "By category", "Drill-down", "Percentile features", "Availability by horizon"]
 )
 
 with tab_top:
@@ -111,12 +111,12 @@ with tab_drill:
     st.caption(f"{len(feats)} features · total importance {total:.1f} · {share:.1f}% of classifier total")
 
 with tab_meta:
-    section("What the rule-free combiner leans on")
+    section("Horizon-normalized percentile features")
     st.markdown(
-        "V28-B converts demand features (Google Trends + Wikipedia) to horizon-relative percentiles — a CatBoost "
-        "regressor over **7 meta-features** built from the base layer: the log of each tier's $ point estimate, "
-        "the three class probabilities, and the log of the soft mixture (Σ prob·point). Its importances show "
-        "the model trusting the **mixture and the class-probability distribution** above any single tier point."
+        "V28-B converts demand features (Google Trends + Wikipedia) to **horizon-relative percentiles** before "
+        "the classifier sees them. A film's R7D at D-14 is compared to other films at D-14 — so 'strong for this stage' "
+        "is recognized regardless of when the prediction runs. These 12 percentile features (6 GT + 6 Wiki) plus "
+        "3 percentile interactions replace absolute demand values in the classifier."
     )
     df_meta = pd.DataFrame({"Meta-feature": list(META_IMPORTANCE), "Importance": list(META_IMPORTANCE.values())})
     df_meta = df_meta.sort_values("Importance", ascending=True)
@@ -126,8 +126,8 @@ with tab_meta:
     fig_m.update_traces(texttemplate="%{x:.1f}", textposition="outside")
     st.plotly_chart(fig_m, use_container_width=True)
     st.caption(
-        "Final OW = 0.7·exp(g) + 0.3·mixture. The combiner is fit on inner-OOF base predictions inside each "
-        "outer fold, so it never sees a film whose base predictions trained it (leakage-safe nested stacking)."
+        "Final OW = 0.7·global + 0.3·mixture, then range-clipped to [bear, bull]. "
+        "Classifier trained on 928 rows (310 films × 3 horizons). Regressors trained on D-7 data only."
     )
 
 with tab_availability:

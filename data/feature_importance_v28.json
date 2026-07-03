@@ -209,34 +209,21 @@
       "importance": 0.0
     }
   ],
-  "meta": [
-    {
-      "feature": "ROLLING_7D_PCTILE",
-      "importance": 15.2
-    },
-    {
-      "feature": "WIKI_CUM_PCTILE",
-      "importance": 12.8
-    },
-    {
-      "feature": "ROLLING_14D_PCTILE",
-      "importance": 10.5
-    },
-    {
-      "feature": "PCTILE_X_IP_HIGH",
-      "importance": 9.3
-    },
-    {
-      "feature": "WIKI_PEAK_PCTILE",
-      "importance": 8.1
-    },
-    {
-      "feature": "TRENDS_PEAK_PCTILE",
-      "importance": 7.4
-    },
-    {
-      "feature": "DAYS_OUT",
-      "importance": 6.2
-    }
-  ]
+  "meta": {
+    "WIKI_CUM_PCTILE": 3.09,
+    "PCTILE_X_IP_HIGH": 4.33,
+    "PCTILE_X_BUDGET": 2.53,
+    "PCTILE_X_STAR": 2.27,
+    "ROLLING_3D_PCTILE": 1.72,
+    "ROLLING_14D_PCTILE": 1.68,
+    "ROLLING_7D_PCTILE": 1.58,
+    "WIKI_R7D_PCTILE": 1.35,
+    "WIKI_R3D_PCTILE": 1.34,
+    "WIKI_PEAK_PCTILE": 1.33,
+    "TRENDS_PEAK_PCTILE": 1.28,
+    "WIKI_R14D_PCTILE": 1.24,
+    "VEL_3V7_PCTILE": 1.1,
+    "LOG_SLOPE_PCTILE": 0.85,
+    "WIKI_VEL_PCTILE": 0.42
+  }
 }
