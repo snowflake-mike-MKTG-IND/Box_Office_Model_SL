@@ -460,6 +460,31 @@
           "actual_ow": 0.4
         }
       ]
+    },
+    {
+      "weekend": "Weekend 27",
+      "dates": "Jul 3-6, 2026",
+      "model": "V28-A@D14",
+      "movies": [
+        {
+          "movie": "Young Washington",
+          "studio": "",
+          "pred_tier": "SMALL",
+          "pred_ow": 9.91,
+          "conf_low": 7.39,
+          "conf_high": 10.49,
+          "p_small": 0.89,
+          "p_mid": 0.09,
+          "p_large": 0.02,
+          "horizon": "D-14",
+          "tier_prob": 0.89,
+          "trends_days": 12,
+          "days_until": 4,
+          "note": "Angel Studios patriotic drama - July 4th release",
+          "actual_ow": 19.37,
+          "industry": 20.0
+        }
+      ]
     }
   ],
   "upcoming": [
@@ -551,49 +576,10 @@
   ],
   "upcoming_weekends": [
     {
-      "weekend": "Weekend 27",
-      "dates": "Jul 3-6, 2026",
-      "model": "V28-A@D14",
-      "movies": [
-        {
-          "movie": "Young Washington",
-          "studio": "",
-          "pred_tier": "SMALL",
-          "pred_ow": 9.91,
-          "conf_low": 7.39,
-          "conf_high": 10.49,
-          "p_small": 0.89,
-          "p_mid": 0.09,
-          "p_large": 0.02,
-          "horizon": "D-14",
-          "tier_prob": 0.89,
-          "trends_days": 12,
-          "days_until": 4,
-          "note": "V28-A @ D-14. Strong Wiki trajectory (6.9K/day and rising). GT accelerating. Will be refined at D-3."
-        }
-      ]
-    },
-    {
       "weekend": "Weekend 28",
       "dates": "Jul 10-13, 2026",
       "model": "V28-B@D7",
       "movies": [
-        {
-          "movie": "Moana",
-          "studio": "Disney",
-          "pred_tier": "MID",
-          "pred_ow": 26.7,
-          "conf_low": 26.7,
-          "conf_high": 33.5,
-          "p_small": 0.17,
-          "p_mid": 0.74,
-          "p_large": 0.09,
-          "horizon": "D-7",
-          "tier_prob": 0.74,
-          "trends_days": 15,
-          "days_until": 7,
-          "note": "V28-B @ D-7. Disney live-action Moana ($200M, IP tier 4, Dwayne Johnson). Demand percentile 20th at D-7 \u2014 tracking below franchise average. Will refine at D-3."
-        },
         {
           "movie": "Evil Dead Burn",
           "studio": "Neon",
