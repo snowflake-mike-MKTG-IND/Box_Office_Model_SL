@@ -536,17 +536,17 @@
           "movie": "Evil Dead Burn",
           "studio": "Neon",
           "pred_tier": "MID",
-          "pred_ow": 18.7,
-          "conf_low": 18.7,
-          "conf_high": 19.8,
-          "p_small": 0.48,
-          "p_mid": 0.46,
+          "pred_ow": 18.3,
+          "conf_low": 18.3,
+          "conf_high": 20.5,
+          "p_small": 0.44,
+          "p_mid": 0.51,
           "p_large": 0.05,
-          "horizon": "D-7",
-          "tier_prob": 0.46,
+          "horizon": "D-3",
+          "tier_prob": 0.51,
           "trends_days": 15,
-          "days_until": 7,
-          "note": "V28-B @ D-7. Evil Dead franchise ($15M horror, predecessor Rise $24.5M). Borderline SMALL/MID. Demand percentile 6th \u2014 low buzz but IP drives prediction above $15M threshold."
+          "days_until": 2,
+          "note": "V28-B @ D-3 (final pre-release). Evil Dead franchise ($15M horror, predecessor Rise $24.5M). Borderline SMALL/MID, MID conviction firming (0.51). Demand percentile 6th \u2014 soft buzz. Breakout prob 5%."
         }
       ]
     },
@@ -584,17 +584,17 @@
           "movie": "Evil Dead Burn",
           "studio": "Neon",
           "pred_tier": "MID",
-          "pred_ow": 18.7,
-          "conf_low": 18.7,
-          "conf_high": 19.8,
-          "p_small": 0.48,
-          "p_mid": 0.46,
+          "pred_ow": 18.3,
+          "conf_low": 18.3,
+          "conf_high": 20.5,
+          "p_small": 0.44,
+          "p_mid": 0.51,
           "p_large": 0.05,
-          "horizon": "D-7",
-          "tier_prob": 0.46,
+          "horizon": "D-3",
+          "tier_prob": 0.51,
           "trends_days": 15,
-          "days_until": 7,
-          "note": "V28-B @ D-7. Evil Dead franchise ($15M horror, predecessor Rise $24.5M). Borderline SMALL/MID. Demand percentile 6th \u2014 low buzz but IP drives prediction above $15M threshold."
+          "days_until": 2,
+          "note": "V28-B @ D-3 (final pre-release). Evil Dead franchise ($15M horror, predecessor Rise $24.5M). Borderline SMALL/MID, MID conviction firming (0.51). Demand percentile 6th \u2014 soft buzz. Breakout prob 5%."
         }
       ]
     },
