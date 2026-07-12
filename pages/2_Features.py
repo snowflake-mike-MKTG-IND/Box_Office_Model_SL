@@ -57,7 +57,8 @@ top = df.head(20).iloc[::-1]
 fig = px.bar(top, x="importance", y="feature", color="Category", orientation="h",
              color_discrete_map=CMAP, height=560,
              labels={"importance": "Gain importance", "feature": ""})
-fig.update_layout(legend=dict(orientation="h", y=-0.12), margin=dict(l=10, r=10, t=10, b=10))
+fig.update_layout(legend=dict(orientation="h", y=-0.12), margin=dict(l=10, r=10, t=10, b=10),
+                  yaxis=dict(categoryorder="total ascending"))
 st.plotly_chart(fig, use_container_width=True)
 
 c1, c2, c3 = st.columns(3)
