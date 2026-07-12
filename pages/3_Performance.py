@@ -1,156 +1,92 @@
-"""Page 3: Performance — V24 CV results with escape velocity detection."""
+"""V30 Performance — temporal holdout, generational comparison, and the OOF scatter."""
 import json
 import os
 
 import numpy as np
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 import streamlit as st
 
-from theme import (
-    TIER_COLORS,
-    apply_page_config,
-    freshness_caption,
-    kpi_row,
-    page_header,
-    section,
-    show_cortex_badge,
-)
+from theme import SF_BLUE, DK2, ORANGE, VIOLET, apply_page_config, page_header, section, freshness_caption, show_cortex_badge
 
-apply_page_config("Performance", icon="📈")
-
+apply_page_config("V30 · Performance", icon="📈")
 page_header(
-    "Performance",
-    "V28-B horizon-normalized demand classification · nested 5-fold GroupKFold CV · calibrated breakout odds.",
+    "V30 Performance",
+    "Validated on a true future holdout — flop-safety is the value function that matters",
 )
 
-kpi_row([
-    ("V28-B CV accuracy",  "76.6%",  "D-14: 75.2% · D-7: 77.0% · D-3: 77.7%"),
-    ("Leak-safe backtest",  "$10.96M", "75.3% · 288 incl. recent breakouts"),
-    ("Breakout recall",     "67%",     "of breakouts flagged early"),
-    ("Calibration",         ">50%→87%", "flagged → actual LARGE+"),
+
+@st.cache_data
+def _load(name):
+    with open(os.path.join(os.path.dirname(__file__), "..", "data", name)) as f:
+        return json.load(f)
+
+
+PERF = _load("performance_v30.json")
+PREDS = _load("cv_predictions_v30.json")
+HO = PERF["holdout_2026"]
+OOF = PERF["temporal_oof"]
+
+# -- Holdout head-to-head ----------------------------------------------------
+section("True future holdout — train ≤2025 → predict 2026", HO["note"])
+hdf = pd.DataFrame([
+    {"Model": "V30", "MAPE %": HO["v30"]["mape_pct"], "Asymmetric loss (r=2)": HO["v30"]["aloss_r2"], "Flop over-pred %": HO["v30"]["lowband_over_pct"]},
+    {"Model": "v28b (no TMDB)", "MAPE %": HO["v28b_notmdb"]["mape_pct"], "Asymmetric loss (r=2)": HO["v28b_notmdb"]["aloss_r2"], "Flop over-pred %": HO["v28b_notmdb"]["lowband_over_pct"]},
+    {"Model": "v28b (as-authored)", "MAPE %": HO["v28b_asauthored"]["mape_pct"], "Asymmetric loss (r=2)": HO["v28b_asauthored"]["aloss_r2"], "Flop over-pred %": HO["v28b_asauthored"]["lowband_over_pct"]},
 ])
-freshness_caption("Nested 5-fold GroupKFold CV · V28-B horizon-normalized demand classification · deployed to Snowflake Model Registry (OW_PREDICTION_V28)", "2026-06-08")
-
-tab_scatter, tab_tier, tab_versions = st.tabs(
-    ["Predicted vs actual", "By tier", "Version comparison"]
+c1, c2 = st.columns(2)
+f1 = px.bar(hdf, x="Model", y="Asymmetric loss (r=2)", color="Model",
+            color_discrete_map={"V30": VIOLET, "v28b (no TMDB)": ORANGE, "v28b (as-authored)": "#9CA3AF"},
+            height=340, title="Asymmetric loss (lower = better; over-prediction penalized 2×)")
+f1.update_layout(showlegend=False, margin=dict(l=10, r=10, t=40, b=10))
+c1.plotly_chart(f1, use_container_width=True)
+f2 = px.bar(hdf, x="Model", y="Flop over-pred %", color="Model",
+            color_discrete_map={"V30": VIOLET, "v28b (no TMDB)": ORANGE, "v28b (as-authored)": "#9CA3AF"},
+            height=340, title="Flop over-prediction rate (the cardinal sin; lower = better)")
+f2.update_layout(showlegend=False, margin=dict(l=10, r=10, t=40, b=10))
+c2.plotly_chart(f2, use_container_width=True)
+st.dataframe(hdf, use_container_width=True, hide_index=True)
+st.caption(
+    "26-film holdout (small sample → wide confidence intervals). The as-authored v28b includes TMDB popularity; "
+    "the holdout confirmed TMDB is time-inconsistent leakage — stripping it *helped* v28b, but V30 still wins on every metric."
 )
 
-with tab_tier:
-    tier_data = pd.DataFrame({
-        "Tier": ["SMALL", "MID", "LARGE+"],
-        "V23b MAE ($M)": [4.32, 8.87, 29.84],
-        "V28-B MAE ($M)": [3.85, 8.60, 35.16],
-        "V28-B Accuracy": ["81.1%", "71.6%", "65.4%"],
-        "Films (backtest)": [148, 88, 52],
-    })
+# -- OOF scatter -------------------------------------------------------------
+section("Out-of-fold predictions (8-block quarterly temporal CV)",
+        f"{OOF['n_films']} films · each predicted by a model that never saw it · point = HDR50_MEAN, colored by abs % error")
+sdf = pd.DataFrame({
+    "Actual ($M)": [r["actual_ow_m"] for r in PREDS],
+    "Predicted ($M)": [r["predicted_ow_m"] for r in PREDS],
+    "Movie": [r["movie_title"] for r in PREDS],
+    "APE %": [round(abs(r["predicted_ow_m"] - r["actual_ow_m"]) / max(r["actual_ow_m"], 1e-6) * 100, 1) for r in PREDS],
+})
+mx = st.select_slider("Zoom", options=[20, 60, 220], value=220, format_func=lambda x: f"${x}M")
+fig = px.scatter(sdf, x="Actual ($M)", y="Predicted ($M)", color="APE %", hover_name="Movie",
+                 color_continuous_scale="RdYlGn_r", range_color=[0, 100], height=520)
+fig.add_shape(type="line", x0=0, y0=0, x1=mx, y1=mx, line=dict(dash="dash", color="#444"))
+fig.add_shape(type="line", x0=0, y0=0, x1=mx, y1=mx * 1.5, line=dict(dash="dot", color="rgba(220,40,40,0.4)"))
+fig.update_xaxes(range=[0, mx]); fig.update_yaxes(range=[0, mx])
+fig.update_layout(margin=dict(l=10, r=10, t=10, b=10))
+st.plotly_chart(fig, use_container_width=True)
+k1, k2, k3, k4 = st.columns(4)
+k1.metric("MAPE", f"{OOF['mape_pct']:.0f}%")
+k2.metric("Median APE", f"{OOF['median_ape_pct']:.0f}%")
+k3.metric("Flop over-pred", f"{OOF['lowband_over_pct']:.0f}%")
+k4.metric("50% HDR coverage", f"{OOF['hdr50_coverage_pct']:.0f}%", "target 50%")
+st.caption("Points below the dashed diagonal = conservative (under-predicted). The dotted red line marks the 1.5× over-prediction boundary — note how few points cross it.")
 
-    c1, c2 = st.columns([1, 1])
-    with c1:
-        plot_df = tier_data.melt(id_vars="Tier", value_vars=["V23b MAE ($M)", "V28-B MAE ($M)"],
-                                 var_name="Model", value_name="MAE ($M)")
-        fig = px.bar(plot_df, x="Tier", y="MAE ($M)", color="Model", barmode="group",
-                     text="MAE ($M)",
-                     color_discrete_map={"V23b MAE ($M)": "#11567F", "V28-B MAE ($M)": "#29B5E8"})
-        fig.update_traces(texttemplate="$%{text:.2f}M", textposition="outside")
-        fig.update_layout(height=360)
-        st.plotly_chart(fig, use_container_width=True)
-    with c2:
-        st.dataframe(tier_data, use_container_width=True, hide_index=True)
-        st.caption(
-            "V28-B (rule-free) tightens SMALL and MID MAE vs V23b. LARGE+ MAE rises because the "
-            "310-film leak-safe backtest now includes the 4 hardest recent breakouts — and LARGE+ "
-            "sits at the **measured noise floor**, where two films that look identical pre-release can "
-            "open $50M apart. So V28-B reports a calibrated **breakout probability** instead of chasing "
-            "a point estimate the data can't support."
-        )
-        st.markdown(
-            "**Breakout-odds calibration** (P(LARGE+) bucket → actual LARGE+ rate): "
-            "<15% → 1% · 15-30% → 17% · 30-50% → 39% · >50% → **87%**."
-        )
+# -- Generational --------------------------------------------------------------
+section("Generational evolution", "Prior versions were classifiers (tier accuracy); V30 is distributional (holdout aLoss / flop-safety).")
+gdf = pd.DataFrame(PERF["generations"])
+gdf_show = gdf[["model", "date", "type", "tier_acc_pct", "note"]].rename(
+    columns={"model": "Model", "date": "Date", "type": "Architecture", "tier_acc_pct": "Tier acc %", "note": "Notes"})
+st.dataframe(gdf_show, use_container_width=True, hide_index=True)
+st.caption(
+    "Tier-classification accuracy peaked around V22c (~78%). V30 changes the objective: instead of a tier label it "
+    "emits a calibrated distribution, and is judged on the asymmetric (flop-safety) loss on a true future holdout — "
+    "where it decisively beats the prior generation."
+)
 
-with tab_scatter:
-    view_mode = st.radio(
-        "View",
-        ["V28-B backtest (out-of-sample)", "V23b CV (comparison)"],
-        horizontal=True,
-        help="V28-B = horizon-normalized demand classification, 310-film leak-safe backtest. V23b = horror-first routing. Both are out-of-fold at D-7.",
-    )
-    if view_mode == "V28-B backtest (out-of-sample)":
-        path = os.path.join(os.path.dirname(__file__), "..", "data", "cv_predictions_v28.json")
-        st.caption("V28-B horizon-normalized demand classification out-of-fold predictions (310 films × 3 horizons, leak-safe backtest at -7d incl. the 4 hardest recent breakouts). Each film predicted by a model that never saw it during training.")
-    else:
-        path = os.path.join(os.path.dirname(__file__), "..", "data", "cv_predictions_v23b.json")
-        st.caption("V23b Horror-first routing out-of-fold predictions (310 films × 3 horizons, 5-fold GroupKFold CV at -7d). Retained for comparison.")
-    with open(path) as f:
-        preds = json.load(f)
-
-    df_s = pd.DataFrame({
-        "Actual ($M)":    [r["actual_ow_m"] for r in preds],
-        "Predicted ($M)": [r["predicted_ow_m"] for r in preds],
-        "Tier":           [r.get("actual_tier") for r in preds],
-        "Movie":          [r["movie_title"] for r in preds],
-    })
-    max_val = st.select_slider("Zoom", options=[20, 50, 255], value=255, format_func=lambda x: f"${x}M")
-    fig = px.scatter(df_s, x="Actual ($M)", y="Predicted ($M)", color="Tier",
-                     color_discrete_map=TIER_COLORS, hover_data=["Movie"])
-    fig.update_layout(height=480, xaxis=dict(range=[0, max_val]), yaxis=dict(range=[0, max_val]),
-                      shapes=[dict(type="line", x0=0, y0=0, x1=max_val, y1=max_val,
-                                   line=dict(color="gray", dash="dash", width=1), layer="below")])
-    st.plotly_chart(fig, use_container_width=True)
-
-    errors = df_s["Predicted ($M)"].values - df_s["Actual ($M)"].values
-    c1, c2 = st.columns(2)
-    with c1:
-        fig_h = px.histogram(errors, nbins=40, title="Error distribution",
-                             labels={"value": "Error ($M)", "count": "Frequency"})
-        fig_h.add_vline(x=0, line_dash="dash", line_color="red")
-        fig_h.update_layout(showlegend=False, height=340)
-        st.plotly_chart(fig_h, use_container_width=True)
-    with c2:
-        st.markdown(
-            f"""
-            | Metric | Value |
-            |---|---|
-            | Mean error | ${np.mean(errors):.2f}M |
-            | Median error | ${np.median(errors):.2f}M |
-            | Std dev | ${np.std(errors):.2f}M |
-            | 90th %ile \\|err\\| | ${np.percentile(np.abs(errors), 90):.2f}M |
-            """
-        )
-        st.caption(
-            f"Error distribution for {'out-of-fold CV' if view_mode == 'CV (out-of-sample)' else 'training fit'} predictions. "
-            "Mean error near zero → model is approximately unbiased. The right tail is driven by "
-            "LARGE+ variance (blockbuster breakouts)."
-        )
-
-with tab_versions:
-    comparison = pd.DataFrame({
-        "Metric": ["Films", "CV MAE -7d", "CV Accuracy",
-                   "SMALL MAE", "MID MAE", "LARGE+ MAE", "Rule-free?"],
-        "V18.0":       ["276", "$11.48M", "75.7%", "$4.12M", "$11.92M", "$31.24M", "No"],
-        "V23b":        ["287", "$10.41M", "76.3%", "$4.32M", "$8.87M", "$29.84M", "No (rules)"],
-        "V25":         ["287", "$9.88M", "77.4%", "—", "—", "—", "No (rules)"],
-        "V28-B":       ["288", "**$10.96M**", "**75.3%**", "**$3.85M**", "**$8.60M**", "**$35.16M**", "**Yes**"],
-    })
-    st.dataframe(comparison, use_container_width=True, hide_index=True)
-    st.caption(
-        "V28-B's backtest (310 films × 3 horizons) includes the 4 hardest recent breakouts that earlier versions "
-        "were never measured against; on the **same-basis** nested CV it is **77.7% / $9.99M** (310 films × 3 horizons), "
-        "comparable to V25/V27. The headline change isn't raw accuracy — it's being fully rule-free and "
-        "adding calibrated breakout odds."
-    )
-
-    section("What changed: V25 → V27 → V28-B")
-    st.markdown(
-        "- **V25 — demand-driven classifier**: Google Trends features moved into tier assignment so budget "
-        "no longer dominates. D-7 77.4% / $9.88M.\n"
-        "- **V27 — modern ensemble**: tuned CatBoost (trees) + TabPFN (transformer) soft-vote classifier, "
-        "no hand rules. Diverse members lift borderline tier accuracy (agreement 87.5%, corr 0.95).\n"
-        "- **V28-B — horizon-normalized demand classification**: a small model learns how to combine the base "
-        "classifier + per-tier regressors (FINAL = 0.7·g + 0.3·mixture) instead of hand-coded rules. "
-        "Adds bear/base/bull ranges + calibrated P(LARGE+). LARGE+ now sits at the measured noise floor, "
-        "so V28-B reports probability rather than chasing point accuracy the data can't support.\n"
-    )
-
+freshness_caption("cm_v7_pg3.pkl temporal OOF + 2025→2026 holdout · OW_PREDICTION_V30", "2026-07-11")
 show_cortex_badge()

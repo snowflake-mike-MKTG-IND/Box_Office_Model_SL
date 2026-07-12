@@ -1,0 +1,153 @@
+{
+ "base": [
+  {
+   "feature": "LOG_YT",
+   "importance": 18.3627
+  },
+  {
+   "feature": "PCTILE_X_STAR",
+   "importance": 7.7484
+  },
+  {
+   "feature": "NET_INTENT_PCT",
+   "importance": 6.8106
+  },
+  {
+   "feature": "PCTILE_X_ACTION",
+   "importance": 5.476
+  },
+  {
+   "feature": "PCTILE_X_IP_HIGH",
+   "importance": 4.4955
+  },
+  {
+   "feature": "AVG_SENT",
+   "importance": 4.3712
+  },
+  {
+   "feature": "WIKI_CUM_PCTILE",
+   "importance": 4.337
+  },
+  {
+   "feature": "GENRE_ORIGINAL",
+   "importance": 4.1568
+  },
+  {
+   "feature": "RUNTIME",
+   "importance": 4.0519
+  },
+  {
+   "feature": "THEA_X_PCTILE",
+   "importance": 3.6985
+  },
+  {
+   "feature": "WIKIPK_X_STAR",
+   "importance": 3.1898
+  },
+  {
+   "feature": "PCT_THEA",
+   "importance": 2.9391
+  },
+  {
+   "feature": "PCT_POS",
+   "importance": 2.776
+  },
+  {
+   "feature": "RATING_R",
+   "importance": 2.6843
+  },
+  {
+   "feature": "PCTILE_X_PREDOW",
+   "importance": 2.6041
+  },
+  {
+   "feature": "PCT_NEG",
+   "importance": 2.2409
+  },
+  {
+   "feature": "RELEASE_MONTH",
+   "importance": 2.1993
+  },
+  {
+   "feature": "WIKI_R7D_PCTILE",
+   "importance": 2.1742
+  },
+  {
+   "feature": "PCT_PASS",
+   "importance": 2.0773
+  },
+  {
+   "feature": "SENT_X_PCTILE",
+   "importance": 1.9773
+  },
+  {
+   "feature": "GENRE_ACTION_FRANCHISE",
+   "importance": 1.8922
+  },
+  {
+   "feature": "TRENDS_PEAK_PCTILE",
+   "importance": 1.8277
+  },
+  {
+   "feature": "ROLLING_14D_PCTILE",
+   "importance": 1.7037
+  },
+  {
+   "feature": "WIKI_PEAK_PCTILE",
+   "importance": 1.5039
+  },
+  {
+   "feature": "PCTILE_X_HORROR",
+   "importance": 1.2476
+  },
+  {
+   "feature": "ROLLING_3D_PCTILE",
+   "importance": 1.0754
+  },
+  {
+   "feature": "ROLLING_7D_PCTILE",
+   "importance": 1.0024
+  },
+  {
+   "feature": "GENRE_HORROR",
+   "importance": 0.7957
+  },
+  {
+   "feature": "WIKI_VEL_PCTILE",
+   "importance": 0.2452
+  },
+  {
+   "feature": "RATING_PG13",
+   "importance": 0.1112
+  },
+  {
+   "feature": "IS_PEAK_SEASON",
+   "importance": 0.1038
+  },
+  {
+   "feature": "LOG_SLOPE_PCTILE",
+   "importance": 0.101
+  },
+  {
+   "feature": "RATING_PG",
+   "importance": 0.0156
+  },
+  {
+   "feature": "DO",
+   "importance": 0.0038
+  },
+  {
+   "feature": "VEL_3V7_PCTILE",
+   "importance": 0.0001
+  },
+  {
+   "feature": "RATING_G",
+   "importance": 0.0
+  },
+  {
+   "feature": "GENRE_ANIMATION_FAMILY",
+   "importance": 0.0
+  }
+ ],
+ "meta": {}
+}

@@ -1,4 +1,7 @@
-"""V28-B Opening Weekend Prediction Model — Home / navigation hub."""
+"""V30 Opening Weekend Prediction Model — Home / navigation hub."""
+import json
+import os
+
 import streamlit as st
 
 from theme import (
@@ -11,11 +14,23 @@ from theme import (
     show_cortex_badge,
 )
 
-apply_page_config("V28-B OW Prediction Model", icon="🎬")
+apply_page_config("V30 OW Prediction Model", icon="🎬")
+
+
+@st.cache_data
+def _perf():
+    p = os.path.join(os.path.dirname(__file__), "data", "performance_v30.json")
+    with open(p) as f:
+        return json.load(f)
+
+
+PERF = _perf()
+OOF = PERF["temporal_oof"]
+HO = PERF["holdout_2026"]
 
 page_header(
-    "V28-B Opening Weekend Prediction Model",
-    "Horizon-normalized demand classification · CatBoost multiclass + per-tier regressors · Snowflake Model Registry + Feature Store",
+    "V30 Opening Weekend Prediction Model",
+    "Pedigree-gated distributional ensemble · CatBoost + Linear blend → 50% HDR / HDR50 / Bayes-risk points · RF confidence flag · Snowflake Model Registry",
 )
 
 # -- Cortex Code velocity hero ----------------------------------------------
@@ -30,95 +45,121 @@ st.markdown(
       </div>
       <div style="font-size: 1.55rem; font-weight: 700; line-height: 1.25;
                   margin-bottom: 0.4rem;">
-        One person. One AI. ~50 hours of active work.
+        An entire ML re-architecture in ~2 days.
       </div>
-      <div style="font-size: 0.98rem; opacity: 0.95; line-height: 1.45; max-width: 860px;">
-        End-to-end ML product — data engineering, 28 model versions, 150+ experiments,
-        140+ HP configs, 750+ Snowflake artifacts, and this 10-page dashboard — shipped in
-        <b>~1 week of working hours</b>. The V18 Wikipedia sprint took <b>49 minutes</b>.
-        The V28-A→V28-B horizon normalization took <b>one working session</b>.
+      <div style="font-size: 0.98rem; opacity: 0.95; line-height: 1.45; max-width: 880px;">
+        V30 replaces the CatBoost 3-tier <b>classifier + per-tier regressors</b> with a
+        <b>pedigree-gated distributional ensemble</b> — a CatBoost + Linear blend that emits a full
+        predictive distribution (50% highest-density region, a density-weighted point, and a
+        risk-adjusted Bayes point) plus a calibrated large-film confidence flag. One person + one AI
+        designed, ran <b>150+ ablations</b>, validated on a true future holdout, registered the model,
+        updated the skill fleet, and shipped this dashboard — in about <b>two days of working hours</b>.
       </div>
     </div>
     """,
     unsafe_allow_html=True,
 )
 
-# Velocity stats
 kpi_row([
-    ("Active work",    "~50h",  "vs ~300h traditional"),
-    ("Calendar span",  "15 sessions", "over 90 days"),
-    ("Team size",      "1 + AI", "vs 2-3 engineers"),
-    ("V28-A → V28-B","1 session", "Horizon-normalized demand + SF Model Registry"),
+    ("Re-architecture", "~2 days", "vs ~6–10 wks traditional DS"),
+    ("Approach shift", "classifier → distributional", "regression + uncertainty"),
+    ("Team size", "1 + AI", "vs 2–3 data scientists"),
+    ("Validation", "true 2025→2026 holdout", "leakage-audited"),
 ])
-
 st.caption(
-    "Time savings vs traditional baseline: **~6× faster** · **~85% fewer human hours** · "
-    "no procurement, no handoffs, no vendor integration delays."
+    "Illustrative velocity: a distributional re-architecture + 150+ ablations + temporal-holdout harness "
+    "+ registry deployment would traditionally be a **multi-week** effort for a small DS team hand-coding "
+    "tests, CV, and MLOps. No procurement, no handoffs, no vendor integration."
 )
 
 # -- Model performance hero --------------------------------------------------
-section("Model performance")
+section("Performance — true future holdout (train ≤2025 → predict 2026)")
 kpi_row([
-    ("Training films",       "310",     "× 3 horizons = 928 rows"),
-    ("V28-B CV overall",     "76.6%",   "D-14: 75.2% · D-7: 77.0% · D-3: 77.7%"),
-    ("Leak-safe backtest",   "75.3%",   "$10.96M · 288 incl. recent breakouts"),
-    ("Breakout odds",        "calibrated", ">50% → 87% actual LARGE+"),
+    ("V30 MAPE", f"{HO['v30']['mape_pct']:.0f}%", f"v28b {HO['v28b_asauthored']['mape_pct']:.0f}%"),
+    ("Asymmetric loss (r=2)", f"{HO['v30']['aloss_r2']:.3f}", f"v28b {HO['v28b_asauthored']['aloss_r2']:.3f}"),
+    ("Flop over-prediction", f"{HO['v30']['lowband_over_pct']:.0f}%", f"v28b {HO['v28b_asauthored']['lowband_over_pct']:.0f}%"),
+    ("50% HDR coverage", f"{OOF['hdr50_coverage_pct']:.0f}%", "target 50% (calibrated)"),
 ])
-freshness_caption("5-fold GroupKFold CV (grouped by film) · V28-B: horizon-normalized demand classification, deployed to Snowflake Model Registry (OW_PREDICTION_V28B)", "2026-07-03")
+freshness_caption(
+    "8-block quarterly rolling-origin temporal CV + true 2025→2026 holdout (26 films, small-sample → wide CIs). "
+    "Registered as SPARK_PAR_DEMO.ML_PIPELINE.OW_PREDICTION_V30.",
+    "2026-07-11",
+)
+st.info(
+    "**Accuracy without industry-critical datasets.** V30 uses NO box-office tracking, NO pre-sales/ticketing, "
+    "NO Rotten Tomatoes, and NO theater count. TMDB popularity is **excluded** — the holdout confirmed it is "
+    "time-inconsistent leakage that *hurt* the prior model on real future data.",
+    icon="🔒",
+)
 
 # -- Navigation grid ---------------------------------------------------------
-section("Explore the model", "Pick a section below. Each page owns one topic.")
+section("Explore V30", "Each page owns one topic.")
 
 NAV = [
-    ("Architecture", "V28-B: horizon-normalized demand classification, CatBoost multiclass + per-tier regressors.",
+    ("Architecture", "Pedigree-gating → CatBoost+Linear blend → predictive mixture → 50% HDR / HDR50 / Bayes point + RF flag.",
      "pages/1_Architecture.py"),
-    ("Features", "52 classifier features (36 static + 6 GT percentiles + 6 Wiki percentiles + 3 interactions + DAYS_OUT).",
+    ("Features", "V30 feature stack-ranking — pedigree enters only through demand interactions.",
      "pages/2_Features.py"),
-    ("Performance", "V28-B CV: 76.6% overall accuracy across all horizons.",
+    ("Performance", "Temporal holdout + generational comparison V16 → V30.",
      "pages/3_Performance.py"),
-    ("Predict", "Classifier simulator — base logic (live V28-B runs in Snowflake).",
+    ("Predict", "The triple output explained, with live examples (Odyssey, Spider-Man, Evil Dead Burn).",
      "pages/4_Predictions.py"),
-    ("Errors", "Where the model misses — breakouts and the measured noise floor.",
+    ("Errors", "The demand-quiet-giant ceiling and how the risk-adjusted point manages it.",
      "pages/5_Errors.py"),
-    ("Recent Predictions", "Live tracking of predictions vs actual weekends.",
-     "pages/7_Recent_Predictions.py"),
-    ("Model History", "Version-by-version evolution, HPT, velocity.",
-     "pages/6_Timeline.py"),
-    ("Development Story", "The 49-minute Wikipedia sprint with Cortex Code.",
-     "pages/8_Wikipedia_Integration.py"),
-    ("V28-A Model Story", "Rule-free learned meta-combiner — the prior production model.",
-     "pages/11_V28A_Model_Story.py"),
+    ("V30 Re-architecture Story", "How the classifier→distributional shift was designed and validated in ~2 days.",
+     "pages/12_V30_Rearchitecture.py"),
 ]
 
-cols = st.columns(4)
+cols = st.columns(3)
 for i, (title, desc, page) in enumerate(NAV):
-    with cols[i % 4]:
+    with cols[i % 3]:
         with st.container(border=True):
             st.markdown(f"**{title}**")
             st.caption(desc)
-            st.page_link(page, label="Open")
+            st.page_link(page, label="Open →")
+
+# -- Model history / legacy --------------------------------------------------
+section("Model History / Legacy", "Prior production generations — preserved for historical prediction wins.")
+LEGACY = [
+    ("Version Timeline", "Version-by-version evolution and HPT.", "pages/6_Timeline.py"),
+    ("Recent Predictions", "Historical tracking of predictions vs actual weekends.", "pages/7_Recent_Predictions.py"),
+    ("V28-A Story", "Rule-free learned meta-combiner (prior production).", "pages/11_V28A_Model_Story.py"),
+    ("V25 Story", "Demand-driven classifier.", "pages/10_V25_Model_Story.py"),
+    ("V24 Story", "Cascade + routing.", "pages/9_V24_Model_Story.py"),
+    ("Wikipedia Sprint", "The 49-minute Wikipedia feature sprint.", "pages/8_Wikipedia_Integration.py"),
+]
+lcols = st.columns(3)
+for i, (title, desc, page) in enumerate(LEGACY):
+    with lcols[i % 3]:
+        with st.container(border=True):
+            st.markdown(f"**{title}**")
+            st.caption(desc)
+            st.page_link(page, label="Open →")
 
 # -- What's new --------------------------------------------------------------
-section("What's new in V28-B")
+section("What's new in V30")
 st.markdown(
-    "- **Horizon-normalized demand classification** — Google Trends and Wikipedia demand features "
-    "are converted to horizon-relative percentiles before the classifier sees them. A film with strong "
-    "D-14 demand is correctly recognized as strong *for that stage*, rather than being compared against "
-    "D-7 training baselines.\n"
-    "- **Multi-horizon training** — classifier trained on 928 rows (310 films × 3 horizons: D-14, D-7, D-3). "
-    "CV accuracy: D-14: 75.2%, D-7: 77.0%, D-3: 77.7%, Overall: 76.6%.\n"
-    "- **Range-clip** — point estimate is clamped within [bear, bull] quantile bounds, preventing "
-    "impossible prediction-outside-range errors from the global/mixture blend.\n"
-    "- **Snowflake Model Registry** — deployed as `SPARK_PAR_DEMO.ML_PIPELINE.OW_PREDICTION_V28B` (V1).\n"
+    "- **Classifier → distributional ensemble.** The 3-tier CatBoost classifier + per-tier regressors is "
+    "replaced by a CatBoost + Linear ½/½ blend on ln(OW) that produces a full predictive distribution.\n"
+    "- **Pedigree gating.** The 12 standalone pedigree features (budget, star, IP, predecessor, studio) are "
+    "removed; pedigree re-enters only through 8 demand-gated interactions. \"Demand must confirm pedigree\" — "
+    "this is what suppresses hype-flop over-prediction (e.g. Supergirl).\n"
+    "- **Triple output.** 50% highest-density region (HDR) + HDR50_MEAN best-estimate + a Bayes-optimal "
+    "risk-adjusted point (τ = 1/(1+r) quantile under an asymmetric cost).\n"
+    "- **RF confidence flag.** A calibrated RandomForest ≥$50M flag (50% recall / 93% precision / 0 false "
+    "positives on the temporal holdout) — annotation only, never routes the point.\n"
+    "- **Validated on true future data.** Train ≤2025 → predict 2026: aLoss "
+    f"{HO['v30']['aloss_r2']:.3f} vs v28b {HO['v28b_asauthored']['aloss_r2']:.3f}; flop over-prediction "
+    f"{HO['v30']['lowband_over_pct']:.0f}% vs {HO['v28b_asauthored']['lowband_over_pct']:.0f}%.\n"
 )
 
 section("Previously")
 st.markdown(
-    "- **V28-A** — rule-free learned meta-combiner: CatBoost + TabPFN soft-vote, learned combiner g. No hand rules.\n"
-    "- **V27** — modern ensemble: tuned CatBoost + TabPFN soft-vote, no hand rules.\n"
-    "- **V25** — demand-driven classifier; Google Trends moved into tier assignment so budget no longer dominates.\n"
-    "- **V23b** — horror-first 2-bucket routing; fixed Obsession / Backrooms underprediction.\n"
-    "- **V18** — +13 Wikipedia pageview features lifted CV accuracy by 5.5pp to 77.2%.\n"
+    "- **V28-B** — horizon-normalized demand classification, CatBoost multiclass + per-tier regressors, range-clip.\n"
+    "- **V28-A** — rule-free learned meta-combiner (CatBoost + TabPFN soft-vote).\n"
+    "- **V25** — demand-driven classifier; Google Trends moved into tier assignment.\n"
+    "- **V22c** — 2-stage cascade + hybrid Rule C/D overrides.\n"
+    "- **V18** — +13 Wikipedia pageview features lifted CV accuracy to 77.2%.\n"
 )
 
 show_cortex_badge()

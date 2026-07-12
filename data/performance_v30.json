@@ -1,0 +1,74 @@
+{
+ "temporal_oof": {
+  "n_films": 123,
+  "mape_pct": 37.5,
+  "median_ape_pct": 30.6,
+  "lowband_over_pct": 10.8,
+  "aloss_r2_hdr50": 0.525,
+  "aloss_r2_bayes": 0.525,
+  "hdr50_coverage_pct": 54.5
+ },
+ "holdout_2026": {
+  "n_films": 26,
+  "note": "train <=2025 -> predict 2026 (small holdout, wide CI)",
+  "v30": {
+   "mape_pct": 42.2,
+   "aloss_r2": 0.612,
+   "lowband_over_pct": 5.0
+  },
+  "v28b_asauthored": {
+   "mape_pct": 52.5,
+   "aloss_r2": 0.766,
+   "lowband_over_pct": 24.0
+  },
+  "v28b_notmdb": {
+   "mape_pct": 48.6,
+   "aloss_r2": 0.727,
+   "lowband_over_pct": 14.0
+  }
+ },
+ "generations": [
+  {
+   "model": "V16",
+   "date": "2026-04",
+   "type": "3-tier + TMDB override",
+   "tier_acc_pct": 73.6,
+   "note": "TMDB rule override"
+  },
+  {
+   "model": "V18",
+   "date": "2026-04",
+   "type": "3-tier + Wikipedia",
+   "tier_acc_pct": 77.2,
+   "note": "+13 wiki features"
+  },
+  {
+   "model": "V22c",
+   "date": "2026-05",
+   "type": "2-stage cascade + rules",
+   "tier_acc_pct": 78.4,
+   "note": "hybrid rules C/D"
+  },
+  {
+   "model": "V25",
+   "date": "2026-06",
+   "type": "demand-driven classifier",
+   "tier_acc_pct": 77.4,
+   "note": "GT into tiering"
+  },
+  {
+   "model": "V28-B",
+   "date": "2026-07",
+   "type": "horizon-norm classifier + per-tier reg",
+   "tier_acc_pct": 76.6,
+   "note": "multiclass + range-clip"
+  },
+  {
+   "model": "V30",
+   "date": "2026-07",
+   "type": "pedigree-gated distributional ensemble",
+   "tier_acc_pct": null,
+   "note": "CatBoost+Linear blend + HDR/BAYES + RF flag; holdout aLoss 0.612 vs v28b 0.766, flop-over 5% vs 24%"
+  }
+ ]
+}
