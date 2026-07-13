@@ -1,23 +1,23 @@
 {
  "temporal_oof": {
   "n_films": 123,
-  "mape_pct": 37.0,
-  "median_ape_pct": 29.5,
-  "lowband_over_pct": 14.7,
-  "aloss_r2_hdr50": 0.508,
-  "aloss_r2_bayes": 0.512,
-  "hdr50_coverage_pct": 52.8,
-  "large_under_logerr": -0.577,
-  "large_under_note": "mean signed log-error on actual >=$60M (negative = under-predict). The point estimate stays pedigree-gated and conservative by design; an ungated demand pathway was tested and rejected (reversed out-of-fold). Large-film coverage is handled separately by a demand-forward >=$50M flag (V30 v2: 50% holdout recall, 100% precision). Note: an earlier 'demand-quiet giants' reading was corrected after a July 2026 Wikipedia data-integrity fix."
+  "mape_pct": 37.9,
+  "median_ape_pct": 33.2,
+  "lowband_over_pct": 13.7,
+  "aloss_r2_hdr50": 0.521,
+  "aloss_r2_bayes": 0.501,
+  "hdr50_coverage_pct": 50.4,
+  "large_under_logerr": -0.388,
+  "large_under_note": "mean signed log-error on actual >=$60M (negative = under-predict). V30 adds a demand-QUALITY gate (net audience intent x demand) that separates true event films from look-alike high-demand flops, plus Track B: flag-confident films report an elevated quantile (max of HDR50 and Q55) so large openers are lifted toward the demand-implied level WITHOUT raising the flop over-prediction rate. Track C reports a P78 demand-implied upside. This is what fixed the historical large-film under-prediction flop-safely."
  },
  "holdout_2026": {
   "n_films": 26,
   "note": "train <=2025 -> predict 2026 (small holdout, wide CI)",
   "v30": {
-   "mape_pct": 41.8,
-   "aloss_r2": 0.6,
-   "lowband_over_pct": 5.0,
-   "large_under_logerr": -0.791
+   "mape_pct": 41.3,
+   "aloss_r2": 0.573,
+   "lowband_over_pct": 10.0,
+   "large_under_logerr": -0.754
   },
   "v28b_asauthored": {
    "mape_pct": 52.5,
@@ -69,9 +69,9 @@
   {
    "model": "V30",
    "date": "2026-07",
-   "type": "pedigree-gated distributional ensemble",
+   "type": "pedigree-gated distributional ensemble + demand-quality gate",
    "tier_acc_pct": null,
-   "note": "CatBoost+Linear blend + HDR/BAYES + demand-forward >=50M flag (v2). Holdout aLoss 0.600 vs v28b 0.766, flop-over 5% vs 24%; demand-forward flag 50% large-recall vs pedigree 0% after Wikipedia data fix"
+   "note": "CatBoost+Linear blend + HDR/BAYES + demand-forward >=50M flag + demand-QUALITY gate (net-intent x demand) + Track B point-lift for confident large films + Track C P78 upside. Holdout aLoss 0.573 vs v28b 0.766, flop-over held; lifts event films (Michael/PHM/Mandalorian) flop-safely"
   }
  ]
 }

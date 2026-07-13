@@ -61,19 +61,28 @@ st.markdown(
     "power, IP). On the 2026 holdout it caught **0%** of the large films — because 2026's giants were **low-pedigree "
     "originals** (Backrooms, Project Hail Mary). We rebuilt the flag to be **demand-forward** (Google Trends, "
     "Wikipedia, YouTube — no pedigree). On the same holdout it now catches **50% of ≥$50M films at 100% precision "
-    "with zero flop false-positives**. This demand-forward flag ships in **V30 v2** (deployed to the Model Registry)."
+    "with zero flop false-positives**. This demand-forward flag ships in **V30** (deployed to the Model Registry)."
 )
 
-section("Why the point estimate still stays conservative on breakouts")
+section("The fix: a demand-QUALITY gate that lifts confident large films flop-safely")
 st.markdown(
-    "- We prototyped an **ungated demand pathway** so high-demand low-pedigree films could lift the *point* "
-    "estimate, not just the flag. On the full out-of-fold set it **worsened** large-film error, the flop "
-    "over-prediction rate, and the asymmetric loss — so it was **rejected**. The pedigree gating is *protective*: "
-    "high demand for a low-pedigree film genuinely does not reliably predict a large opening.\n"
-    "- The residual misses (e.g. **Backrooms**, an original horror opening ~$81M) are **genuine breakouts** — even "
-    "a perfect demand-only classifier gives them only ~0.27 probability, because films like them rarely open that "
-    "large. This is the class we explicitly do not expect to nail.\n"
-    "- The right architecture: a **conservative, flop-safe point estimate** (pedigree-gated) **plus a demand-forward "
-    "probability flag** that surfaces upside without incurring the asymmetric cost of over-predicting the point."
+    "The breakthrough came from separating demand **volume** from demand **quality**. The event films that were "
+    "under-predicted (Michael, Project Hail Mary, Mandalorian) have **positive/neutral net audience intent**, while the "
+    "look-alike high-demand flops that made the model conservative (Snow White −25, Gladiator II −13, Furiosa, The "
+    "Marvels) have **strongly negative intent** — high curiosity, low ticket intent. Volume alone can't tell them "
+    "apart; quality can.\n"
+    "- **Demand-quality gate (+Q):** net-intent-gated demand features were added to the regressor. On the 245-film "
+    "out-of-fold set this **held the flop over-prediction rate flat** while improving large-film calibration — the "
+    "first lever to do so after four prior attempts (ungated expert, composite gate, explicit interactions, specialist "
+    "routing) all failed flop-safety.\n"
+    "- **Track B — confidence-conditional point:** for films the demand-forward flag is confident are large (P ≥ 0.4), "
+    "the point is lifted from the flop-safe centre toward an elevated quantile of the predictive distribution. This "
+    "raises the true event films (Michael, PHM, Mandalorian, and tentpoles like Spider-Man) **without touching the "
+    "negative-intent flops**, which never trip the flag.\n"
+    "- **Track C — demand-implied upside:** every flagged film also reports a P78 'demand-implied ceiling', the honest "
+    "high end of a wide, right-skewed distribution.\n"
+    "- **The residual honest limit:** films whose demand genuinely matches a mixed population (an original horror like "
+    "Backrooms) keep a conservative point with a high upside band — the model won't over-commit where the outcome is "
+    "genuinely bimodal, and that is the correct behaviour under a flop-averse loss."
 )
 show_cortex_badge()

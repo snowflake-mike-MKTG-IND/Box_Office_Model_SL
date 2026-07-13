@@ -146,7 +146,7 @@ st.markdown(
     "this is what suppresses hype-flop over-prediction (e.g. Supergirl).\n"
     "- **Triple output.** 50% highest-density region (HDR) + HDR50_MEAN best-estimate + a Bayes-optimal "
     "risk-adjusted point (τ = 1/(1+r) quantile under an asymmetric cost).\n"
-    "- **Demand-forward confidence flag (V30 v2).** A calibrated ≥$50M flag built on demand signals only "
+    "- **Demand-forward confidence flag (V30).** A calibrated ≥$50M flag built on demand signals only "
     "(Google Trends, Wikipedia, YouTube — no pedigree): 50% recall / 100% precision / 0 flop false-positives on "
     "the 2026 holdout, vs 0% for the earlier pedigree-based flag — annotation only, never routes the point.\n"
     "- **Validated on true future data.** Train ≤2025 → predict 2026: aLoss "

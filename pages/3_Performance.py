@@ -86,7 +86,7 @@ st.caption(
     "We tested a suite of output-layer lifts and an **ungated demand pathway** to raise large-film coverage. On the "
     "true 2026 holdout they either failed flop-safety or reversed out-of-fold, so the **point estimate stays "
     "pedigree-gated and conservative** — high demand for a low-pedigree film does not reliably predict a large "
-    "opening. Large-film *coverage* is instead handled by a separate **demand-forward ≥$50M flag** (V30 v2): it "
+    "opening. Large-film *coverage* is instead handled by a separate **demand-forward ≥$50M flag** (V30): it "
     "catches 50% of large 2026 films at 100% precision without touching the flop-safe point. Note: an earlier "
     "'demand-quiet giants' reading was corrected in July 2026 after a Wikipedia data-integrity fix — see the Errors page."
 )
