@@ -54,7 +54,7 @@ st.caption(
 
 # -- OOF scatter -------------------------------------------------------------
 section("Out-of-fold predictions (8-block quarterly temporal CV)",
-        f"{OOF['n_films']} films · each predicted by a model that never saw it · point = HDR50_MEAN, colored by abs % error")
+        f"{OOF['n_films']} films · each predicted by a model that never saw it · point = V30 deployed estimate (Track B: flag-confident large films lifted toward the demand-implied level), colored by abs % error")
 sdf = pd.DataFrame({
     "Actual ($M)": [r["actual_ow_m"] for r in PREDS],
     "Predicted ($M)": [r["predicted_ow_m"] for r in PREDS],
