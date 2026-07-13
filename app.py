@@ -30,7 +30,7 @@ HO = PERF["holdout_2026"]
 
 page_header(
     "V30 Opening Weekend Prediction Model",
-    "Pedigree-gated distributional ensemble · CatBoost + Linear blend → 50% HDR / HDR50 / Bayes-risk points · RF confidence flag · Snowflake Model Registry",
+    "Pedigree-gated distributional ensemble · CatBoost + Linear blend → 50% HDR / HDR50 / Bayes-risk points · demand-forward ≥$50M flag · Snowflake Model Registry",
 )
 
 # -- Cortex Code velocity hero ----------------------------------------------
@@ -96,7 +96,7 @@ st.info(
 section("Explore V30", "Each page owns one topic.")
 
 NAV = [
-    ("Architecture", "Pedigree-gating → CatBoost+Linear blend → predictive mixture → 50% HDR / HDR50 / Bayes point + RF flag.",
+    ("Architecture", "Pedigree-gating → CatBoost+Linear blend → predictive mixture → 50% HDR / HDR50 / Bayes point + demand-forward flag.",
      "pages/1_Architecture.py"),
     ("Features", "V30 feature stack-ranking — pedigree enters only through demand interactions.",
      "pages/2_Features.py"),

@@ -24,13 +24,13 @@ st.graphviz_chart(
       hdr   [label="50% HDR interval" fillcolor="#EDE9FE"];
       hm    [label="HDR50_MEAN\\nbest-estimate point" fillcolor="#EDE9FE"];
       bz    [label="BAYES r2 point\\nτ = 1/(1+r) quantile\\n(risk-adjusted)" fillcolor="#EDE9FE"];
-      rf    [label="RF ≥$50M flag\\n(calibrated; annotation only)" fillcolor="#DCFCE7"];
+      rf    [label="Demand-forward ≥$50M flag\\n(calibrated; annotation only)" fillcolor="#DCFCE7"];
 
       feats -> gate;
       gate -> cb; gate -> lin;
       cb -> mix; lin -> mix;
       mix -> hdr; mix -> hm; mix -> bz;
-      feats -> rf [style=dashed label="pedigree kept\\n(for recall)"];
+      feats -> rf [style=dashed label="demand signals only\\n(no pedigree)"];
     }
     """
 )
@@ -72,7 +72,7 @@ st.markdown(
     "| Core | 3-tier CatBoost **classifier** + per-tier regressors | CatBoost + Linear **distributional blend** |\n"
     "| Pedigree | standalone features | **gated** through demand interactions |\n"
     "| Output | single point + range-clip | **50% HDR + HDR50 + Bayes** point |\n"
-    "| Large films | tier routing | **RF confidence flag** (annotation only) |\n"
+    "| Large films | tier routing | **demand-forward flag** (annotation only) |\n"
     "| TMDB | used | **excluded** (holdout-confirmed leakage) |\n"
     "| Validated on | CV + backtest | **true 2025→2026 holdout** |\n"
 )

@@ -44,6 +44,15 @@ with tab_sprint:
     ])
     freshness_caption("Wikimedia REST + MediaWiki Action APIs", "2026-04-20")
 
+    st.info(
+        "**Follow-up (July 2026 data-integrity audit):** a later audit found that the automated title mapping had "
+        "silently mis-keyed 13 large films to the wrong Wikipedia article (redirects, spurious `(film)` "
+        "disambiguators, or an entirely different movie) — and because the pageviews API does not follow redirects, "
+        "those films showed near-zero demand. The mapping logic was hardened (canonical redirect-resolution, no "
+        "blind first-hit fallback) and the affected pageviews re-fetched. See the **Errors** page for the full story.",
+        icon="🔧",
+    )
+
     phases = pd.DataFrame([
         {"Phase": "1. Title mapping (OpenSearch)",                   "Minutes": 3.1,  "Output": "275/277 mapped"},
         {"Phase": "2a. Pageview fetch (REST API)",                   "Minutes": 1.2,  "Output": "6,975 rows"},
