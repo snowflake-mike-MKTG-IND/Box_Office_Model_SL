@@ -6,7 +6,9 @@
   "lowband_over_pct": 10.8,
   "aloss_r2_hdr50": 0.525,
   "aloss_r2_bayes": 0.525,
-  "hdr50_coverage_pct": 54.5
+  "hdr50_coverage_pct": 54.5,
+  "large_under_logerr": -0.583,
+  "large_under_note": "mean signed log-error on actual >=$60M (negative = under-predict). The model deliberately under-predicts demand-quiet giants; output-layer lifts conditioned on P(large) cannot reach them because their pre-release demand is quiet (low P(large))."
  },
  "holdout_2026": {
   "n_films": 26,
@@ -14,7 +16,8 @@
   "v30": {
    "mape_pct": 42.2,
    "aloss_r2": 0.612,
-   "lowband_over_pct": 5.0
+   "lowband_over_pct": 5.0,
+   "large_under_logerr": -1.005
   },
   "v28b_asauthored": {
    "mape_pct": 52.5,

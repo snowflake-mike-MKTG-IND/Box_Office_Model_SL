@@ -76,6 +76,21 @@ k3.metric("Flop over-pred", f"{OOF['lowband_over_pct']:.0f}%")
 k4.metric("50% HDR coverage", f"{OOF['hdr50_coverage_pct']:.0f}%", "target 50%")
 st.caption("Points below the dashed diagonal = conservative (under-predicted). The dotted red line marks the 1.5× over-prediction boundary — note how few points cross it.")
 
+# -- Guardrail: the two segment-honest error metrics side by side ------------
+section("Guardrail metrics — flop-safety vs large-film coverage",
+        "The forecaster is tuned to trade large-film under-prediction for low-end flop-safety, by design.")
+g1, g2 = st.columns(2)
+g1.metric("Flop over-prediction (<$60M, >1.5×)", f"{OOF['lowband_over_pct']:.0f}%", "cardinal sin — kept low")
+g2.metric("Large-film under-prediction (≥$60M, mean signed log-err)", f"{OOF.get('large_under_logerr', float('nan')):+.2f}", "negative = under (accepted trade)")
+st.caption(
+    "We tested a suite of output-layer lifts (P(large)-weighted mixture, r-decay Bayes point, full dollar-space "
+    "mean, soft two-part mixture) and one tail feature (absolute-scale demand). They improve aggregate loss and "
+    "hold flop-safety, but do **not** move large-film under-prediction on the true 2026 holdout: the giants that "
+    "are under-predicted are *demand-quiet* (low P(large)), so any lift conditioned on observed demand cannot "
+    "reach them. This is the same signal ceiling — a precise statement of where industry-critical tracking data "
+    "would still add value."
+)
+
 # -- Generational --------------------------------------------------------------
 section("Generational evolution", "Prior versions were classifiers (tier accuracy); V30 is distributional (holdout aLoss / flop-safety).")
 gdf = pd.DataFrame(PERF["generations"])
