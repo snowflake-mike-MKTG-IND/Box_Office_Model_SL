@@ -22,7 +22,7 @@ section("Two days, end to end")
 kpi_row([
     ("Elapsed", "~2 days", "active working hours"),
     ("Experiments", "150+", "ablations + feature tests"),
-    ("Models compared", "5 classifiers", "for the recall ceiling"),
+    ("Models compared", "5 classifiers", "for the ≥$50M flag"),
     ("Deliverables", "model + skills + 2 apps + paper", "shipped"),
 ])
 st.markdown(

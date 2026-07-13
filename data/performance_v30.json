@@ -1,23 +1,23 @@
 {
  "temporal_oof": {
   "n_films": 123,
-  "mape_pct": 37.5,
-  "median_ape_pct": 30.6,
-  "lowband_over_pct": 10.8,
-  "aloss_r2_hdr50": 0.525,
-  "aloss_r2_bayes": 0.525,
-  "hdr50_coverage_pct": 54.5,
-  "large_under_logerr": -0.583,
-  "large_under_note": "mean signed log-error on actual >=$60M (negative = under-predict). The model deliberately under-predicts demand-quiet giants; output-layer lifts conditioned on P(large) cannot reach them because their pre-release demand is quiet (low P(large))."
+  "mape_pct": 37.0,
+  "median_ape_pct": 29.5,
+  "lowband_over_pct": 14.7,
+  "aloss_r2_hdr50": 0.508,
+  "aloss_r2_bayes": 0.512,
+  "hdr50_coverage_pct": 52.8,
+  "large_under_logerr": -0.577,
+  "large_under_note": "mean signed log-error on actual >=$60M (negative = under-predict). The point estimate stays pedigree-gated and conservative by design; an ungated demand pathway was tested and rejected (reversed out-of-fold). Large-film coverage is handled separately by a demand-forward >=$50M flag (V30 v2: 50% holdout recall, 100% precision). Note: an earlier 'demand-quiet giants' reading was corrected after a July 2026 Wikipedia data-integrity fix."
  },
  "holdout_2026": {
   "n_films": 26,
   "note": "train <=2025 -> predict 2026 (small holdout, wide CI)",
   "v30": {
-   "mape_pct": 42.2,
-   "aloss_r2": 0.612,
+   "mape_pct": 41.8,
+   "aloss_r2": 0.6,
    "lowband_over_pct": 5.0,
-   "large_under_logerr": -1.005
+   "large_under_logerr": -0.791
   },
   "v28b_asauthored": {
    "mape_pct": 52.5,
@@ -71,7 +71,7 @@
    "date": "2026-07",
    "type": "pedigree-gated distributional ensemble",
    "tier_acc_pct": null,
-   "note": "CatBoost+Linear blend + HDR/BAYES + RF flag; holdout aLoss 0.612 vs v28b 0.766, flop-over 5% vs 24%"
+   "note": "CatBoost+Linear blend + HDR/BAYES + demand-forward >=50M flag (v2). Holdout aLoss 0.600 vs v28b 0.766, flop-over 5% vs 24%; demand-forward flag 50% large-recall vs pedigree 0% after Wikipedia data fix"
   }
  ]
 }

@@ -83,12 +83,12 @@ g1, g2 = st.columns(2)
 g1.metric("Flop over-prediction (<$60M, >1.5×)", f"{OOF['lowband_over_pct']:.0f}%", "cardinal sin — kept low")
 g2.metric("Large-film under-prediction (≥$60M, mean signed log-err)", f"{OOF.get('large_under_logerr', float('nan')):+.2f}", "negative = under (accepted trade)")
 st.caption(
-    "We tested a suite of output-layer lifts (P(large)-weighted mixture, r-decay Bayes point, full dollar-space "
-    "mean, soft two-part mixture) and one tail feature (absolute-scale demand). They improve aggregate loss and "
-    "hold flop-safety, but do **not** move large-film under-prediction on the true 2026 holdout: the giants that "
-    "are under-predicted are *demand-quiet* (low P(large)), so any lift conditioned on observed demand cannot "
-    "reach them. This is the same signal ceiling — a precise statement of where industry-critical tracking data "
-    "would still add value."
+    "We tested a suite of output-layer lifts and an **ungated demand pathway** to raise large-film coverage. On the "
+    "true 2026 holdout they either failed flop-safety or reversed out-of-fold, so the **point estimate stays "
+    "pedigree-gated and conservative** — high demand for a low-pedigree film does not reliably predict a large "
+    "opening. Large-film *coverage* is instead handled by a separate **demand-forward ≥$50M flag** (V30 v2): it "
+    "catches 50% of large 2026 films at 100% precision without touching the flop-safe point. Note: an earlier "
+    "'demand-quiet giants' reading was corrected in July 2026 after a Wikipedia data-integrity fix — see the Errors page."
 )
 
 # -- Generational --------------------------------------------------------------

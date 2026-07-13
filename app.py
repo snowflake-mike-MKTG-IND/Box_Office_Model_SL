@@ -104,7 +104,7 @@ NAV = [
      "pages/3_Performance.py"),
     ("Predict", "The triple output explained, with live examples (Odyssey, Spider-Man, Evil Dead Burn).",
      "pages/4_Predictions.py"),
-    ("Errors", "The demand-quiet-giant ceiling and how the risk-adjusted point manages it.",
+    ("Errors", "A Wikipedia data bug and a pedigree trap — found, fixed, and the demand-forward flag that resulted.",
      "pages/5_Errors.py"),
     ("V30 Re-architecture Story", "How the classifier→distributional shift was designed and validated in ~2 days.",
      "pages/12_V30_Rearchitecture.py"),
@@ -146,8 +146,9 @@ st.markdown(
     "this is what suppresses hype-flop over-prediction (e.g. Supergirl).\n"
     "- **Triple output.** 50% highest-density region (HDR) + HDR50_MEAN best-estimate + a Bayes-optimal "
     "risk-adjusted point (τ = 1/(1+r) quantile under an asymmetric cost).\n"
-    "- **RF confidence flag.** A calibrated RandomForest ≥$50M flag (50% recall / 93% precision / 0 false "
-    "positives on the temporal holdout) — annotation only, never routes the point.\n"
+    "- **Demand-forward confidence flag (V30 v2).** A calibrated ≥$50M flag built on demand signals only "
+    "(Google Trends, Wikipedia, YouTube — no pedigree): 50% recall / 100% precision / 0 flop false-positives on "
+    "the 2026 holdout, vs 0% for the earlier pedigree-based flag — annotation only, never routes the point.\n"
     "- **Validated on true future data.** Train ≤2025 → predict 2026: aLoss "
     f"{HO['v30']['aloss_r2']:.3f} vs v28b {HO['v28b_asauthored']['aloss_r2']:.3f}; flop over-prediction "
     f"{HO['v30']['lowband_over_pct']:.0f}% vs {HO['v28b_asauthored']['lowband_over_pct']:.0f}%.\n"
