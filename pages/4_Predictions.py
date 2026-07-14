@@ -13,18 +13,18 @@ page_header(
 
 # Live V30 scores (registered OW_PREDICTION_V30, demand-quality gate + Track B point + Track C upside, scored @ D-21)
 FILMS = [
-    {"title": "The Odyssey", "release": "2026-07-17", "point": 77.0, "bayes": 60.2,
-     "lo": 39.2, "upside": 103.7, "p_large": 0.54, "tier": "LARGE+",
-     "note": "Strong, well-formed demand with positive audience intent. Because the model is confident this is a large opener, the point is lifted toward the demand-implied ceiling (Track B); demand-implied upside ~$104M."},
+    {"title": "The Odyssey", "release": "2026-07-17", "point": 99.2, "bayes": 76.0,
+     "lo": 53.1, "upside": 129.6, "p_large": 0.61, "tier": "LARGE+",
+     "note": "V30 @ D-3 final. 88th-pctile GT + 98th-pctile Wiki demand. RF flag confident (61%) → Track B lift from $79.2M HDR50 to $99.2M point. Nolan's Homer adaptation with Damon/Zendaya/Hathaway; predecessor Oppenheimer $82.5M."},
     {"title": "Spider-Man: Brand New Day", "release": "2026-07-31", "point": 149.6, "bayes": 95.4,
      "lo": 41.9, "upside": 233.2, "p_large": 0.54, "tier": "LARGE+",
      "note": "Mega-tentpole with a very wide, right-skewed distribution. The confident large-film flag lifts the point toward the demand-implied ceiling; risk-adjusted read ~$95M, upside ~$233M. Re-score at a tighter horizon to sharpen."},
     {"title": "Evil Dead Burn", "release": "2026-07-10", "point": 13.2, "bayes": 12.4,
      "lo": 8.9, "upside": 21.4, "p_large": 0.17, "tier": "SMALL",
-     "note": "Low pre-release demand for a modest-budget horror sequel; flag not confident, so the point stays at the flop-safe best-estimate. Tight, confident SMALL call."},
+     "note": "ACTUAL: $13.7M (SMALL) — near-perfect call. Point $13.2M vs actual $13.7M = $0.5M error. Tight SMALL call confirmed by low pre-release demand."},
 ]
 
-section("Live examples (scored at D-21, OW_PREDICTION_V30)")
+section("Live examples (OW_PREDICTION_V30, latest scores)")
 for f in FILMS:
     with st.container(border=True):
         tier_color = {"LARGE+": VIOLET, "MID": ORANGE, "SMALL": SF_BLUE}[f["tier"]]
@@ -65,5 +65,5 @@ st.info(
     "for the former without lifting the latter — holding the flop over-prediction rate flat.",
     icon="🎬",
 )
-st.caption("Live predictions are written to SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTIONS_V21 (MODEL_VERSION='V30@D21').")
+st.caption("Live predictions are written to SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTIONS_V21 (MODEL_VERSION='V30').")
 show_cortex_badge()
