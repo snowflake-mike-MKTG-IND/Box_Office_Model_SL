@@ -13,15 +13,9 @@ page_header(
 
 # Live V30 scores (registered OW_PREDICTION_V30, demand-quality gate + Track B point + Track C upside, scored @ D-21)
 FILMS = [
-    {"title": "The Odyssey", "release": "2026-07-17", "point": 99.2, "bayes": 76.0,
-     "lo": 53.1, "upside": 129.6, "p_large": 0.61, "tier": "LARGE+",
-     "note": "ACTUAL: $123.5M (LARGE+) — correct tier call. V30 @ D-3 point $99.2M vs actual $123.5M; the actual landed inside the model's floor–upside band ($53.1M–$129.6M), just under the $129.6M ceiling. 88th-pctile GT + 98th-pctile Wiki demand; RF flag confident (61%). Nolan's Homer adaptation (Damon/Zendaya/Hathaway), $250M budget, 3,919 theaters; $199.4M domestic total to date."},
     {"title": "Spider-Man: Brand New Day", "release": "2026-07-31", "point": 133.0, "bayes": 104.0,
      "lo": 76.9, "upside": 182.3, "p_large": 1.0, "tier": "LARGE+",
      "note": "V31 @ D-7 (re-scored 07-24 at the true 7-day horizon on fresh Google Trends thru 07-24 + refreshed Wikipedia). All demand signals top-decile (GT 98th, Wiki 91st-95th, YouTube). Best-estimate $133.0M, risk-adjusted $104M, 50% HDR $76.9M-$182.3M; demand-forward flag certain (100%). Up from the $114.9M D-14 read after the wiki refresh restored its rolling-demand percentile."},
-    {"title": "Evil Dead Burn", "release": "2026-07-10", "point": 18.3, "bayes": 18.3,
-     "lo": 18.3, "upside": 20.5, "p_large": 0.05, "tier": "MID",
-     "note": "Prediction of record: V28-B @ D-3 — the production model live when the film opened 07-10 (V30/V31 did not exist yet). Called MID $18.3M; ACTUAL $13.7M (SMALL) — a $4.6M overshoot. Shown as the real-time pre-release call, not a hindsight re-score. This D-3 miss on a low-demand horror title is exactly what motivated the V30 flop-safety rework."},
     {"title": "Super Troopers 3", "release": "2026-08-07", "point": 6.9, "bayes": 6.4,
      "lo": 4.9, "upside": 11.3, "p_large": 0.0, "tier": "SMALL",
      "note": "V31 @ D-14 (re-scored 07-24 on refreshed trends + Wikipedia). Broken Lizard comedy sequel (Searchlight); predecessor Super Troopers 2 opened to $15.2M. Low pre-release demand at D-14 → SMALL; best-estimate $6.9M, 50% HDR $4.9M-$11.3M."},
@@ -30,7 +24,7 @@ FILMS = [
      "note": "V31 @ D-14 (re-scored 07-24 on refreshed trends + Wikipedia). Universal original rom-com (Will Gluck, Barbaro/Turner). Modest pre-release demand at D-14 → SMALL; best-estimate $6.1M, 50% HDR $4.4M-$9.9M."},
 ]
 
-section("Live examples (OW_PREDICTION_V30, latest scores)")
+section("Upcoming releases (latest V31 pre-release scores)")
 for f in FILMS:
     with st.container(border=True):
         tier_color = {"LARGE+": VIOLET, "MID": ORANGE, "SMALL": SF_BLUE}[f["tier"]]

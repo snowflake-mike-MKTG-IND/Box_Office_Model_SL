@@ -102,7 +102,7 @@ NAV = [
      "pages/2_Features.py"),
     ("Performance", "Temporal holdout + generational comparison V16 → V30.",
      "pages/3_Performance.py"),
-    ("Predict", "The triple output explained, with live examples (Odyssey, Spider-Man, Evil Dead Burn).",
+    ("Predict", "The triple output explained, with upcoming releases (Spider-Man, Super Troopers 3, One Night Only).",
      "pages/4_Predictions.py"),
     ("Errors", "A Wikipedia data bug and a pedigree trap — found, fixed, and the demand-forward flag that resulted.",
      "pages/5_Errors.py"),
