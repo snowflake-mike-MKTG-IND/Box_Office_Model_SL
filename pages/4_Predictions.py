@@ -15,7 +15,7 @@ page_header(
 FILMS = [
     {"title": "The Odyssey", "release": "2026-07-17", "point": 99.2, "bayes": 76.0,
      "lo": 53.1, "upside": 129.6, "p_large": 0.61, "tier": "LARGE+",
-     "note": "V30 @ D-3 final. 88th-pctile GT + 98th-pctile Wiki demand. RF flag confident (61%) → Track B lift from $79.2M HDR50 to $99.2M point. Nolan's Homer adaptation with Damon/Zendaya/Hathaway; predecessor Oppenheimer $82.5M."},
+     "note": "ACTUAL: $123.5M (LARGE+) — correct tier call. V30 @ D-3 point $99.2M vs actual $123.5M; the actual landed inside the model's floor–upside band ($53.1M–$129.6M), just under the $129.6M ceiling. 88th-pctile GT + 98th-pctile Wiki demand; RF flag confident (61%). Nolan's Homer adaptation (Damon/Zendaya/Hathaway), $250M budget, 3,919 theaters; $199.4M domestic total to date."},
     {"title": "Spider-Man: Brand New Day", "release": "2026-07-31", "point": 133.0, "bayes": 104.0,
      "lo": 76.9, "upside": 182.3, "p_large": 1.0, "tier": "LARGE+",
      "note": "V31 @ D-7 (re-scored 07-24 at the true 7-day horizon on fresh Google Trends thru 07-24 + refreshed Wikipedia). All demand signals top-decile (GT 98th, Wiki 91st-95th, YouTube). Best-estimate $133.0M, risk-adjusted $104M, 50% HDR $76.9M-$182.3M; demand-forward flag certain (100%). Up from the $114.9M D-14 read after the wiki refresh restored its rolling-demand percentile."},
