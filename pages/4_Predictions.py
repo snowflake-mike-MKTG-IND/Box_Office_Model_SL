@@ -13,9 +13,9 @@ page_header(
 
 # Live V30 scores (registered OW_PREDICTION_V30, demand-quality gate + Track B point + Track C upside, scored @ D-21)
 FILMS = [
-    {"title": "Spider-Man: Brand New Day", "release": "2026-07-31", "point": 150.2, "bayes": 116.1,
-     "lo": 87.4, "upside": 206.6, "p_large": 1.0, "tier": "LARGE+",
-     "note": "V31 V3 @ D-7 (re-scored 07-24 at the true 7-day horizon on fresh Google Trends thru 07-24 + refreshed Wikipedia; V3 added Spider-Verse-class films to training). All demand signals top-decile (GT 98th, Wiki 91st-95th, YouTube). Best-estimate $150.2M, risk-adjusted $116.1M, 50% HDR $87.4M-$206.6M; demand-forward flag certain (100%). Up from the $114.9M D-14 read as the near-term demand surge resolves at the 7-day horizon."},
+    {"title": "Spider-Man: Brand New Day", "release": "2026-07-31", "point": 177.1, "bayes": 137.4,
+     "lo": 101.1, "upside": 240.6, "p_large": 1.0, "tier": "LARGE+",
+     "note": "V31 V3 @ D-3 (final pre-release score, 07-28, at the true 3-day horizon on fresh Google Trends thru 07-28 + Wikipedia thru 07-27). Two data corrections lifted this read: the Wikipedia article ramp captured to release week (peak ~105K/day, R7 91st pctile) and the lead cast corrected to the confirmed top-5 billed — Zendaya had been missing, raising top-line star power. All demand signals top-decile (GT 99th, Wiki ~90th, YouTube 52.7K comments). Best-estimate $177.1M, risk-adjusted $137.4M, 50% HDR $101.1M-$240.6M; demand-forward flag certain (100%). Up from the $150.2M D-7 read as demand tightens into release."},
     {"title": "Super Troopers 3", "release": "2026-08-07", "point": 6.9, "bayes": 6.4,
      "lo": 4.9, "upside": 11.3, "p_large": 0.0, "tier": "SMALL",
      "note": "V31 @ D-14 (re-scored 07-24 on refreshed trends + Wikipedia). Broken Lizard comedy sequel (Searchlight); predecessor Super Troopers 2 opened to $15.2M. Low pre-release demand at D-14 → SMALL; best-estimate $6.9M, 50% HDR $4.9M-$11.3M."},
