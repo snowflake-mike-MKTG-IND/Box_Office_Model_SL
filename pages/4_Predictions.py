@@ -16,12 +16,15 @@ FILMS = [
     {"title": "Spider-Man: Brand New Day", "release": "2026-07-31", "point": 177.1, "bayes": 137.4,
      "lo": 101.1, "upside": 240.6, "p_large": 1.0, "tier": "LARGE+",
      "note": "V31 V3 @ D-3 (final pre-release score, 07-28, at the true 3-day horizon on fresh Google Trends thru 07-28 + Wikipedia thru 07-27). Two data corrections lifted this read: the Wikipedia article ramp captured to release week (peak ~105K/day, R7 91st pctile) and the lead cast corrected to the confirmed top-5 billed — Zendaya had been missing, raising top-line star power. All demand signals top-decile (GT 99th, Wiki ~90th, YouTube 52.7K comments). Best-estimate $177.1M, risk-adjusted $137.4M, 50% HDR $101.1M-$240.6M; demand-forward flag certain (100%). Up from the $150.2M D-7 read as demand tightens into release."},
-    {"title": "Super Troopers 3", "release": "2026-08-07", "point": 6.9, "bayes": 6.4,
-     "lo": 4.9, "upside": 11.3, "p_large": 0.0, "tier": "SMALL",
-     "note": "V31 @ D-14 (re-scored 07-24 on refreshed trends + Wikipedia). Broken Lizard comedy sequel (Searchlight); predecessor Super Troopers 2 opened to $15.2M. Low pre-release demand at D-14 → SMALL; best-estimate $6.9M, 50% HDR $4.9M-$11.3M."},
-    {"title": "One Night Only", "release": "2026-08-07", "point": 6.1, "bayes": 5.7,
-     "lo": 4.4, "upside": 9.9, "p_large": 0.0, "tier": "SMALL",
-     "note": "V31 @ D-14 (re-scored 07-24 on refreshed trends + Wikipedia). Universal original rom-com (Will Gluck, Barbaro/Turner). Modest pre-release demand at D-14 → SMALL; best-estimate $6.1M, 50% HDR $4.4M-$9.9M."},
+    {"title": "The End of Oak Street", "release": "2026-08-14", "point": 22.3, "bayes": 21.7,
+     "lo": 14.8, "upside": 37.3, "p_large": 0.0, "tier": "MID",
+     "note": "V31 V3 @ D-14 (first score for this film, 07-31). Warner Bros./Bad Robot original sci-fi thriller (David Robert Mitchell), retitled from Flowervale Street, starring Anne Hathaway and Ewan McGregor. Mid-tier demand — Google Trends 54th pctile, Wikipedia 67th — against an $85M production budget, so the model reads meaningful downside risk: best-estimate MID $22.3M, risk-adjusted $21.7M, 50% HDR $14.8M-$37.3M. Scored only after its feature vector was repaired on 07-31: 8,692 official Warner Bros. trailer comments were ingested (the film previously had zero YouTube signal — the model's top-importance feature), Anne Hathaway's 9.4 star power was restored (all cast billing orders were NULL, which silently zeroed the entire cast), and runtime was corrected from 0 to 100 minutes."},
+    {"title": "Super Troopers 3", "release": "2026-08-07", "point": 6.4, "bayes": 6.0,
+     "lo": 4.4, "upside": 10.7, "p_large": 0.0, "tier": "SMALL",
+     "note": "V31 V3 @ D-7 (re-scored 07-31 on Google Trends thru 07-31 + Wikipedia thru 07-30). Broken Lizard comedy sequel (Searchlight); predecessor Super Troopers 2 opened to $15.2M. Pre-release demand stays bottom-decile at the tighter horizon (GT 10th pctile, Wiki 9th) → SMALL; best-estimate $6.4M, 50% HDR $4.4M-$10.7M. Essentially flat against the $6.9M D-14 read."},
+    {"title": "One Night Only", "release": "2026-08-07", "point": 6.3, "bayes": 5.9,
+     "lo": 4.4, "upside": 10.5, "p_large": 0.0, "tier": "SMALL",
+     "note": "V31 V3 @ D-7 (re-scored 07-31 on Google Trends thru 07-31 + Wikipedia thru 07-30). Universal original rom-com (Will Gluck, Barbaro/Turner). Modest pre-release demand at the tighter horizon (GT 33rd pctile, Wiki 39th) → SMALL; best-estimate $6.3M, 50% HDR $4.4M-$10.5M. Firmed slightly from the $6.1M D-14 read."},
 ]
 
 section("Upcoming releases (latest V31 pre-release scores)")
@@ -65,5 +68,5 @@ st.info(
     "for the former without lifting the latter — holding the flop over-prediction rate flat.",
     icon="🎬",
 )
-st.caption("Live predictions are written to SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTIONS_V21 (MODEL_VERSION='V30').")
+st.caption("Live predictions are written to SPARK_PAR_DEMO.PRODUCTION.OW_PREDICTIONS_V21 (MODEL_VERSION='V31@D3' / 'V31@D7' / 'V31@D14', latest row per film by SCORED_AT).")
 show_cortex_badge()
