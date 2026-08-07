@@ -25,6 +25,12 @@ FILMS = [
     {"title": "One Night Only", "release": "2026-08-07", "point": 7.5, "bayes": 6.9,
      "lo": 5.3, "upside": 12.3, "p_large": 0.0, "tier": "SMALL",
      "note": "V31 V3 @ D-3 (final pre-release score, 08-07). Universal original rom-com (Will Gluck, Barbaro/Turner). Modest pre-release demand (Google Trends ~25th pctile) → SMALL; best-estimate $7.5M, 50% HDR $5.3M-$12.3M. Firmed from the $6.3M D-7 read."},
+    {"title": "The Dog Stars", "release": "2026-08-28", "point": 16.2, "bayes": 15.7,
+     "lo": 11.2, "upside": 27.6, "p_large": 0.0, "tier": "MID",
+     "note": "V31 V3 @ D-21 (early forecast, 08-07). Ridley Scott sci-fi survival drama adapted from Peter Heller's novel. Mid-tier early demand (Google Trends ~50th pctile, Wikipedia ~64th, peak ~14.3K/day) → MID; best-estimate $16.2M, 50% HDR $11.2M-$27.6M. First read; refines at D-14/-7."},
+    {"title": "Finding Emily", "release": "2026-08-28", "point": 3.4, "bayes": 3.4,
+     "lo": 1.7, "upside": 10.3, "p_large": 0.0, "tier": "SMALL",
+     "note": "V31 V3 @ D-21 (early forecast, 08-07). Bottom-decile early demand (Google Trends ~6th pctile, Wikipedia ~10th) → SMALL; best-estimate $3.4M, 50% HDR $1.7M-$10.3M. First read."},
 ]
 
 section("Upcoming releases (latest V31 pre-release scores)")
