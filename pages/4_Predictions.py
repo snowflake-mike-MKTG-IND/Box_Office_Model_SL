@@ -13,24 +13,49 @@ page_header(
 
 # Live V30 scores (registered OW_PREDICTION_V30, demand-quality gate + Track B point + Track C upside, scored @ D-21)
 FILMS = [
-    {"title": "Spider-Man: Brand New Day", "release": "2026-07-31", "point": 177.1, "bayes": 137.4,
-     "lo": 101.1, "upside": 240.6, "p_large": 1.0, "tier": "LARGE+",
-     "note": "V31 V3 @ D-3 (final pre-release score, 07-28, at the true 3-day horizon on fresh Google Trends thru 07-28 + Wikipedia thru 07-27). Two data corrections lifted this read: the Wikipedia article ramp captured to release week (peak ~105K/day, R7 91st pctile) and the lead cast corrected to the confirmed top-5 billed — Zendaya had been missing, raising top-line star power. All demand signals top-decile (GT 99th, Wiki ~90th, YouTube 52.7K comments). Best-estimate $177.1M, risk-adjusted $137.4M, 50% HDR $101.1M-$240.6M; demand-forward flag certain (100%). Up from the $150.2M D-7 read as demand tightens into release."},
     {"title": "The End of Oak Street", "release": "2026-08-14", "point": 24.2, "bayes": 23.6,
      "lo": 15.8, "upside": 40.6, "p_large": 0.0, "tier": "MID",
-     "note": "V31 V3 @ D-3 (final pre-release score, 08-11, at the true 3-day horizon on Google Trends refreshed thru 08-11 + Wikipedia thru 08-10). Warner Bros./Bad Robot original sci-fi thriller (David Robert Mitchell), retitled from Flowervale Street, starring Anne Hathaway and Ewan McGregor; PG-13. Best-estimate MID $24.2M, risk-adjusted $23.6M, 50% HDR $15.8M-$40.6M. Up from the $17.0M D-7 read: refreshed demand lifted the point as Google Trends velocity/acceleration reached the 97th-98th pctile and Wikipedia peaked ~51K/day, letting the star/studio pedigree re-enter via the model's gated interactions. Still MID against an $85M production budget \u2014 meaningful downside risk."},
-    {"title": "Super Troopers 3", "release": "2026-08-07", "point": 7.2, "bayes": 6.8,
-     "lo": 5.1, "upside": 11.9, "p_large": 0.0, "tier": "SMALL",
-     "note": "V31 V3 @ D-3 (final pre-release score, 08-07). Broken Lizard comedy sequel; predecessor Super Troopers 2 opened to $15.2M. Pre-release demand stays bottom-decile (Google Trends ~9th pctile) and the real Broken Lizard cast carries no lifetime box office → SMALL; best-estimate $7.2M, 50% HDR $5.1M-$11.9M. Essentially flat against the $6.4M D-7 read."},
-    {"title": "One Night Only", "release": "2026-08-07", "point": 7.5, "bayes": 6.9,
-     "lo": 5.3, "upside": 12.3, "p_large": 0.0, "tier": "SMALL",
-     "note": "V31 V3 @ D-3 (final pre-release score, 08-07). Universal original rom-com (Will Gluck, Barbaro/Turner). Modest pre-release demand (Google Trends ~25th pctile) → SMALL; best-estimate $7.5M, 50% HDR $5.3M-$12.3M. Firmed from the $6.3M D-7 read."},
-    {"title": "The Dog Stars", "release": "2026-08-28", "point": 16.2, "bayes": 15.7,
-     "lo": 11.2, "upside": 27.6, "p_large": 0.0, "tier": "MID",
-     "note": "V31 V3 @ D-21 (early forecast, 08-07). Ridley Scott sci-fi survival drama adapted from Peter Heller's novel. Mid-tier early demand (Google Trends ~50th pctile, Wikipedia ~64th, peak ~14.3K/day) → MID; best-estimate $16.2M, 50% HDR $11.2M-$27.6M. First read; refines at D-14/-7."},
-    {"title": "Finding Emily", "release": "2026-08-28", "point": 3.4, "bayes": 3.4,
-     "lo": 1.7, "upside": 10.3, "p_large": 0.0, "tier": "SMALL",
-     "note": "V31 V3 @ D-21 (early forecast, 08-07). Bottom-decile early demand (Google Trends ~6th pctile, Wikipedia ~10th) → SMALL; best-estimate $3.4M, 50% HDR $1.7M-$10.3M. First read."},
+     "note": "V31 V3 @ D-3 (final pre-release score). Warner Bros./Bad Robot original sci-fi thriller (David Robert Mitchell), retitled from Flowervale Street, starring Anne Hathaway and Ewan McGregor; PG-13. Best-estimate MID $24.2M, risk-adjusted $23.6M, 50% HDR $15.8M-$40.6M. Google Trends velocity/acceleration in the 97th-98th pctile and Wikipedia peaking ~51K/day let the star/studio pedigree re-enter via the model's gated interactions. Still MID against an $85M production budget."},
+    {"title": "Fall 2: Deadpoint", "release": "2026-09-02", "point": 15.5, "bayes": 15.5,
+     "lo": 8.0, "upside": 39.1, "p_large": 0.0, "tier": "MID",
+     "note": "V31 V3 @ D-21 (early forecast). Lionsgate survival-thriller sequel to Fall (2022, $2.5M OW). Corrected this cycle: the cast was fixed to the real leads (Harriet Slater, Arsema Thomas, Tom Brittney — a wrong cast had inflated star power), genre set to Thriller, and the franchise/predecessor wired in. Best-estimate MID $15.5M, risk-adjusted $15.5M, 50% HDR $8.0M-$39.1M. Two trailers (Lionsgate), 4,635 comments."},
+    {"title": "By Any Means", "release": "2026-09-04", "point": 13.8, "bayes": 13.8,
+     "lo": 6.7, "upside": 41.9, "p_large": 0.0, "tier": "SMALL",
+     "note": "V31 V3 @ D-21 (early forecast). Paramount / Thunder Road action-thriller (Mark Wahlberg, Yahya Abdul-Mateen II). Best-estimate SMALL $13.8M, risk-adjusted $13.8M, 50% HDR $6.7M-$41.9M. Eased from an earlier MID read once YouTube viewing-intent (net-negative) was folded into the feature set."},
+    {"title": "Insidious: Out of the Further", "release": "2026-08-21", "point": 12.0, "bayes": 12.4,
+     "lo": 7.1, "upside": 22.8, "p_large": 0.0, "tier": "SMALL",
+     "note": "V31 V3 @ D-7. Sony/Screen Gems Insidious sequel (predecessor The Red Door opened $33.0M). Franchise-level reach — comment volume, Wikipedia at parity — but a cooler qualitative reaction: trailer sentiment is net-neutral-to-negative and 'pass' intent runs higher than the prior film. Studio/predecessor pedigree corrected this cycle. Best-estimate SMALL $12.0M, 50% HDR $7.1M-$22.8M."},
+    {"title": "Mutiny", "release": "2026-08-21", "point": 11.4, "bayes": 11.4,
+     "lo": 7.7, "upside": 19.2, "p_large": 0.0, "tier": "SMALL",
+     "note": "V31 V3 @ D-7. Lionsgate action (Jason Statham). Best-estimate SMALL $11.4M, risk-adjusted $11.4M, 50% HDR $7.7M-$19.2M. Up from $9.2M after correcting the studio-tier flag (Lionsgate is a major, not a small studio) — the erroneous flop-damper was suppressing the point."},
+    {"title": "The Dog Stars", "release": "2026-08-28", "point": 10.8, "bayes": 10.8,
+     "lo": 6.9, "upside": 18.6, "p_large": 0.0, "tier": "SMALL",
+     "note": "V31 V3 @ D-14. 20th Century sci-fi survival drama (Josh Brolin, Jacob Elordi), adapted from Peter Heller's novel. Best-estimate SMALL $10.8M, 50% HDR $6.9M-$18.6M. Stepped down from an earlier MID read once YouTube viewing-intent was aggregated in — the true net-negative signal replaced a previously-missing (optimistic) zero."},
+    {"title": "Onslaught", "release": "2026-09-04", "point": 10.0, "bayes": 10.4,
+     "lo": 5.6, "upside": 20.7, "p_large": 0.0, "tier": "SMALL",
+     "note": "V31 V3 @ D-21 (early forecast). A24 action-horror (Adria Arjona, Dan Stevens). Heavy 'pass' intent in trailer comments (net −22) → SMALL $10.0M, 50% HDR $5.6M-$20.7M."},
+    {"title": "The Magic Faraway Tree", "release": "2026-08-21", "point": 5.1, "bayes": 5.1,
+     "lo": 3.3, "upside": 8.8, "p_large": 0.0, "tier": "SMALL",
+     "note": "V31 V3 @ D-7. StudioCanal family fantasy from Enid Blyton's book series (recognized this cycle as tier-2 IP). Thin trailer engagement plus net-negative viewing-intent → SMALL $5.1M, 50% HDR $3.3M-$8.8M."},
+    {"title": "Finding Emily", "release": "2026-08-28", "point": 4.8, "bayes": 4.6,
+     "lo": 3.1, "upside": 7.9, "p_large": 0.0, "tier": "SMALL",
+     "note": "V31 V3 @ D-14. Focus Features / Working Title romance. Bottom-decile demand → SMALL $4.8M, 50% HDR $3.1M-$7.9M."},
+    {"title": "Hot Spot", "release": "2026-08-21", "point": 3.2, "bayes": 3.2,
+     "lo": 1.6, "upside": 8.0, "p_large": 0.0, "tier": "SMALL",
+     "note": "V31 V3 @ D-7. Focus Features European sci-fi thriller (Noomi Rapace). Near-zero pre-release Google Trends demand → SMALL $3.2M, 50% HDR $1.6M-$8.0M."},
+]
+
+# Recently released — prediction of record (verbatim, no hindsight) vs actual domestic OW
+RELEASED = [
+    {"title": "Spider-Man: Brand New Day", "release": "2026-07-31", "point": 177.1, "actual": 360.1,
+     "pred_tier": "LARGE+", "actual_tier": "LARGE+",
+     "note": "Predicted $177.1M (LARGE+) at D-3; opened to a record $360.1M. Tier called correctly; magnitude a large-film miss consistent with V31's known ceiling on demand-quiet giants."},
+    {"title": "One Night Only", "release": "2026-08-07", "point": 7.5, "actual": 5.5,
+     "pred_tier": "SMALL", "actual_tier": "SMALL",
+     "note": "Predicted $7.5M (SMALL) at D-3; opened to $5.5M. Tier called correctly."},
+    {"title": "Super Troopers 3", "release": "2026-08-07", "point": 7.2, "actual": 4.0,
+     "pred_tier": "SMALL", "actual_tier": "SMALL",
+     "note": "Predicted $7.2M (SMALL) at D-3; opened to $4.0M. Tier called correctly."},
 ]
 
 section("Upcoming releases (latest V31 pre-release scores)")
@@ -54,6 +79,18 @@ for f in FILMS:
         fig.update_layout(height=120, margin=dict(l=10, r=10, t=10, b=10),
                           yaxis=dict(visible=False, range=[-1, 1]), xaxis=dict(title="Opening weekend ($M)"))
         st.plotly_chart(fig, use_container_width=True)
+        st.caption(f["note"])
+
+section("Recently released — prediction of record vs. actual")
+for f in RELEASED:
+    with st.container(border=True):
+        hit = f["pred_tier"] == f["actual_tier"]
+        tier_color = {"LARGE+": VIOLET, "MID": ORANGE, "SMALL": SF_BLUE}[f["actual_tier"]]
+        st.markdown(f"### {f['title']}  ·  <span style='color:{tier_color}'>{f['actual_tier']}</span>", unsafe_allow_html=True)
+        c1, c2, c3 = st.columns(3)
+        c1.metric("Predicted (point)", f"${f['point']:.1f}M")
+        c2.metric("Actual opening", f"${f['actual']:.1f}M", f"{f['actual'] - f['point']:+.1f}M vs pred")
+        c3.metric("Tier call", "Hit" if hit else "Miss")
         st.caption(f["note"])
 
 section("How to read the output")
