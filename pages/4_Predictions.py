@@ -13,9 +13,6 @@ page_header(
 
 # Live V30 scores (registered OW_PREDICTION_V30, demand-quality gate + Track B point + Track C upside, scored @ D-21)
 FILMS = [
-    {"title": "The End of Oak Street", "release": "2026-08-14", "point": 24.2, "bayes": 23.6,
-     "lo": 15.8, "upside": 40.6, "p_large": 0.0, "tier": "MID",
-     "note": "V31 V3 @ D-3 (final pre-release score). Warner Bros./Bad Robot original sci-fi thriller (David Robert Mitchell), retitled from Flowervale Street, starring Anne Hathaway and Ewan McGregor; PG-13. Best-estimate MID $24.2M, risk-adjusted $23.6M, 50% HDR $15.8M-$40.6M. Google Trends velocity/acceleration in the 97th-98th pctile and Wikipedia peaking ~51K/day let the star/studio pedigree re-enter via the model's gated interactions. Still MID against an $85M production budget."},
     {"title": "Fall 2: Deadpoint", "release": "2026-09-02", "point": 15.5, "bayes": 15.5,
      "lo": 8.0, "upside": 39.1, "p_large": 0.0, "tier": "MID",
      "note": "V31 V3 @ D-21 (early forecast). Lionsgate survival-thriller sequel to Fall (2022, $2.5M OW). Corrected this cycle: the cast was fixed to the real leads (Harriet Slater, Arsema Thomas, Tom Brittney — a wrong cast had inflated star power), genre set to Thriller, and the franchise/predecessor wired in. Best-estimate MID $15.5M, risk-adjusted $15.5M, 50% HDR $8.0M-$39.1M. Two trailers (Lionsgate), 4,635 comments."},
@@ -47,6 +44,9 @@ FILMS = [
 
 # Recently released — prediction of record (verbatim, no hindsight) vs actual domestic OW
 RELEASED = [
+    {"title": "The End of Oak Street", "release": "2026-08-14", "point": 24.2, "actual": 21.0,
+     "pred_tier": "MID", "actual_tier": "MID",
+     "note": "Predicted $24.2M (MID) at D-3 (the final pre-release score of record); opened to $21.0M (MID). Tier called correctly, abs error $3.2M — a clean MID call on a Warner Bros./Bad Robot original against an $85M budget."},
     {"title": "Spider-Man: Brand New Day", "release": "2026-07-31", "point": 177.1, "actual": 360.1,
      "pred_tier": "LARGE+", "actual_tier": "LARGE+",
      "note": "Predicted $177.1M (LARGE+) at D-3; opened to a record $360.1M. Tier called correctly; magnitude a large-film miss consistent with V31's known ceiling on demand-quiet giants."},
