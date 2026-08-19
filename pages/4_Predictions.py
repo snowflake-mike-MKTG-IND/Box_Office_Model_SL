@@ -13,47 +13,47 @@ page_header(
 
 # Live V30 scores (registered OW_PREDICTION_V30, demand-quality gate + Track B point + Track C upside, scored @ D-21)
 FILMS = [
-    {"title": "Fall 2: Deadpoint", "release": "2026-09-02", "scored": "2026-08-12", "point": 15.5, "bayes": 15.5,
+    {"title": "Fall 2: Deadpoint", "release": "2026-09-02", "point": 15.5, "bayes": 15.5,
      "lo": 8.0, "upside": 39.1, "p_large": 0.0, "tier": "MID",
      "note": "V31 V3 @ D-21 (early forecast). Lionsgate survival-thriller sequel to Fall (2022, $2.5M OW). Corrected this cycle: the cast was fixed to the real leads (Harriet Slater, Arsema Thomas, Tom Brittney — a wrong cast had inflated star power), genre set to Thriller, and the franchise/predecessor wired in. Best-estimate MID $15.5M, risk-adjusted $15.5M, 50% HDR $8.0M-$39.1M. Two trailers (Lionsgate), 4,635 comments."},
-    {"title": "By Any Means", "release": "2026-09-04", "scored": "2026-08-14", "point": 13.8, "bayes": 13.8,
+    {"title": "By Any Means", "release": "2026-09-04", "point": 13.8, "bayes": 13.8,
      "lo": 6.7, "upside": 41.9, "p_large": 0.0, "tier": "SMALL",
      "note": "V31 V3 @ D-21 (early forecast). Paramount / Thunder Road action-thriller (Mark Wahlberg, Yahya Abdul-Mateen II). Best-estimate SMALL $13.8M, risk-adjusted $13.8M, 50% HDR $6.7M-$41.9M. Eased from an earlier MID read once YouTube viewing-intent (net-negative) was folded into the feature set."},
-    {"title": "Insidious: Out of the Further", "release": "2026-08-21", "scored": "2026-08-18", "point": 12.9, "bayes": 13.4,
+    {"title": "Insidious: Out of the Further", "release": "2026-08-21", "point": 12.9, "bayes": 13.4,
      "lo": 7.5, "upside": 24.9, "p_large": 0.0, "tier": "SMALL",
      "note": "V31 V3 @ D-3 (final pre-release). Sony/Screen Gems Insidious sequel (predecessor The Red Door opened $33.0M). Trailer comments refreshed this cycle (5,610 scored, +1,087 new) — 'pass' intent eased to 5.3% from 6.3%, nudging the point up. Best-estimate SMALL $12.9M, risk-adjusted $13.4M, 50% HDR $7.5M-$24.9M."},
-    {"title": "Mutiny", "release": "2026-08-21", "scored": "2026-08-18", "point": 11.8, "bayes": 11.9,
+    {"title": "Mutiny", "release": "2026-08-21", "point": 11.8, "bayes": 11.9,
      "lo": 7.8, "upside": 20.1, "p_large": 0.0, "tier": "SMALL",
      "note": "V31 V3 @ D-3 (final pre-release). Lionsgate action (Jason Statham). Best-estimate SMALL $11.8M, risk-adjusted $11.9M, 50% HDR $7.8M-$20.1M."},
-    {"title": "The Dog Stars", "release": "2026-08-28", "scored": "2026-08-14", "point": 10.3, "bayes": 10.3,
+    {"title": "The Dog Stars", "release": "2026-08-28", "point": 10.3, "bayes": 10.3,
      "lo": 6.5, "upside": 18.0, "p_large": 0.0, "tier": "SMALL",
      "note": "V31 V3 @ D-14. 20th Century sci-fi survival drama (Josh Brolin, Jacob Elordi), adapted from Peter Heller's 2012 novel — now correctly credited as tier-2 book IP (the source row was missing, so it had been treated as an original). Best-estimate SMALL $10.3M, 50% HDR $6.5M-$18.0M. The D-21 read ($16.2M MID) was inflated by a transient early-hype trends spike (velocity/slope in the top percentiles) that mean-reverted by D-14; net-negative viewing-intent also weighs it down."},
-    {"title": "Onslaught", "release": "2026-09-04", "scored": "2026-08-14", "point": 10.0, "bayes": 10.4,
+    {"title": "Onslaught", "release": "2026-09-04", "point": 10.0, "bayes": 10.4,
      "lo": 5.6, "upside": 20.7, "p_large": 0.0, "tier": "SMALL",
      "note": "V31 V3 @ D-21 (early forecast). A24 action-horror (Adria Arjona, Dan Stevens). Heavy 'pass' intent in trailer comments (net −22) → SMALL $10.0M, 50% HDR $5.6M-$20.7M."},
-    {"title": "The Magic Faraway Tree", "release": "2026-08-21", "scored": "2026-08-18", "point": 5.9, "bayes": 5.0,
+    {"title": "The Magic Faraway Tree", "release": "2026-08-21", "point": 5.9, "bayes": 5.0,
      "lo": 4.1, "upside": 8.7, "p_large": 0.0, "tier": "SMALL",
      "note": "V31 V3 @ D-3 (final pre-release). StudioCanal family fantasy from Enid Blyton's book series (tier-2 IP). Thin trailer engagement plus net-negative viewing-intent → SMALL $5.9M, 50% HDR $4.1M-$8.7M."},
-    {"title": "Finding Emily", "release": "2026-08-28", "scored": "2026-08-14", "point": 4.8, "bayes": 4.6,
+    {"title": "Finding Emily", "release": "2026-08-28", "point": 4.8, "bayes": 4.6,
      "lo": 3.1, "upside": 7.9, "p_large": 0.0, "tier": "SMALL",
      "note": "V31 V3 @ D-14. Focus Features / Working Title romance. Bottom-decile demand → SMALL $4.8M, 50% HDR $3.1M-$7.9M."},
-    {"title": "Hot Spot", "release": "2026-08-21", "scored": "2026-08-18", "point": 4.5, "bayes": 4.7,
+    {"title": "Hot Spot", "release": "2026-08-21", "point": 4.5, "bayes": 4.7,
      "lo": 2.7, "upside": 9.1, "p_large": 0.0, "tier": "SMALL",
      "note": "V31 V3 @ D-3 (final pre-release). Focus Features European sci-fi thriller (Noomi Rapace). Near-zero pre-release Google Trends demand → SMALL $4.5M, 50% HDR $2.7M-$9.1M."},
 ]
 
 # Recently released — prediction of record (verbatim, no hindsight) vs actual domestic OW
 RELEASED = [
-    {"title": "The End of Oak Street", "release": "2026-08-14", "scored": "2026-08-11", "point": 24.2, "actual": 21.0,
+    {"title": "The End of Oak Street", "release": "2026-08-14", "point": 24.2, "actual": 21.0,
      "pred_tier": "MID", "actual_tier": "MID",
      "note": "Predicted $24.2M (MID) at D-3 (the final pre-release score of record); opened to $21.0M (MID). Tier called correctly, abs error $3.2M — a clean MID call on a Warner Bros./Bad Robot original against an $85M budget."},
-    {"title": "Spider-Man: Brand New Day", "release": "2026-07-31", "scored": "2026-07-28", "point": 177.1, "actual": 360.1,
+    {"title": "Spider-Man: Brand New Day", "release": "2026-07-31", "point": 177.1, "actual": 360.1,
      "pred_tier": "LARGE+", "actual_tier": "LARGE+",
      "note": "Predicted $177.1M (LARGE+) at D-3; opened to a record $360.1M. Tier called correctly; magnitude a large-film miss consistent with V31's known ceiling on demand-quiet giants."},
-    {"title": "One Night Only", "release": "2026-08-07", "scored": "2026-08-04", "point": 7.5, "actual": 5.5,
+    {"title": "One Night Only", "release": "2026-08-07", "point": 7.5, "actual": 5.5,
      "pred_tier": "SMALL", "actual_tier": "SMALL",
      "note": "Predicted $7.5M (SMALL) at D-3; opened to $5.5M. Tier called correctly."},
-    {"title": "Super Troopers 3", "release": "2026-08-07", "scored": "2026-08-04", "point": 7.2, "actual": 4.0,
+    {"title": "Super Troopers 3", "release": "2026-08-07", "point": 7.2, "actual": 4.0,
      "pred_tier": "SMALL", "actual_tier": "SMALL",
      "note": "Predicted $7.2M (SMALL) at D-3; opened to $4.0M. Tier called correctly."},
 ]
@@ -63,7 +63,6 @@ for f in FILMS:
     with st.container(border=True):
         tier_color = {"LARGE+": VIOLET, "MID": ORANGE, "SMALL": SF_BLUE}[f["tier"]]
         st.markdown(f"### {f['title']}  ·  <span style='color:{tier_color}'>{f['tier']}</span>", unsafe_allow_html=True)
-        st.caption(f"📅 Prediction last made **{f['scored']}**")
         c1, c2, c3, c4 = st.columns(4)
         c1.metric("Best-estimate point", f"${f['point']:.1f}M")
         c2.metric("Risk-adjusted (Bayes)", f"${f['bayes']:.1f}M")
@@ -88,7 +87,6 @@ for f in RELEASED:
         hit = f["pred_tier"] == f["actual_tier"]
         tier_color = {"LARGE+": VIOLET, "MID": ORANGE, "SMALL": SF_BLUE}[f["actual_tier"]]
         st.markdown(f"### {f['title']}  ·  <span style='color:{tier_color}'>{f['actual_tier']}</span>", unsafe_allow_html=True)
-        st.caption(f"📅 Prediction last made **{f['scored']}**")
         c1, c2, c3 = st.columns(3)
         c1.metric("Predicted (point)", f"${f['point']:.1f}M")
         c2.metric("Actual opening", f"${f['actual']:.1f}M", f"{f['actual'] - f['point']:+.1f}M vs pred")

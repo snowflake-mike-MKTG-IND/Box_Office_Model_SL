@@ -33,13 +33,6 @@ page_header(
     "Pedigree-gated distributional ensemble · CatBoost + Linear blend → 50% HDR / HDR50 / Bayes-risk points · demand-forward ≥$50M flag · Snowflake Model Registry",
 )
 
-st.info(
-    "**🗓️ When we predict.** Predictions are made 3 weeks before opening, posted Friday and updated weekly, "
-    "with week-of-opening predictions made the Tuesday before release. Each prediction is stamped with the date "
-    "it was last made.",
-    icon="🗓️",
-)
-
 # -- Cortex Code velocity hero ----------------------------------------------
 st.markdown(
     f"""
