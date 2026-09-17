@@ -13,19 +13,31 @@ page_header(
 
 # Live V30 scores (registered OW_PREDICTION_V30, demand-quality gate + Track B point + Track C upside, scored @ D-21)
 FILMS = [
-    {"title": "Practical Magic 2", "release": "2026-09-11", "point": 26.7, "bayes": 27.0,
-     "lo": 15.1, "upside": 53.7, "p_large": 0.0, "tier": "MID",
-     "note": "V31 V4 @ D-3. Warner Bros. legacy sequel (predecessor Practical Magic 1998, $13.1M OW). Novel IP (tier-2). Sandra Bullock + Nicole Kidman returning. GT demand steady at 30-42nd percentile across horizons, Wikipedia 54-66th. Best-estimate MID $26.7M, risk-adjusted $27.0M, 50% HDR $15.1M-$53.7M."},
-    {"title": "Resident Evil", "release": "2026-09-18", "point": 21.1, "bayes": 21.4,
-     "lo": 13.2, "upside": 39.4, "p_large": 0.04, "tier": "MID",
-     "note": "V31 V4 @ D-14. Sony/Constantin reboot of the video game franchise (tier-3 IP, $80M budget). No predecessor OW (reboot). 35,750 trailer comments (high engagement) but net-negative viewing-intent (-7.8%). Corrected demand features reduced from V3's inflated $30.9M. Best-estimate MID $21.1M, risk-adjusted $21.4M, 50% HDR $13.2M-$39.4M."},
-    {"title": "Heart of the Beast", "release": "2026-09-25", "point": 10.5, "bayes": 10.7,
-     "lo": 7.3, "upside": 16.4, "p_large": 0.0, "tier": "SMALL",
-     "note": "V31 V4 @ D-21. Paramount action-adventure (Brad Pitt). Early-horizon call — 5th percentile GT demand, 38th percentile Wikipedia. Best-estimate SMALL $10.5M, risk-adjusted $10.7M, 50% HDR $7.3M-$16.4M."},
+    {"title": "Resident Evil", "release": "2026-09-18", "point": 28.5, "bayes": 28.4,
+     "lo": 19.4, "upside": 48.0, "p_large": 0.0, "tier": "MID",
+     "note": "V31 @ D-3. Sony/Constantin reboot of the video game franchise (tier-3 IP, $80M budget). 36,156 trailer comments with net-negative viewing-intent (-7.9%). GT demand rose into release week. Best-estimate MID $28.5M, risk-adjusted $28.4M, 50% HDR $19.4M-$48.0M."},
+    {"title": "Digger", "release": "2026-10-02", "point": 18.5, "bayes": 17.7,
+     "lo": 12.8, "upside": 30.9, "p_large": 0.0, "tier": "MID",
+     "note": "V31 @ D-21. Warner Bros./Legendary black comedy ($125M budget, R). Early-horizon call — strong Wikipedia peak (31,797) but moderate GT. 6,724 trailer comments with positive net intent (+1.2%). Best-estimate MID $18.5M, risk-adjusted $17.7M, 50% HDR $12.8M-$30.9M."},
+    {"title": "Other Mommy", "release": "2026-10-09", "point": 14.9, "bayes": 15.1,
+     "lo": 8.6, "upside": 29.5, "p_large": 0.0, "tier": "SMALL",
+     "note": "V31 @ D-21. Blumhouse/Universal horror (Jessica Chastain, $20M budget est., R). Novel adaptation (Josh Malerman). 5,704 trailer comments. Best-estimate SMALL $14.9M, risk-adjusted $15.1M, 50% HDR $8.6M-$29.5M."},
+    {"title": "Verity", "release": "2026-10-02", "point": 14.2, "bayes": 14.4,
+     "lo": 8.8, "upside": 25.4, "p_large": 0.0, "tier": "SMALL",
+     "note": "V31 @ D-21. Amazon MGM Studios thriller (Colleen Hoover novel, $40M budget, R). 1,983 trailer comments. GT demand at 100th percentile (entity-crush likely inflating raw). Best-estimate SMALL $14.2M, risk-adjusted $14.4M, 50% HDR $8.8M-$25.4M."},
+    {"title": "The Social Reckoning", "release": "2026-10-09", "point": 10.1, "bayes": 9.5,
+     "lo": 7.1, "upside": 16.6, "p_large": 0.0, "tier": "SMALL",
+     "note": "V31 @ D-21. Sony drama-thriller (Aaron Sorkin, sequel to The Social Network, $40M budget, R). 2,307 trailer comments. Predecessor OW $22.4M. Best-estimate SMALL $10.1M, risk-adjusted $9.5M, 50% HDR $7.1M-$16.6M."},
+    {"title": "Heart of the Beast", "release": "2026-09-25", "point": 9.6, "bayes": 9.9,
+     "lo": 5.9, "upside": 17.1, "p_large": 0.0, "tier": "SMALL",
+     "note": "V31 @ D-14. Paramount survival thriller (Brad Pitt, $140M budget, PG-13). Original IP. Demand softened from D-21 ($10.5M) to D-14 ($9.6M) — GT and Wikipedia both below 30th percentile. Best-estimate SMALL $9.6M, risk-adjusted $9.9M, 50% HDR $5.9M-$17.1M."},
 ]
 
 # Recently released — prediction of record (verbatim, no hindsight) vs actual domestic OW
 RELEASED = [
+    {"title": "Practical Magic 2", "release": "2026-09-11", "point": 26.7, "actual": 30.0,
+     "pred_tier": "MID", "actual_tier": "MID",
+     "note": "Predicted $26.7M (MID) at D-3; opened to $30.0M (MID) on 4,146 screens. Tier called correctly, abs error $3.3M."},
     {"title": "By Any Means", "release": "2026-09-04", "point": 11.8, "actual": 7.5,
      "pred_tier": "SMALL", "actual_tier": "SMALL",
      "note": "Predicted $11.8M (SMALL) at D-3; opened to $7.5M (SMALL) on 2,903 screens. Tier called correctly, abs error $4.2M."},
