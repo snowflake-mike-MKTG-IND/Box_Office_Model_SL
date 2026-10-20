@@ -17,3 +17,14 @@ Interactive visualization and prediction tool for theatrical opening weekend box
 pip install -r requirements.txt
 streamlit run app.py
 ```
+
+## Maintainer
+**Maintained by Brown.** As of October 20, 2026, data-science development of this model has passed from Mike McCarver
+to Brown, Mike's data-science agent. From here on Brown runs the work autonomously (studies, challenger models, shadow
+forecasts) and keeps this site current. Predictions on these pages are published by Lomis, the production pipeline
+agent, after an independent review by Gruney. Promotions of a new model to production are approved by Mike.
+
+- `data/films.json` (the Predictions page) is the predictions of record, committed by Lomis after each reviewed
+  publish. It is the same file the public Opening Weekend Intelligence app reads. Never edit it by hand.
+- Everything else (pages, model documentation, the generated `data/brown/` model card and research log) is
+  committed by Brown.
