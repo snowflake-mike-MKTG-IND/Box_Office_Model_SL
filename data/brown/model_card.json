@@ -1,0 +1,539 @@
+{
+ "generated_at": "2026-10-23T22:01:30",
+ "model": "OW_PREDICTION_V31",
+ "production_version": "V7",
+ "versions": [
+  {
+   "version": "V1",
+   "default": false,
+   "created": "2026-07-16",
+   "comment": "V31 = V30 architecture (PG3 gated + Q demand-quality + demand-forward >=50M flag + triple output + Track B q0.55 / Track C P78) PLUS two regressor features: IS_SMALL_STUDIO (studio-tier flop-damper from PRODUCTION.STUDIOS) + LOG_YT_PER_TRAILER (comments-per-trailer volume normalization). Full-architecture A/B on current data: 8-block aLoss 0.506->0.488, 2026 holdout 0.549->0.517, MAPE+<60M better both splits."
+  },
+  {
+   "version": "V2",
+   "default": false,
+   "created": "2026-07-16",
+   "comment": "V31 V2 = V31 V1 (V30 arch + IS_SMALL_STUDIO + LOG_YT_PER_TRAILER) plus RIGHT-TAIL CAP at $296M (max dataset OW $211.4M x1.4). Caps the P78 upside/HDR artifact on extreme-variance tentpoles (Spider-Man upside was $1.1B, impossible for a US opening weekend)."
+  },
+  {
+   "version": "V3",
+   "default": false,
+   "created": "2026-07-24",
+   "comment": "V31 V3 = V31 V2 arch (V30 + IS_SMALL_STUDIO + LOG_YT_PER_TRAILER + $296M right-tail cap) RETRAINED 2026-07-24 on corrected data: added Spider-Verse/Transformers One/Strays; re-fetched Wikipedia for 13 window-desynced/mis-keyed films (Oppenheimer, Spider-Verse, The Marvels, etc.); corrected Fast X GT entity. 8-block temporal: aLoss 0.491, MAPE 35.1%, flop-over 10% (down from 14%)."
+  },
+  {
+   "version": "V4",
+   "default": false,
+   "created": "2026-09-09",
+   "comment": "V31 V4 = same architecture as V3 but retrained on CORRECTED SCALED_INTEREST data (COALESCE bug fixed 2026-09-09, 67 movies had 2-5x inflated GT features). 258 films, 1032 rows thru 2026-08-28. OW_CAP=$504M (Spider-Man $360M * 1.4). 8-block temporal: aLoss 0.512, MAPE 36.5%, flop-over 12% (improved from V3: 0.586/37.5%/14%)."
+  },
+  {
+   "version": "V5",
+   "default": false,
+   "created": "2026-10-14",
+   "comment": "V31 V5 = V3 architecture RETRAINED 2026-10-14 on snowflake-decision intent labels (all 3.7M comments relabeled with PRODUCTION.CLASSIFY_COMMENT_INTENT_DECISION; PASS 7.05%->3.25%, THEA 2.05%->1.74%). Same recipe as V3 (finalize_v31_v5_decision.py, deterministic ORDER BY), full data thru Oct-2026, OW_CAP $504M (Spider-Man BND $360.1M x1.4). 8-block temporal on 132 held-out films, HDR50: aLoss r2 0.543, MAPE 38.4%, med APE 28.4%, flop-over 13%, flag recall 59%/prec 89%. Paired vs same recipe on old labels: MAPE diff -0.1pt (95% CI -3.1/+2.3), aLoss +0.014 (CI -0.013/+0.038) = statistical tie; >=60M films lean old labels (+1.6pt, CI -0.4/+3.6)."
+  },
+  {
+   "version": "V6",
+   "default": false,
+   "created": "2026-10-16",
+   "comment": "V31 V6 = exact V5 recipe (finalize_v31_v6_studiofix.py), only change: IS_SMALL_STUDIO from THEATRICAL_STAGING.MOVIE_STUDIO_TIER_V2, rebuilt 2026-10-16 from each film's US distributor (The-Numbers + web-verified; MAJOR = Sony/Universal/Disney/WB/Paramount/20th Century/Lionsgate/Amazon MGM). 58 of 312 trained films changed side (56 to MAJOR, mostly Lionsgate and production-company mislabels). 8-block temporal 132 films, same-day: V6 HDR50 MAPE 38.6% aLoss r2 0.533 vs V5 rerun 38.1% / 0.532; paired aLoss +0.001 CI [-0.027,+0.030] = statistical tie. Scoring V6 requires the V2 tier table."
+  },
+  {
+   "version": "V7",
+   "default": true,
+   "created": "2026-10-18",
+   "comment": "V31 V7 = exact V5 recipe (finalize_v31_v7_corrected.py; MOVIE_STUDIO_TIER v1 like V5) retrained 2026-10-17 on corrected data, 267 films: stitched showtimes baseline (joint fit of overlapping Trends windows); REL_DAY repaired for 26 films whose Trends windows were labeled with the wrong release-relative day (Weapons, M3GAN, Spider-Verse, Oppenheimer, Wicked 2...); 12 Wikipedia re-keys + 2 re-windowed; 6 Trends re-pulls; 2 box-office gap fills (You Me & Tuscany, The Uprising). 8-block temporal (134 films): HDR50 MAPE 39.0% med 24.6% aLoss r2 0.524, BAYES aLoss 0.507, flag recall 69% prec 77%. Paired on the same 132 films vs V5 replayed on its exact training snapshot LOMIS_ASOF_20261014 (reproduces V5 38.4%/0.543): aLoss -0.021 CI [-0.057,+0.019] (77 better/55 worse); vs V5 as deployed on corrected features: aLoss -0.019 CI [-0.038,-0.000]. GroupKFold random CV 264 films: aLoss 0.506 -> 0.486."
+  }
+ ],
+ "backtest": {
+  "version": "V7",
+  "by_horizon": [
+   {
+    "HORIZON": 21,
+    "FILMS": 133,
+    "MEDIAN_APE_PCT": 30.0,
+    "IN_RANGE_PCT": 61.7,
+    "TIER_HIT_PCT": 71.4
+   },
+   {
+    "HORIZON": 14,
+    "FILMS": 133,
+    "MEDIAN_APE_PCT": 26.0,
+    "IN_RANGE_PCT": 65.4,
+    "TIER_HIT_PCT": 78.2
+   },
+   {
+    "HORIZON": 7,
+    "FILMS": 134,
+    "MEDIAN_APE_PCT": 24.9,
+    "IN_RANGE_PCT": 65.7,
+    "TIER_HIT_PCT": 76.1
+   },
+   {
+    "HORIZON": 3,
+    "FILMS": 134,
+    "MEDIAN_APE_PCT": 25.7,
+    "IN_RANGE_PCT": 65.7,
+    "TIER_HIT_PCT": 76.9
+   }
+  ],
+  "note": "out-of-fold backtest of the production version, per horizon (days before opening)"
+ },
+ "live": {
+  "last_180_days": {
+   "FILMS": 19,
+   "MEDIAN_APE_PCT": 52.2,
+   "IN_RANGE_PCT": 47.4,
+   "TIER_HIT_PCT": 63.2,
+   "SINCE": "2026-07-17",
+   "THROUGH": "2026-10-16"
+  },
+  "recent": [
+   {
+    "FILM": "Street Fighter",
+    "RELEASE_DATE": "2026-10-16",
+    "RECORD": "V31v5@D3",
+    "PRED_M": 55.7,
+    "ACTUAL_M": 30.8,
+    "ABS_ERR_PCT": 81.0,
+    "IN_RANGE": true
+   },
+   {
+    "FILM": "Whalefall",
+    "RELEASE_DATE": "2026-10-16",
+    "RECORD": "V31v5@D3",
+    "PRED_M": 11.8,
+    "ACTUAL_M": 7.8,
+    "ABS_ERR_PCT": 50.0,
+    "IN_RANGE": true
+   },
+   {
+    "FILM": "Sense and Sensibility",
+    "RELEASE_DATE": "2026-10-16",
+    "RECORD": "V31v5@D3",
+    "PRED_M": 8.8,
+    "ACTUAL_M": 7.2,
+    "ABS_ERR_PCT": 22.0,
+    "IN_RANGE": true
+   },
+   {
+    "FILM": "Other Mommy",
+    "RELEASE_DATE": "2026-10-09",
+    "RECORD": "V31@D21",
+    "PRED_M": 14.9,
+    "ACTUAL_M": 27.8,
+    "ABS_ERR_PCT": 47.0,
+    "IN_RANGE": true
+   },
+   {
+    "FILM": "The Social Reckoning",
+    "RELEASE_DATE": "2026-10-09",
+    "RECORD": "V31@D21",
+    "PRED_M": 10.1,
+    "ACTUAL_M": 5,
+    "ABS_ERR_PCT": 100.0,
+    "IN_RANGE": false
+   },
+   {
+    "FILM": "Digger",
+    "RELEASE_DATE": "2026-10-02",
+    "RECORD": "V31@D21",
+    "PRED_M": 18.5,
+    "ACTUAL_M": 8,
+    "ABS_ERR_PCT": 131.0,
+    "IN_RANGE": false
+   },
+   {
+    "FILM": "Verity",
+    "RELEASE_DATE": "2026-10-02",
+    "RECORD": "V31@D21",
+    "PRED_M": 14.2,
+    "ACTUAL_M": 32,
+    "ABS_ERR_PCT": 56.0,
+    "IN_RANGE": false
+   },
+   {
+    "FILM": "Heart of the Beast",
+    "RELEASE_DATE": "2026-09-25",
+    "RECORD": "V31@D14",
+    "PRED_M": 9.6,
+    "ACTUAL_M": 20,
+    "ABS_ERR_PCT": 52.0,
+    "IN_RANGE": false
+   },
+   {
+    "FILM": "Resident Evil",
+    "RELEASE_DATE": "2026-09-18",
+    "RECORD": "V31@D3",
+    "PRED_M": 28.5,
+    "ACTUAL_M": 60.2,
+    "ABS_ERR_PCT": 53.0,
+    "IN_RANGE": false
+   },
+   {
+    "FILM": "Practical Magic 2",
+    "RELEASE_DATE": "2026-09-11",
+    "RECORD": "V31V4@D3",
+    "PRED_M": 26.7,
+    "ACTUAL_M": 30,
+    "ABS_ERR_PCT": 11.0,
+    "IN_RANGE": true
+   },
+   {
+    "FILM": "By Any Means",
+    "RELEASE_DATE": "2026-09-04",
+    "RECORD": "V31@D3",
+    "PRED_M": 11.7,
+    "ACTUAL_M": 7.5,
+    "ABS_ERR_PCT": 56.0,
+    "IN_RANGE": true
+   },
+   {
+    "FILM": "The Dog Stars",
+    "RELEASE_DATE": "2026-08-28",
+    "RECORD": "V31@D3",
+    "PRED_M": 13.8,
+    "ACTUAL_M": 7.7,
+    "ABS_ERR_PCT": 79.0,
+    "IN_RANGE": false
+   },
+   {
+    "FILM": "Mutiny",
+    "RELEASE_DATE": "2026-08-21",
+    "RECORD": "V31@D3",
+    "PRED_M": 11.8,
+    "ACTUAL_M": 7.5,
+    "ABS_ERR_PCT": 57.0,
+    "IN_RANGE": false
+   },
+   {
+    "FILM": "Insidious Out Of The Further",
+    "RELEASE_DATE": "2026-08-21",
+    "RECORD": "V31@D3",
+    "PRED_M": 12.9,
+    "ACTUAL_M": 25.1,
+    "ABS_ERR_PCT": 49.0,
+    "IN_RANGE": false
+   },
+   {
+    "FILM": "The End of Oak Street",
+    "RELEASE_DATE": "2026-08-14",
+    "RECORD": "V31@D3",
+    "PRED_M": 24.2,
+    "ACTUAL_M": 21,
+    "ABS_ERR_PCT": 15.0,
+    "IN_RANGE": true
+   },
+   {
+    "FILM": "Super Troopers 3",
+    "RELEASE_DATE": "2026-08-07",
+    "RECORD": "V31@D7",
+    "PRED_M": 6.4,
+    "ACTUAL_M": 4,
+    "ABS_ERR_PCT": 59.0,
+    "IN_RANGE": false
+   },
+   {
+    "FILM": "One Night Only",
+    "RELEASE_DATE": "2026-08-07",
+    "RECORD": "V31@D7",
+    "PRED_M": 6.3,
+    "ACTUAL_M": 5.5,
+    "ABS_ERR_PCT": 15.0,
+    "IN_RANGE": true
+   },
+   {
+    "FILM": "Spider-Man: Brand New Day",
+    "RELEASE_DATE": "2026-07-31",
+    "RECORD": "V31@D3",
+    "PRED_M": 177.1,
+    "ACTUAL_M": 360.1,
+    "ABS_ERR_PCT": 51.0,
+    "IN_RANGE": false
+   },
+   {
+    "FILM": "THE ODYSSEY",
+    "RELEASE_DATE": "2026-07-17",
+    "RECORD": "V31@D21",
+    "PRED_M": 101.9,
+    "ACTUAL_M": 123.5,
+    "ABS_ERR_PCT": 17.0,
+    "IN_RANGE": true
+   }
+  ],
+  "note": "graded predictions of record (closest horizon before release) against opening weekends"
+ },
+ "benchmarks": [
+  {
+   "BENCH": "escapes",
+   "METRIC": "escapes_30d",
+   "SCOPE": "30d",
+   "VALUE": 0.0,
+   "TARGET": "<= 0 green, >= 1 red",
+   "STATUS": "GREEN",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "escapes",
+   "METRIC": "prediction_escapes_30d",
+   "SCOPE": "30d",
+   "VALUE": 0.0,
+   "TARGET": "<= 0 green, >= 1 red",
+   "STATUS": "GREEN",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "attribution",
+   "SCOPE": "all",
+   "VALUE": null,
+   "TARGET": "",
+   "STATUS": "NO DATA",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "beats_naive",
+   "SCOPE": "all",
+   "VALUE": 0.13657982264445656,
+   "TARGET": "model median APE below naive",
+   "STATUS": "GREEN",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "beats_tracking_rate",
+   "SCOPE": "d3",
+   "VALUE": null,
+   "TARGET": "",
+   "STATUS": "NO DATA",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "bias_log",
+   "SCOPE": "d7",
+   "VALUE": 0.29981659051880166,
+   "TARGET": "|bias| < 0.25",
+   "STATUS": "INFO",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "bias_log",
+   "SCOPE": "d14",
+   "VALUE": -0.7382395133728573,
+   "TARGET": "|bias| < 0.25",
+   "STATUS": "INFO",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "bias_log",
+   "SCOPE": "d21",
+   "VALUE": -0.19224015045664147,
+   "TARGET": "|bias| < 0.25",
+   "STATUS": "INFO",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "bias_log",
+   "SCOPE": "d3",
+   "VALUE": 0.2024206912051098,
+   "TARGET": "|bias| < 0.25",
+   "STATUS": "INFO",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "bias_log",
+   "SCOPE": "all",
+   "VALUE": 0.14089149177627328,
+   "TARGET": "|bias| < 0.25",
+   "STATUS": "INFO",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "coverage",
+   "SCOPE": "d14",
+   "VALUE": 0.0,
+   "TARGET": "backtest V5 expects 70%",
+   "STATUS": "INSUFFICIENT",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "coverage",
+   "SCOPE": "d21",
+   "VALUE": 0.4,
+   "TARGET": "backtest V5 expects 65%",
+   "STATUS": "INSUFFICIENT",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "coverage",
+   "SCOPE": "d3",
+   "VALUE": 0.5454545454545454,
+   "TARGET": "backtest V5 expects 70%",
+   "STATUS": "GREEN",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "coverage",
+   "SCOPE": "d7",
+   "VALUE": 0.5,
+   "TARGET": "backtest V5 expects 70%",
+   "STATUS": "INSUFFICIENT",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "coverage",
+   "SCOPE": "all",
+   "VALUE": 0.47368421052631576,
+   "TARGET": "backtest V5 expects 69%",
+   "STATUS": "RED",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "median_ape",
+   "SCOPE": "d3",
+   "VALUE": 0.5081209480659401,
+   "TARGET": "backtest V5 band p05-p95",
+   "STATUS": "RED",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "median_ape",
+   "SCOPE": "d7",
+   "VALUE": 0.36740640281301296,
+   "TARGET": "backtest V5 band p05-p95",
+   "STATUS": "INSUFFICIENT",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "median_ape",
+   "SCOPE": "d14",
+   "VALUE": 0.522045392014277,
+   "TARGET": "backtest V5 band p05-p95",
+   "STATUS": "INSUFFICIENT",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "median_ape",
+   "SCOPE": "all",
+   "VALUE": 0.522045392014277,
+   "TARGET": "backtest V5 band p05-p95",
+   "STATUS": "RED",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "median_ape",
+   "SCOPE": "d21",
+   "VALUE": 0.5551186351473525,
+   "TARGET": "backtest V5 band p05-p95",
+   "STATUS": "INSUFFICIENT",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "kat",
+   "METRIC": "boxoffice",
+   "SCOPE": "all",
+   "VALUE": 1.0,
+   "TARGET": "known answer reproduced",
+   "STATUS": "FAIL",
+   "RUN_AT": "2026-10-18T15:20:17.521000"
+  },
+  {
+   "BENCH": "kat",
+   "METRIC": "failing",
+   "SCOPE": "all",
+   "VALUE": 2.0,
+   "TARGET": "<= 0 green, >= 1 red",
+   "STATUS": "RED",
+   "RUN_AT": "2026-10-18T15:20:17.521000"
+  },
+  {
+   "BENCH": "kat",
+   "METRIC": "invariants",
+   "SCOPE": "all",
+   "VALUE": 0.0,
+   "TARGET": "known answer reproduced",
+   "STATUS": "PASS",
+   "RUN_AT": "2026-10-18T15:20:17.521000"
+  },
+  {
+   "BENCH": "kat",
+   "METRIC": "replay",
+   "SCOPE": "all",
+   "VALUE": 0.0,
+   "TARGET": "known answer reproduced",
+   "STATUS": "PASS",
+   "RUN_AT": "2026-10-18T15:20:17.521000"
+  },
+  {
+   "BENCH": "kat",
+   "METRIC": "tmdb",
+   "SCOPE": "all",
+   "VALUE": 0.0,
+   "TARGET": "known answer reproduced",
+   "STATUS": "PASS",
+   "RUN_AT": "2026-10-18T15:20:17.521000"
+  },
+  {
+   "BENCH": "kat",
+   "METRIC": "trends",
+   "SCOPE": "all",
+   "VALUE": 0.0,
+   "TARGET": "known answer reproduced",
+   "STATUS": "PASS",
+   "RUN_AT": "2026-10-18T15:20:17.521000"
+  },
+  {
+   "BENCH": "kat",
+   "METRIC": "wiki",
+   "SCOPE": "all",
+   "VALUE": 1.0,
+   "TARGET": "known answer reproduced",
+   "STATUS": "FAIL",
+   "RUN_AT": "2026-10-18T15:20:17.521000"
+  },
+  {
+   "BENCH": "lessons",
+   "METRIC": "misses_without_lesson_7d",
+   "SCOPE": "open",
+   "VALUE": 0.0,
+   "TARGET": "<= 0 green, >= 1 red",
+   "STATUS": "GREEN",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "reviews",
+   "METRIC": "gruney_evidence_rate",
+   "SCOPE": "30d",
+   "VALUE": 1.0,
+   "TARGET": ">= 0.9 green, < 0.7 red",
+   "STATUS": "GREEN",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  },
+  {
+   "BENCH": "reviews",
+   "METRIC": "gruney_evidence_rate_before_rule",
+   "SCOPE": "30d",
+   "VALUE": 0.0,
+   "TARGET": "before 2026-10-19: checks named, not cited",
+   "STATUS": "INFO",
+   "RUN_AT": "2026-10-20T11:32:41.898000"
+  }
+ ]
+}

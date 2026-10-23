@@ -1,0 +1,34 @@
+{
+ "generated_at": "2026-10-23T22:01:31",
+ "studies": [
+  {
+   "STUDY_ID": "S-1021-da811c",
+   "TITLE": "IP framework v1 relabel (Mike-approved candidate 2026-10-21)",
+   "HYPOTHESIS": "Relabeling KNOWN_IP_TIER by the written framework (brand-strength 0-3, Mike's spin-off and public-domain rules) and filling missing page-verified predecessors lowers V7-recipe aLoss(r=2) on the temporal holdout versus V7 retrained same-day on current labels.",
+   "PRIMARY_METRIC": "aLoss r=2, paired film bootstrap on the temporal holdout (latest-per-film and d-21/14/7/3), MAPE and median APE secondary; per-IP-tier error before/after",
+   "DECISION_RULE": "Adopt-candidate only if paired aLoss diff 95% CI excludes 0 in favour of the arm on latest-per-film AND no horizon or size subgroup (<60M/>=60M) worsens with CI excluding 0; Holm across 2 arms. Otherwise tie/reject. Holdout reused, so any win is provisional pending shadow.",
+   "HORIZONS": "21,14,7,3",
+   "STATUS": "CLOSED",
+   "OUTCOME": "no-change",
+   "RESULT": "Tie. Same-day V7 recipe, 135 holdout films, latest per film: aLoss BASE 0.532; A (tiers) 0.517, diff -0.015 [95% CI -0.038, +0.007], Holm p 0.18; B (tiers + 2 verified predecessors) 0.513, diff -0.019 [-0.042, +0.002], Holm p 0.16. No horizon/subgroup better; A worse for >=60M at d-21 (+0.050 [+0.003, +0.099]) and d-14 (+0.054 [+0.009, +0.101]). The model sees IP only via PCTILE_X_IP_HIGH and PCTILE_X_PREDOW, so relabeling moves little. Labels are cleaner (tier-3 OW range 23-360M vs 5.8-360M) but 43 overrides were set with outcomes visible, so the backtest is optimistic. Recommend: adopt labels as data hygiene only after Mike reviews changes and Lomis page-verifies 17 suspect predecessors; no model change.",
+   "OPENED_AT": "2026-10-21T15:37:36.858000",
+   "CLOSED_AT": "2026-10-21T15:46:17.903000"
+  },
+  {
+   "STUDY_ID": "S-1019-b7b4ca",
+   "TITLE": "Live vs backtest accuracy gap (graded films)",
+   "HYPOTHESIS": "The live gap (median APE 52%, coverage 6/16) is explained mainly by input defects fixed in V7 and horizon/size mix plus sampling noise, not by model error beyond the backtest distribution",
+   "PRIMARY_METRIC": "coverage of published range; median APE; aLoss r=2 (primary); mean MAPE separately; log bias",
+   "DECISION_RULE": "Input-defect explanation holds if V5_CORR restores coverage to within the binomial 95% CI of the mix-matched backtest coverage; intervals miscalibrated if V7_CORR coverage is below the mix-matched backtest coverage at p<0.05; otherwise inconclusive at n=16, re-check at n>=30",
+   "HORIZONS": "21,14,7,3",
+   "STATUS": "CLOSED",
+   "OUTCOME": "inconclusive",
+   "RESULT": "Live REC coverage 7/16 (95% CI 20-70%) vs mix-matched backtest 63.5%, p=0.12; median APE 52% at 99th pctile of BT. Pre-registered V5_CORR 11/16 and V7_CORR 14/16 are in-sample (14/16 and 16/16 films in training), so the rule cannot be applied. Unregistered out-of-fold arm on corrected inputs: 6/16 (CI 15-65%), p=0.038 below BT; OOF-REC aLoss -0.06 [-0.28,+0.14] tie. n=16 of 19 graded.",
+   "OPENED_AT": "2026-10-19T14:26:42.486000",
+   "CLOSED_AT": "2026-10-22T09:06:38.903000"
+  }
+ ],
+ "challengers": [],
+ "shadow": [],
+ "note": "Brown's pre-registered studies, challenger models and shadow forecasts (no inputs or evidence files)"
+}
