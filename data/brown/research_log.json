@@ -1,6 +1,19 @@
 {
- "generated_at": "2026-10-23T22:01:31",
+ "generated_at": "2026-10-30T22:01:08",
  "studies": [
+  {
+   "STUDY_ID": "S-1029-9744f2",
+   "TITLE": "Interval calibration of the published range (past-only conformal)",
+   "HYPOTHESIS": "The backtest coverage of the published range is optimistic because its residual bank includes each film's own and later residuals; a past-only bank lowers coverage below 68%, and past-only split conformal on log residuals (pooled C1 or Mondrian by horizon C2) restores latest-per-film coverage to a 95% CI containing 68% without worsening log interval score",
+   "PRIMARY_METRIC": "Primary: range coverage latest-per-film and per horizon (target 68%); secondary: log interval score, width, aLoss r=2 of the point, under/over 60M; paired film bootstrap 10000, Holm across C1,C2 vs P0",
+   "DECISION_RULE": "Optimism confirmed if P0 miss minus BASE miss CI excludes 0 (latest). Shadow-candidate for the C arm whose latest coverage 95% CI contains 68% while P0's lies below 68%, with iscore vs P0 not worse (CI spans 0 or below) and no horizon/size subgroup iscore worse with CI excluding 0; prefer C1 if both. Else no-change if P0 already ~68%, otherwise inconclusive",
+   "HORIZONS": "21,14,7,3",
+   "STATUS": "CLOSED",
+   "OUTCOME": "inconclusive",
+   "RESULT": "Optimism confirmed; no calibration arm qualifies. 101 films (temporal blocks 3-8), latest per film. Coverage of published range: BASE (pooled bank, as backtest) 66.3% [57.4,75.2]; P0 (past-only bank, as live) 57.4% [47.5,67.3]; P0 miss minus BASE +0.089 [95% CI +0.040,+0.149], worse at every horizon; aLoss and iscore tie. C1 past-only split conformal 56.4% [46.5,66.3]; C2 Mondrian by horizon 54.5% [44.6,64.4]: neither CI contains 68%, so rule 2 fails. Past-only q16/q84 under-cover => errors grow over time (non-exchangeable). Conformal iscore worse <60M (C1 +0.245 [+0.135,+0.350], n=82) and better >=60M (-0.452 [-0.842,-0.068], n=19): error scale depends on size. Point aLoss unchanged by construction. Same-day V7 recipe: 135 films (registered 134), MAPE 0.393, aLoss 0.524, within tolerance; reproduces() False on film count only. Next: adaptive/recency-weighted conformal, Mondrian by predicted size tier.",
+   "OPENED_AT": "2026-10-29T09:03:23.183000",
+   "CLOSED_AT": "2026-10-29T09:06:24.544000"
+  },
   {
    "STUDY_ID": "S-1021-da811c",
    "TITLE": "IP framework v1 relabel (Mike-approved candidate 2026-10-21)",
