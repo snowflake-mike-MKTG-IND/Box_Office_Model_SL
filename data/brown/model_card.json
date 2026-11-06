@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-30T22:01:07",
+ "generated_at": "2026-11-06T22:01:28",
  "model": "OW_PREDICTION_V31",
  "production_version": "V7",
  "versions": [
@@ -109,21 +109,21 @@
     "IN_RANGE": true
    },
    {
-    "FILM": "Sense and Sensibility",
-    "RELEASE_DATE": "2026-10-16",
-    "RECORD": "V31v5@D3",
-    "PRED_M": 8.8,
-    "ACTUAL_M": 7.2,
-    "ABS_ERR_PCT": 22.0,
-    "IN_RANGE": true
-   },
-   {
     "FILM": "Whalefall",
     "RELEASE_DATE": "2026-10-16",
     "RECORD": "V31v5@D3",
     "PRED_M": 11.8,
     "ACTUAL_M": 7.8,
     "ABS_ERR_PCT": 50.0,
+    "IN_RANGE": true
+   },
+   {
+    "FILM": "Sense and Sensibility",
+    "RELEASE_DATE": "2026-10-16",
+    "RECORD": "V31v5@D3",
+    "PRED_M": 8.8,
+    "ACTUAL_M": 7.2,
+    "ABS_ERR_PCT": 22.0,
     "IN_RANGE": true
    },
    {
@@ -145,21 +145,21 @@
     "IN_RANGE": true
    },
    {
-    "FILM": "Verity",
-    "RELEASE_DATE": "2026-10-02",
-    "RECORD": "V31@D21",
-    "PRED_M": 14.2,
-    "ACTUAL_M": 32,
-    "ABS_ERR_PCT": 56.0,
-    "IN_RANGE": false
-   },
-   {
     "FILM": "Digger",
     "RELEASE_DATE": "2026-10-02",
     "RECORD": "V31@D21",
     "PRED_M": 18.5,
     "ACTUAL_M": 8,
     "ABS_ERR_PCT": 131.0,
+    "IN_RANGE": false
+   },
+   {
+    "FILM": "Verity",
+    "RELEASE_DATE": "2026-10-02",
+    "RECORD": "V31@D21",
+    "PRED_M": 14.2,
+    "ACTUAL_M": 32,
+    "ABS_ERR_PCT": 56.0,
     "IN_RANGE": false
    },
    {
@@ -208,21 +208,21 @@
     "IN_RANGE": false
    },
    {
-    "FILM": "Insidious Out Of The Further",
-    "RELEASE_DATE": "2026-08-21",
-    "RECORD": "V31@D3",
-    "PRED_M": 12.9,
-    "ACTUAL_M": 25.1,
-    "ABS_ERR_PCT": 49.0,
-    "IN_RANGE": false
-   },
-   {
     "FILM": "Mutiny",
     "RELEASE_DATE": "2026-08-21",
     "RECORD": "V31@D3",
     "PRED_M": 11.8,
     "ACTUAL_M": 7.5,
     "ABS_ERR_PCT": 57.0,
+    "IN_RANGE": false
+   },
+   {
+    "FILM": "Insidious Out Of The Further",
+    "RELEASE_DATE": "2026-08-21",
+    "RECORD": "V31@D3",
+    "PRED_M": 12.9,
+    "ACTUAL_M": 25.1,
+    "ABS_ERR_PCT": 49.0,
     "IN_RANGE": false
    },
    {
@@ -281,7 +281,7 @@
    "VALUE": 2.0,
    "TARGET": "<= 0 green, >= 1 red",
    "STATUS": "RED",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "escapes",
@@ -290,7 +290,7 @@
    "VALUE": 0.0,
    "TARGET": "<= 0 green, >= 1 red",
    "STATUS": "GREEN",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "forecast",
@@ -305,10 +305,10 @@
    "BENCH": "forecast",
    "METRIC": "beats_naive",
    "SCOPE": "all",
-   "VALUE": 0.13657982264445656,
+   "VALUE": 0.1339465249042049,
    "TARGET": "model median APE below naive",
    "STATUS": "GREEN",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "forecast",
@@ -317,34 +317,25 @@
    "VALUE": null,
    "TARGET": "",
    "STATUS": "NO DATA",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "forecast",
    "METRIC": "bias_log",
    "SCOPE": "d3",
-   "VALUE": 0.2024206912051098,
+   "VALUE": 0.2058447710381982,
    "TARGET": "|bias| < 0.25",
    "STATUS": "INFO",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "forecast",
    "METRIC": "bias_log",
-   "SCOPE": "d7",
-   "VALUE": 0.29981659051880166,
+   "SCOPE": "all",
+   "VALUE": 0.17165609149069155,
    "TARGET": "|bias| < 0.25",
    "STATUS": "INFO",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
-  },
-  {
-   "BENCH": "forecast",
-   "METRIC": "bias_log",
-   "SCOPE": "d21",
-   "VALUE": -0.19224015045664147,
-   "TARGET": "|bias| < 0.25",
-   "STATUS": "INFO",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "forecast",
@@ -353,43 +344,34 @@
    "VALUE": -0.7382395133728573,
    "TARGET": "|bias| < 0.25",
    "STATUS": "INFO",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "forecast",
    "METRIC": "bias_log",
-   "SCOPE": "all",
-   "VALUE": 0.14089149177627328,
+   "SCOPE": "d21",
+   "VALUE": -0.19224015045664147,
    "TARGET": "|bias| < 0.25",
    "STATUS": "INFO",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "forecast",
-   "METRIC": "coverage",
-   "SCOPE": "d14",
-   "VALUE": 0.0,
-   "TARGET": "backtest V5 expects 70%",
-   "STATUS": "INSUFFICIENT",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "METRIC": "bias_log",
+   "SCOPE": "d7",
+   "VALUE": 0.29981659051880166,
+   "TARGET": "|bias| < 0.25",
+   "STATUS": "INFO",
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "forecast",
    "METRIC": "coverage",
    "SCOPE": "all",
-   "VALUE": 0.47368421052631576,
-   "TARGET": "backtest V5 expects 69%",
-   "STATUS": "RED",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
-  },
-  {
-   "BENCH": "forecast",
-   "METRIC": "coverage",
-   "SCOPE": "d3",
-   "VALUE": 0.5454545454545454,
-   "TARGET": "backtest V5 expects 70%",
-   "STATUS": "GREEN",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "VALUE": 0.5,
+   "TARGET": "backtest V5/V7 expects 68%",
+   "STATUS": "AMBER",
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "forecast",
@@ -398,7 +380,16 @@
    "VALUE": 0.4,
    "TARGET": "backtest V5 expects 65%",
    "STATUS": "INSUFFICIENT",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "RUN_AT": "2026-10-30T15:03:08.646000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "coverage",
+   "SCOPE": "d14",
+   "VALUE": 0.0,
+   "TARGET": "backtest V5 expects 70%",
+   "STATUS": "INSUFFICIENT",
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "forecast",
@@ -407,34 +398,25 @@
    "VALUE": 0.5,
    "TARGET": "backtest V5 expects 70%",
    "STATUS": "INSUFFICIENT",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "forecast",
-   "METRIC": "median_ape",
+   "METRIC": "coverage",
    "SCOPE": "d3",
-   "VALUE": 0.5081209480659401,
-   "TARGET": "backtest V5 band p05-p95",
-   "STATUS": "RED",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "VALUE": 0.5833333333333334,
+   "TARGET": "backtest V5/V7 expects 69%",
+   "STATUS": "GREEN",
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "forecast",
-   "METRIC": "median_ape",
-   "SCOPE": "d14",
-   "VALUE": 0.522045392014277,
-   "TARGET": "backtest V5 band p05-p95",
-   "STATUS": "INSUFFICIENT",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
-  },
-  {
-   "BENCH": "forecast",
-   "METRIC": "median_ape",
-   "SCOPE": "d21",
-   "VALUE": 0.5551186351473525,
-   "TARGET": "backtest V5 band p05-p95",
-   "STATUS": "INSUFFICIENT",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "METRIC": "data_error_films",
+   "SCOPE": "all",
+   "VALUE": 1.0,
+   "TARGET": "films whose prediction moves >10% on today's data",
+   "STATUS": "INFO",
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "forecast",
@@ -443,16 +425,43 @@
    "VALUE": 0.36740640281301296,
    "TARGET": "backtest V5 band p05-p95",
    "STATUS": "INSUFFICIENT",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "RUN_AT": "2026-10-30T15:03:08.646000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "median_ape",
+   "SCOPE": "d21",
+   "VALUE": 0.5551186351473525,
+   "TARGET": "backtest V5 band p05-p95",
+   "STATUS": "INSUFFICIENT",
+   "RUN_AT": "2026-10-30T15:03:08.646000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "median_ape",
+   "SCOPE": "d3",
+   "VALUE": 0.5044549681572145,
+   "TARGET": "backtest V5/V7 band p05-p95",
+   "STATUS": "RED",
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "forecast",
    "METRIC": "median_ape",
    "SCOPE": "all",
+   "VALUE": 0.5150831700401086,
+   "TARGET": "backtest V5/V7 band p05-p95",
+   "STATUS": "RED",
+   "RUN_AT": "2026-10-30T15:03:08.646000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "median_ape",
+   "SCOPE": "d14",
    "VALUE": 0.522045392014277,
    "TARGET": "backtest V5 band p05-p95",
-   "STATUS": "RED",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "STATUS": "INSUFFICIENT",
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "kat",
@@ -461,16 +470,16 @@
    "VALUE": 1.0,
    "TARGET": "known answer reproduced",
    "STATUS": "FAIL",
-   "RUN_AT": "2026-10-26T15:55:17.425000"
+   "RUN_AT": "2026-10-30T15:05:50.368000"
   },
   {
    "BENCH": "kat",
    "METRIC": "failing",
    "SCOPE": "all",
-   "VALUE": 1.0,
+   "VALUE": 2.0,
    "TARGET": "<= 0 green, >= 1 red",
    "STATUS": "RED",
-   "RUN_AT": "2026-10-26T15:55:17.425000"
+   "RUN_AT": "2026-10-30T15:05:50.368000"
   },
   {
    "BENCH": "kat",
@@ -479,7 +488,7 @@
    "VALUE": 0.0,
    "TARGET": "known answer reproduced",
    "STATUS": "PASS",
-   "RUN_AT": "2026-10-26T15:55:17.425000"
+   "RUN_AT": "2026-10-30T15:05:50.368000"
   },
   {
    "BENCH": "kat",
@@ -488,7 +497,7 @@
    "VALUE": 0.0,
    "TARGET": "known answer reproduced",
    "STATUS": "PASS",
-   "RUN_AT": "2026-10-26T15:55:17.425000"
+   "RUN_AT": "2026-10-30T15:05:50.368000"
   },
   {
    "BENCH": "kat",
@@ -497,7 +506,7 @@
    "VALUE": 0.0,
    "TARGET": "known answer reproduced",
    "STATUS": "PASS",
-   "RUN_AT": "2026-10-26T15:55:17.425000"
+   "RUN_AT": "2026-10-30T15:05:50.368000"
   },
   {
    "BENCH": "kat",
@@ -506,7 +515,7 @@
    "VALUE": 0.0,
    "TARGET": "known answer reproduced",
    "STATUS": "PASS",
-   "RUN_AT": "2026-10-26T15:55:17.425000"
+   "RUN_AT": "2026-10-30T15:05:50.368000"
   },
   {
    "BENCH": "kat",
@@ -515,16 +524,16 @@
    "VALUE": 0.0,
    "TARGET": "known answer reproduced",
    "STATUS": "PASS",
-   "RUN_AT": "2026-10-26T15:55:17.425000"
+   "RUN_AT": "2026-11-04T09:16:09.205000"
   },
   {
    "BENCH": "kat",
    "METRIC": "wiki",
    "SCOPE": "all",
-   "VALUE": 0.0,
+   "VALUE": 1.0,
    "TARGET": "known answer reproduced",
-   "STATUS": "PASS",
-   "RUN_AT": "2026-10-26T15:55:17.425000"
+   "STATUS": "FAIL",
+   "RUN_AT": "2026-10-30T15:05:50.368000"
   },
   {
    "BENCH": "lessons",
@@ -533,7 +542,7 @@
    "VALUE": 0.0,
    "TARGET": "<= 0 green, >= 1 red",
    "STATUS": "GREEN",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "reviews",
@@ -542,7 +551,7 @@
    "VALUE": 1.0,
    "TARGET": ">= 0.9 green, < 0.7 red",
    "STATUS": "GREEN",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   },
   {
    "BENCH": "reviews",
@@ -551,7 +560,7 @@
    "VALUE": 0.0,
    "TARGET": "before 2026-10-19: checks named, not cited",
    "STATUS": "INFO",
-   "RUN_AT": "2026-10-23T15:01:52.602000"
+   "RUN_AT": "2026-10-30T15:03:08.646000"
   }
  ]
 }
