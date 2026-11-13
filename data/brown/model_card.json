@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-06T22:01:28",
+ "generated_at": "2026-11-13T22:00:52",
  "model": "OW_PREDICTION_V31",
  "production_version": "V7",
  "versions": [
@@ -278,10 +278,10 @@
    "BENCH": "escapes",
    "METRIC": "escapes_30d",
    "SCOPE": "30d",
-   "VALUE": 2.0,
+   "VALUE": 3.0,
    "TARGET": "<= 0 green, >= 1 red",
    "STATUS": "RED",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "escapes",
@@ -290,7 +290,7 @@
    "VALUE": 0.0,
    "TARGET": "<= 0 green, >= 1 red",
    "STATUS": "GREEN",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "forecast",
@@ -308,7 +308,7 @@
    "VALUE": 0.1339465249042049,
    "TARGET": "model median APE below naive",
    "STATUS": "GREEN",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "forecast",
@@ -317,16 +317,7 @@
    "VALUE": null,
    "TARGET": "",
    "STATUS": "NO DATA",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
-  },
-  {
-   "BENCH": "forecast",
-   "METRIC": "bias_log",
-   "SCOPE": "d3",
-   "VALUE": 0.2058447710381982,
-   "TARGET": "|bias| < 0.25",
-   "STATUS": "INFO",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "forecast",
@@ -335,25 +326,7 @@
    "VALUE": 0.17165609149069155,
    "TARGET": "|bias| < 0.25",
    "STATUS": "INFO",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
-  },
-  {
-   "BENCH": "forecast",
-   "METRIC": "bias_log",
-   "SCOPE": "d14",
-   "VALUE": -0.7382395133728573,
-   "TARGET": "|bias| < 0.25",
-   "STATUS": "INFO",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
-  },
-  {
-   "BENCH": "forecast",
-   "METRIC": "bias_log",
-   "SCOPE": "d21",
-   "VALUE": -0.19224015045664147,
-   "TARGET": "|bias| < 0.25",
-   "STATUS": "INFO",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "forecast",
@@ -362,16 +335,43 @@
    "VALUE": 0.29981659051880166,
    "TARGET": "|bias| < 0.25",
    "STATUS": "INFO",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "bias_log",
+   "SCOPE": "d14",
+   "VALUE": -0.7382395133728573,
+   "TARGET": "|bias| < 0.25",
+   "STATUS": "INFO",
+   "RUN_AT": "2026-11-06T14:03:10.228000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "bias_log",
+   "SCOPE": "d3",
+   "VALUE": 0.2058447710381982,
+   "TARGET": "|bias| < 0.25",
+   "STATUS": "INFO",
+   "RUN_AT": "2026-11-06T14:03:10.228000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "bias_log",
+   "SCOPE": "d21",
+   "VALUE": -0.19224015045664147,
+   "TARGET": "|bias| < 0.25",
+   "STATUS": "INFO",
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "forecast",
    "METRIC": "coverage",
-   "SCOPE": "all",
+   "SCOPE": "d7",
    "VALUE": 0.5,
-   "TARGET": "backtest V5/V7 expects 68%",
-   "STATUS": "AMBER",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "TARGET": "backtest V5 expects 70%",
+   "STATUS": "INSUFFICIENT",
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "forecast",
@@ -380,7 +380,7 @@
    "VALUE": 0.4,
    "TARGET": "backtest V5 expects 65%",
    "STATUS": "INSUFFICIENT",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "forecast",
@@ -389,16 +389,16 @@
    "VALUE": 0.0,
    "TARGET": "backtest V5 expects 70%",
    "STATUS": "INSUFFICIENT",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "forecast",
    "METRIC": "coverage",
-   "SCOPE": "d7",
+   "SCOPE": "all",
    "VALUE": 0.5,
-   "TARGET": "backtest V5 expects 70%",
-   "STATUS": "INSUFFICIENT",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "TARGET": "backtest V5/V7 expects 68%",
+   "STATUS": "AMBER",
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "forecast",
@@ -407,7 +407,7 @@
    "VALUE": 0.5833333333333334,
    "TARGET": "backtest V5/V7 expects 69%",
    "STATUS": "GREEN",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "forecast",
@@ -416,25 +416,7 @@
    "VALUE": 1.0,
    "TARGET": "films whose prediction moves >10% on today's data",
    "STATUS": "INFO",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
-  },
-  {
-   "BENCH": "forecast",
-   "METRIC": "median_ape",
-   "SCOPE": "d7",
-   "VALUE": 0.36740640281301296,
-   "TARGET": "backtest V5 band p05-p95",
-   "STATUS": "INSUFFICIENT",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
-  },
-  {
-   "BENCH": "forecast",
-   "METRIC": "median_ape",
-   "SCOPE": "d21",
-   "VALUE": 0.5551186351473525,
-   "TARGET": "backtest V5 band p05-p95",
-   "STATUS": "INSUFFICIENT",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "forecast",
@@ -443,7 +425,16 @@
    "VALUE": 0.5044549681572145,
    "TARGET": "backtest V5/V7 band p05-p95",
    "STATUS": "RED",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "median_ape",
+   "SCOPE": "d21",
+   "VALUE": 0.5551186351473525,
+   "TARGET": "backtest V5 band p05-p95",
+   "STATUS": "INSUFFICIENT",
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "forecast",
@@ -452,7 +443,16 @@
    "VALUE": 0.5150831700401086,
    "TARGET": "backtest V5/V7 band p05-p95",
    "STATUS": "RED",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "median_ape",
+   "SCOPE": "d7",
+   "VALUE": 0.36740640281301296,
+   "TARGET": "backtest V5 band p05-p95",
+   "STATUS": "INSUFFICIENT",
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "forecast",
@@ -461,25 +461,25 @@
    "VALUE": 0.522045392014277,
    "TARGET": "backtest V5 band p05-p95",
    "STATUS": "INSUFFICIENT",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "kat",
    "METRIC": "boxoffice",
    "SCOPE": "all",
-   "VALUE": 1.0,
+   "VALUE": 0.0,
    "TARGET": "known answer reproduced",
-   "STATUS": "FAIL",
-   "RUN_AT": "2026-10-30T15:05:50.368000"
+   "STATUS": "PASS",
+   "RUN_AT": "2026-11-06T14:08:24.620000"
   },
   {
    "BENCH": "kat",
    "METRIC": "failing",
    "SCOPE": "all",
-   "VALUE": 2.0,
+   "VALUE": 0.0,
    "TARGET": "<= 0 green, >= 1 red",
-   "STATUS": "RED",
-   "RUN_AT": "2026-10-30T15:05:50.368000"
+   "STATUS": "GREEN",
+   "RUN_AT": "2026-11-06T14:08:24.620000"
   },
   {
    "BENCH": "kat",
@@ -488,7 +488,7 @@
    "VALUE": 0.0,
    "TARGET": "known answer reproduced",
    "STATUS": "PASS",
-   "RUN_AT": "2026-10-30T15:05:50.368000"
+   "RUN_AT": "2026-11-06T14:08:24.620000"
   },
   {
    "BENCH": "kat",
@@ -497,7 +497,7 @@
    "VALUE": 0.0,
    "TARGET": "known answer reproduced",
    "STATUS": "PASS",
-   "RUN_AT": "2026-10-30T15:05:50.368000"
+   "RUN_AT": "2026-11-06T14:08:24.620000"
   },
   {
    "BENCH": "kat",
@@ -506,7 +506,7 @@
    "VALUE": 0.0,
    "TARGET": "known answer reproduced",
    "STATUS": "PASS",
-   "RUN_AT": "2026-10-30T15:05:50.368000"
+   "RUN_AT": "2026-11-06T14:08:24.620000"
   },
   {
    "BENCH": "kat",
@@ -515,7 +515,7 @@
    "VALUE": 0.0,
    "TARGET": "known answer reproduced",
    "STATUS": "PASS",
-   "RUN_AT": "2026-10-30T15:05:50.368000"
+   "RUN_AT": "2026-11-06T14:08:24.620000"
   },
   {
    "BENCH": "kat",
@@ -524,16 +524,16 @@
    "VALUE": 0.0,
    "TARGET": "known answer reproduced",
    "STATUS": "PASS",
-   "RUN_AT": "2026-11-04T09:16:09.205000"
+   "RUN_AT": "2026-11-06T14:08:24.620000"
   },
   {
    "BENCH": "kat",
    "METRIC": "wiki",
    "SCOPE": "all",
-   "VALUE": 1.0,
+   "VALUE": 0.0,
    "TARGET": "known answer reproduced",
-   "STATUS": "FAIL",
-   "RUN_AT": "2026-10-30T15:05:50.368000"
+   "STATUS": "PASS",
+   "RUN_AT": "2026-11-06T14:08:24.620000"
   },
   {
    "BENCH": "lessons",
@@ -542,16 +542,16 @@
    "VALUE": 0.0,
    "TARGET": "<= 0 green, >= 1 red",
    "STATUS": "GREEN",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "reviews",
    "METRIC": "gruney_evidence_rate",
    "SCOPE": "30d",
-   "VALUE": 1.0,
+   "VALUE": 0.994535519125683,
    "TARGET": ">= 0.9 green, < 0.7 red",
    "STATUS": "GREEN",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   },
   {
    "BENCH": "reviews",
@@ -560,7 +560,7 @@
    "VALUE": 0.0,
    "TARGET": "before 2026-10-19: checks named, not cited",
    "STATUS": "INFO",
-   "RUN_AT": "2026-10-30T15:03:08.646000"
+   "RUN_AT": "2026-11-06T14:03:10.228000"
   }
  ]
 }

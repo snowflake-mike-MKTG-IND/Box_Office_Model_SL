@@ -1,6 +1,58 @@
 {
- "generated_at": "2026-11-06T22:01:29",
+ "generated_at": "2026-11-13T22:00:54",
  "studies": [
+  {
+   "STUDY_ID": "S-1107-461cbd",
+   "TITLE": "Trailer-week B0 with backfilled IS_SEQUEL / IS_FRANCHISE (after R-1107-1bfec6) vs today's flags",
+   "HYPOTHESIS": "CatBoost B0 at first comment + 7 days trained with the TMDB-backfilled sequel/franchise flags has lower mean abs log error of OW than the same model on the pre-backfill flags (frozen in ML_RESEARCH.FLAGS_PRE_BACKFILL_20261107), especially for 0M+ films.",
+   "PRIMARY_METRIC": "Primary: B0_post - B0_pre mean abs log error of log OW, quarter-clustered bootstrap B=20000, single contrast, 139 films / 10 quarters 2024Q2-2026Q3. Secondary: >= 0M contrast and bias, MdALE, log R2, median and mean APE separately, 80% normalized-conformal coverage (Wilson) and width, under/over 0M, changed-flag films.",
+   "DECISION_RULE": "Flags help only if the 95% CI is below 0. Runs only after R-1107-1bfec6 is applied and this plan is reviewed. Feature matrices must be identical except the two flags (checked). Frame FRAME_S_1101_0FDC8C TL, train release+3d <= earliest cutoff, Trends TL_TRENDS_PULL_V2.VALUE. 2026Q2-Q3 reused from S-1107-3fa6b6's holdout (stated). Writes only ML_RESEARCH.TFB_* and ~/brown_work/studies/S-1107-flags with SHA256SUMS. V7 not used.",
+   "HORIZONS": "21",
+   "STATUS": "CLOSED",
+   "OUTCOME": "no-change",
+   "RESULT": "Trailer-week CatBoost B0, 139 test films / 10 quarters 2024Q2-2026Q3, frames identical except the two flags (asserted). Backfill R-1107-4ececa changed flags on 124/251 frame films (79/139 test); frame NULLs 123/121 -> 1/1. B0_post - B0_pre mean abs log error -0.004 [-0.030,+0.019] p 0.77 (tie; rule CI<0 not met). >= 60M (n=24) +0.024 [-0.016,+0.066], bias -0.66 both arms; changed-flag films -0.008 [-0.035,+0.022]. Coverage 76% -> 81% (descriptive). Limits: TMDB collections read in 2026; 2026Q2-Q3 reused from S-1107-3fa6b6 holdout; open question from Lomis whether R-1107-4ececa corrected IS_SEQUEL on pre-2026 sequels.",
+   "OPENED_AT": "2026-11-06T21:41:11.187000",
+   "CLOSED_AT": "2026-11-07T08:29:01.149000"
+  },
+  {
+   "STUDY_ID": "S-1107-3fa6b6",
+   "TITLE": "Trailer-week accuracy push: recalibration, IP demand, direct total, wide universe, nested tuning, losses, size models, stacking, features, monotone, final ensemble",
+   "HYPOTHESIS": "At first comment + 7 days, at least one of arms A-K lowers mean abs log error of OW vs CatBoost B0 (and the direct total model beats the chained total), reducing the -0.64 log under-prediction of 0M+ films; the final pick holds on 2 held-out quarters.",
+   "PRIMARY_METRIC": "Development quarters 2024Q2-2026Q1: arm - B0 mean abs log error on log OW, quarter-clustered bootstrap B=20000, Holm over 24 contrasts (one family); C1 - C0 on log total as its own family. Final pick vs B0 on held-out 2026Q2-Q3 (30 films), film bootstrap. All arms: MdALE, mean ALE, log R2, bias, median and mean APE separately, 80% normalized-conformal coverage (Wilson), width, under/over 0M, n forecast >= 0M.",
+   "DECISION_RULE": "Arm helps only if Holm CI below 0 on development. Final pick shadow-eligible only if held-out difference vs B0 has CI upper bound <= +0.05. No tuning or selection on held-out quarters; Optuna (40 TPE trials, inner 3-fold time blocks) inside each training quarter only. Frame FRAME_S_1101_0FDC8C TL, train release+3d <= earliest cutoff, Trends TL_TRENDS_PULL_V2.VALUE, features strictly before cutoff, NULL attributes missing, AI_EMBED <= 35 comments/film (< 10k rows). Writes only ML_RESEARCH.TRP_* and ~/brown_work/studies/S-1107-push with SHA256SUMS; stop on foreign writes. V7 at most a filtered reference row.",
+   "HORIZONS": "21",
+   "STATUS": "CLOSED",
+   "OUTCOME": "no-change",
+   "RESULT": "Trailer-week only. Development (109 films, 8 quarters 2024Q2-2026Q1): no arm beats CatBoost B0 (mean ALE 0.420, MdALE 0.369, log R2 0.63) after Holm over 24; nearest F_tweedie -0.029 [-0.050,-0.009] Holm p 0.055, H_stack -0.026 Holm p 0.20; J_mono +0.070 and F_huber +0.278 significantly worse. One-shot holdout 2026Q2-Q3 (30 films, 7 >= 60M): pick F_tweedie - B0 = +0.060 [-0.008,+0.130], fails non-inferiority (<= +0.05); B0 holdout MdALE 0.433, log R2 0.49, cov80 80% [63,91]. Total (own family, 93 films): C1 direct - C0 chain = -0.004 [-0.039,+0.039]. >= 60M bias about -0.5 in every arm. SHAP ranks IS_FRANCHISE/IS_SEQUEL (NULL ~335/519) at the top: next lever is the backfill.",
+   "OPENED_AT": "2026-11-06T16:36:31.087000",
+   "CLOSED_AT": "2026-11-06T21:40:02.739000"
+  },
+  {
+   "STUDY_ID": "S-1107-b32c89",
+   "TITLE": "Trailer-week round 2: fix blockbuster under-prediction (shrinkage recalibration, franchise/IP Wikipedia demand, full-run total target, wide universe)",
+   "HYPOTHESIS": "At first comment + 7 days, the -0.64 log under-prediction of 0M+ films is reduced by (A) out-of-fold recalibration of CatBoost B0 (linear stretch, isotonic), (B) as-of Wikipedia demand for the predecessor and IP-source articles, or (D) training on all wide releases without the OW >= M filter; and (C) a model trained directly on log full-run domestic total beats the chained TOTAL4 x late-run multiple.",
+   "PRIMARY_METRIC": "Mean abs log error, quarter-clustered bootstrap B=20000. Holm families: A1-B0, A2-B0 (2); B0+IPWIKI - B0, D2 - B0 (2); C1 - C0 single. Secondary: >= 0M bias, mean ALE, coverage, n forecast >= 0M. All arms: MdALE, mean ALE, log R2, median and mean APE separately, 80% normalized-conformal coverage (Wilson) and width, under/over 0M.",
+   "DECISION_RULE": "An arm helps only if its Holm CI is below 0. Frame FRAME_S_1101_0FDC8C h=TL (D: rebuilt wide frame, THEATER_COUNT >= 2000 as universe only), train release + 3d <= quarter's earliest cutoff, Trends TL_TRENDS_PULL_V2.VALUE, features strictly before cutoff, NULL attributes missing. C: runs finished (release+150d) before cutoff for training and before 2026-11-07 for test. Writes only ML_RESEARCH.TR2_* and ~/brown_work/studies/S-1107-r2 with SHA256SUMS; stop on foreign writes. V7 at most a filtered reference row.",
+   "HORIZONS": "21",
+   "STATUS": "CLOSED",
+   "OUTCOME": "abandoned",
+   "RESULT": "Not run. Widened before any run (Mike 2026-11-07: 'try every trick you can, custom tune the ML models too'); Parts A-D carried into the replacement study with arms E-K added.",
+   "OPENED_AT": "2026-11-06T16:34:33.984000",
+   "CLOSED_AT": "2026-11-06T16:36:13.271000"
+  },
+  {
+   "STUDY_ID": "S-1106-d09667",
+   "TITLE": "Trailer-week OW: launch-decay features and prior-film signals (predecessor OW, point-in-time star power)",
+   "HYPOTHESIS": "At first comment + 7 days, adding Wikipedia/Trends decay-after-launch features and/or as-of prior-film signals (predecessor OW, star power) to CatBoost on the full feature set lowers mean abs log error, especially for 0M+ films that are under-predicted. Trailer-week only; V7 is no input or arm.",
+   "PRIMARY_METRIC": "Primary: mean abs log error arm - B0 for B0_decay, B0_prior, B0_decay_prior; quarter-clustered bootstrap B=20000, Holm over 3. Secondary: 0M+ bucket mean ALE, MdALE, bias, coverage; n forecast >= 0M. All arms: MdALE, mean ALE, log R2, median and mean APE separately, 80% normalized-conformal coverage (Wilson) and width, under/over 0M.",
+   "DECISION_RULE": "An arm helps only if its Holm CI is below 0. Frame FRAME_S_1101_0FDC8C h=TL, 139 test films / 10 quarters, train release + 3d <= quarter's earliest cutoff, Trends = TL_TRENDS_PULL_V2.VALUE, all features strictly before cutoff, missing never zero. Writes only to ML_RESEARCH.SDP_* and ~/brown_work/studies/S-1106-decay-prior with SHA256SUMS; stop if foreign writes appear. Attributes, cast billing and predecessor map as read in 2026 are stated limits.",
+   "HORIZONS": "21",
+   "STATUS": "CLOSED",
+   "OUTCOME": "no-change",
+   "RESULT": "139 trailer-week test films, 10 quarters. Mean abs log error vs B0 CatBoost (0.446), quarter-clustered bootstrap, Holm over 3: decay +0.005 [-0.015,+0.025]; prior (predecessor OW + point-in-time star power) +0.004 [-0.006,+0.014]; decay+prior +0.004 [-0.012,+0.022]; all Holm p=1.0. Films >= 60M (n=24) under-predicted by about -0.65 log in every arm; normalized-conformal coverage there 54-63%. Predecessor OW covers 14/139 test films (8/24 >= 60M) with the sequel/franchise filter (upheld). Limits: predecessor map, cast billing and attributes as read in 2026; outcome-selected universe.",
+   "OPENED_AT": "2026-11-06T15:57:10.179000",
+   "CLOSED_AT": "2026-11-06T16:29:54.326000"
+  },
   {
    "STUDY_ID": "S-1106-562b90",
    "TITLE": "Trailer-week OW only: full-feature model bake-off and range calibration (Parts B, C)",
@@ -8,11 +60,11 @@
    "PRIMARY_METRIC": "Quarter-clustered bootstrap (B=20000). B: B1..B10 - B0 mean abs log error (Holm over 10). C: 80% coverage Wilson CI per arm overall and by actual size bucket. Also MdALE, log R2, Winkler, mean/median APE separately, width; subgroups under/over 60M.",
    "DECISION_RULE": "B: a method beats CatBoost only if its Holm CI is below 0; recommend the simplest not significantly worse than the best. C: an arm passes if its coverage CI includes 0.80 overall and in each actual-size bucket; narrowest passing arm by Winkler. Frame FRAME_S_1101_0FDC8C TL, cutoff first comment+7d, scored only before D-21, training opens before the quarter's earliest cutoff, Trends from TL_TRENDS_PULL_V2. V7 at most a labelled backtest reference row, in no fit or decision. Attributes as read in 2026 and the outcome-selected universe are stated limits.",
    "HORIZONS": "21",
-   "STATUS": "OPEN",
-   "OUTCOME": null,
-   "RESULT": null,
+   "STATUS": "CLOSED",
+   "OUTCOME": "shadow",
+   "RESULT": "Trailer-week only, 139 test films / 10 quarters, +3d lag. B (R-1106-8cad2e): no family beats CatBoost B0 (mean ALE 0.437; ridge/lasso/ensemble tie; on VALUE-scaled Trends kNN not robustly worse, R-1106-4f9e09). C1: no OW range passes all buckets; best normalized conformal 76% [69,83] overall, 58% at >= 60M (n=24). C2 (R-1107-470847): chained TOTAL4 C2c_joint_owres passes the pre-registered rule: 80% coverage 76.1% [68.3,82.4], 78% under 60M, 66.7% [46.7,82.0] at >= 60M; width 4.7x; TOTAL4 MdALE 0.389, log R2 0.53. Weak: the >= 60M pass rests on 24 films and the OW leg under-predicts big films (-0.65 log). Shadow: B0 + C2c_joint_owres logged on upcoming films at trailer week (per Lomis/Mike 2026-11-07).",
    "OPENED_AT": "2026-11-06T11:09:24.150000",
-   "CLOSED_AT": null
+   "CLOSED_AT": "2026-11-06T16:33:23.783000"
   },
   {
    "STUDY_ID": "S-1106-d5422d",
@@ -34,11 +86,11 @@
    "PRIMARY_METRIC": "Median abs log error per target (W2,W3,W4,TOTAL4) and 80% coverage with Wilson CI; paired film bootstrap of abs log error vs ceiling (actual OW) and vs V7 (backtest d-21/d-3) on overlap, Holm over 8; subgroups under/over 60M",
    "DECISION_RULE": "Descriptive, no promotion. Show-supported only if TOTAL4 80% coverage CI includes 0.80. Same 139 test films and quarters as S-1101-042e4a; holdover trained only on films whose W_k was observable before the quarter's earliest trailer-week cutoff; as-of holdover features only.",
    "HORIZONS": "21,3",
-   "STATUS": "OPEN",
-   "OUTCOME": null,
-   "RESULT": null,
+   "STATUS": "CLOSED",
+   "OUTCOME": "no-change",
+   "RESULT": "Trailer-week chain not show-supported: TOTAL4 80% coverage 68.1% [Wilson 59.9, 75.3], n=138, excludes 0.80 (50.0% over 60M, n=24). Ceiling with actual OW calibrated at 81.2% [73.8, 86.8]; error is the OW leg (chain vs ceiling +0.37 median abs log error, Holm p 0.001). Chain vs V7 d-21 backtest on 105 films: tie after Holm. Joint-residual method carried into S-1106-562b90 C2.",
    "OPENED_AT": "2026-11-05T13:58:39.064000",
-   "CLOSED_AT": null
+   "CLOSED_AT": "2026-11-12T08:01:42.352000"
   },
   {
    "STUDY_ID": "S-1103-dcd38a",
