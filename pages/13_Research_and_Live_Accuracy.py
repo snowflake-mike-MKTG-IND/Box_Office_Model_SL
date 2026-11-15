@@ -1,6 +1,7 @@
-"""Brown's research log and live accuracy. Every number comes from data/brown/*.json, written by `lomis research docs build`."""
+"""Research log and live accuracy. Every number comes from the generated model card and research log JSON files."""
 import json
 import os
+import re
 
 import pandas as pd
 import streamlit as st
@@ -11,13 +12,40 @@ from theme import apply_page_config, page_header, section, kpi_row, freshness_ca
 @st.cache_data
 def _load(name):
     with open(os.path.join(os.path.dirname(__file__), "..", "data", "brown", name)) as f:
-        return json.load(f)
+        return _scrub(json.load(f))
+
+
+# The generated files carry internal agent names; show roles instead.
+_ROLES = [
+    (r"gruney_evidence_rate", "reviewer_evidence_rate"),
+    (r"~/brown_work/", "the research workspace: "),
+    (r"\bLOMIS_ASOF_", "ASOF_"),
+    (r"\bLomis's\b", "the production pipeline agent's"),
+    (r"\bLomis\b", "the production pipeline agent"),
+    (r"\bGruney's\b", "the independent reviewer's"),
+    (r"\bGruney\b", "the independent reviewer"),
+    (r"\bBrown's\b", "the research agent's"),
+    (r"\bBrown\b", "the research agent"),
+    (r"\bSnowy\b", "the chief-of-staff agent"),
+    (r"\bSnowBots\b", "the agent platform"),
+]
+
+
+def _scrub(x):
+    if isinstance(x, dict):
+        return {_scrub(k): _scrub(v) for k, v in x.items()}
+    if isinstance(x, list):
+        return [_scrub(v) for v in x]
+    if isinstance(x, str):
+        for pat, rep in _ROLES:
+            x = re.sub(pat, rep, x, flags=re.IGNORECASE)
+    return x
 
 
 apply_page_config("Research & Live Accuracy", icon="🧪")
 page_header(
     "Research & Live Accuracy",
-    "The production model's live record, its backtest, and Brown's pre-registered studies and challengers",
+    "The production model's live record, its backtest, and the research agent's pre-registered studies and challengers",
 )
 
 CARD = _load("model_card.json")
@@ -74,4 +102,4 @@ if LOG["challengers"]:
 else:
     st.write("No challenger is registered yet: none of the closed studies recommended a model change.")
 
-freshness_caption("lomis research docs build", LOG["generated_at"][:10])
+freshness_caption("research docs build", LOG["generated_at"][:10])

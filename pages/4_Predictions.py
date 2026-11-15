@@ -1,6 +1,6 @@
 """Predictions — the live predictions of record, read from data/films.json.
 
-data/films.json is published by Lomis (the production pipeline agent) after Gruney's review, the same file the
+data/films.json is published by the production pipeline agent after the independent reviewer's review, the same file the
 public Opening Weekend Intelligence app reads. This page never edits numbers by hand: the film notes below are
 documentation, shown only while the published point they describe is still the prediction of record.
 """
@@ -65,12 +65,12 @@ def live_row(details, mid, kind):
 
 
 if not DATA_FILE.exists():
-    st.warning("No published predictions yet (data/films.json is published by Lomis).")
+    st.warning("No published predictions yet (data/films.json is published by the production pipeline agent).")
     st.stop()
 DATA = json.loads(DATA_FILE.read_text())
 META = DATA.get("meta") or {}
 if META.get("updated"):
-    st.caption(f"Predictions updated {META['updated']} · published by Lomis after an independent review by Gruney"
+    st.caption(f"Predictions updated {META['updated']} · published by the production pipeline agent after a review by the independent reviewer"
                + (f" ({META['review_id']})" if META.get("review_id", "").startswith("R-") else ""))
 
 section("Upcoming releases (predictions of record)")
