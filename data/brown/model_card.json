@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-15T19:04:22",
+ "generated_at": "2026-11-20T22:01:20",
  "model": "OW_PREDICTION_V31",
  "production_version": "V7",
  "versions": [
@@ -82,14 +82,32 @@
  },
  "live": {
   "last_180_days": {
-   "FILMS": 20,
+   "FILMS": 22,
    "MEDIAN_APE_PCT": 51.5,
    "IN_RANGE_PCT": 50,
-   "TIER_HIT_PCT": 65,
+   "TIER_HIT_PCT": 68.2,
    "SINCE": "2026-07-17",
-   "THROUGH": "2026-10-23"
+   "THROUGH": "2026-11-13"
   },
   "recent": [
+   {
+    "FILM": "How to Rob a Bank",
+    "RELEASE_DATE": "2026-11-13",
+    "RECORD": "V31v7@D3",
+    "PRED_M": 6.2,
+    "ACTUAL_M": 5.2,
+    "ABS_ERR_PCT": 19.0,
+    "IN_RANGE": true
+   },
+   {
+    "FILM": "Ghost Soldier",
+    "RELEASE_DATE": "2026-11-11",
+    "RECORD": "V31v7@D3",
+    "PRED_M": 8.3,
+    "ACTUAL_M": 5.2,
+    "ABS_ERR_PCT": 59.0,
+    "IN_RANGE": false
+   },
    {
     "FILM": "Clayface",
     "RELEASE_DATE": "2026-10-23",
@@ -109,6 +127,15 @@
     "IN_RANGE": true
    },
    {
+    "FILM": "Sense and Sensibility",
+    "RELEASE_DATE": "2026-10-16",
+    "RECORD": "V31v5@D3",
+    "PRED_M": 8.8,
+    "ACTUAL_M": 7.2,
+    "ABS_ERR_PCT": 22.0,
+    "IN_RANGE": true
+   },
+   {
     "FILM": "Whalefall",
     "RELEASE_DATE": "2026-10-16",
     "RECORD": "V31v5@D3",
@@ -118,12 +145,12 @@
     "IN_RANGE": true
    },
    {
-    "FILM": "Sense and Sensibility",
-    "RELEASE_DATE": "2026-10-16",
-    "RECORD": "V31v5@D3",
-    "PRED_M": 8.8,
-    "ACTUAL_M": 7.2,
-    "ABS_ERR_PCT": 22.0,
+    "FILM": "Other Mommy",
+    "RELEASE_DATE": "2026-10-09",
+    "RECORD": "V31@D21",
+    "PRED_M": 14.9,
+    "ACTUAL_M": 27.8,
+    "ABS_ERR_PCT": 47.0,
     "IN_RANGE": true
    },
    {
@@ -134,15 +161,6 @@
     "ACTUAL_M": 5,
     "ABS_ERR_PCT": 100.0,
     "IN_RANGE": false
-   },
-   {
-    "FILM": "Other Mommy",
-    "RELEASE_DATE": "2026-10-09",
-    "RECORD": "V31@D21",
-    "PRED_M": 14.9,
-    "ACTUAL_M": 27.8,
-    "ABS_ERR_PCT": 47.0,
-    "IN_RANGE": true
    },
    {
     "FILM": "Digger",
@@ -235,15 +253,6 @@
     "IN_RANGE": true
    },
    {
-    "FILM": "Super Troopers 3",
-    "RELEASE_DATE": "2026-08-07",
-    "RECORD": "V31@D7",
-    "PRED_M": 6.4,
-    "ACTUAL_M": 4,
-    "ABS_ERR_PCT": 59.0,
-    "IN_RANGE": false
-   },
-   {
     "FILM": "One Night Only",
     "RELEASE_DATE": "2026-08-07",
     "RECORD": "V31@D7",
@@ -253,22 +262,13 @@
     "IN_RANGE": true
    },
    {
-    "FILM": "Spider-Man: Brand New Day",
-    "RELEASE_DATE": "2026-07-31",
-    "RECORD": "V31@D3",
-    "PRED_M": 177.1,
-    "ACTUAL_M": 360.1,
-    "ABS_ERR_PCT": 51.0,
+    "FILM": "Super Troopers 3",
+    "RELEASE_DATE": "2026-08-07",
+    "RECORD": "V31@D7",
+    "PRED_M": 6.4,
+    "ACTUAL_M": 4,
+    "ABS_ERR_PCT": 59.0,
     "IN_RANGE": false
-   },
-   {
-    "FILM": "THE ODYSSEY",
-    "RELEASE_DATE": "2026-07-17",
-    "RECORD": "V31@D21",
-    "PRED_M": 101.9,
-    "ACTUAL_M": 123.5,
-    "ABS_ERR_PCT": 17.0,
-    "IN_RANGE": true
    }
   ],
   "note": "graded predictions of record (closest horizon before release) against opening weekends"
@@ -367,27 +367,18 @@
   {
    "BENCH": "forecast",
    "METRIC": "coverage",
+   "SCOPE": "d3",
+   "VALUE": 0.5833333333333334,
+   "TARGET": "backtest V5/V7 expects 69%",
+   "STATUS": "GREEN",
+   "RUN_AT": "2026-11-13T14:03:27.288000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "coverage",
    "SCOPE": "d21",
    "VALUE": 0.4,
    "TARGET": "backtest V5 expects 65%",
-   "STATUS": "INSUFFICIENT",
-   "RUN_AT": "2026-11-13T14:03:27.288000"
-  },
-  {
-   "BENCH": "forecast",
-   "METRIC": "coverage",
-   "SCOPE": "all",
-   "VALUE": 0.5,
-   "TARGET": "backtest V5/V7 expects 68%",
-   "STATUS": "AMBER",
-   "RUN_AT": "2026-11-13T14:03:27.288000"
-  },
-  {
-   "BENCH": "forecast",
-   "METRIC": "coverage",
-   "SCOPE": "d14",
-   "VALUE": 0.0,
-   "TARGET": "backtest V5 expects 70%",
    "STATUS": "INSUFFICIENT",
    "RUN_AT": "2026-11-13T14:03:27.288000"
   },
@@ -403,10 +394,19 @@
   {
    "BENCH": "forecast",
    "METRIC": "coverage",
-   "SCOPE": "d3",
-   "VALUE": 0.5833333333333334,
-   "TARGET": "backtest V5/V7 expects 69%",
-   "STATUS": "GREEN",
+   "SCOPE": "d14",
+   "VALUE": 0.0,
+   "TARGET": "backtest V5 expects 70%",
+   "STATUS": "INSUFFICIENT",
+   "RUN_AT": "2026-11-13T14:03:27.288000"
+  },
+  {
+   "BENCH": "forecast",
+   "METRIC": "coverage",
+   "SCOPE": "all",
+   "VALUE": 0.5,
+   "TARGET": "backtest V5/V7 expects 68%",
+   "STATUS": "AMBER",
    "RUN_AT": "2026-11-13T14:03:27.288000"
   },
   {
@@ -421,8 +421,8 @@
   {
    "BENCH": "forecast",
    "METRIC": "median_ape",
-   "SCOPE": "all",
-   "VALUE": 0.5150831700401086,
+   "SCOPE": "d3",
+   "VALUE": 0.5044549681572145,
    "TARGET": "backtest V5/V7 band p05-p95",
    "STATUS": "RED",
    "RUN_AT": "2026-11-13T14:03:27.288000"
@@ -430,10 +430,10 @@
   {
    "BENCH": "forecast",
    "METRIC": "median_ape",
-   "SCOPE": "d21",
-   "VALUE": 0.5551186351473525,
-   "TARGET": "backtest V5 band p05-p95",
-   "STATUS": "INSUFFICIENT",
+   "SCOPE": "all",
+   "VALUE": 0.5150831700401086,
+   "TARGET": "backtest V5/V7 band p05-p95",
+   "STATUS": "RED",
    "RUN_AT": "2026-11-13T14:03:27.288000"
   },
   {
@@ -457,10 +457,10 @@
   {
    "BENCH": "forecast",
    "METRIC": "median_ape",
-   "SCOPE": "d3",
-   "VALUE": 0.5044549681572145,
-   "TARGET": "backtest V5/V7 band p05-p95",
-   "STATUS": "RED",
+   "SCOPE": "d21",
+   "VALUE": 0.5551186351473525,
+   "TARGET": "backtest V5 band p05-p95",
+   "STATUS": "INSUFFICIENT",
    "RUN_AT": "2026-11-13T14:03:27.288000"
   },
   {

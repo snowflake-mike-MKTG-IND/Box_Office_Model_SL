@@ -1,6 +1,19 @@
 {
- "generated_at": "2026-11-15T19:04:23",
+ "generated_at": "2026-11-20T22:01:21",
  "studies": [
+  {
+   "STUDY_ID": "S-1119-4d8b13",
+   "TITLE": "Calibration round 2: adaptive, recency-weighted and Mondrian-by-tier conformal on live-like inputs",
+   "HYPOTHESIS": "A drift-aware (ACI or recency-weighted) or tier-aware conformal range on the V7 point, calibrated past-only on live-like lagged inputs, reaches ~68% latest coverage without a worse log interval score than the past-only residual bank",
+   "PRIMARY_METRIC": "latest-per-film range coverage (film bootstrap 95% CI) and paired log interval score vs BASE",
+   "DECISION_RULE": "pass if latest coverage CI contains 0.68, iscore vs BASE CI upper <= 0 or tie, and no horizon coverage CI entirely below 0.55; best iscore among passing (RW24<MT<ACI on ties) -> shadow; none -> no-change; coverage ok but iscore worse -> inconclusive",
+   "HORIZONS": "21,14,7,3",
+   "STATUS": "CLOSED",
+   "OUTCOME": "shadow",
+   "RESULT": "All 4 arms pass the rule; RW24 (24-month recency-weighted past-only conformal, 16/84 quantiles) has the best iscore. Latest coverage 62.4% [51.8, 72.9] vs BASE 56.5% [45.9, 67.1], n=85 films; misses -5.9 pts [-12.9, +1.2] tie; iscore +0.024 [-0.052, +0.094] tie; aLoss unchanged by construction. Trade-off: iscore <$60M worse +0.112 [+0.050, +0.170] (69 films), >=$60M better -0.357 [-0.561, -0.161] (16 films). Horizon coverage 58-64%. Same-day baseline 136 films MAPE 0.361 aLoss 0.498 (reproduces V7 False, data moved since registration).",
+   "OPENED_AT": "2026-11-19T08:03:12.775000",
+   "CLOSED_AT": "2026-11-19T08:07:00.169000"
+  },
   {
    "STUDY_ID": "S-1107-461cbd",
    "TITLE": "Trailer-week B0 with backfilled IS_SEQUEL / IS_FRANCHISE (after R-1107-1bfec6) vs today's flags",
